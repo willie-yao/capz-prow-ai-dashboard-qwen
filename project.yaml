@@ -1,0 +1,142 @@
+# Project config for the CAPZ Prow dashboard (Qwen/Dynamo demo).
+#
+# Mirrors willie-yao/capz-prow-ai-dashboard exactly EXCEPT for the AI
+# endpoint and runtime: this dashboard's analyses are produced by an
+# in-cluster Qwen3-235B-FP8 model served via NVIDIA Dynamo (trtllm
+# backend) on the demo AKS cluster, reached over cluster-internal DNS
+# from a self-hosted GitHub Actions runner. Same prow jobs, same
+# evidence, same prompt — different model + endpoint. Lets the team
+# compare summary quality side-by-side at:
+#
+#   prod (Claude):     https://willie-yao.github.io/capz-prow-ai-dashboard/
+#   demo (Qwen):       https://willie-yao.github.io/capz-prow-ai-dashboard-qwen/
+
+id: capz-qwen
+name: "Cluster API Provider Azure (Qwen demo)"
+short_name: "CAPZ-Qwen"
+
+# Where in kubernetes/test-infra to find the prow job YAMLs.
+source:
+  test_infra_paths:
+    - "config/jobs/kubernetes-sigs/cluster-api-provider-azure"
+  file_prefix: "cluster-api-provider-azure-"
+
+# Only jobs that advertise this testgrid dashboard are included.
+testgrid:
+  dashboard: "sig-cluster-lifecycle-cluster-api-provider-azure"
+
+# Same category rules as the prod CAPZ dashboard so a side-by-side
+# comparison is apples-to-apples.
+categories:
+  - match: "conformance"
+    id: "conformance"
+    label: "Conformance"
+  - match: "[managed kubernetes]"
+    id: "aks-e2e"
+    label: "AKS E2E"
+  - match: "e2e-aks"
+    id: "aks-e2e"
+    label: "AKS E2E"
+  - match: "capi-e2e"
+    id: "capi-e2e"
+    label: "CAPI E2E"
+  - match: "upgrade"
+    id: "upgrade"
+    label: "Upgrade"
+  - match: "coverage"
+    id: "coverage"
+    label: "Coverage"
+  - match: "scalability"
+    id: "scalability"
+    label: "Scalability"
+  - match: "e2e"
+    id: "capz-e2e"
+    label: "CAPZ E2E"
+
+category_display_order:
+  - capz-e2e
+  - aks-e2e
+  - upgrade
+  - capi-e2e
+  - conformance
+  - coverage
+  - scalability
+
+# GCS bucket holding build artifacts.
+gcs:
+  bucket: "kubernetes-ci-logs"
+
+# UI branding. The "(Qwen demo)" suffix in the title makes it obvious
+# at a glance which dashboard the viewer is on.
+branding:
+  title: "CAPZ Prow Dashboard (Qwen demo)"
+  base_path: "/capz-prow-ai-dashboard-qwen"
+  site_url: "https://willie-yao.github.io/capz-prow-ai-dashboard-qwen"
+  source_repo:
+    owner: "kubernetes-sigs"
+    name: "cluster-api-provider-azure"
+
+# Cluster name prefix the capi collector uses to group machine artifacts.
+# Unused under use_universal_path: true but kept for parity with the prod
+# CAPZ project.yaml.
+capi:
+  cluster_name_prefix: "capz-e2e"
+
+artifacts:
+  collector: "capi"
+
+# AI analysis settings.
+#
+# Endpoint and model come from repo variables wired in
+# .github/workflows/deploy.yml. For this demo, set:
+#
+#   gh variable set AI_ENDPOINT \
+#     -b "http://qwen3-235b-a22b-disagg-frontend.default.svc:8000/v1/chat/completions"
+#   gh variable set AI_MODEL -b "Qwen/Qwen3-235B-A22B-FP8"
+#
+# AI_ENDPOINT uses cluster-internal DNS because the GHA runner is the
+# in-cluster ARC runner labelled `arc-qwen-runner` (see deploy.yml).
+# The Dynamo frontend doesn't require an API key, but the engine
+# expects AI_TOKEN to be non-empty — any string works.
+ai:
+  module: "capi"
+
+  # Phase L universal agentic path. Same as the prod CAPZ dashboard so
+  # the only intentional variable between the two deployments is the
+  # endpoint + model.
+  use_universal_path: true
+
+  # Per-failure evidence collected before each AI call. Same list as
+  # the prod CAPZ project.yaml.
+  evidence:
+    machine_logs:
+      - kubelet.log
+      - containerd.log
+      - journal.log
+      - boot.log
+      - cloud-init-output.log
+
+    controller_logs:
+      - capi-system
+      - capi-kubeadm-bootstrap-system
+      - capi-kubeadm-control-plane-system
+      - capz-system
+
+    build_log_patterns:
+      - "FAIL|\\[FAIL\\]"
+      - "timed?\\s*out|timeout"
+      - "ImagePullBackOff|ErrImagePull"
+      - "CrashLoopBackOff"
+      - "NotFound|not found"
+      - "SkuNotAvailable"
+      - "GalleryImage|CommunityGaller"
+      - "quota|OperationNotAllowed"
+      - "provisioningState.*Failed"
+      - "version.*not.*available|not.*replicated"
+
+  agentic:
+    enabled: true
+    always: false
+    tools:
+      - filesystem
+      - k8s

@@ -1,0 +1,16 @@
+name: Clear AI Cache
+
+# Manually wipe this repo's data cache so the next deploy refetches
+# everything and regenerates AI summaries.
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  actions: write
+
+jobs:
+  clear:
+    uses: willie-yao/prow-ai-dashboard/.github/workflows/reusable-clear-cache.yml@main
+    with:
+      project_dir: "."

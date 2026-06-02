@@ -1,0 +1,4 @@
+# Engine writes data/ into the build, no need to commit it.
+data/
+node_modules/
+.DS_Store

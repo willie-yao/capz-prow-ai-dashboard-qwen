@@ -1,0 +1,42 @@
+name: Deploy Dashboard
+
+# Calls the reusable workflow in willie-yao/prow-ai-dashboard to build
+# and deploy this repo's CAPZ Prow dashboard (Qwen variant) to GitHub
+# Pages. Runs on the in-cluster ARC self-hosted runner labelled
+# `arc-qwen-runner` so the fetcher can reach the Dynamo frontend
+# service over cluster DNS without exposing it publicly.
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Match the prod CAPZ dashboard: don't let the next cron tick murder
+# an in-flight push deploy mid-fetch (universal-mode wall clock can
+# exceed the 30m cron window on a cold cache).
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    uses: willie-yao/prow-ai-dashboard/.github/workflows/reusable-deploy.yml@main
+    with:
+      project_dir: "."
+      # Run on the in-cluster ARC runner so AI_ENDPOINT resolves over
+      # cluster DNS. Adjust the second label to match whatever you
+      # registered with actions-runner-controller.
+      runs-on: '["self-hosted", "arc-qwen-runner"]'
+      builds: 4
+      ai-model: ${{ vars.AI_MODEL }}
+      ai-endpoint: ${{ vars.AI_ENDPOINT }}
+    secrets:
+      AI_TOKEN: ${{ secrets.AI_TOKEN }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
