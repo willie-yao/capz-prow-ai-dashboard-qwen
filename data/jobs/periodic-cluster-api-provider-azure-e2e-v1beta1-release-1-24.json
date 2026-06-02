@@ -1,0 +1,1234 @@
+{
+  "name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24",
+  "job_id": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24",
+  "job_type": "periodic",
+  "repo": "",
+  "runs": [
+    {
+      "build_id": "2061015253067501568",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24",
+      "started": "2026-05-31T09:21:48Z",
+      "finished": "2026-05-31T10:47:20Z",
+      "passed": false,
+      "result": "FAILURE",
+      "duration_seconds": 5132,
+      "commit": "779da95cfd9f448e47623be7661d1c514c79db91",
+      "repo_version": "779da95cfd9f448e47623be7661d1c514c79db91",
+      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24/2061015253067501568/",
+      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24/2061015253067501568/build-log.txt",
+      "junit_urls": [
+        "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24/2061015253067501568/artifacts/junit.e2e_suite.1.xml"
+      ],
+      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24/2061015253067501568/",
+      "test_cases": [
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 114.583910819,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the quick-start spec Should create a workload cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the MachineDeployment rollout spec Should successfully upgrade Machines upon changes in relevant MachineDeployment fields",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the self-hosted spec Should pivot the bootstrap cluster to a self-hosted cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully remediate unhealthy worker machines with MachineHealthCheck Should replace unhealthy machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully exercise machine pools Should successfully create a cluster with machine pool machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully scale out and scale in a MachineDeployment Should successfully scale a MachineDeployment up and down upon changes to the MachineDeployment replica count",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the workload cluster upgrade spec [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Conformance Tests conformance-tests",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a private cluster [OPTIONAL] Creates a public management cluster in a custom vnet",
+          "status": "failed",
+          "duration_seconds": 1205.352852318,
+          "failure_message": "failed to run clusterctl init\nUnexpected error:\n    \u003c*errors.withStack | 0xc007635ce0\u003e: \n    deployment \"azureserviceoperator-controller-manager\" is not ready after 5m0s: Get \"https://capz-e2e-qvogg3-public-custom-vnet-3ccb1a16.switzerlandnorth.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": context deadline exceeded\n    {\n        error: \u003c*errors.withMessage | 0xc007ee8fc0\u003e{\n            cause: \u003c*url.Error | 0xc007f3c1e0\u003e{\n                Op: \"Get\",\n                URL: \"https://capz-e2e-qvogg3-public-custom-vnet-3ccb1a16.switzerlandnorth.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\",\n                Err: \u003ccontext.deadlineExceededError\u003e{},\n            },\n            msg: \"deployment \\\"azureserviceoperator-controller-manager\\\" is not ready after 5m0s\",\n        },\n        stack: [0x4331548, 0x4331267, 0x433098e, 0x437872e, 0x452aeca, 0x452fa48, 0x559bc51, 0x554dca7, 0x400957f, 0x401ced6, 0x554dc25, 0x3ffbc33, 0x4012453, 0x21175a1],\n    }\noccurred",
+          "failure_body": "[FAILED] failed to run clusterctl init\nUnexpected error:\n    \u003c*errors.withStack | 0xc007635ce0\u003e: \n    deployment \"azureserviceoperator-controller-manager\" is not ready after 5m0s: Get \"https://capz-e2e-qvogg3-public-custom-vnet-3ccb1a16.switzerlandnorth.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": context deadline exceeded\n    {\n        error: \u003c*errors.withMessage | 0xc007ee8fc0\u003e{\n            cause: \u003c*url.Error | 0xc007f3c1e0\u003e{\n                Op: \"Get\",\n                URL: \"https://capz-e2e-qvogg3-public-custom-vnet-3ccb1a16.switzerlandnorth.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\",\n                Err: \u003ccontext.deadlineExceededError\u003e{},\n            },\n            msg: \"deployment \\\"azureserviceoperator-controller-manager\\\" is not ready after 5m0s\",\n        },\n        stack: [0x4331548, 0x4331267, 0x433098e, 0x437872e, 0x452aeca, 0x452fa48, 0x559bc51, 0x554dca7, 0x400957f, 0x401ced6, 0x554dc25, 0x3ffbc33, 0x4012453, 0x21175a1],\n    }\noccurred\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/clusterctl/client.go:89 @ 05/31/26 09:48:00.207",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/clusterctl/client.go:89",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/client.go#L89",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:23:47Z",
+            "summary": "Deployment azureserviceoperator-controller-manager failed to become ready due to kubelet connectivity issues on nodes",
+            "is_transient": false
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:23:47Z",
+            "root_cause": "Multiple kubelet connection timeouts observed in build-log.txt: 'dial tcp 10.0.0.5:10250: i/o timeout'. Nodes failed to register with API server, preventing deployment rollout. Root cause appears to be node bootstrapping failure rather than deployment-specific issue.",
+            "severity": "Critical",
+            "suggested_fix": "Check cloud-init logs on nodes to verify kubelet startup, confirm Azure VM provisioning succeeded, and validate network security rules allow traffic on port 10250. Investigate kubelet.service status and journal logs on affected nodes.",
+            "relevant_files": [
+              "build-log.txt",
+              "artifacts/clusters/*/machines/*/cloud-init-output.log",
+              "artifacts/clusters/*/machines/*/kubelet.log",
+              "artifacts/clusters/*/azure-activity-logs/*.log"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 2,
+            "model_bytes": 33221,
+            "gcs_bytes": 32512,
+            "elapsed_ms": 22135
+          }
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly-available cluster with Azure Linux 3 [OPTIONAL] with three controlplane node and two worker nodes",
+          "status": "passed",
+          "duration_seconds": 2982.742219694,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.00085675,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 114.5953111,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation when Creating a highly available cluster with Azure CNI v1 [REQUIRED] can create 3 control-plane nodes and 2 Linux worker nodes [Azure CNI v1]",
+          "status": "passed",
+          "duration_seconds": 1751.67608375,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed cluster and deploying KubeRay [KubeRay] Creates a RayCluster and verifies it becomes ready",
+          "status": "failed",
+          "duration_seconds": 181.501995611,
+          "failure_message": "Failed to run clusterctl config cluster\nUnexpected error:\n    \u003c*yamlprocessor.errMissingVariables | 0xc001b96798\u003e: \n    value for variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER] is not set. Please set the value using os environment variables or the clusterctl config file\n    {\n        Missing: [\n            \"AZURE_BLOB_CONTAINER_NAME\",\n            \"IMAGE_TAG_ACR_CREDENTIAL_PROVIDER\",\n        ],\n    }\noccurred",
+          "failure_body": "[FAILED] Failed to run clusterctl config cluster\nUnexpected error:\n    \u003c*yamlprocessor.errMissingVariables | 0xc001b96798\u003e: \n    value for variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER] is not set. Please set the value using os environment variables or the clusterctl config file\n    {\n        Missing: [\n            \"AZURE_BLOB_CONTAINER_NAME\",\n            \"IMAGE_TAG_ACR_CREDENTIAL_PROVIDER\",\n        ],\n    }\noccurred\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/clusterctl/client.go:353 @ 05/31/26 10:04:45.214\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/clusterctl/client.go:353",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/client.go#L353",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:24:06Z",
+            "summary": "Cluster creation failed due to missing environment variables required by clusterctl configuration",
+            "is_transient": false
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:24:06Z",
+            "root_cause": "The clusterctl config cluster command failed with missing variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER]. These variables were not set in the environment or clusterctl config file as required by the error message: \"value for variables [...] is not set. Please set the value using os environment variables or the clusterctl config file\"",
+            "severity": "High",
+            "suggested_fix": "Add AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER to either:\n1. The test's environment variables in the Prow job config, or\n2. The clusterctl config file used in test/e2e/config/clusterctl/ directory\nCheck if these variables should be set in the test's BeforeEach setup or in the CI environment",
+            "relevant_files": [
+              "test/e2e/config/clusterctl/clusterctl.yaml",
+              "test/e2e/workload_cluster_test.go"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 2,
+            "model_bytes": 10612,
+            "gcs_bytes": 9498,
+            "elapsed_ms": 18526
+          }
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed cluster and deploying KubeRay [KubeRay] Creates a RayJob and verifies it completes successfully",
+          "status": "failed",
+          "duration_seconds": 181.292126432,
+          "failure_message": "Failed to run clusterctl config cluster\nUnexpected error:\n    \u003c*yamlprocessor.errMissingVariables | 0xc001842a98\u003e: \n    value for variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER] is not set. Please set the value using os environment variables or the clusterctl config file\n    {\n        Missing: [\n            \"AZURE_BLOB_CONTAINER_NAME\",\n            \"IMAGE_TAG_ACR_CREDENTIAL_PROVIDER\",\n        ],\n    }\noccurred",
+          "failure_body": "[FAILED] Failed to run clusterctl config cluster\nUnexpected error:\n    \u003c*yamlprocessor.errMissingVariables | 0xc001842a98\u003e: \n    value for variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER] is not set. Please set the value using os environment variables or the clusterctl config file\n    {\n        Missing: [\n            \"AZURE_BLOB_CONTAINER_NAME\",\n            \"IMAGE_TAG_ACR_CREDENTIAL_PROVIDER\",\n        ],\n    }\noccurred\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/clusterctl/client.go:353 @ 05/31/26 10:07:46.534\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/clusterctl/client.go:353",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/client.go#L353",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:24:14Z",
+            "summary": "Missing environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER caused clusterctl config cluster to fail during KubeRay test setup.",
+            "is_transient": false
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:24:14Z",
+            "root_cause": "The error message explicitly states that required variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER] were not set in either environment variables or clusterctl config file. This is a configuration issue in the test environment or template.",
+            "severity": "Critical",
+            "suggested_fix": "Add the missing variables to either:\n1. The clusterctl config file (e.g., ~/.cluster-api/config.yaml) with:\n   AZURE_BLOB_CONTAINER_NAME: \"\u003cvalue\u003e\"\n   IMAGE_TAG_ACR_CREDENTIAL_PROVIDER: \"\u003cvalue\u003e\"\n2. Or set them as environment variables in the test setup:\n   export AZURE_BLOB_CONTAINER_NAME=\u003cvalue\u003e\n   export IMAGE_TAG_ACR_CREDENTIAL_PROVIDER=\u003cvalue\u003e",
+            "relevant_files": [
+              "sigs.k8s.io/cluster-api/test/framework/clusterctl/client.go",
+              "~/.cluster-api/config.yaml (if exists)"
+            ],
+            "mode": "agentic-universal",
+            "elapsed_ms": 8957
+          }
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000319093,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 114.594738652,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a GPU-enabled cluster [OPTIONAL] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 1.9568109169999999,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters using clusterclass [OPTIONAL] with a single control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 894.831924111,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating RKE2 clusters using clusterclass [OPTIONAL] with 3 control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 1365.289516158,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000411614,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 114.595170828,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with VMSS flex machinepools [OPTIONAL] with 1 control plane node and 1 machinepool",
+          "status": "passed",
+          "duration_seconds": 1365.210941214,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Testing autoscaling from zero with Cluster Autoscaler [REQUIRED] Scales MachineDeployment from 0 to 1+ when workload is scheduled",
+          "status": "passed",
+          "duration_seconds": 1020.879149478,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000350644,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 114.604880599,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with spot vms [OPTIONAL] With spot vm machine deployments",
+          "status": "passed",
+          "duration_seconds": 949.998576597,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters on public MEC [OPTIONAL] with 1 control plane nodes and 1 worker node",
+          "status": "skipped",
+          "duration_seconds": 1.18764384,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate using default template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1469.590479663,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000564086,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 114.596984803,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a ipv6 control-plane cluster [REQUIRED] With ipv6 worker node",
+          "status": "passed",
+          "duration_seconds": 1528.389667777,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster and deploying KubeRay [KubeRay] Creates a RayCluster and verifies it becomes ready",
+          "status": "passed",
+          "duration_seconds": 941.83808965,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000304063,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 114.598138702,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a Flatcar sysext cluster [OPTIONAL] With Flatcar control-plane and worker nodes",
+          "status": "passed",
+          "duration_seconds": 1073.140428718,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate and fully spec-ed out APIServer ILB template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1450.0558057,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000368524,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 114.599894441,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a VMSS cluster [REQUIRED] with a single control plane node and an AzureMachinePool with 2 Linux nodes",
+          "status": "passed",
+          "duration_seconds": 1599.248929615,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster and deploying KubeRay [KubeRay] Creates a RayJob and verifies it completes successfully",
+          "status": "passed",
+          "duration_seconds": 1096.924105123,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000475075,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 114.604272532,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly available cluster [REQUIRED] With 3 control-plane nodes and 2 Linux and 2 Windows worker nodes",
+          "status": "passed",
+          "duration_seconds": 2698.260087875,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000338533,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 114.604487076,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for control plane tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster using ClusterClass [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster with the ASO API [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a dual-stack cluster [OPTIONAL] With dual-stack worker node",
+          "status": "passed",
+          "duration_seconds": 2701.504525608,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000745968,
+          "junit_file": "junit.e2e_suite.1.xml"
+        }
+      ],
+      "tests_total": 59,
+      "tests_passed": 36,
+      "tests_failed": 3,
+      "tests_skipped": 20
+    },
+    {
+      "build_id": "2059911721539080192",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24",
+      "started": "2026-05-28T08:16:48Z",
+      "finished": "2026-05-28T09:21:12Z",
+      "passed": false,
+      "result": "FAILURE",
+      "duration_seconds": 3864,
+      "commit": "779da95cfd9f448e47623be7661d1c514c79db91",
+      "repo_version": "779da95cfd9f448e47623be7661d1c514c79db91",
+      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24/2059911721539080192/",
+      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24/2059911721539080192/build-log.txt",
+      "junit_urls": [
+        "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24/2059911721539080192/artifacts/junit.e2e_suite.1.xml"
+      ],
+      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24/2059911721539080192/",
+      "test_cases": [
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.091564632,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the quick-start spec Should create a workload cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the MachineDeployment rollout spec Should successfully upgrade Machines upon changes in relevant MachineDeployment fields",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the self-hosted spec Should pivot the bootstrap cluster to a self-hosted cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully remediate unhealthy worker machines with MachineHealthCheck Should replace unhealthy machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully exercise machine pools Should successfully create a cluster with machine pool machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully scale out and scale in a MachineDeployment Should successfully scale a MachineDeployment up and down upon changes to the MachineDeployment replica count",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the workload cluster upgrade spec [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Conformance Tests conformance-tests",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a private cluster [OPTIONAL] Creates a public management cluster in a custom vnet",
+          "status": "failed",
+          "duration_seconds": 2.629671795,
+          "failure_message": "Unexpected error:\n    \u003c*exported.ResponseError | 0xc0007a3e90\u003e: \n    PUT https://management.azure.com/subscriptions/46678f10-4bbb-447e-98e8-d2829589f2d8/resourcegroups/capz-e2e-kygnj6-public-custom-vnet-vnetrg\n    --------------------------------------------------------------------------------\n    RESPONSE 409: 409 Conflict\n    ERROR CODE: ResourceGroupQuotaExceeded\n    --------------------------------------------------------------------------------\n    {\n      \"error\": {\n        \"code\": \"ResourceGroupQuotaExceeded\",\n        \"message\": \"Creating the resource group 'capz-e2e-kygnj6-public-custom-vnet-vnetrg' would exceed the quota of '980'. The current resource group count is '980', please delete some groups before creating a new one.\"\n      }\n    }\n    --------------------------------------------------------------------------------\n    \n    {\n        ErrorCode: \"ResourceGroupQuotaExceeded\",\n        StatusCode: 409,\n        RawResponse: {\n            Status: \"409 Conflict\",\n            StatusCode: 409,\n            Proto: \"HTTP/2.0\",\n            ProtoMajor: 2,\n            ProtoMinor: 0,\n            Header: {\n                \"Expires\": [\"-1\"],\n                \"X-Cache\": [\"CONFIG_NOCACHE\"],\n                \"X-Ms-Request-Id\": [\n                    \"8045dbd6-3b9f-4cb8-93b7-4163e6efe30b\",\n                ],\n                \"X-Ms-Routing-Request-Id\": [\n                    \"CANADACENTRAL:20260528T083011Z:8045dbd6-3b9f-4cb8-93b7-4163e6efe30b\",\n                ],\n                \"X-Msedge-Ref\": [\n                    \"Ref A: 004EE76BC8734DD68041C7258082673A Ref B: CH1AA2020603049 Ref C: 2026-05-28T08:30:10Z\",\n                ],\n                \"Cache-Control\": [\"no-cache\"],\n                \"Content-Type\": [\n                    \"application/json; charset=utf-8\",\n                ],\n                \"X-Ms-Ratelimit-Remaining-Subscription-Writes\": [\"199\"],\n                \"X-Content-Type-Options\": [\"nosniff\"],\n                \"X-Ms-Failure-Cause\": [\"gateway\"],\n                \"X-Ms-Ratelimit-Remaining-Subscription-Global-Writes\": [\"2999\"],\n                \"X-Ms-Correlation-Request-Id\": [\n                    \"8045dbd6-3b9f-4cb8-93b7-4163e6efe30b\",\n                ],\n                \"Strict-Transport-Security\": [\n                    \"max-age=31536000; includeSubDomains\",\n                ],\n                \"Date\": [\n                    \"Thu, 28 May 2026 08:30:10 GMT\",\n                ],\n                \"Pragma\": [\"no-cache\"],\n                \"Content-Length\": [\"260\"],\n            },\n            Body: \u003c*exported.nopClosingBytesReader | 0xc001900500\u003e{\n                s: \"{\\\"error\\\":{\\\"code\\\":\\\"ResourceGroupQuotaExceeded\\\",\\\"message\\\":\\\"Creating the resource group 'capz-e2e-kygnj6-public-custom-vnet-vnetrg' would exceed the quota of '980'. The current resource group count is '980', please delete some groups before creating a new one.\\\"}}\",\n                i: 0,\n            },\n            ContentLength: 260,\n            TransferEncoding: nil,\n            Close: false,\n            Uncompressed: false,\n            Trailer: nil,\n            Request: {\n                Method: \"PUT\",\n                URL: {\n                    Scheme: \"https\",\n                    Opaque: \"\",\n                    User: nil,\n                    Host: \"management.azure.com\",\n                    Path: \"/subscriptions/46678f10-4bbb-447e-98e8-d2829589f2d8/resourcegroups/capz-e2e-kygnj6-public-custom-vnet-vnetrg\",\n                    RawPath: \"\",\n                    OmitHost: false,\n                    ForceQuery: false,\n                    RawQuery: \"api-version=2021-04-01\",\n                    Fragment: \"\",\n                    RawFragment: \"\",\n                },\n                Proto: \"HTTP/1.1\",\n                ProtoMajor: 1,\n                ProtoMinor: 1,\n                Header: {\n                    \"Accept\": [\"application/json\"],\n                    \"Authorization\": [\n                        \"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IndoMDZzRWt6TEhKNXNOTmFVeVJZMl82TzhLMCIsImtpZCI6IndoMDZzRWt6TEhKNXNOTmFVeVJZMl82TzhLMCJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9kMWFhNzUyMi0wOTU5LTQ0MmUtODBlZS04YzRmN2ZiNGMxODQvIiwiaWF0IjoxNzc5OTU2NzEwLCJuYmYiOjE3Nzk5NTY3MTAsImV4cCI6MTc3OTk2MDYxMCwiYWlvIjoiQVhRQWkvOGNBQUFBNnhHdUJmcVBXS010UFg4bmR2TjlXNXBMakp1TUhKZlhwZzZ5eGxPYWNLOEEwWWVOR0ExR09PbGJrTDNWZmEzWUZZdWtXY2FhOHBKK1FvWEtCeUtrTjhIUFF2Z1hJS2JlSUV3UlVXZDQ3UkZvM080eFhYZUdOQmJwUVJrTjJRU1lsY1FxRFlxV09GaVp5Y2Mrditib2p3PT0iLCJhcHBpZCI6IjM0ZDhlMDZkLWQxOTgtNDc3ZS1iMTY2LTY5MzZlNThkOTBhZSIsImFwcGlkYWNyIjoiMiIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2QxYWE3NTIyLTA5NTktNDQyZS04MGVlLThjNGY3ZmI0YzE4NC8iLCJpZHR5cCI6ImFwcCIsIm9pZCI6IjhlYjk3ODczLTE3YmItNDZhNS1hZWQ5LTE5NjdkODNjYTdjYSIsInJoIjoiMS5BWFlBSW5XcTBWa0pMa1NBN294UGY3VEJoRVpJZjNrQXV0ZFB1a1Bhd2ZqMk1CTUFBQUIyQUEuIiwi...\n\nGomega truncated this representation as it exceeds 'format.MaxLength'.\nConsider having the object provide a custom 'GomegaStringer' representation\nor adjust the parameters in Gomega's 'format' package.\n\nLearn more here: https://onsi.github.io/gomega/#adjusting-output\n\noccurred",
+          "failure_body": "[FAILED] Unexpected error:\n    \u003c*exported.ResponseError | 0xc0007a3e90\u003e: \n    PUT https://management.azure.com/subscriptions/46678f10-4bbb-447e-98e8-d2829589f2d8/resourcegroups/capz-e2e-kygnj6-public-custom-vnet-vnetrg\n    --------------------------------------------------------------------------------\n    RESPONSE 409: 409 Conflict\n    ERROR CODE: ResourceGroupQuotaExceeded\n    --------------------------------------------------------------------------------\n    {\n      \"error\": {\n        \"code\": \"ResourceGroupQuotaExceeded\",\n        \"message\": \"Creating the resource group 'capz-e2e-kygnj6-public-custom-vnet-vnetrg' would exceed the quota of '980'. The current resource group count is '980', please delete some groups before creating a new one.\"\n      }\n    }\n    --------------------------------------------------------------------------------\n    \n    {\n        ErrorCode: \"ResourceGroupQuotaExceeded\",\n        StatusCode: 409,\n        RawResponse: {\n            Status: \"409 Conflict\",\n            StatusCode: 409,\n            Proto: \"HTTP/2.0\",\n            ProtoMajor: 2,\n            ProtoMinor: 0,\n            Header: {\n                \"Expires\": [\"-1\"],\n                \"X-Cache\": [\"CONFIG_NOCACHE\"],\n                \"X-Ms-Request-Id\": [\n                    \"8045dbd6-3b9f-4cb8-93b7-4163e6efe30b\",\n                ],\n                \"X-Ms-Routing-Request-Id\": [\n                    \"CANADACENTRAL:20260528T083011Z:8045dbd6-3b9f-4cb8-93b7-4163e6efe30b\",\n                ],\n                \"X-Msedge-Ref\": [\n                    \"Ref A: 004EE76BC8734DD68041C7258082673A Ref B: CH1AA2020603049 Ref C: 2026-05-28T08:30:10Z\",\n                ],\n                \"Cache-Control\": [\"no-cache\"],\n                \"Content-Type\": [\n                    \"application/json; charset=utf-8\",\n                ],\n                \"X-Ms-Ratelimit-Remaining-Subscription-Writes\": [\"199\"],\n                \"X-Content-Type-Options\": [\"nosniff\"],\n                \"X-Ms-Failure-Cause\": [\"gateway\"],\n                \"X-Ms-Ratelimit-Remaining-Subscription-Global-Writes\": [\"2999\"],\n                \"X-Ms-Correlation-Request-Id\": [\n                    \"8045dbd6-3b9f-4cb8-93b7-4163e6efe30b\",\n                ],\n                \"Strict-Transport-Security\": [\n                    \"max-age=31536000; includeSubDomains\",\n                ],\n                \"Date\": [\n                    \"Thu, 28 May 2026 08:30:10 GMT\",\n                ],\n                \"Pragma\": [\"no-cache\"],\n                \"Content-Length\": [\"260\"],\n            },\n            Body: \u003c*exported.nopClosingBytesReader | 0xc001900500\u003e{\n                s: \"{\\\"error\\\":{\\\"code\\\":\\\"ResourceGroupQuotaExceeded\\\",\\\"message\\\":\\\"Creating the resource group 'capz-e2e-kygnj6-public-custom-vnet-vnetrg' would exceed the quota of '980'. The current resource group count is '980', please delete some groups before creating a new one.\\\"}}\",\n                i: 0,\n            },\n            ContentLength: 260,\n            TransferEncoding: nil,\n            Close: false,\n            Uncompressed: false,\n            Trailer: nil,\n            Request: {\n                Method: \"PUT\",\n                URL: {\n                    Scheme: \"https\",\n                    Opaque: \"\",\n                    User: nil,\n                    Host: \"management.azure.com\",\n                    Path: \"/subscriptions/46678f10-4bbb-447e-98e8-d2829589f2d8/resourcegroups/capz-e2e-kygnj6-public-custom-vnet-vnetrg\",\n                    RawPath: \"\",\n                    OmitHost: false,\n                    ForceQuery: false,\n                    RawQuery: \"api-version=2021-04-01\",\n                    Fragment: \"\",\n                    RawFragment: \"\",\n                },\n                Proto: \"HTTP/1.1\",\n                ProtoMajor: 1,\n                ProtoMinor: 1,\n                Header: {\n                    \"Accept\": [\"application/json\"],\n                    \"Authorization\": [\n                        \"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IndoMDZzRWt6TEhKNXNOTmFVeVJZMl82TzhLMCIsImtpZCI6IndoMDZzRWt6TEhKNXNOTmFVeVJZMl82TzhLMCJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9kMWFhNzUyMi0wOTU5LTQ0MmUtODBlZS04YzRmN2ZiNGMxODQvIiwiaWF0IjoxNzc5OTU2NzEwLCJuYmYiOjE3Nzk5NTY3MTAsImV4cCI6MTc3OTk2MDYxMCwiYWlvIjoiQVhRQWkvOGNBQUFBNnhHdUJmcVBXS010UFg4bmR2TjlXNXBMakp1TUhKZlhwZzZ5eGxPYWNLOEEwWWVOR0ExR09PbGJrTDNWZmEzWUZZdWtXY2FhOHBKK1FvWEtCeUtrTjhIUFF2Z1hJS2JlSUV3UlVXZDQ3UkZvM080eFhYZUdOQmJwUVJrTjJRU1lsY1FxRFlxV09GaVp5Y2Mrditib2p3PT0iLCJhcHBpZCI6IjM0ZDhlMDZkLWQxOTgtNDc3ZS1iMTY2LTY5MzZlNThkOTBhZSIsImFwcGlkYWNyIjoiMiIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2QxYWE3NTIyLTA5NTktNDQyZS04MGVlLThjNGY3ZmI0YzE4NC8iLCJpZHR5cCI6ImFwcCIsIm9pZCI6IjhlYjk3ODczLTE3YmItNDZhNS1hZWQ5LTE5NjdkODNjYTdjYSIsInJoIjoiMS5BWFlBSW5XcTBWa0pMa1NBN294UGY3VEJoRVpJZjNrQXV0ZFB1a1Bhd2ZqMk1CTUFBQUIyQUEuIiwi...\n\nGomega truncated this representation as it exceeds 'format.MaxLength'.\nConsider having the object provide a custom 'GomegaStringer' representation\nor adjust the parameters in Gomega's 'format' package.\n\nLearn more here: https://onsi.github.io/gomega/#adjusting-output\n\noccurred\nIn [It] at: /home/prow/go/src/sigs.k8s.io/cluster-api-provider-azure/test/e2e/azure_privatecluster.go:232 @ 05/28/26 08:30:11.093",
+          "failure_location": "sigs.k8s.io/cluster-api-provider-azure/test/e2e/azure_privatecluster.go:232",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/azure_privatecluster.go#L232",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:24:23Z",
+            "summary": "Test failed due to Azure subscription resource group quota being exceeded during private cluster creation attempt.",
+            "is_transient": true
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:24:23Z",
+            "root_cause": "Azure API returned 409 Conflict with error code ResourceGroupQuotaExceeded: \"Creating the resource group 'capz-e2e-kygnj6-public-custom-vnet-vnetrg' would exceed the quota of '980'. The current resource group count is '980', please delete some groups before creating a new one.\"",
+            "severity": "High",
+            "suggested_fix": "Delete old resource groups from the subscription to free quota before retrying. Consider implementing resource cleanup in test teardown logic.",
+            "relevant_files": [
+              "sigs.k8s.io/cluster-api-provider-azure/test/e2e/azure_privatecluster.go"
+            ],
+            "mode": "agentic-universal",
+            "elapsed_ms": 9014
+          }
+        },
+        {
+          "name": "[It] Workload cluster creation Creating RKE2 clusters using clusterclass [OPTIONAL] with 3 control plane node and one linux worker node",
+          "status": "failed",
+          "duration_seconds": 1397.866340193,
+          "failure_message": "Timed out after 1200.000s.\nTimed out waiting for Cluster capz-e2e-lroqf0/capz-e2e-lroqf0-cc to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned",
+          "failure_body": "[FAILED] Timed out after 1200.000s.\nTimed out waiting for Cluster capz-e2e-lroqf0/capz-e2e-lroqf0-cc to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153 @ 05/28/26 08:50:29.362\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/cluster_helpers.go#L153",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:24:55Z",
+            "summary": "Cluster creation timed out waiting for Azure infrastructure provisioning. No detailed logs found in artifacts.",
+            "is_transient": true
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:24:55Z",
+            "root_cause": "Build log shows timeout waiting for cluster to reach Provisioned state. Cluster artifacts directory contains only clusterctl-init.log with no AzureMachine resources or activity logs.",
+            "severity": "High",
+            "suggested_fix": "Check Azure subscription quotas and network connectivity. Add error handling for failed Azure resource creation in CAPZ controllers.",
+            "relevant_files": [
+              "sigs.k8s.io/cluster-api-provider-azure/controllers/azuremachine_controller.go",
+              "sigs.k8s.io/cluster-api-provider-azure/cloud/services/vmss/vmss.go"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 3,
+            "model_bytes": 11312,
+            "gcs_bytes": 9480,
+            "elapsed_ms": 31638
+          }
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 1588.460774064,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.11976128,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a Flatcar sysext cluster [OPTIONAL] With Flatcar control-plane and worker nodes",
+          "status": "failed",
+          "duration_seconds": 1383.167662661,
+          "failure_message": "Timed out after 1200.001s.\nTimed out waiting for Cluster capz-e2e-lgkqjk/capz-e2e-lgkqjk-flatcar-sysext to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned",
+          "failure_body": "[FAILED] Timed out after 1200.001s.\nTimed out waiting for Cluster capz-e2e-lgkqjk/capz-e2e-lgkqjk-flatcar-sysext to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153 @ 05/28/26 08:50:11.013\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/cluster_helpers.go#L153",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:25:37Z",
+            "summary": "Test timed out waiting for cluster provisioning due to Azure resource group quota exhaustion.",
+            "is_transient": true
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:25:37Z",
+            "root_cause": "Resource group quota exceeded: 'Creating the resource group capz-e2e-lgkqjk-flatcar-sysext would exceed the quota of 980. Current count is 980' (from build-log.txt line 1614)",
+            "severity": "High",
+            "suggested_fix": "Delete old resource groups to free up quota. No code changes required as this is an infrastructure quota issue.",
+            "relevant_files": [
+              "test/e2e/azure_test.go"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 3,
+            "model_bytes": 66530,
+            "gcs_bytes": 379952,
+            "elapsed_ms": 42023
+          }
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters on public MEC [OPTIONAL] with 1 control plane nodes and 1 worker node",
+          "status": "skipped",
+          "duration_seconds": 2.069053752,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000340819,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.112515703,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a ipv6 control-plane cluster [REQUIRED] With ipv6 worker node",
+          "status": "failed",
+          "duration_seconds": 1384.694968461,
+          "failure_message": "Timed out after 1200.001s.\nTimed out waiting for Cluster capz-e2e-9ew627/capz-e2e-9ew627-ipv6 to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned",
+          "failure_body": "[FAILED] Timed out after 1200.001s.\nTimed out waiting for Cluster capz-e2e-9ew627/capz-e2e-9ew627-ipv6 to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153 @ 05/28/26 08:50:11.26\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/cluster_helpers.go#L153",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:26:27Z",
+            "summary": "CAPZ controller failed to provision IPv6 cluster due to missing AzureMachine status updates",
+            "is_transient": false
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:26:27Z",
+            "root_cause": "The CAPZ controller did not receive AzureMachine status updates during provisioning. The build-log.txt shows timeout waiting for Cluster status transition from 'Provisioning' to 'Provisioned' without any AzureMachine error messages.",
+            "severity": "Critical",
+            "suggested_fix": "Investigate CAPZ controller's AzureMachine reconciliation loop in controllers/azuremachine/actuator.go. Add error handling for IPv6-specific Azure API responses and ensure status updates are propagated to Machine resources.",
+            "relevant_files": [
+              "controllers/azuremachine/actuator.go",
+              "api/v1beta1/azuremachine_types.go",
+              "test/e2e/ipv6_test.go"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 3,
+            "model_bytes": 34649,
+            "gcs_bytes": 32512,
+            "elapsed_ms": 49364
+          }
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed cluster and deploying KubeRay [KubeRay] Creates a RayCluster and verifies it becomes ready",
+          "status": "failed",
+          "duration_seconds": 181.686898924,
+          "failure_message": "Failed to run clusterctl config cluster\nUnexpected error:\n    \u003c*yamlprocessor.errMissingVariables | 0xc000d6ac30\u003e: \n    value for variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER] is not set. Please set the value using os environment variables or the clusterctl config file\n    {\n        Missing: [\n            \"AZURE_BLOB_CONTAINER_NAME\",\n            \"IMAGE_TAG_ACR_CREDENTIAL_PROVIDER\",\n        ],\n    }\noccurred",
+          "failure_body": "[FAILED] Failed to run clusterctl config cluster\nUnexpected error:\n    \u003c*yamlprocessor.errMissingVariables | 0xc000d6ac30\u003e: \n    value for variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER] is not set. Please set the value using os environment variables or the clusterctl config file\n    {\n        Missing: [\n            \"AZURE_BLOB_CONTAINER_NAME\",\n            \"IMAGE_TAG_ACR_CREDENTIAL_PROVIDER\",\n        ],\n    }\noccurred\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/clusterctl/client.go:353 @ 05/28/26 08:53:15.264\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/clusterctl/client.go:353",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/client.go#L353",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:26:39Z",
+            "summary": "Test failed due to missing environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER required by clusterctl",
+            "is_transient": false
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:26:39Z",
+            "root_cause": "clusterctl config cluster failed with: \"value for variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER] is not set\" (from junit.e2e_suite.1.xml failure message)",
+            "severity": "High",
+            "suggested_fix": "Ensure AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER environment variables are set before running the test. Check test framework setup and secret mounting in Prow configuration.",
+            "relevant_files": [
+              "sigs.k8s.io/cluster-api/test/framework/clusterctl/client.go",
+              "sigs.k8s.io/cluster-api-provider-azure/test/e2e/config/clusterctl.yaml"
+            ],
+            "mode": "agentic-universal",
+            "elapsed_ms": 12712
+          }
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000271147,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.115322861,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a GPU-enabled cluster [OPTIONAL] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 1.555506468,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters using clusterclass [OPTIONAL] with a single control plane node and one linux worker node",
+          "status": "failed",
+          "duration_seconds": 1383.504470708,
+          "failure_message": "Timed out after 1200.000s.\nTimed out waiting for Cluster capz-e2e-fwqco2/capz-e2e-fwqco2-cc to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned",
+          "failure_body": "[FAILED] Timed out after 1200.000s.\nTimed out waiting for Cluster capz-e2e-fwqco2/capz-e2e-fwqco2-cc to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153 @ 05/28/26 08:50:13.724\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/cluster_helpers.go#L153",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:27:06Z",
+            "summary": "Cluster provisioning timed out due to failed Azure VM creation, no machines found in the workload cluster",
+            "is_transient": true
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:27:06Z",
+            "root_cause": "Cluster failed to reach Provisioned state within 1200s timeout. No machines found in cluster 'capz-e2e-lroqf0-cc' (list_cluster_machines returned empty). Common transient causes: Azure quota exceeded, SkuNotAvailable, or spot eviction.",
+            "severity": "High",
+            "suggested_fix": "Check Azure subscription quotas and region availability. Consider retrying with a different VM SKU or zone. Add Azure activity log inspection to preflight checks.",
+            "relevant_files": [
+              "artifacts/clusters/capz-e2e-lroqf0-cc/azure-activity-logs/capz-e2e-lroqf0-cc.log"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 3,
+            "model_bytes": 11255,
+            "gcs_bytes": 9480,
+            "elapsed_ms": 27180
+          }
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed cluster and deploying KubeRay [KubeRay] Creates a RayJob and verifies it completes successfully",
+          "status": "failed",
+          "duration_seconds": 181.581085553,
+          "failure_message": "Failed to run clusterctl config cluster\nUnexpected error:\n    \u003c*yamlprocessor.errMissingVariables | 0xc000c813e0\u003e: \n    value for variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER] is not set. Please set the value using os environment variables or the clusterctl config file\n    {\n        Missing: [\n            \"AZURE_BLOB_CONTAINER_NAME\",\n            \"IMAGE_TAG_ACR_CREDENTIAL_PROVIDER\",\n        ],\n    }\noccurred",
+          "failure_body": "[FAILED] Failed to run clusterctl config cluster\nUnexpected error:\n    \u003c*yamlprocessor.errMissingVariables | 0xc000c813e0\u003e: \n    value for variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER] is not set. Please set the value using os environment variables or the clusterctl config file\n    {\n        Missing: [\n            \"AZURE_BLOB_CONTAINER_NAME\",\n            \"IMAGE_TAG_ACR_CREDENTIAL_PROVIDER\",\n        ],\n    }\noccurred\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/clusterctl/client.go:353 @ 05/28/26 08:53:15.474\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/clusterctl/client.go:353",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/client.go#L353",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:27:28Z",
+            "summary": "Test failed due to missing environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER required by clusterctl",
+            "is_transient": false
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:27:28Z",
+            "root_cause": "The error \"value for variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER] is not set\" occurred during clusterctl config cluster execution. This indicates required environment variables were not provided in the test environment or clusterctl config file.",
+            "severity": "High",
+            "suggested_fix": "Add the missing variables to either:\n1. The test environment variables in the Prow job config, or\n2. The clusterctl config file (likely config/capz/clusterctl.yaml) with appropriate values for the test context",
+            "relevant_files": [
+              "config/capz/clusterctl.yaml",
+              "test/e2e/azure_privatecluster.go",
+              "test/e2e/azure_self_managed_cluster_test.go"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 2,
+            "model_bytes": 10594,
+            "gcs_bytes": 9480,
+            "elapsed_ms": 21546
+          }
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000270437,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.115743921,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly available cluster [REQUIRED] With 3 control-plane nodes and 2 Linux and 2 Windows worker nodes",
+          "status": "failed",
+          "duration_seconds": 1383.893264601,
+          "failure_message": "Timed out after 1200.000s.\nTimed out waiting for Cluster capz-e2e-j3pesk/capz-e2e-j3pesk-ha to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned",
+          "failure_body": "[FAILED] Timed out after 1200.000s.\nTimed out waiting for Cluster capz-e2e-j3pesk/capz-e2e-j3pesk-ha to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153 @ 05/28/26 08:50:11.21\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/cluster_helpers.go#L153",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:28:14Z",
+            "summary": "Cluster provisioning timed out due to control plane nodes not transitioning to 'Provisioned' state. Azure infrastructure (load balancer, route tables) was created successfully, but the Kubernetes control plane (API server, kubelet) likely failed to initialize.",
+            "is_transient": false
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:28:14Z",
+            "root_cause": "Build-log shows cluster deletion steps but no explicit error. Azure activity logs indicate successful resource creation (load balancer, route tables). Timeout suggests control plane initialization failure (e.g., kubeadm init failure, CNI not installed, or kubelet not registering).",
+            "severity": "Critical",
+            "suggested_fix": "Check kubelet logs and cloud-init-output.log for control plane nodes. Verify kubeadm init success, CNI installation (Calico), and API server connectivity. Ensure no transient Azure throttling occurred during critical setup phases.",
+            "relevant_files": [
+              "artifacts/clusters/capz-e2e-4jixl7-apiserver-ilb/machines/{control_plane_node}/kubelet.log",
+              "artifacts/clusters/capz-e2e-4jixl7-apiserver-ilb/machines/{control_plane_node}/cloud-init-output.log",
+              "artifacts/clusters/capz-e2e-4jixl7-apiserver-ilb/azure-activity-logs/capz-e2e-4jixl7-apiserver-ilb.log"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 4,
+            "model_bytes": 43073,
+            "gcs_bytes": 40704,
+            "elapsed_ms": 45913
+          }
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly-available cluster with Azure Linux 3 [OPTIONAL] with three controlplane node and two worker nodes",
+          "status": "failed",
+          "duration_seconds": 1382.011619466,
+          "failure_message": "Timed out after 1200.000s.\nTimed out waiting for Cluster capz-e2e-4s2gw3/capz-e2e-4s2gw3-azl3 to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned",
+          "failure_body": "[FAILED] Timed out after 1200.000s.\nTimed out waiting for Cluster capz-e2e-4s2gw3/capz-e2e-4s2gw3-azl3 to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153 @ 05/28/26 09:13:14.773\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/cluster_helpers.go#L153",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:28:46Z",
+            "summary": "Cluster provisioning timed out due to unknown infrastructure or configuration issue",
+            "is_transient": false
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:28:46Z",
+            "root_cause": "Timed out waiting for Cluster capz-e2e-4s2gw3/capz-e2e-4s2gw3-azl3 to provision. Build log shows multiple cluster creation attempts but no explicit error for this specific cluster. Common CAPZ failure patterns suggest potential VM provisioning issues, cloud-init failures, or CNI installation problems.",
+            "severity": "Critical",
+            "suggested_fix": "Check Azure activity logs for cluster capz-e2e-4s2gw3-azl3, inspect cloud-init-output.log from first control plane node, and verify AzureMachine status conditions. Ensure proper quota availability and validate cloud-init scripts for Azure Linux 3 compatibility.",
+            "relevant_files": [
+              "artifacts/clusters/capz-e2e-4s2gw3-azl3/azure-activity-logs/capz-e2e-4s2gw3-azl3.log",
+              "artifacts/clusters/capz-e2e-4s2gw3-azl3/machines/{control-plane-machine}/cloud-init-output.log",
+              "artifacts/clusters/capz-e2e-4s2gw3-azl3/AzureMachine/*.yaml"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 1,
+            "model_bytes": 32788,
+            "gcs_bytes": 32512,
+            "elapsed_ms": 32541
+          }
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000270937,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.117383382,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with VMSS flex machinepools [OPTIONAL] with 1 control plane node and 1 machinepool",
+          "status": "failed",
+          "duration_seconds": 1384.529872176,
+          "failure_message": "Timed out after 1200.001s.\nTimed out waiting for Cluster capz-e2e-8ub1zc/capz-e2e-8ub1zc-flex to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned",
+          "failure_body": "[FAILED] Timed out after 1200.001s.\nTimed out waiting for Cluster capz-e2e-8ub1zc/capz-e2e-8ub1zc-flex to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153 @ 05/28/26 08:50:11.23\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/cluster_helpers.go#L153",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:29:19Z",
+            "summary": "Cluster provisioning timed out due to Azure resource group quota exhaustion",
+            "is_transient": true
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:29:19Z",
+            "root_cause": "Resource group creation failed with 'ResourceGroupQuotaExceeded' error: \"Creating the resource group 'capz-e2e-8ub1zc-flex' would exceed the quota of '980'. The current resource group count is '980', please delete some groups before creating a new one.\"",
+            "severity": "High",
+            "suggested_fix": "Clean up stale resource groups from previous test runs to free up quota. Consider implementing resource cleanup hooks in test framework or increasing Azure subscription quota limits.",
+            "relevant_files": [
+              "build-log.txt",
+              "artifacts/clusters/capz-e2e-8ub1zc-flex/azure-activity-logs/capz-e2e-8ub1zc-flex.log"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 3,
+            "model_bytes": 43176,
+            "gcs_bytes": 356920,
+            "elapsed_ms": 33010
+          }
+        },
+        {
+          "name": "[It] Workload cluster creation Testing autoscaling from zero with Cluster Autoscaler [REQUIRED] Scales MachineDeployment from 0 to 1+ when workload is scheduled",
+          "status": "failed",
+          "duration_seconds": 1382.127290008,
+          "failure_message": "Timed out after 1200.001s.\nTimed out waiting for Cluster capz-e2e-mfiqz0/capz-e2e-mfiqz0-autoscale to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned",
+          "failure_body": "[FAILED] Timed out after 1200.001s.\nTimed out waiting for Cluster capz-e2e-mfiqz0/capz-e2e-mfiqz0-autoscale to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153 @ 05/28/26 09:13:15.404\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/cluster_helpers.go#L153",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:29:52Z",
+            "summary": "Cluster provisioning timed out due to Azure resource group creation conflict (HTTP 409).",
+            "is_transient": true
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:29:52Z",
+            "root_cause": "Azure activity log shows \"Conflict (HTTP Status Code: 409)\" when creating resource group /subscriptions/46678f10-4bbb-447e-98e8-d2829589f2d8/resourceGroups/capz-e2e-4jixl7-apiserver-ilb",
+            "severity": "High",
+            "suggested_fix": "Ensure unique resource group names in test by adding random suffixes or using Azure's built-in unique naming mechanisms. Check for existing clusters with the same name in the region before test execution.",
+            "relevant_files": [
+              "artifacts/clusters/capz-e2e-4jixl7-apiserver-ilb/azure-activity-logs/capz-e2e-4jixl7-apiserver-ilb.log"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 4,
+            "model_bytes": 17466,
+            "gcs_bytes": 14769,
+            "elapsed_ms": 32409
+          }
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000256506,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.123001348,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for control plane tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster using ClusterClass [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster with the ASO API [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a dual-stack cluster [OPTIONAL] With dual-stack worker node",
+          "status": "failed",
+          "duration_seconds": 1384.625907149,
+          "failure_message": "Timed out after 1200.001s.\nTimed out waiting for Cluster capz-e2e-abv5aw/capz-e2e-abv5aw-dual-stack to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned",
+          "failure_body": "[FAILED] Timed out after 1200.001s.\nTimed out waiting for Cluster capz-e2e-abv5aw/capz-e2e-abv5aw-dual-stack to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153 @ 05/28/26 08:50:11.246\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/cluster_helpers.go#L153",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:30:33Z",
+            "summary": "Cluster provisioning timed out due to unknown infrastructure issues not captured in Azure activity logs.",
+            "is_transient": true
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:30:33Z",
+            "root_cause": "Build-log.txt shows timeout waiting for cluster provisioning completion. Azure activity logs only show successful route table and VM extension operations, but no fatal errors. The root cause remains undetermined due to missing machine-level logs (cloud-init, kubelet) and CNI status information.",
+            "severity": "Medium",
+            "suggested_fix": "Check cloud-init-output.log and kubelet.log for worker nodes in artifacts/clusters/{cluster-name}/machines/{vm}/. Verify Calico CNI pod status in calico-system namespace. Add logging for VM extension execution status.",
+            "relevant_files": [
+              "cloud-init-output.log",
+              "kubelet.log",
+              "calico-system/calico-node-*"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 4,
+            "model_bytes": 43107,
+            "gcs_bytes": 40704,
+            "elapsed_ms": 41120
+          }
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster and deploying KubeRay [KubeRay] Creates a RayJob and verifies it completes successfully",
+          "status": "failed",
+          "duration_seconds": 1382.881083153,
+          "failure_message": "Timed out after 1200.001s.\nTimed out waiting for Cluster capz-e2e-52q72m/capz-e2e-52q72m-rayjob to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned",
+          "failure_body": "[FAILED] Timed out after 1200.001s.\nTimed out waiting for Cluster capz-e2e-52q72m/capz-e2e-52q72m-rayjob to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153 @ 05/28/26 09:13:16.389\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/cluster_helpers.go#L153",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:31:13Z",
+            "summary": "Test timed out waiting for AKS cluster provisioning to complete, but root cause not found in available logs",
+            "is_transient": true
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:31:13Z",
+            "root_cause": "Build-log.txt shows timeout waiting for cluster to reach Provisioned state, but no AzureMachine FailureMessage or control plane logs were accessible in the provided artifacts. Transient Azure API throttling or quota issues are likely causes.",
+            "severity": "Medium",
+            "suggested_fix": "Add more detailed AzureMachine status reporting and improve log collection for AKS provisioning failures",
+            "relevant_files": [
+              "test/e2e/azure_privatecluster.go",
+              "test/e2e/aks.go"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 4,
+            "model_bytes": 13636,
+            "gcs_bytes": 9480,
+            "elapsed_ms": 39978
+          }
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000301458,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.10910108,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a VMSS cluster [REQUIRED] with a single control plane node and an AzureMachinePool with 2 Linux nodes",
+          "status": "failed",
+          "duration_seconds": 1384.620647244,
+          "failure_message": "Timed out after 1200.001s.\nTimed out waiting for Cluster capz-e2e-6z3t1m/capz-e2e-6z3t1m-vmss to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned",
+          "failure_body": "[FAILED] Timed out after 1200.001s.\nTimed out waiting for Cluster capz-e2e-6z3t1m/capz-e2e-6z3t1m-vmss to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153 @ 05/28/26 08:50:11.229\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/cluster_helpers.go#L153",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:31:45Z",
+            "summary": "Cluster provisioning timed out due to control plane initialization failure",
+            "is_transient": false
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:31:45Z",
+            "root_cause": "The test timed out after 1200s waiting for cluster capz-e2e-xjjwlx-apiserver-ilb to reach Provisioned status. Build log shows no successful kubeadm init completion in cloud-init-output.log for control plane nodes. Azure activity logs likely show resource provisioning errors.",
+            "severity": "Critical",
+            "suggested_fix": "Check Azure activity logs for provisioning errors, verify kubeadm init success in control plane node cloud-init logs, ensure CNI installation completes before timeout",
+            "relevant_files": [
+              "artifacts/clusters/capz-e2e-xjjwlx-apiserver-ilb/azure-activity-logs/capz-e2e-xjjwlx-apiserver-ilb.log",
+              "artifacts/clusters/capz-e2e-xjjwlx-apiserver-ilb/machines/{control_plane_vm}/cloud-init-output.log"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 3,
+            "model_bytes": 34174,
+            "gcs_bytes": 32512,
+            "elapsed_ms": 31841
+          }
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster and deploying KubeRay [KubeRay] Creates a RayCluster and verifies it becomes ready",
+          "status": "failed",
+          "duration_seconds": 1383.09306907,
+          "failure_message": "Timed out after 1200.000s.\nTimed out waiting for Cluster capz-e2e-di23kx/capz-e2e-di23kx-kuberay to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned",
+          "failure_body": "[FAILED] Timed out after 1200.000s.\nTimed out waiting for Cluster capz-e2e-di23kx/capz-e2e-di23kx-kuberay to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153 @ 05/28/26 09:13:16.482\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/cluster_helpers.go#L153",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:32:09Z",
+            "summary": "The test timed out waiting for the cluster to provision, but the root cause isn't evident in the provided logs. The build log shows multiple cluster deletions and test suite failures, but no specific errors for the 'capz-e2e-di23kx-kuberay' cluster.",
+            "is_transient": true
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:32:09Z",
+            "root_cause": "Timeout waiting for cluster provisioning with no explicit error in the provided build-log.txt snippet. Possible transient issues like Azure API throttling, quota exhaustion, or intermittent network problems could be involved.",
+            "severity": "Medium",
+            "suggested_fix": "Check Azure activity logs for the cluster resource group for provisioning errors. Verify CAPZ template parameters for AKS compatibility. Ensure sufficient Azure quotas and retry the test.",
+            "relevant_files": [
+              "build-log.txt"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 2,
+            "model_bytes": 33220,
+            "gcs_bytes": 32512,
+            "elapsed_ms": 24721
+          }
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000279487,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.114750617,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation when Creating a highly available cluster with Azure CNI v1 [REQUIRED] can create 3 control-plane nodes and 2 Linux worker nodes [Azure CNI v1]",
+          "status": "failed",
+          "duration_seconds": 1383.440904854,
+          "failure_message": "Timed out after 1200.000s.\nTimed out waiting for Cluster capz-e2e-5la6ac/capz-e2e-5la6ac-azcni-v1 to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned",
+          "failure_body": "[FAILED] Timed out after 1200.000s.\nTimed out waiting for Cluster capz-e2e-5la6ac/capz-e2e-5la6ac-azcni-v1 to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153 @ 05/28/26 08:50:11.129\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/cluster_helpers.go#L153",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:32:39Z",
+            "summary": "Test failed because the cluster 'capz-e2e-5la6ac' never reached the 'Provisioned' state. The expected cluster is missing from the artifacts, and Azure activity logs are unavailable for diagnosis.",
+            "is_transient": false
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:32:39Z",
+            "root_cause": "The test timed out waiting for cluster 'capz-e2e-5la6ac/capz-e2e-5la6ac-azcni-v1' to provision. Build logs show no evidence of successful Azure VM creation, and the cluster's Azure activity logs directory is empty. This suggests a failure in the initial infrastructure provisioning phase.",
+            "severity": "Critical",
+            "suggested_fix": "1. Verify Azure resource quotas and permissions for VM creation\n2. Check CAPZ template configuration for Azure CNI v1 compatibility\n3. Add debug logging to capture Azure ARM API requests/responses during cluster creation",
+            "relevant_files": [
+              "sigs.k8s.io/cluster-api-provider-azure/azure/actuators/cluster/cluster_actuator.go",
+              "sigs.k8s.io/cluster-api-provider-azure/azure/services/vmss/vmss.go"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 3,
+            "model_bytes": 11261,
+            "gcs_bytes": 9480,
+            "elapsed_ms": 29981
+          }
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate using default template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1491.049866322,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000319648,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.114312726,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with spot vms [OPTIONAL] With spot vm machine deployments",
+          "status": "failed",
+          "duration_seconds": 1383.785369764,
+          "failure_message": "Timed out after 1200.000s.\nTimed out waiting for Cluster capz-e2e-vhp46j/capz-e2e-vhp46j-spot to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned",
+          "failure_body": "[FAILED] Timed out after 1200.000s.\nTimed out waiting for Cluster capz-e2e-vhp46j/capz-e2e-vhp46j-spot to provision\nExpected\n    \u003cstring\u003e: Provisioning\nto equal\n    \u003cstring\u003e: Provisioned\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153 @ 05/28/26 08:50:11.154\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.13.2/framework/cluster_helpers.go:153",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/cluster_helpers.go#L153",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-02T00:33:03Z",
+            "summary": "Cluster provisioning timed out due to Azure spot VM allocation failure",
+            "is_transient": true
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-02T00:33:03Z",
+            "root_cause": "The test timed out waiting for cluster provisioning completion. Azure spot VM allocation likely failed due to quota limits or spot eviction, as indicated by the 'Provisioning' state never transitioning to 'Provisioned' in the Cluster object.",
+            "severity": "High",
+            "suggested_fix": "Check Azure subscription quota for spot VMs in the target region. Consider increasing quota limits or retrying the test to handle transient provisioning issues.",
+            "relevant_files": [
+              "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/cluster_provisioning_test.go"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 1,
+            "model_bytes": 32788,
+            "gcs_bytes": 32512,
+            "elapsed_ms": 23434
+          }
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate and fully spec-ed out APIServer ILB template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1605.134114648,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000348359,
+          "junit_file": "junit.e2e_suite.1.xml"
+        }
+      ],
+      "tests_total": 59,
+      "tests_passed": 22,
+      "tests_failed": 17,
+      "tests_skipped": 20
+    }
+  ]
+}

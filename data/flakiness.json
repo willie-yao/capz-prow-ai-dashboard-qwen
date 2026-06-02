@@ -1,0 +1,739 @@
+{
+  "generated_at": "2026-06-02T00:10:14Z",
+  "most_flaky": null,
+  "persistent_failures": null,
+  "recently_broken": [
+    {
+      "test_name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main",
+      "job_id": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main",
+      "total_runs": 1,
+      "failures": 1,
+      "passes": 0,
+      "flip_rate": 0,
+      "fail_rate": 1,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2061471261799747584",
+        "timestamp": "2026-06-01T15:35:05Z",
+        "failure_message": "Timed out after 3600.000s.\nTimed out waiting for all control-plane machines in Cluster k8s-upgrade-and-conformance-a75582/k8s-upgrade-and-conformance-e8ed3q to be upgraded to kubernetes version v1.35.5\nThe function passed to Eventually returned the following error:\n    \u003c*errors.fundamental | 0xc00072d6e0\u003e: \n    old Machines remain\n    {\n        msg: \"old Machines remain\",\n        stack: [0x44e4bf8, 0x219064a, 0x218f739, 0x3ffdb7f, 0x3ffebd7, 0x3ffbf25, 0x44e4902, 0x44d8c9e, 0x54a91c8, 0x3fd4613, 0x3feae33, 0x2104521],\n    }",
+        "error_hash": "78efd931"
+      },
+      "first_failed_at": "2026-06-01T15:35:05Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Timed out after \u003cnum\u003e000s. Timed out waiting for all control-plane machines in Cluster k8s-upgrade-and-conformance-a75582/k8s-upgrade-and-conformance-e8ed3q to be upgraded to kubernetes version v1.\u003cnum\u003e The function passed to Eventually returned the following error: \u003c*errors.fundamental | 0xc00072d6e0\u003e: old Machines remain { msg: \"old Machines remain\", stack: [0x44e4bf8, 0x219064a, 0x218f739, 0x3ffdb7f, 0x3ffebd7, 0x3ffbf25, 0x44e4902, 0x44d8c9e, 0x54a91c8, 0x3fd4613, 0x3feae33, 0x2104521], }",
+          "error_hash": "78efd931",
+          "count": 1,
+          "example_message": "Timed out after 3600.000s.\nTimed out waiting for all control-plane machines in Cluster k8s-upgrade-and-conformance-a75582/k8s-upgrade-and-conformance-e8ed3q to be upgraded to kubernetes version v1.35.5\nThe function passed to Eventually returned the following error:\n    \u003c*errors.fundamental | 0xc00072d6e0\u003e: \n    old Machines remain\n    {\n        msg: \"old Machines remain\",\n        stack: [0x44e4bf8, 0x219064a, 0x218f739, 0x3ffdb7f, 0x3ffebd7, 0x3ffbf25, 0x44e4902, 0x44d8c9e, 0x54a91c8, 0x3fd4613, 0x3feae33, 0x2104521],\n    }"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2061471261799747584",
+          "timestamp": "2026-06-01T15:35:05Z",
+          "duration": 4931.955683731,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Workload cluster creation Creating a Flatcar sysext cluster [OPTIONAL] With Flatcar control-plane and worker nodes",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-main",
+      "job_id": "periodic-cluster-api-provider-azure-e2e-main",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2061280503188688896",
+        "timestamp": "2026-06-01T02:55:49Z",
+        "failure_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]",
+        "error_hash": "1474f285"
+      },
+      "first_failed_at": "2026-06-01T02:55:49Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Failed to apply the cluster template Expected success, but got an error: \u003cerrors.aggregate | len:\u003cnum\u003e, cap:\u003cnum\u003e\u003e: context deadline exceeded [ \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, ]",
+          "error_hash": "1474f285",
+          "count": 1,
+          "example_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2061280503188688896",
+          "timestamp": "2026-06-01T02:55:49Z",
+          "duration": 390.484281592,
+          "passed": false
+        },
+        {
+          "build_id": "2060523508684820480",
+          "timestamp": "2026-05-30T00:47:47Z",
+          "duration": 945.780997702,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Workload cluster creation when Creating a highly available cluster with Azure CNI v1 [REQUIRED] can create 3 control-plane nodes and 2 Linux worker nodes [Azure CNI v1]",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-main",
+      "job_id": "periodic-cluster-api-provider-azure-e2e-main",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2061280503188688896",
+        "timestamp": "2026-06-01T02:55:49Z",
+        "failure_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]",
+        "error_hash": "1474f285"
+      },
+      "first_failed_at": "2026-06-01T02:55:49Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Failed to apply the cluster template Expected success, but got an error: \u003cerrors.aggregate | len:\u003cnum\u003e, cap:\u003cnum\u003e\u003e: context deadline exceeded [ \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, ]",
+          "error_hash": "1474f285",
+          "count": 1,
+          "example_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2061280503188688896",
+          "timestamp": "2026-06-01T02:55:49Z",
+          "duration": 391.153808059,
+          "passed": false
+        },
+        {
+          "build_id": "2060523508684820480",
+          "timestamp": "2026-05-30T00:47:47Z",
+          "duration": 1738.991862553,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Workload cluster creation Creating a dual-stack cluster [OPTIONAL] With dual-stack worker node",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-main",
+      "job_id": "periodic-cluster-api-provider-azure-e2e-main",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2061280503188688896",
+        "timestamp": "2026-06-01T02:55:49Z",
+        "failure_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]",
+        "error_hash": "1474f285"
+      },
+      "first_failed_at": "2026-06-01T02:55:49Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Failed to apply the cluster template Expected success, but got an error: \u003cerrors.aggregate | len:\u003cnum\u003e, cap:\u003cnum\u003e\u003e: context deadline exceeded [ \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, ]",
+          "error_hash": "1474f285",
+          "count": 1,
+          "example_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2061280503188688896",
+          "timestamp": "2026-06-01T02:55:49Z",
+          "duration": 391.244553849,
+          "passed": false
+        },
+        {
+          "build_id": "2060523508684820480",
+          "timestamp": "2026-05-30T00:47:47Z",
+          "duration": 1776.208614964,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Workload cluster creation Creating clusters using clusterclass [OPTIONAL] with a single control plane node and one linux worker node",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-main",
+      "job_id": "periodic-cluster-api-provider-azure-e2e-main",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2061280503188688896",
+        "timestamp": "2026-06-01T02:55:49Z",
+        "failure_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]",
+        "error_hash": "1474f285"
+      },
+      "first_failed_at": "2026-06-01T02:55:49Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Failed to apply the cluster template Expected success, but got an error: \u003cerrors.aggregate | len:\u003cnum\u003e, cap:\u003cnum\u003e\u003e: context deadline exceeded [ \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, ]",
+          "error_hash": "1474f285",
+          "count": 1,
+          "example_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2061280503188688896",
+          "timestamp": "2026-06-01T02:55:49Z",
+          "duration": 393.277642334,
+          "passed": false
+        },
+        {
+          "build_id": "2060523508684820480",
+          "timestamp": "2026-05-30T00:47:47Z",
+          "duration": 1050.752525276,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Workload cluster creation Creating a cluster with VMSS flex machinepools [OPTIONAL] with 1 control plane node and 1 machinepool",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-main",
+      "job_id": "periodic-cluster-api-provider-azure-e2e-main",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2061280503188688896",
+        "timestamp": "2026-06-01T02:55:49Z",
+        "failure_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]",
+        "error_hash": "1474f285"
+      },
+      "first_failed_at": "2026-06-01T02:55:49Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Failed to apply the cluster template Expected success, but got an error: \u003cerrors.aggregate | len:\u003cnum\u003e, cap:\u003cnum\u003e\u003e: context deadline exceeded [ \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, ]",
+          "error_hash": "1474f285",
+          "count": 1,
+          "example_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2061280503188688896",
+          "timestamp": "2026-06-01T02:55:49Z",
+          "duration": 391.269341263,
+          "passed": false
+        },
+        {
+          "build_id": "2060523508684820480",
+          "timestamp": "2026-05-30T00:47:47Z",
+          "duration": 1359.375099945,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Workload cluster creation Creating a ipv6 control-plane cluster [REQUIRED] With ipv6 worker node",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-main",
+      "job_id": "periodic-cluster-api-provider-azure-e2e-main",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2061280503188688896",
+        "timestamp": "2026-06-01T02:55:49Z",
+        "failure_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]",
+        "error_hash": "1474f285"
+      },
+      "first_failed_at": "2026-06-01T02:55:49Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Failed to apply the cluster template Expected success, but got an error: \u003cerrors.aggregate | len:\u003cnum\u003e, cap:\u003cnum\u003e\u003e: context deadline exceeded [ \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, ]",
+          "error_hash": "1474f285",
+          "count": 1,
+          "example_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2061280503188688896",
+          "timestamp": "2026-06-01T02:55:49Z",
+          "duration": 391.247393994,
+          "passed": false
+        },
+        {
+          "build_id": "2060523508684820480",
+          "timestamp": "2026-05-30T00:47:47Z",
+          "duration": 1531.747015064,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Workload cluster creation Creating a VMSS cluster [REQUIRED] with a single control plane node and an AzureMachinePool with 2 Linux nodes",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-main",
+      "job_id": "periodic-cluster-api-provider-azure-e2e-main",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2061280503188688896",
+        "timestamp": "2026-06-01T02:55:49Z",
+        "failure_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]",
+        "error_hash": "1474f285"
+      },
+      "first_failed_at": "2026-06-01T02:55:49Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Failed to apply the cluster template Expected success, but got an error: \u003cerrors.aggregate | len:\u003cnum\u003e, cap:\u003cnum\u003e\u003e: context deadline exceeded [ \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, ]",
+          "error_hash": "1474f285",
+          "count": 1,
+          "example_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2061280503188688896",
+          "timestamp": "2026-06-01T02:55:49Z",
+          "duration": 391.222133921,
+          "passed": false
+        },
+        {
+          "build_id": "2060523508684820480",
+          "timestamp": "2026-05-30T00:47:47Z",
+          "duration": 1417.26218561,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Workload cluster creation Creating a cluster with spot vms [OPTIONAL] With spot vm machine deployments",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-main",
+      "job_id": "periodic-cluster-api-provider-azure-e2e-main",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2061280503188688896",
+        "timestamp": "2026-06-01T02:55:49Z",
+        "failure_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]",
+        "error_hash": "1474f285"
+      },
+      "first_failed_at": "2026-06-01T02:55:49Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Failed to apply the cluster template Expected success, but got an error: \u003cerrors.aggregate | len:\u003cnum\u003e, cap:\u003cnum\u003e\u003e: context deadline exceeded [ \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, ]",
+          "error_hash": "1474f285",
+          "count": 1,
+          "example_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2061280503188688896",
+          "timestamp": "2026-06-01T02:55:49Z",
+          "duration": 391.152567656,
+          "passed": false
+        },
+        {
+          "build_id": "2060523508684820480",
+          "timestamp": "2026-05-30T00:47:47Z",
+          "duration": 1527.824933423,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Workload cluster creation Creating a private cluster [OPTIONAL] Creates a public management cluster in a custom vnet",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-main",
+      "job_id": "periodic-cluster-api-provider-azure-e2e-main",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2061280503188688896",
+        "timestamp": "2026-06-01T02:55:49Z",
+        "failure_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]",
+        "error_hash": "1474f285"
+      },
+      "first_failed_at": "2026-06-01T02:55:49Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Failed to apply the cluster template Expected success, but got an error: \u003cerrors.aggregate | len:\u003cnum\u003e, cap:\u003cnum\u003e\u003e: context deadline exceeded [ \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, ]",
+          "error_hash": "1474f285",
+          "count": 1,
+          "example_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2061280503188688896",
+          "timestamp": "2026-06-01T02:55:49Z",
+          "duration": 391.035841456,
+          "passed": false
+        },
+        {
+          "build_id": "2060523508684820480",
+          "timestamp": "2026-05-30T00:47:47Z",
+          "duration": 3058.0772082,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Workload cluster creation Creating a highly available cluster [REQUIRED] With 3 control-plane nodes and 2 Linux and 2 Windows worker nodes",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-main",
+      "job_id": "periodic-cluster-api-provider-azure-e2e-main",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2061280503188688896",
+        "timestamp": "2026-06-01T02:55:49Z",
+        "failure_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]",
+        "error_hash": "1474f285"
+      },
+      "first_failed_at": "2026-06-01T02:55:49Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Failed to apply the cluster template Expected success, but got an error: \u003cerrors.aggregate | len:\u003cnum\u003e, cap:\u003cnum\u003e\u003e: context deadline exceeded [ \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, ]",
+          "error_hash": "1474f285",
+          "count": 1,
+          "example_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2061280503188688896",
+          "timestamp": "2026-06-01T02:55:49Z",
+          "duration": 391.164817204,
+          "passed": false
+        },
+        {
+          "build_id": "2060523508684820480",
+          "timestamp": "2026-05-30T00:47:47Z",
+          "duration": 3743.649139493,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+      "job_name": "periodic-cluster-api-provider-azure-apiversion-upgrade-main",
+      "job_id": "periodic-cluster-api-provider-azure-apiversion-upgrade-main",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2061153162726739968",
+        "timestamp": "2026-05-31T18:29:49Z",
+        "failure_message": "failed to run clusterctl upgrade\nUnexpected error:\n    \u003c*errors.withStack | 0xc000a838a8\u003e: \n    deployment \"azureserviceoperator-controller-manager\" is not ready after 5m0s: Get \"https://clusterctl-upgrade-management-0eevz0-b763168e.canadacentral.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": context deadline exceeded\n    {\n        error: \u003c*errors.withMessage | 0xc0069c8e80\u003e{\n            cause: \u003c*url.Error | 0xc007226780\u003e{\n                Op: \"Get\",\n                URL: \"https://clusterctl-upgrade-management-0eevz0-b763168e.canadacentral.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\",\n                Err: \u003ccontext.deadlineExceededError\u003e{},\n            },\n            msg: \"deployment \\\"azureserviceoperator-controller-manager\\\" is not ready after 5m0s\",\n        },\n        stack: [0x430a108, 0x4309e27, 0x43311d2, 0x432dd45, 0x4354ced, 0x4504d88, 0x45094e8, 0x54afcda, 0x3fd4613, 0x3feae33, 0x2104521],\n    }\noccurred",
+        "error_hash": "20ffb952"
+      },
+      "first_failed_at": "2026-05-31T18:29:49Z",
+      "error_patterns": [
+        {
+          "normalized_message": "failed to run clusterctl upgrade Unexpected error: \u003c*errors.withStack | 0xc000a838a8\u003e: deployment \"azureserviceoperator-controller-manager\" is not ready after 5m0s: Get \"https://clusterctl-upgrade-management-0eevz0-b763168e.canadacentral.cloudapp.azure.com:\u003cnum\u003e/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": context deadline exceeded { error: \u003c*errors.withMessage | 0xc0069c8e80\u003e{ cause: \u003c*url.Error | 0xc007226780\u003e{ Op: \"Get\", URL: \"https://clusterctl-upgrade-management-0eevz0-b763168e.canadacentral.cloudapp.azure.com:\u003cnum\u003e/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\", Err: \u003ccontext.deadlineExceededError\u003e{}, }, msg: \"deployment \\\"azureserviceoperator-controller-manager\\\" is not ready after 5m0s\", }, stack: [0x430a108, 0x4309e27, 0x43311d2, 0x432dd45, 0x4354ced, 0x4504d88, 0x45094e8, 0x54afcda, 0x3fd4613, 0x3feae33, 0x2104521], } occurred",
+          "error_hash": "20ffb952",
+          "count": 1,
+          "example_message": "failed to run clusterctl upgrade\nUnexpected error:\n    \u003c*errors.withStack | 0xc000a838a8\u003e: \n    deployment \"azureserviceoperator-controller-manager\" is not ready after 5m0s: Get \"https://clusterctl-upgrade-management-0eevz0-b763168e.canadacentral.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": context deadline exceeded\n    {\n        error: \u003c*errors.withMessage | 0xc0069c8e80\u003e{\n            cause: \u003c*url.Error | 0xc007226780\u003e{\n                Op: \"Get\",\n                URL: \"https://clusterctl-upgrade-management-0eevz0-b763168e.canadacentral.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\",\n                Err: \u003ccontext.deadlineExceededError\u003e{},\n            },\n            msg: \"deployment \\\"azureserviceoperator-controller-manager\\\" is not ready after 5m0s\",\n        },\n        stack: [0x430a108, 0x4309e27, 0x43311d2, 0x432dd45, 0x4354ced, 0x4504d88, 0x45094e8, 0x54afcda, 0x3fd4613, 0x3feae33, 0x2104521],\n    }\noccurred"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2061153162726739968",
+          "timestamp": "2026-05-31T18:29:49Z",
+          "duration": 3179.969193889,
+          "passed": false
+        },
+        {
+          "build_id": "2060401956731490304",
+          "timestamp": "2026-05-29T16:44:47Z",
+          "duration": 3871.626787984,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+      "job_name": "periodic-cluster-api-provider-azure-apiversion-upgrade-main",
+      "job_id": "periodic-cluster-api-provider-azure-apiversion-upgrade-main",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2061153162726739968",
+        "timestamp": "2026-05-31T18:29:49Z",
+        "failure_message": "failed to run clusterctl upgrade\nUnexpected error:\n    \u003c*errors.withStack | 0xc004a0eff0\u003e: \n    deployment \"azureserviceoperator-controller-manager\" is not ready after 5m0s: Get \"https://clusterctl-upgrade-management-30t0ki-d9ff9690.canadacentral.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": context deadline exceeded\n    {\n        error: \u003c*errors.withMessage | 0xc006d548a0\u003e{\n            cause: \u003c*url.Error | 0xc001fafe30\u003e{\n                Op: \"Get\",\n                URL: \"https://clusterctl-upgrade-management-30t0ki-d9ff9690.canadacentral.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\",\n                Err: \u003ccontext.deadlineExceededError\u003e{},\n            },\n            msg: \"deployment \\\"azureserviceoperator-controller-manager\\\" is not ready after 5m0s\",\n        },\n        stack: [0x430a108, 0x4309e27, 0x43311d2, 0x432dd45, 0x4354ced, 0x4504d88, 0x45094e8, 0x54afcda, 0x3fd4613, 0x3feae33, 0x2104521],\n    }\noccurred",
+        "error_hash": "90be3560"
+      },
+      "first_failed_at": "2026-05-31T18:29:49Z",
+      "error_patterns": [
+        {
+          "normalized_message": "failed to run clusterctl upgrade Unexpected error: \u003c*errors.withStack | 0xc004a0eff0\u003e: deployment \"azureserviceoperator-controller-manager\" is not ready after 5m0s: Get \"https://clusterctl-upgrade-management-30t0ki-d9ff9690.canadacentral.cloudapp.azure.com:\u003cnum\u003e/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": context deadline exceeded { error: \u003c*errors.withMessage | 0xc006d548a0\u003e{ cause: \u003c*url.Error | 0xc001fafe30\u003e{ Op: \"Get\", URL: \"https://clusterctl-upgrade-management-30t0ki-d9ff9690.canadacentral.cloudapp.azure.com:\u003cnum\u003e/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\", Err: \u003ccontext.deadlineExceededError\u003e{}, }, msg: \"deployment \\\"azureserviceoperator-controller-manager\\\" is not ready after 5m0s\", }, stack: [0x430a108, 0x4309e27, 0x43311d2, 0x432dd45, 0x4354ced, 0x4504d88, 0x45094e8, 0x54afcda, 0x3fd4613, 0x3feae33, 0x2104521], } occurred",
+          "error_hash": "90be3560",
+          "count": 1,
+          "example_message": "failed to run clusterctl upgrade\nUnexpected error:\n    \u003c*errors.withStack | 0xc004a0eff0\u003e: \n    deployment \"azureserviceoperator-controller-manager\" is not ready after 5m0s: Get \"https://clusterctl-upgrade-management-30t0ki-d9ff9690.canadacentral.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": context deadline exceeded\n    {\n        error: \u003c*errors.withMessage | 0xc006d548a0\u003e{\n            cause: \u003c*url.Error | 0xc001fafe30\u003e{\n                Op: \"Get\",\n                URL: \"https://clusterctl-upgrade-management-30t0ki-d9ff9690.canadacentral.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\",\n                Err: \u003ccontext.deadlineExceededError\u003e{},\n            },\n            msg: \"deployment \\\"azureserviceoperator-controller-manager\\\" is not ready after 5m0s\",\n        },\n        stack: [0x430a108, 0x4309e27, 0x43311d2, 0x432dd45, 0x4354ced, 0x4504d88, 0x45094e8, 0x54afcda, 0x3fd4613, 0x3feae33, 0x2104521],\n    }\noccurred"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2061153162726739968",
+          "timestamp": "2026-05-31T18:29:49Z",
+          "duration": 2091.46696572,
+          "passed": false
+        },
+        {
+          "build_id": "2060401956731490304",
+          "timestamp": "2026-05-29T16:44:47Z",
+          "duration": 4954.788584565,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Workload cluster creation Creating a highly-available cluster with Azure Linux 3 [OPTIONAL] with three controlplane node and two worker nodes",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "job_id": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2060928682012184576",
+        "timestamp": "2026-05-31T03:37:48Z",
+        "failure_message": "Timed out after 900.000s.\nExpected success, but got an error:\n    \u003c*errors.StatusError | 0xc0009441e0\u003e: \n    deployments.apps \"calico-kube-controllers\" not found\n    {\n        ErrStatus: {\n            TypeMeta: {Kind: \"\", APIVersion: \"\"},\n            ListMeta: {\n                SelfLink: \"\",\n                ResourceVersion: \"\",\n                Continue: \"\",\n                RemainingItemCount: nil,\n            },\n            Status: \"Failure\",\n            Message: \"deployments.apps \\\"calico-kube-controllers\\\" not found\",\n            Reason: \"NotFound\",\n            Details: {\n                Name: \"calico-kube-controllers\",\n                Group: \"apps\",\n                Kind: \"deployments\",\n                UID: \"\",\n                Causes: nil,\n                RetryAfterSeconds: 0,\n            },\n            Code: 404,\n        },\n    }",
+        "error_hash": "1cea72f2"
+      },
+      "first_failed_at": "2026-05-31T03:37:48Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Timed out after \u003cnum\u003e000s. Expected success, but got an error: \u003c*errors.StatusError | 0xc0009441e0\u003e: deployments.apps \"calico-kube-controllers\" not found { ErrStatus: { TypeMeta: {Kind: \"\", APIVersion: \"\"}, ListMeta: { SelfLink: \"\", ResourceVersion: \"\", Continue: \"\", RemainingItemCount: nil, }, Status: \"Failure\", Message: \"deployments.apps \\\"calico-kube-controllers\\\" not found\", Reason: \"NotFound\", Details: { Name: \"calico-kube-controllers\", Group: \"apps\", Kind: \"deployments\", UID: \"\", Causes: nil, RetryAfterSeconds: \u003cnum\u003e, }, Code: \u003cnum\u003e, }, }",
+          "error_hash": "1cea72f2",
+          "count": 1,
+          "example_message": "Timed out after 900.000s.\nExpected success, but got an error:\n    \u003c*errors.StatusError | 0xc0009441e0\u003e: \n    deployments.apps \"calico-kube-controllers\" not found\n    {\n        ErrStatus: {\n            TypeMeta: {Kind: \"\", APIVersion: \"\"},\n            ListMeta: {\n                SelfLink: \"\",\n                ResourceVersion: \"\",\n                Continue: \"\",\n                RemainingItemCount: nil,\n            },\n            Status: \"Failure\",\n            Message: \"deployments.apps \\\"calico-kube-controllers\\\" not found\",\n            Reason: \"NotFound\",\n            Details: {\n                Name: \"calico-kube-controllers\",\n                Group: \"apps\",\n                Kind: \"deployments\",\n                UID: \"\",\n                Causes: nil,\n                RetryAfterSeconds: 0,\n            },\n            Code: 404,\n        },\n    }"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2060928682012184576",
+          "timestamp": "2026-05-31T03:37:48Z",
+          "duration": 2142.919184691,
+          "passed": false
+        },
+        {
+          "build_id": "2059817348679864320",
+          "timestamp": "2026-05-28T02:01:46Z",
+          "duration": 3077.829037276,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Workload cluster creation Creating a cluster with spot vms [OPTIONAL] With spot vm machine deployments",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "job_id": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2060928682012184576",
+        "timestamp": "2026-05-31T03:37:48Z",
+        "failure_message": "Timed out after 900.000s.\nExpected success, but got an error:\n    \u003c*errors.StatusError | 0xc000b412c0\u003e: \n    deployments.apps \"calico-kube-controllers\" not found\n    {\n        ErrStatus: {\n            TypeMeta: {Kind: \"\", APIVersion: \"\"},\n            ListMeta: {\n                SelfLink: \"\",\n                ResourceVersion: \"\",\n                Continue: \"\",\n                RemainingItemCount: nil,\n            },\n            Status: \"Failure\",\n            Message: \"deployments.apps \\\"calico-kube-controllers\\\" not found\",\n            Reason: \"NotFound\",\n            Details: {\n                Name: \"calico-kube-controllers\",\n                Group: \"apps\",\n                Kind: \"deployments\",\n                UID: \"\",\n                Causes: nil,\n                RetryAfterSeconds: 0,\n            },\n            Code: 404,\n        },\n    }",
+        "error_hash": "e0242445"
+      },
+      "first_failed_at": "2026-05-31T03:37:48Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Timed out after \u003cnum\u003e000s. Expected success, but got an error: \u003c*errors.StatusError | 0xc000b412c0\u003e: deployments.apps \"calico-kube-controllers\" not found { ErrStatus: { TypeMeta: {Kind: \"\", APIVersion: \"\"}, ListMeta: { SelfLink: \"\", ResourceVersion: \"\", Continue: \"\", RemainingItemCount: nil, }, Status: \"Failure\", Message: \"deployments.apps \\\"calico-kube-controllers\\\" not found\", Reason: \"NotFound\", Details: { Name: \"calico-kube-controllers\", Group: \"apps\", Kind: \"deployments\", UID: \"\", Causes: nil, RetryAfterSeconds: \u003cnum\u003e, }, Code: \u003cnum\u003e, }, }",
+          "error_hash": "e0242445",
+          "count": 1,
+          "example_message": "Timed out after 900.000s.\nExpected success, but got an error:\n    \u003c*errors.StatusError | 0xc000b412c0\u003e: \n    deployments.apps \"calico-kube-controllers\" not found\n    {\n        ErrStatus: {\n            TypeMeta: {Kind: \"\", APIVersion: \"\"},\n            ListMeta: {\n                SelfLink: \"\",\n                ResourceVersion: \"\",\n                Continue: \"\",\n                RemainingItemCount: nil,\n            },\n            Status: \"Failure\",\n            Message: \"deployments.apps \\\"calico-kube-controllers\\\" not found\",\n            Reason: \"NotFound\",\n            Details: {\n                Name: \"calico-kube-controllers\",\n                Group: \"apps\",\n                Kind: \"deployments\",\n                UID: \"\",\n                Causes: nil,\n                RetryAfterSeconds: 0,\n            },\n            Code: 404,\n        },\n    }"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2060928682012184576",
+          "timestamp": "2026-05-31T03:37:48Z",
+          "duration": 1716.576263678,
+          "passed": false
+        },
+        {
+          "build_id": "2059817348679864320",
+          "timestamp": "2026-05-28T02:01:46Z",
+          "duration": 983.06536711,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Workload cluster creation Testing autoscaling from zero with Cluster Autoscaler [REQUIRED] Scales MachineDeployment from 0 to 1+ when workload is scheduled",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "job_id": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2060928682012184576",
+        "timestamp": "2026-05-31T03:37:48Z",
+        "failure_message": "Timed out after 900.001s.\nExpected success, but got an error:\n    \u003c*errors.StatusError | 0xc000d22820\u003e: \n    deployments.apps \"calico-kube-controllers\" not found\n    {\n        ErrStatus: {\n            TypeMeta: {Kind: \"\", APIVersion: \"\"},\n            ListMeta: {\n                SelfLink: \"\",\n                ResourceVersion: \"\",\n                Continue: \"\",\n                RemainingItemCount: nil,\n            },\n            Status: \"Failure\",\n            Message: \"deployments.apps \\\"calico-kube-controllers\\\" not found\",\n            Reason: \"NotFound\",\n            Details: {\n                Name: \"calico-kube-controllers\",\n                Group: \"apps\",\n                Kind: \"deployments\",\n                UID: \"\",\n                Causes: nil,\n                RetryAfterSeconds: 0,\n            },\n            Code: 404,\n        },\n    }",
+        "error_hash": "d47a8daa"
+      },
+      "first_failed_at": "2026-05-31T03:37:48Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Timed out after \u003cnum\u003e001s. Expected success, but got an error: \u003c*errors.StatusError | 0xc000d22820\u003e: deployments.apps \"calico-kube-controllers\" not found { ErrStatus: { TypeMeta: {Kind: \"\", APIVersion: \"\"}, ListMeta: { SelfLink: \"\", ResourceVersion: \"\", Continue: \"\", RemainingItemCount: nil, }, Status: \"Failure\", Message: \"deployments.apps \\\"calico-kube-controllers\\\" not found\", Reason: \"NotFound\", Details: { Name: \"calico-kube-controllers\", Group: \"apps\", Kind: \"deployments\", UID: \"\", Causes: nil, RetryAfterSeconds: \u003cnum\u003e, }, Code: \u003cnum\u003e, }, }",
+          "error_hash": "d47a8daa",
+          "count": 1,
+          "example_message": "Timed out after 900.001s.\nExpected success, but got an error:\n    \u003c*errors.StatusError | 0xc000d22820\u003e: \n    deployments.apps \"calico-kube-controllers\" not found\n    {\n        ErrStatus: {\n            TypeMeta: {Kind: \"\", APIVersion: \"\"},\n            ListMeta: {\n                SelfLink: \"\",\n                ResourceVersion: \"\",\n                Continue: \"\",\n                RemainingItemCount: nil,\n            },\n            Status: \"Failure\",\n            Message: \"deployments.apps \\\"calico-kube-controllers\\\" not found\",\n            Reason: \"NotFound\",\n            Details: {\n                Name: \"calico-kube-controllers\",\n                Group: \"apps\",\n                Kind: \"deployments\",\n                UID: \"\",\n                Causes: nil,\n                RetryAfterSeconds: 0,\n            },\n            Code: 404,\n        },\n    }"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2060928682012184576",
+          "timestamp": "2026-05-31T03:37:48Z",
+          "duration": 1872.50242404,
+          "passed": false
+        },
+        {
+          "build_id": "2059817348679864320",
+          "timestamp": "2026-05-28T02:01:46Z",
+          "duration": 1072.764013171,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Workload cluster creation Creating clusters using clusterclass [OPTIONAL] with a single control plane node and one linux worker node",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "job_id": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2060928682012184576",
+        "timestamp": "2026-05-31T03:37:48Z",
+        "failure_message": "Timed out after 900.001s.\nExpected success, but got an error:\n    \u003c*errors.StatusError | 0xc000adcaa0\u003e: \n    deployments.apps \"calico-kube-controllers\" not found\n    {\n        ErrStatus: {\n            TypeMeta: {Kind: \"\", APIVersion: \"\"},\n            ListMeta: {\n                SelfLink: \"\",\n                ResourceVersion: \"\",\n                Continue: \"\",\n                RemainingItemCount: nil,\n            },\n            Status: \"Failure\",\n            Message: \"deployments.apps \\\"calico-kube-controllers\\\" not found\",\n            Reason: \"NotFound\",\n            Details: {\n                Name: \"calico-kube-controllers\",\n                Group: \"apps\",\n                Kind: \"deployments\",\n                UID: \"\",\n                Causes: nil,\n                RetryAfterSeconds: 0,\n            },\n            Code: 404,\n        },\n    }",
+        "error_hash": "06a5273f"
+      },
+      "first_failed_at": "2026-05-31T03:37:48Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Timed out after \u003cnum\u003e001s. Expected success, but got an error: \u003c*errors.StatusError | 0xc000adcaa0\u003e: deployments.apps \"calico-kube-controllers\" not found { ErrStatus: { TypeMeta: {Kind: \"\", APIVersion: \"\"}, ListMeta: { SelfLink: \"\", ResourceVersion: \"\", Continue: \"\", RemainingItemCount: nil, }, Status: \"Failure\", Message: \"deployments.apps \\\"calico-kube-controllers\\\" not found\", Reason: \"NotFound\", Details: { Name: \"calico-kube-controllers\", Group: \"apps\", Kind: \"deployments\", UID: \"\", Causes: nil, RetryAfterSeconds: \u003cnum\u003e, }, Code: \u003cnum\u003e, }, }",
+          "error_hash": "06a5273f",
+          "count": 1,
+          "example_message": "Timed out after 900.001s.\nExpected success, but got an error:\n    \u003c*errors.StatusError | 0xc000adcaa0\u003e: \n    deployments.apps \"calico-kube-controllers\" not found\n    {\n        ErrStatus: {\n            TypeMeta: {Kind: \"\", APIVersion: \"\"},\n            ListMeta: {\n                SelfLink: \"\",\n                ResourceVersion: \"\",\n                Continue: \"\",\n                RemainingItemCount: nil,\n            },\n            Status: \"Failure\",\n            Message: \"deployments.apps \\\"calico-kube-controllers\\\" not found\",\n            Reason: \"NotFound\",\n            Details: {\n                Name: \"calico-kube-controllers\",\n                Group: \"apps\",\n                Kind: \"deployments\",\n                UID: \"\",\n                Causes: nil,\n                RetryAfterSeconds: 0,\n            },\n            Code: 404,\n        },\n    }"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2060928682012184576",
+          "timestamp": "2026-05-31T03:37:48Z",
+          "duration": 1757.375661729,
+          "passed": false
+        },
+        {
+          "build_id": "2059817348679864320",
+          "timestamp": "2026-05-28T02:01:46Z",
+          "duration": 1006.212524884,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Workload cluster creation Creating a VMSS cluster [REQUIRED] with a single control plane node and an AzureMachinePool with 2 Linux nodes",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "job_id": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2060928682012184576",
+        "timestamp": "2026-05-31T03:37:48Z",
+        "failure_message": "Timed out after 900.000s.\nExpected success, but got an error:\n    \u003c*errors.StatusError | 0xc000caa960\u003e: \n    deployments.apps \"calico-kube-controllers\" not found\n    {\n        ErrStatus: {\n            TypeMeta: {Kind: \"\", APIVersion: \"\"},\n            ListMeta: {\n                SelfLink: \"\",\n                ResourceVersion: \"\",\n                Continue: \"\",\n                RemainingItemCount: nil,\n            },\n            Status: \"Failure\",\n            Message: \"deployments.apps \\\"calico-kube-controllers\\\" not found\",\n            Reason: \"NotFound\",\n            Details: {\n                Name: \"calico-kube-controllers\",\n                Group: \"apps\",\n                Kind: \"deployments\",\n                UID: \"\",\n                Causes: nil,\n                RetryAfterSeconds: 0,\n            },\n            Code: 404,\n        },\n    }",
+        "error_hash": "4cff8ea0"
+      },
+      "first_failed_at": "2026-05-31T03:37:48Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Timed out after \u003cnum\u003e000s. Expected success, but got an error: \u003c*errors.StatusError | 0xc000caa960\u003e: deployments.apps \"calico-kube-controllers\" not found { ErrStatus: { TypeMeta: {Kind: \"\", APIVersion: \"\"}, ListMeta: { SelfLink: \"\", ResourceVersion: \"\", Continue: \"\", RemainingItemCount: nil, }, Status: \"Failure\", Message: \"deployments.apps \\\"calico-kube-controllers\\\" not found\", Reason: \"NotFound\", Details: { Name: \"calico-kube-controllers\", Group: \"apps\", Kind: \"deployments\", UID: \"\", Causes: nil, RetryAfterSeconds: \u003cnum\u003e, }, Code: \u003cnum\u003e, }, }",
+          "error_hash": "4cff8ea0",
+          "count": 1,
+          "example_message": "Timed out after 900.000s.\nExpected success, but got an error:\n    \u003c*errors.StatusError | 0xc000caa960\u003e: \n    deployments.apps \"calico-kube-controllers\" not found\n    {\n        ErrStatus: {\n            TypeMeta: {Kind: \"\", APIVersion: \"\"},\n            ListMeta: {\n                SelfLink: \"\",\n                ResourceVersion: \"\",\n                Continue: \"\",\n                RemainingItemCount: nil,\n            },\n            Status: \"Failure\",\n            Message: \"deployments.apps \\\"calico-kube-controllers\\\" not found\",\n            Reason: \"NotFound\",\n            Details: {\n                Name: \"calico-kube-controllers\",\n                Group: \"apps\",\n                Kind: \"deployments\",\n                UID: \"\",\n                Causes: nil,\n                RetryAfterSeconds: 0,\n            },\n            Code: 404,\n        },\n    }"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2060928682012184576",
+          "timestamp": "2026-05-31T03:37:48Z",
+          "duration": 1881.003338992,
+          "passed": false
+        },
+        {
+          "build_id": "2059817348679864320",
+          "timestamp": "2026-05-28T02:01:46Z",
+          "duration": 1390.529425684,
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

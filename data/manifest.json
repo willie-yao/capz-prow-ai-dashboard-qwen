@@ -1,0 +1,136 @@
+{
+  "id": "capz-qwen",
+  "name": "Cluster API Provider Azure (Qwen demo)",
+  "short_name": "CAPZ-Qwen",
+  "source": {
+    "test_infra_paths": [
+      "config/jobs/kubernetes-sigs/cluster-api-provider-azure"
+    ],
+    "file_prefix": "cluster-api-provider-azure-"
+  },
+  "testgrid": {
+    "dashboard": "sig-cluster-lifecycle-cluster-api-provider-azure"
+  },
+  "gcs": {
+    "bucket": "kubernetes-ci-logs"
+  },
+  "branding": {
+    "title": "CAPZ Prow Dashboard (Qwen demo)",
+    "base_path": "/capz-prow-ai-dashboard-qwen",
+    "site_url": "https://willie-yao.github.io/capz-prow-ai-dashboard-qwen",
+    "source_repo": {
+      "owner": "kubernetes-sigs",
+      "name": "cluster-api-provider-azure"
+    }
+  },
+  "categories": [
+    {
+      "match": "conformance",
+      "id": "conformance",
+      "label": "Conformance"
+    },
+    {
+      "match": "[managed kubernetes]",
+      "id": "aks-e2e",
+      "label": "AKS E2E"
+    },
+    {
+      "match": "e2e-aks",
+      "id": "aks-e2e",
+      "label": "AKS E2E"
+    },
+    {
+      "match": "capi-e2e",
+      "id": "capi-e2e",
+      "label": "CAPI E2E"
+    },
+    {
+      "match": "upgrade",
+      "id": "upgrade",
+      "label": "Upgrade"
+    },
+    {
+      "match": "coverage",
+      "id": "coverage",
+      "label": "Coverage"
+    },
+    {
+      "match": "scalability",
+      "id": "scalability",
+      "label": "Scalability"
+    },
+    {
+      "match": "e2e",
+      "id": "capz-e2e",
+      "label": "CAPZ E2E"
+    }
+  ],
+  "category_display_order": [
+    "capz-e2e",
+    "aks-e2e",
+    "upgrade",
+    "capi-e2e",
+    "conformance",
+    "coverage",
+    "scalability"
+  ],
+  "artifacts": {
+    "collector": "capi"
+  },
+  "ai": {
+    "module": "capi",
+    "evidence": {
+      "machine_logs": [
+        "kubelet.log",
+        "containerd.log",
+        "journal.log",
+        "boot.log",
+        "cloud-init-output.log"
+      ],
+      "controller_logs": [
+        {
+          "namespace": "capi-system",
+          "pod_name_regex": ".*",
+          "container_log": "manager.log"
+        },
+        {
+          "namespace": "capi-kubeadm-bootstrap-system",
+          "pod_name_regex": ".*",
+          "container_log": "manager.log"
+        },
+        {
+          "namespace": "capi-kubeadm-control-plane-system",
+          "pod_name_regex": ".*",
+          "container_log": "manager.log"
+        },
+        {
+          "namespace": "capz-system",
+          "pod_name_regex": ".*",
+          "container_log": "manager.log"
+        }
+      ],
+      "build_log_patterns": [
+        "FAIL|\\[FAIL\\]",
+        "timed?\\s*out|timeout",
+        "ImagePullBackOff|ErrImagePull",
+        "CrashLoopBackOff",
+        "NotFound|not found",
+        "SkuNotAvailable",
+        "GalleryImage|CommunityGaller",
+        "quota|OperationNotAllowed",
+        "provisioningState.*Failed",
+        "version.*not.*available|not.*replicated"
+      ]
+    },
+    "agentic": {
+      "enabled": true,
+      "tools": [
+        "filesystem",
+        "k8s"
+      ]
+    }
+  },
+  "capi": {
+    "cluster_name_prefix": "capz-e2e"
+  }
+}

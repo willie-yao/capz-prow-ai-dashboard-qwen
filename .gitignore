@@ -1,4 +1,3 @@
-# Engine writes data/ into the build, no need to commit it.
-data/
+# Under skip-fetch: true, data/ IS committed to this repo. Don't ignore it.
 node_modules/
 .DS_Store

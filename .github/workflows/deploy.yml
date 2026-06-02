@@ -30,11 +30,15 @@ jobs:
     uses: willie-yao/prow-ai-dashboard/.github/workflows/reusable-deploy.yml@main
     with:
       project_dir: "."
-      # Run on the in-cluster ARC runner so AI_ENDPOINT resolves over
-      # cluster DNS. Adjust the second label to match whatever you
-      # registered with actions-runner-controller.
-      runs-on: '["self-hosted", "arc-qwen-runner"]'
-      builds: 4
+      # skip-fetch: true publishes pre-fetched data committed under
+      # data/ in this repo. The fetcher runs out-of-band against
+      # Dynamo via local port-forward (see README "Local POC /
+      # debugging"). Lets us validate the full universal-path stack
+      # against Qwen3 without setting up an ARC self-hosted runner in
+      # the demo cluster. Flip back to false (and uncomment runs-on
+      # below) once ARC is registered.
+      skip-fetch: true
+      # runs-on: '["self-hosted", "arc-qwen-runner"]'
       ai-model: ${{ vars.AI_MODEL }}
       ai-endpoint: ${{ vars.AI_ENDPOINT }}
     secrets:
