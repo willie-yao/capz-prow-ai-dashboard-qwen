@@ -5,6 +5,25 @@
   "repo": "",
   "runs": [
     {
+      "build_id": "2062259244723343360",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-v1beta1-release-1-24",
+      "started": "2026-06-03T19:44:59Z",
+      "finished": "0001-01-01T00:00:00Z",
+      "passed": false,
+      "result": "PENDING",
+      "duration_seconds": 0,
+      "commit": "2defd4ced32489ced4c8a029b6c5d1584fb20afc",
+      "repo_version": "2defd4ced32489ced4c8a029b6c5d1584fb20afc",
+      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-conformance-v1beta1-release-1-24/2062259244723343360/",
+      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-conformance-v1beta1-release-1-24/2062259244723343360/build-log.txt",
+      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-conformance-v1beta1-release-1-24/2062259244723343360/",
+      "test_cases": [],
+      "tests_total": 0,
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_skipped": 0
+    },
+    {
       "build_id": "2061130513761964032",
       "job_name": "periodic-cluster-api-provider-azure-conformance-v1beta1-release-1-24",
       "started": "2026-05-31T16:59:49Z",
@@ -44433,25 +44452,6 @@
       "tests_passed": 449,
       "tests_failed": 0,
       "tests_skipped": 6952
-    },
-    {
-      "build_id": "2060041578294022144",
-      "job_name": "periodic-cluster-api-provider-azure-conformance-v1beta1-release-1-24",
-      "started": "2026-05-28T16:52:49Z",
-      "finished": "2026-05-28T16:59:00Z",
-      "passed": false,
-      "result": "FAILURE",
-      "duration_seconds": 371,
-      "commit": "779da95cfd9f448e47623be7661d1c514c79db91",
-      "repo_version": "779da95cfd9f448e47623be7661d1c514c79db91",
-      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-conformance-v1beta1-release-1-24/2060041578294022144/",
-      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-conformance-v1beta1-release-1-24/2060041578294022144/build-log.txt",
-      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-conformance-v1beta1-release-1-24/2060041578294022144/",
-      "test_cases": [],
-      "tests_total": 0,
-      "tests_passed": 0,
-      "tests_failed": 0,
-      "tests_skipped": 0
     }
   ]
 }

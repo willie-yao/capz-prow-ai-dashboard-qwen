@@ -498,24 +498,23 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/client.go#L89",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T18:12:31Z",
-            "summary": "Test failed due to deployment 'azureserviceoperator-controller-manager' not becoming ready within 5 minutes, caused by network timeouts to kubelet endpoints.",
+            "generated_at": "2026-06-03T20:14:35Z",
+            "summary": "The 'azureserviceoperator-controller-manager' deployment failed to become ready due to missing credential secrets, causing clusterctl init to time out.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T18:12:31Z",
-            "root_cause": "The deployment readiness check timed out because the API server could not reach kubelet endpoints (e.g., 'dial tcp 10.0.0.6:10250: i/o timeout' in build-log.txt). This indicates kubelet failures or network misconfigurations in the custom VNet.",
+            "generated_at": "2026-06-03T20:14:35Z",
+            "root_cause": "The Azure Service Operator controller repeatedly failed to reconcile resources due to missing credential secrets. Log lines show: \"capz-e2e-y39cu0-flex-aso-secret does not exist (credential secret not found: Secret \\\"capz-e2e-y39cu0-flex-aso-secret\\\" not found)\". This occurred during reconciliation of VirtualNetwork, NAT Gateway, and Subnet resources. The missing secret prevented Azure API authentication, blocking proper deployment of the management cluster's infrastructure.",
             "severity": "Critical",
-            "suggested_fix": "1. Verify kubelet status on nodes by checking cloud-init logs for errors. 2. Ensure network security groups (NSGs) and routing tables in the custom VNet allow traffic between the API server and kubelet endpoints (port 10250). 3. Check Azure VM provisioning logs for failures in the custom VNet setup.",
+            "suggested_fix": "1. Verify the Azure credential secret 'capz-e2e-y39cu0-flex-aso-secret' exists in the 'capz-e2e-y39cu0' namespace\n2. Check AzureCluster configuration references the correct secret name and namespace\n3. Ensure Azure credentials are properly configured in the test environment\n4. Add explicit wait for secret creation before proceeding with clusterctl init\n5. Validate Azure Service Operator deployment manifests reference the correct secret names",
             "relevant_files": [
-              "build-log.txt",
-              "artifacts/clusters/*/azure-activity-logs/*.log"
+              "artifacts/clusters/bootstrap/logs/capz-system/azureserviceoperator-controller-manager/azureserviceoperator-controller-manager-7998998bf5-bw9t9/manager.log"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 3,
-            "model_bytes": 33440,
-            "gcs_bytes": 32512,
-            "elapsed_ms": 43142
+            "tool_calls": 6,
+            "model_bytes": 50129,
+            "gcs_bytes": 567130,
+            "elapsed_ms": 61931
           }
         },
         {

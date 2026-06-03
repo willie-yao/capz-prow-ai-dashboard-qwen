@@ -203,21 +203,21 @@
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:51f5b4b6a0be2875": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:51f5b4b6a0be2875",
-    "created_at": "2026-06-03T11:08:27.902607-07:00",
+    "created_at": "2026-06-03T13:11:27.754154-07:00",
     "data": {
-      "summary": "Cluster creation failed due to TLS certificate verification errors in CAPZ webhooks, leading to context deadlines.",
+      "summary": "Cluster creation failed due to cloud-init not executing on control plane nodes, leading to kubelet unavailability and timeout errors.",
       "is_transient": false,
-      "root_cause": "The CAPZ webhook certificate is untrusted, causing resource creation failures. Log lines show: 'tls: failed to verify certificate: x509: certificate signed by unknown authority' followed by 'context deadline exceeded' errors.",
+      "root_cause": "The cloud-init script on the first control plane machine (capz-e2e-5dhz3k-azl3-control-plane-csdjf) did not execute, as evidenced by empty cloud-init-output.log (0 bytes) and missing kubelet logs. This prevented node initialization, causing subsequent timeouts when accessing port 10250. The root cause is likely a failure in the cloud-init process during VM provisioning, possibly due to Azure CNI v1 configuration issues, missing dependencies, or VM provisioning errors. Additionally, repeated webhook certificate errors (x509: certificate signed by unknown authority) in build-log.txt indicate certificate trust issues in the cluster creation flow.",
       "severity": "Critical",
-      "suggested_fix": "Ensure the CAPZ webhook service certificate is signed by a trusted CA. Update the CA bundle in the webhook configuration (e.g., in `config/webhook/` manifests) or fix certificate generation in the controller manager deployment.",
+      "suggested_fix": "1. Check AzureMachine status conditions for provisioning errors (e.g., quota issues, spot evictions) using `kubectl get azuremachines`.\n2. Verify cloud-init script execution by inspecting the VM's serial console logs in Azure.\n3. Examine Azure activity logs (artifacts/clusters/capz-e2e-5dhz3k-azl3/azure-activity-logs/) for VM provisioning failures.\n4. Validate webhook certificate configuration and ensure the CA bundle is correctly injected into the webhook service.",
       "relevant_files": [
-        "sigs.k8s.io/cluster-api-provider-azure/config/webhook/service.yaml",
-        "sigs.k8s.io/cluster-api-provider-azure/controllers/cluster_controller.go",
-        "sigs.k8s.io/cluster-api-provider-azure/controllers/webhook.go"
+        "build-log.txt",
+        "artifacts/clusters/capz-e2e-5dhz3k-azl3/machines/capz-e2e-5dhz3k-azl3-control-plane-csdjf/cloud-init-output.log",
+        "artifacts/clusters/capz-e2e-5dhz3k-azl3/azure-activity-logs/capz-e2e-5dhz3k-azl3.log"
       ],
-      "tool_calls": 3,
-      "model_bytes": 43161,
-      "gcs_bytes": 1017582
+      "tool_calls": 5,
+      "model_bytes": 71204,
+      "gcs_bytes": 1040672
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:53d21bf04cf5c5c9": {
@@ -259,20 +259,20 @@
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:70269197d9df8ec3": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:70269197d9df8ec3",
-    "created_at": "2026-06-03T11:04:08.71871-07:00",
+    "created_at": "2026-06-03T13:08:17.846556-07:00",
     "data": {
-      "summary": "The test failed due to multiple context deadline exceeded errors during workload cluster creation, indicating timeouts in establishing connections to node kubelets and API servers.",
-      "is_transient": true,
-      "root_cause": "The build log shows repeated 'dial tcp 10.0.0.4:10250: i/o timeout' errors when attempting to stream logs from pods like calico-node, cloud-controller-manager, and kube-proxy. This suggests the nodes were unreachable or failed to initialize their kubelet services, leading to timeouts during cluster creation.",
+      "summary": "Cluster creation failed due to untrusted certificate in CAPZ webhook validation",
+      "is_transient": false,
+      "root_cause": "The AzureCluster validation webhook failed with \"x509: certificate signed by unknown authority\" errors in build-log.txt lines 1480-1485. This indicates the webhook's TLS certificate chain could not be validated against trusted CAs. The error occurred when applying the cluster template for capz-e2e-eegfig-flatcar-sysext, with repeated failures to validate the AzureCluster resource due to certificate trust issues. The CAPZ controller manager's logs would show corresponding webhook registration failures.",
       "severity": "High",
-      "suggested_fix": "Investigate transient network issues or node initialization failures. Check cloud-init logs for errors in node setup, verify network security group (NSG) rules for the custom vnet, and ensure proper image availability for node components.",
+      "suggested_fix": "Verify the CAPZ webhook certificate configuration. Ensure the webhook service is using a certificate signed by a trusted CA, or add the issuing CA to the cluster's trust store. Check the capz-webhook-service deployment in the capz-system namespace for proper certificate configuration. Rotate certificates if necessary.",
       "relevant_files": [
         "build-log.txt",
-        "artifacts/clusters/capz-e2e-5dhz3k-azl3/azure-activity-logs/capz-e2e-5dhz3k-azl3.log"
+        "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-58f5d756d6-q8x7f/manager.log"
       ],
-      "tool_calls": 4,
-      "model_bytes": 34766,
-      "gcs_bytes": 1474592
+      "tool_calls": 5,
+      "model_bytes": 36143,
+      "gcs_bytes": 1008160
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:804818ed02e175d4": {
@@ -313,17 +313,20 @@
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:c99be8419c28ca08": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:c99be8419c28ca08",
-    "created_at": "2026-06-01T17:15:31.178013-07:00",
+    "created_at": "2026-06-03T13:09:30.884694-07:00",
     "data": {
-      "summary": "Test timed out due to IPv6 cluster creation failure caused by incorrect Azure virtual network configuration using IPv4 address space.",
+      "summary": "Test timed out due to webhook certificate verification failure during AzureCluster creation, blocking cluster provisioning.",
       "is_transient": false,
-      "root_cause": "Azure virtual network created with IPv4 prefix '10.0.0.0/8' instead of IPv6. Test timed out waiting for IPv6 control-plane. Evidence: \"addressSpace\":{\"addressPrefixes\":[\"10.0.0.0/8\"]} in Azure activity logs.",
-      "severity": "High",
-      "suggested_fix": "Update Azure virtual network template to use IPv6 address space for IPv6 clusters. Modify the CAPZ template to specify proper IPv6 CIDR blocks in virtualNetworks.properties.addressSpace.",
+      "root_cause": "The build-log.txt shows repeated failures calling the AzureCluster validation webhook with 'x509: certificate signed by unknown authority' errors. This indicates the CAPZ webhook's TLS certificate isn't trusted by the cluster, preventing AzureCluster resource creation. The error occurs at the earliest stage of cluster provisioning, causing all subsequent operations to fail with timeouts.",
+      "severity": "Critical",
+      "suggested_fix": "Verify the CAPZ webhook certificate configuration. Ensure the webhook's serving certificate is signed by a trusted CA and matches the service DNS name 'capz-webhook-service.capz-system.svc'. Check cert-manager integration if used, and validate the certificate chain in the webhook deployment. Reinstall CAPZ with proper TLS configuration.",
       "relevant_files": [
-        "sigs.k8s.io/cluster-api-provider-azure/azure/services/network/virtualnetworks.go",
-        "sigs.k8s.io/cluster-api-provider-azure/azure/services/network/virtualnetworks_template.go"
-      ]
+        "sigs.k8s.io/cluster-api-provider-azure/api/v1beta1/azurecluster_webhook.go",
+        "sigs.k8s.io/cluster-api-provider-azure/controllers/webhook/certificates.go"
+      ],
+      "tool_calls": 7,
+      "model_bytes": 50062,
+      "gcs_bytes": 1017582
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2059817348679864320:50e52941008b7ac6": {
@@ -696,20 +699,19 @@
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24:2061015253067501568:2de77ee2e743fddf": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24:2061015253067501568:2de77ee2e743fddf",
-    "created_at": "2026-06-03T11:12:31.313257-07:00",
+    "created_at": "2026-06-03T13:14:35.698905-07:00",
     "data": {
-      "summary": "Test failed due to deployment 'azureserviceoperator-controller-manager' not becoming ready within 5 minutes, caused by network timeouts to kubelet endpoints.",
+      "summary": "The 'azureserviceoperator-controller-manager' deployment failed to become ready due to missing credential secrets, causing clusterctl init to time out.",
       "is_transient": false,
-      "root_cause": "The deployment readiness check timed out because the API server could not reach kubelet endpoints (e.g., 'dial tcp 10.0.0.6:10250: i/o timeout' in build-log.txt). This indicates kubelet failures or network misconfigurations in the custom VNet.",
+      "root_cause": "The Azure Service Operator controller repeatedly failed to reconcile resources due to missing credential secrets. Log lines show: \"capz-e2e-y39cu0-flex-aso-secret does not exist (credential secret not found: Secret \\\"capz-e2e-y39cu0-flex-aso-secret\\\" not found)\". This occurred during reconciliation of VirtualNetwork, NAT Gateway, and Subnet resources. The missing secret prevented Azure API authentication, blocking proper deployment of the management cluster's infrastructure.",
       "severity": "Critical",
-      "suggested_fix": "1. Verify kubelet status on nodes by checking cloud-init logs for errors. 2. Ensure network security groups (NSGs) and routing tables in the custom VNet allow traffic between the API server and kubelet endpoints (port 10250). 3. Check Azure VM provisioning logs for failures in the custom VNet setup.",
+      "suggested_fix": "1. Verify the Azure credential secret 'capz-e2e-y39cu0-flex-aso-secret' exists in the 'capz-e2e-y39cu0' namespace\n2. Check AzureCluster configuration references the correct secret name and namespace\n3. Ensure Azure credentials are properly configured in the test environment\n4. Add explicit wait for secret creation before proceeding with clusterctl init\n5. Validate Azure Service Operator deployment manifests reference the correct secret names",
       "relevant_files": [
-        "build-log.txt",
-        "artifacts/clusters/*/azure-activity-logs/*.log"
+        "artifacts/clusters/bootstrap/logs/capz-system/azureserviceoperator-controller-manager/azureserviceoperator-controller-manager-7998998bf5-bw9t9/manager.log"
       ],
-      "tool_calls": 3,
-      "model_bytes": 33440,
-      "gcs_bytes": 32512
+      "tool_calls": 6,
+      "model_bytes": 50129,
+      "gcs_bytes": 567130
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24:2061015253067501568:b8174cd03e0070be": {

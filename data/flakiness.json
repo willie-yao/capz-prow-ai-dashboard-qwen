@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-03T19:11:07Z",
+  "generated_at": "2026-06-03T20:06:28Z",
   "most_flaky": null,
   "persistent_failures": null,
   "recently_broken": [
@@ -41,41 +41,6 @@
           "timestamp": "2026-06-02T13:49:30Z",
           "duration": 2095.58523241,
           "passed": true
-        }
-      ]
-    },
-    {
-      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must run pods with extended resource on dra nodes and device plugin nodes [KubeletMinVersion:1.35] [Beta] [FeatureGate:DynamicResourceAllocation] [Serial] [kubelet: [\u003e=1.35]]",
-      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
-      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
-      "total_runs": 1,
-      "failures": 1,
-      "passes": 0,
-      "flip_rate": 0,
-      "fail_rate": 1,
-      "consecutive_failures": 1,
-      "classification": "one-off",
-      "last_failure": {
-        "build_id": "2062089625383473152",
-        "timestamp": "2026-06-03T08:31:07Z",
-        "failure_message": "",
-        "error_hash": "e3b0c442"
-      },
-      "first_failed_at": "2026-06-03T08:31:07Z",
-      "error_patterns": [
-        {
-          "normalized_message": "",
-          "error_hash": "e3b0c442",
-          "count": 1,
-          "example_message": ""
-        }
-      ],
-      "duration_history": [
-        {
-          "build_id": "2062089625383473152",
-          "timestamp": "2026-06-03T08:31:07Z",
-          "duration": 321.712011847,
-          "passed": false
         }
       ]
     }

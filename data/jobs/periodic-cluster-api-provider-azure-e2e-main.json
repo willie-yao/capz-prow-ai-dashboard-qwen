@@ -492,24 +492,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T18:04:08Z",
-            "summary": "The test failed due to multiple context deadline exceeded errors during workload cluster creation, indicating timeouts in establishing connections to node kubelets and API servers.",
-            "is_transient": true
+            "generated_at": "2026-06-03T20:08:17Z",
+            "summary": "Cluster creation failed due to untrusted certificate in CAPZ webhook validation",
+            "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T18:04:08Z",
-            "root_cause": "The build log shows repeated 'dial tcp 10.0.0.4:10250: i/o timeout' errors when attempting to stream logs from pods like calico-node, cloud-controller-manager, and kube-proxy. This suggests the nodes were unreachable or failed to initialize their kubelet services, leading to timeouts during cluster creation.",
+            "generated_at": "2026-06-03T20:08:17Z",
+            "root_cause": "The AzureCluster validation webhook failed with \"x509: certificate signed by unknown authority\" errors in build-log.txt lines 1480-1485. This indicates the webhook's TLS certificate chain could not be validated against trusted CAs. The error occurred when applying the cluster template for capz-e2e-eegfig-flatcar-sysext, with repeated failures to validate the AzureCluster resource due to certificate trust issues. The CAPZ controller manager's logs would show corresponding webhook registration failures.",
             "severity": "High",
-            "suggested_fix": "Investigate transient network issues or node initialization failures. Check cloud-init logs for errors in node setup, verify network security group (NSG) rules for the custom vnet, and ensure proper image availability for node components.",
+            "suggested_fix": "Verify the CAPZ webhook certificate configuration. Ensure the webhook service is using a certificate signed by a trusted CA, or add the issuing CA to the cluster's trust store. Check the capz-webhook-service deployment in the capz-system namespace for proper certificate configuration. Rotate certificates if necessary.",
             "relevant_files": [
               "build-log.txt",
-              "artifacts/clusters/capz-e2e-5dhz3k-azl3/azure-activity-logs/capz-e2e-5dhz3k-azl3.log"
+              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-58f5d756d6-q8x7f/manager.log"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 4,
-            "model_bytes": 34766,
-            "gcs_bytes": 1474592,
-            "elapsed_ms": 55226
+            "tool_calls": 5,
+            "model_bytes": 36143,
+            "gcs_bytes": 1008160,
+            "elapsed_ms": 65732
           }
         },
         {
@@ -660,24 +660,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-02T00:15:31Z",
-            "summary": "Test timed out due to IPv6 cluster creation failure caused by incorrect Azure virtual network configuration using IPv4 address space.",
+            "generated_at": "2026-06-03T20:09:30Z",
+            "summary": "Test timed out due to webhook certificate verification failure during AzureCluster creation, blocking cluster provisioning.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-02T00:15:31Z",
-            "root_cause": "Azure virtual network created with IPv4 prefix '10.0.0.0/8' instead of IPv6. Test timed out waiting for IPv6 control-plane. Evidence: \"addressSpace\":{\"addressPrefixes\":[\"10.0.0.0/8\"]} in Azure activity logs.",
-            "severity": "High",
-            "suggested_fix": "Update Azure virtual network template to use IPv6 address space for IPv6 clusters. Modify the CAPZ template to specify proper IPv6 CIDR blocks in virtualNetworks.properties.addressSpace.",
+            "generated_at": "2026-06-03T20:09:30Z",
+            "root_cause": "The build-log.txt shows repeated failures calling the AzureCluster validation webhook with 'x509: certificate signed by unknown authority' errors. This indicates the CAPZ webhook's TLS certificate isn't trusted by the cluster, preventing AzureCluster resource creation. The error occurs at the earliest stage of cluster provisioning, causing all subsequent operations to fail with timeouts.",
+            "severity": "Critical",
+            "suggested_fix": "Verify the CAPZ webhook certificate configuration. Ensure the webhook's serving certificate is signed by a trusted CA and matches the service DNS name 'capz-webhook-service.capz-system.svc'. Check cert-manager integration if used, and validate the certificate chain in the webhook deployment. Reinstall CAPZ with proper TLS configuration.",
             "relevant_files": [
-              "sigs.k8s.io/cluster-api-provider-azure/azure/services/network/virtualnetworks.go",
-              "sigs.k8s.io/cluster-api-provider-azure/azure/services/network/virtualnetworks_template.go"
+              "sigs.k8s.io/cluster-api-provider-azure/api/v1beta1/azurecluster_webhook.go",
+              "sigs.k8s.io/cluster-api-provider-azure/controllers/webhook/certificates.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 5,
-            "model_bytes": 43503,
-            "gcs_bytes": 38348,
-            "elapsed_ms": 63077
+            "tool_calls": 7,
+            "model_bytes": 50062,
+            "gcs_bytes": 1017582,
+            "elapsed_ms": 73038
           }
         },
         {
@@ -866,25 +866,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T18:08:27Z",
-            "summary": "Cluster creation failed due to TLS certificate verification errors in CAPZ webhooks, leading to context deadlines.",
+            "generated_at": "2026-06-03T20:11:27Z",
+            "summary": "Cluster creation failed due to cloud-init not executing on control plane nodes, leading to kubelet unavailability and timeout errors.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T18:08:27Z",
-            "root_cause": "The CAPZ webhook certificate is untrusted, causing resource creation failures. Log lines show: 'tls: failed to verify certificate: x509: certificate signed by unknown authority' followed by 'context deadline exceeded' errors.",
+            "generated_at": "2026-06-03T20:11:27Z",
+            "root_cause": "The cloud-init script on the first control plane machine (capz-e2e-5dhz3k-azl3-control-plane-csdjf) did not execute, as evidenced by empty cloud-init-output.log (0 bytes) and missing kubelet logs. This prevented node initialization, causing subsequent timeouts when accessing port 10250. The root cause is likely a failure in the cloud-init process during VM provisioning, possibly due to Azure CNI v1 configuration issues, missing dependencies, or VM provisioning errors. Additionally, repeated webhook certificate errors (x509: certificate signed by unknown authority) in build-log.txt indicate certificate trust issues in the cluster creation flow.",
             "severity": "Critical",
-            "suggested_fix": "Ensure the CAPZ webhook service certificate is signed by a trusted CA. Update the CA bundle in the webhook configuration (e.g., in `config/webhook/` manifests) or fix certificate generation in the controller manager deployment.",
+            "suggested_fix": "1. Check AzureMachine status conditions for provisioning errors (e.g., quota issues, spot evictions) using `kubectl get azuremachines`.\n2. Verify cloud-init script execution by inspecting the VM's serial console logs in Azure.\n3. Examine Azure activity logs (artifacts/clusters/capz-e2e-5dhz3k-azl3/azure-activity-logs/) for VM provisioning failures.\n4. Validate webhook certificate configuration and ensure the CA bundle is correctly injected into the webhook service.",
             "relevant_files": [
-              "sigs.k8s.io/cluster-api-provider-azure/config/webhook/service.yaml",
-              "sigs.k8s.io/cluster-api-provider-azure/controllers/cluster_controller.go",
-              "sigs.k8s.io/cluster-api-provider-azure/controllers/webhook.go"
+              "build-log.txt",
+              "artifacts/clusters/capz-e2e-5dhz3k-azl3/machines/capz-e2e-5dhz3k-azl3-control-plane-csdjf/cloud-init-output.log",
+              "artifacts/clusters/capz-e2e-5dhz3k-azl3/azure-activity-logs/capz-e2e-5dhz3k-azl3.log"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 3,
-            "model_bytes": 43161,
-            "gcs_bytes": 1017582,
-            "elapsed_ms": 30373
+            "tool_calls": 5,
+            "model_bytes": 71204,
+            "gcs_bytes": 1040672,
+            "elapsed_ms": 83441
           }
         },
         {
@@ -915,23 +915,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T18:09:05Z",
-            "summary": "Test failed due to timeout waiting for cluster template application, likely caused by spot VM provisioning issues.",
+            "generated_at": "2026-06-03T20:12:13Z",
+            "summary": "Cluster creation timed out due to unreachable nodes and missing Azure activity logs, likely caused by spot VM provisioning issues.",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T18:09:05Z",
-            "root_cause": "Multiple context deadline exceeded errors during cluster template application. Common transient causes include Azure spot VM quota limits, temporary resource unavailability, or throttling during VM provisioning.",
+            "generated_at": "2026-06-03T20:12:13Z",
+            "root_cause": "The test failed with 'context deadline exceeded' errors while attempting to create a workload cluster using Azure spot VMs. Build logs show connection timeouts to kubelet ports (10250) on multiple nodes (e.g., 10.0.0.4:10250, 10.0.0.6:10250), indicating nodes never became responsive. The Azure activity log (artifacts/clusters/capz-e2e-5dhz3k-azl3/azure-activity-logs.*) was missing, suggesting the test failed before capturing infrastructure-level errors. Spot VMs are prone to transient provisioning failures due to Azure capacity constraints or eviction.",
             "severity": "High",
-            "suggested_fix": "Check AzureMachine resources in the target cluster for provisioning errors. Verify spot VM quota availability and retry transient failures. Consider increasing timeout thresholds for spot VM creation.",
+            "suggested_fix": "Retry the test to rule out transient Azure spot VM provisioning issues. If the failure persists, check Azure quotas for spot VMs in the region and verify the CAPZ template correctly handles spot VM configurations. No code changes required unless the issue recurs with specific CAPZ logic.",
             "relevant_files": [
-              "sigs.k8s.io/cluster-api-provider-azure/test/e2e/clusterctl/clusterctl_helpers.go"
+              "test/e2e/e2e_suite_test.go",
+              "test/e2e/clusterctl/clusterctl_helpers.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 4,
-            "model_bytes": 13033,
-            "gcs_bytes": 9422,
-            "elapsed_ms": 37613
+            "tool_calls": 2,
+            "model_bytes": 32996,
+            "gcs_bytes": 32512,
+            "elapsed_ms": 46207
           }
         },
         {
