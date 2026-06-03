@@ -492,24 +492,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T20:08:17Z",
-            "summary": "Cluster creation failed due to untrusted certificate in CAPZ webhook validation",
+            "generated_at": "2026-06-03T20:42:44Z",
+            "summary": "Webhook certificate verification failure causing cluster template application timeout",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T20:08:17Z",
-            "root_cause": "The AzureCluster validation webhook failed with \"x509: certificate signed by unknown authority\" errors in build-log.txt lines 1480-1485. This indicates the webhook's TLS certificate chain could not be validated against trusted CAs. The error occurred when applying the cluster template for capz-e2e-eegfig-flatcar-sysext, with repeated failures to validate the AzureCluster resource due to certificate trust issues. The CAPZ controller manager's logs would show corresponding webhook registration failures.",
-            "severity": "High",
-            "suggested_fix": "Verify the CAPZ webhook certificate configuration. Ensure the webhook service is using a certificate signed by a trusted CA, or add the issuing CA to the cluster's trust store. Check the capz-webhook-service deployment in the capz-system namespace for proper certificate configuration. Rotate certificates if necessary.",
+            "generated_at": "2026-06-03T20:42:44Z",
+            "root_cause": "The build log shows repeated failures in creating AzureCluster, AzureClusterIdentity, and AzureMachineTemplate resources due to 'tls: failed to verify certificate: x509: certificate signed by unknown authority' errors (e.g., line 1720 in build-log.txt). These certificate verification failures occur when communicating with the CAPZ webhook service (capz-webhook-service.capz-system.svc), causing all resource creation attempts to fail and eventually leading to the context deadline exceeded error. The root cause is a certificate trust issue in the CAPZ webhook configuration.",
+            "severity": "Critical",
+            "suggested_fix": "Update the CAPZ webhook deployment to use a certificate with proper SANs and trusted CA. Modify the `--tls-cert-file` argument in the capz-webhook-service deployment (config/capz/webhook_service.yaml) to use a certificate that includes 'capz-webhook-service.capz-system.svc' and 'capz-webhook-service' in its SANs, and ensure the certificate is signed by a CA trusted by the management cluster. If using self-signed certificates, add the CA certificate to the management cluster's trust store via the node OS configuration.",
             "relevant_files": [
-              "build-log.txt",
-              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-58f5d756d6-q8x7f/manager.log"
+              "sigs.k8s.io/cluster-api-provider-azure/config/capz/webhook_service.yaml",
+              "sigs.k8s.io/cluster-api-provider-azure/webhook/certificates.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 5,
-            "model_bytes": 36143,
-            "gcs_bytes": 1008160,
-            "elapsed_ms": 65732
+            "tool_calls": 6,
+            "model_bytes": 44918,
+            "gcs_bytes": 1017582,
+            "elapsed_ms": 87691,
+            "critique_passed": true
           }
         },
         {
@@ -564,24 +565,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T18:05:01Z",
-            "summary": "Cluster creation failed due to TLS certificate verification failure in AzureCluster webhook validation",
+            "generated_at": "2026-06-03T20:44:12Z",
+            "summary": "Cluster creation failed due to webhook certificate validation errors leading to timeouts",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T18:05:01Z",
-            "root_cause": "Failed to verify certificate for webhook \"validation.azurecluster.infrastructure.cluster.x-k8s.io\": x509 certificate signed by unknown authority. Log line: \"tls: failed to verify certificate: x509: certificate signed by unknown authority\"",
+            "generated_at": "2026-06-03T20:44:12Z",
+            "root_cause": "The CAPZ webhook service certificate failed verification with error: \"x509: certificate signed by unknown authority\". This is seen in repeated errors like: \"failed calling webhook \\\"validation.azurecluster.infrastructure.cluster.x-k8s.io\\\": failed to call webhook: Post \\\"https://capz-webhook-service.capz-system.svc:443/validate-infrastructure-cluster-x-k8s-io-v1beta1-azurecluster?timeout=10s\\\": tls: failed to verify certificate\" in build-log.txt (line 1720). The certificate validation failures during webhook calls indicate the webhook's serving certificate is not trusted by the Kubernetes API server.",
             "severity": "Critical",
-            "suggested_fix": "Ensure the webhook service's certificate is signed by a trusted CA. Verify the cert-manager configuration and CA certificate installation in the test environment. Check CAPZ webhook setup for IPv6 cluster scenarios.",
+            "suggested_fix": "Update the ValidatingWebhookConfiguration to include the correct CA certificate that signs the webhook's serving certificate. This requires modifying the CAPZ webhook configuration to ensure the certificate.yaml references a valid Issuer and the CA certificate is properly injected into the ValidatingWebhookConfiguration. Specifically, ensure the `caBundle` in the ValidatingWebhookConfiguration matches the CA used to sign the webhook's serving certificate.",
             "relevant_files": [
-              "sigs.k8s.io/cluster-api-provider-azure/controllers/azurecluster_webhook.go",
-              "sigs.k8s.io/cluster-api-provider-azure/test/e2e/azure_test.go"
+              "config/webhook/validatingwebhookconfiguration.yaml",
+              "config/webhook/certmanager/certificate.yaml"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 5,
-            "model_bytes": 29823,
-            "gcs_bytes": 1017582,
-            "elapsed_ms": 53025
+            "tool_calls": 8,
+            "model_bytes": 46564,
+            "gcs_bytes": 2447742,
+            "elapsed_ms": 88092,
+            "critique_passed": true
           }
         },
         {
@@ -612,24 +614,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T19:18:44Z",
-            "summary": "Test failed due to cloud-init and kubelet not starting on control plane nodes, leading to cluster creation timeout.",
+            "generated_at": "2026-06-03T20:46:39Z",
+            "summary": "CAPZ controller failed to generate cloud-init script for control plane nodes",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T19:18:44Z",
-            "root_cause": "The cloud-init logs (cloud-init-output.log) and kubelet logs are empty for control plane nodes (e.g., capz-e2e-5dhz3k-azl3-control-plane-csdjf), indicating cloud-init failed to execute. This prevented kubelet from starting, causing node registration failures and subsequent timeouts in build-log.txt (e.g., 'dial tcp 10.0.0.4:10250: i/o timeout').",
+            "generated_at": "2026-06-03T20:46:39Z",
+            "root_cause": "CAPZ controller never created AzureMachine resources or triggered cloud-init execution. Evidence:\n1. boot.log shows successful kernel boot but cloud-init-output.log is empty (0 bytes)\n2. AzureMachine resource missing (HTTP 404) indicates CAPZ controller never reached provisioning\n3. CAPZ controller logs show no cloud-init related activity\n4. kubelet never started due to missing cloud-init configuration\nThis indicates a failure in the CAPZ controller's reconciliation loop before cloud-init generation.",
             "severity": "Critical",
-            "suggested_fix": "Investigate Azure VM provisioning and cloud-init execution. Check Azure activity logs for VM creation errors and validate cloud-init script integrity. Ensure the VM image includes required dependencies (e.g., kubelet package, network connectivity).",
+            "suggested_fix": "Update CAPZ controller to handle AzureMachine creation correctly by:\n1. Fixing cloud-init template generation in cluster-api-provider-azure/controllers/azuremachine/actuators.go\n2. Adding proper error handling in AzureMachine controller's reconcileNormal() function\n3. Ensuring AzureMachine status conditions are properly reported\n4. Verifying cloud-init script is written to /var/lib/cloud/instance/scripts/boot.sh",
             "relevant_files": [
-              "artifacts/clusters/capz-e2e-5dhz3k-azl3/machines/capz-e2e-5dhz3k-azl3-control-plane-csdjf/cloud-init-output.log",
-              "artifacts/clusters/capz-e2e-5dhz3k-azl3/machines/capz-e2e-5dhz3k-azl3-control-plane-csdjf/kubelet.log"
+              "sigs.k8s.io/cluster-api-provider-azure/controllers/azuremachine/actuators.go",
+              "sigs.k8s.io/cluster-api-provider-azure/controllers/azuremachine/controller.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 8,
-            "model_bytes": 37829,
-            "gcs_bytes": 1040672,
-            "elapsed_ms": 104118
+            "tool_calls": 11,
+            "model_bytes": 49628,
+            "gcs_bytes": 2912944,
+            "elapsed_ms": 147381,
+            "critique_passed": true
           }
         },
         {

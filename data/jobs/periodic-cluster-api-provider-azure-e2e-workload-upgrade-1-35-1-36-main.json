@@ -373,25 +373,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/controlplane_helpers.go#L115",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T17:46:12Z",
-            "summary": "Third control plane machine (k8s-upgrade-and-conformance-pno55n-control-plane-c6zkh) failed to provision due to SSH connectivity issues and empty logs indicating VM boot failure.",
+            "generated_at": "2026-06-03T20:39:30Z",
+            "summary": "Test failed due to incorrect control plane machine count configuration, leading to timeout during HA cluster initialization.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T17:46:12Z",
-            "root_cause": "The third control plane machine's cloud-init and kubelet logs are empty (0 bytes) at artifacts/clusters/k8s-upgrade-and-conformance-pno55n/machines/k8s-upgrade-and-conformance-pno55n-control-plane-c6zkh/, while the build-log.txt shows \"ssh: rejected: connect failed (Temporary failure in name resolution)\" errors. This indicates the VM failed to boot or network connectivity was broken during provisioning.",
-            "severity": "Critical",
-            "suggested_fix": "Investigate Azure VM provisioning failures for the third control plane node. Check AzureMachine resource status conditions and ensure proper DNS configuration. Verify Azure quotas and network security rules allowing SSH access.",
+            "generated_at": "2026-06-03T20:39:30Z",
+            "root_cause": "Build-log.txt line 1507 shows the cluster was created with `--control-plane-machine-count 1` instead of the required 3 for HA. AzureMachine resources for the control plane were never created (cloud-init-output.log 404 error). The test configuration mismatched the expected HA setup.",
+            "severity": "High",
+            "suggested_fix": "Update the test's cluster creation command to use `--control-plane-machine-count 3` in the test configuration. The error originates from the test code in `sigs.k8s.io/cluster-api-provider-azure/test/e2e/e2e_suite_test.go` where the control plane count is incorrectly set to 1.",
             "relevant_files": [
-              "artifacts/clusters/k8s-upgrade-and-conformance-pno55n/machines/k8s-upgrade-and-conformance-pno55n-control-plane-c6zkh/cloud-init-output.log",
-              "artifacts/clusters/k8s-upgrade-and-conformance-pno55n/machines/k8s-upgrade-and-conformance-pno55n-control-plane-c6zkh/kubelet.log",
-              "build-log.txt"
+              "sigs.k8s.io/cluster-api-provider-azure/test/e2e/e2e_suite_test.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 8,
-            "model_bytes": 52020,
-            "gcs_bytes": 235792,
-            "elapsed_ms": 105221
+            "tool_calls": 9,
+            "model_bytes": 46432,
+            "gcs_bytes": 212701,
+            "elapsed_ms": 98041,
+            "critique_passed": true
           }
         },
         {

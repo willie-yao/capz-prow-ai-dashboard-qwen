@@ -551,24 +551,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/client.go#L353",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T19:33:58Z",
-            "summary": "Test failed due to missing environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER required by clusterctl during cluster configuration",
+            "generated_at": "2026-06-03T21:05:06Z",
+            "summary": "Test failed due to missing environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER required by clusterctl",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T19:33:58Z",
-            "root_cause": "clusterctl config cluster failed with: \"value for variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER] is not set\" (from build-log.txt lines 3557, 3614). These variables are required but not provided in the test environment or clusterctl config. The error occurs in cluster-api's framework/clusterctl/client.go:353 when attempting to generate cluster configuration. Controller manager logs (capz-controller-manager/manager.log) show no relevant errors as this failure occurs during test framework setup before cluster creation.",
+            "generated_at": "2026-06-03T21:05:06Z",
+            "root_cause": "The error occurs during clusterctl config cluster execution when required variables are not set in either environment variables or clusterctl configuration files. The build-log.txt shows multiple instances of the missing variables (lines 3557, 3560, 3561, 3614, 3617, 3618) and the clusterctl-config.yaml file contains no references to these variables. The error message explicitly states these variables must be set via environment variables or clusterctl config files.",
             "severity": "High",
-            "suggested_fix": "Set the missing environment variables in the test setup or add them to the clusterctl config file. Check if the test requires updating the Azure credentials or image repository configuration. The variables should be defined in the test framework's configuration or Prow job environment.",
+            "suggested_fix": "Set the missing environment variables in the test configuration:\n1. Export AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER in the test environment\n2. Or add them to the clusterctl config file under test (e.g., config/clusterctl/clusterctl.yaml)\n\nExample:\nexport AZURE_BLOB_CONTAINER_NAME=\"my-container\"\nexport IMAGE_TAG_ACR_CREDENTIAL_PROVIDER=\"mcr.microsoft.com/oss/azurek8s/credential-provider:latest\"\n\nThese variables are required for Azure blob container configuration and ACR credential provider image tagging in the test framework.",
             "relevant_files": [
-              "build-log.txt",
-              "sigs.k8s.io/cluster-api/test/framework/clusterctl/client.go"
+              "config/clusterctl/clusterctl.yaml",
+              "artifacts/repository/clusterctl-config.yaml"
             ],
             "mode": "agentic-universal",
             "tool_calls": 6,
-            "model_bytes": 17281,
-            "gcs_bytes": 534618,
-            "elapsed_ms": 68124
+            "model_bytes": 18447,
+            "gcs_bytes": 537042,
+            "elapsed_ms": 78368,
+            "critique_passed": true
           }
         },
         {
@@ -581,26 +582,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/client.go#L353",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T19:35:38Z",
-            "summary": "Test failed due to missing environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER required by clusterctl for KubeRay deployment.",
+            "generated_at": "2026-06-03T21:06:46Z",
+            "summary": "Test failed due to missing environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER in clusterctl configuration.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T19:35:38Z",
-            "root_cause": "clusterctl config cluster failed with: \"value for variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER] is not set\" (build-log.txt lines 3557, 3614). These variables were not defined in clusterctl config file (artifacts/repository/clusterctl-config.yaml) and no evidence of environment variable injection found in controller logs (checked capz-controller-manager and caaph-controller-manager).",
+            "generated_at": "2026-06-03T21:06:46Z",
+            "root_cause": "The clusterctl config cluster command failed because required environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER were not set in the test environment or clusterctl-config.yaml. This is confirmed by the absence of these variables in the clusterctl-config.yaml file (artifacts/repository/clusterctl-config.yaml) and multiple error instances in build-log.txt (lines 3557, 3614, etc.) showing the missing variables during cluster configuration attempts.",
             "severity": "High",
-            "suggested_fix": "Set AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER environment variables in the test environment or add them to clusterctl config file. These variables are required for KubeRay deployment but were missing from both the config file and environment.",
+            "suggested_fix": "Add the missing variables to clusterctl-config.yaml with appropriate values. For example:\n\nAZURE_BLOB_CONTAINER_NAME: \"my-container\"\nIMAGE_TAG_ACR_CREDENTIAL_PROVIDER: \"myacr.azurecr.io\"\n\nThese values should be added to the clusterctl-config.yaml file under the appropriate environment section or as top-level variables. The exact values depend on the Azure storage account and container registry configuration used in the test environment.",
             "relevant_files": [
-              "sigs.k8s.io/cluster-api-provider-azure/test/e2e_kuberay_test.go",
-              "sigs.k8s.io/cluster-api-provider-azure/templates/clusterctl.yaml",
               "artifacts/repository/clusterctl-config.yaml",
-              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/"
+              "sigs.k8s.io/cluster-api/test@v1.13.2/framework/clusterctl/client.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 5,
-            "model_bytes": 32627,
-            "gcs_bytes": 527544,
-            "elapsed_ms": 100234
+            "tool_calls": 7,
+            "model_bytes": 19094,
+            "gcs_bytes": 537042,
+            "elapsed_ms": 99365,
+            "critique_passed": true
           }
         },
         {

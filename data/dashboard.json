@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-03T20:06:28.112835Z",
+  "generated_at": "2026-06-03T20:37:51.788042Z",
   "jobs": [
     {
       "name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main",
@@ -796,17 +796,25 @@
       "job_type": "periodic",
       "repo": "",
       "job_id": "periodic-cluster-api-provider-azure-conformance-v1beta1-with-ci-artifacts-release-1-24",
-      "overall_status": "FLAKY",
+      "overall_status": "PASSING",
       "last_run": {
         "build_id": "2062228038455660544",
-        "passed": false,
-        "timestamp": "2026-06-03T17:41:06Z"
+        "passed": true,
+        "timestamp": "2026-06-03T17:41:06Z",
+        "duration_seconds": 9419,
+        "tests_total": 7636,
+        "tests_passed": 456,
+        "tests_skipped": 7180
       },
       "recent_runs": [
         {
           "build_id": "2062228038455660544",
-          "passed": false,
-          "timestamp": "2026-06-03T17:41:06Z"
+          "passed": true,
+          "timestamp": "2026-06-03T17:41:06Z",
+          "duration_seconds": 9419,
+          "tests_total": 7636,
+          "tests_passed": 456,
+          "tests_skipped": 7180
         },
         {
           "build_id": "2061094274279149568",
@@ -818,8 +826,8 @@
           "tests_skipped": 7180
         }
       ],
-      "pass_rate_7d": 0.5,
-      "pass_rate_30d": 0.5
+      "pass_rate_7d": 1,
+      "pass_rate_30d": 1
     },
     {
       "name": "periodic-cluster-api-provider-azure-capi-e2e-v1beta1-release-1-24",

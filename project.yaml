@@ -160,6 +160,19 @@ ai:
     # than skimming directory listings. See
     # prow-ai-dashboard/docs/agentic.md for full semantics.
     min_gcs_bytes: 200000
+    # Deterministic regex critique gate (L.4 Step 2). After the agentic
+    # loop produces a tools-free final, the engine checks suggested_fix
+    # for punt-shaped diagnostic TODO lists (imperative diagnostic verbs
+    # at sentence start, "should/need" + diag-verb, "recommend" +
+    # diag-gerund). On match, feedback is appended and the model
+    # re-prompts up to max_retries times with a per-retry budget bump.
+    # Drafts that still punt after retries are published but NOT cached
+    # (anti-thrash, same pattern as the floors above). L.4 Step 1
+    # measured Qwen at 80% punt rate on fresh CAPZ analyses; this gate
+    # targets <50%. See prow-ai-dashboard/docs/agentic.md for semantics.
+    critique:
+      enabled: true
+      max_retries: 2
     tools:
       - filesystem
       - k8s
