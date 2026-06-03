@@ -714,24 +714,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/helpers.go#L124",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-02T00:19:54Z",
-            "summary": "The test failed because the deployment 'calico-kube-controllers' in the 'calico-system' namespace was not found during the autoscaling test. The deployment was successfully created and became available, but the test likely did not specify the correct namespace when checking for its existence.",
+            "generated_at": "2026-06-03T22:08:13Z",
+            "summary": "The test failed because the Calico CNI deployment 'calico-kube-controllers' was not found, indicating the HelmChartProxy failed to install the CNI manifest. Evidence points to a missing 'cni=calico' label on the cluster, preventing HelmChartProxy reconciliation.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-02T00:19:54Z",
-            "root_cause": "The deployment 'calico-kube-controllers' in the 'calico-system' namespace was not found during the test. Logs show the deployment was successfully created and became available (line 1480 in build-log.txt), but the test likely did not specify the namespace when checking for the deployment, leading to a 'not found' error.",
+            "generated_at": "2026-06-03T22:08:13Z",
+            "root_cause": "The deployment 'calico-kube-controllers' was not found (404) in the workload cluster. Build logs show the deployment was available at 04:00:14.392 but later timed out. The root cause is a missing 'cni=calico' label on the cluster, causing the HelmChartProxy controller to skip CNI installation. This is confirmed by the absence of HelmChartProxy-related logs in the capz-controller-manager logs.",
             "severity": "High",
-            "suggested_fix": "Update the test to explicitly specify the 'calico-system' namespace when checking for the 'calico-kube-controllers' deployment. Ensure that the test logic correctly references the namespace to avoid missing the deployment in the default namespace.",
+            "suggested_fix": "Add the 'cni=calico' label to the Cluster resource to trigger HelmChartProxy reconciliation. This label is required for CNI installation via CAAPH. If the issue persists, verify the Helm chart version in CAAPH matches the Kubernetes version.",
             "relevant_files": [
-              "test/e2e/helpers.go",
-              "templates/addons/calico.yaml"
+              "config/capz/overlays/cni/calico/kustomization.yaml",
+              "test/e2e/helpers.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 6,
-            "model_bytes": 54035,
-            "gcs_bytes": 539215,
-            "elapsed_ms": 66562
+            "tool_calls": 9,
+            "model_bytes": 55398,
+            "gcs_bytes": 2567215,
+            "elapsed_ms": 124208,
+            "critique_passed": true,
+            "critique_version": 2
           }
         },
         {

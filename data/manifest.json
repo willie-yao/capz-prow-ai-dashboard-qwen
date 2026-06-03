@@ -126,7 +126,7 @@
       "enabled": true,
       "max_iters": 20,
       "min_tool_calls": 5,
-      "min_gcs_bytes": 200000,
+      "min_gcs_bytes": 500000,
       "critique": {
         "enabled": true,
         "max_retries": 2

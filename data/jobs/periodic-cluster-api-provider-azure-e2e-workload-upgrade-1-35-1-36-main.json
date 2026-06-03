@@ -373,24 +373,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/controlplane_helpers.go#L115",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T20:39:30Z",
-            "summary": "Test failed due to incorrect control plane machine count configuration, leading to timeout during HA cluster initialization.",
+            "generated_at": "2026-06-03T22:22:35Z",
+            "summary": "Test failed due to timeout waiting for 3 control plane machines to exist, but only 2 were found. No concrete error evidence found in available artifacts.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T20:39:30Z",
-            "root_cause": "Build-log.txt line 1507 shows the cluster was created with `--control-plane-machine-count 1` instead of the required 3 for HA. AzureMachine resources for the control plane were never created (cloud-init-output.log 404 error). The test configuration mismatched the expected HA setup.",
+            "generated_at": "2026-06-03T22:22:35Z",
+            "root_cause": "The test timed out waiting for 3 control plane machines to exist, but only 2 were found. However, no concrete error evidence was found in the available artifacts. The cloud-init-output.log for one machine showed no errors, and the Azure activity logs were not accessible (404 error). The AzureMachine directory was empty, indicating possible issues with resource creation or artifact capture.",
             "severity": "High",
-            "suggested_fix": "Update the test's cluster creation command to use `--control-plane-machine-count 3` in the test configuration. The error originates from the test code in `sigs.k8s.io/cluster-api-provider-azure/test/e2e/e2e_suite_test.go` where the control plane count is incorrectly set to 1.",
+            "suggested_fix": "No remediation possible from available evidence: artifacts show missing AzureMachine resources and inaccessible logs; would need to re-run test with better logging or check Azure quotas and provisioning configurations.",
             "relevant_files": [
-              "sigs.k8s.io/cluster-api-provider-azure/test/e2e/e2e_suite_test.go"
+              "build-log.txt",
+              "artifacts/clusters/k8s-upgrade-and-conformance-1lsjdq/machines/k8s-upgrade-and-conformance-1lsjdq-control-plane-fskwk/cloud-init-output.log"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 9,
-            "model_bytes": 46432,
-            "gcs_bytes": 212701,
-            "elapsed_ms": 98041,
-            "critique_passed": true
+            "tool_calls": 13,
+            "model_bytes": 19944,
+            "gcs_bytes": 619661,
+            "elapsed_ms": 113950,
+            "critique_passed": true,
+            "critique_version": 3
           }
         },
         {

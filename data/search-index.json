@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-03T20:37:51Z",
+  "generated_at": "2026-06-03T22:20:40Z",
   "entries": [
     {
       "kind": "job",
@@ -29027,8 +29027,8 @@
       "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
       "branch": "main",
       "category": "conformance",
-      "status": "passed",
-      "fail_rate": 0
+      "status": "failed",
+      "fail_rate": 0.5
     },
     {
       "kind": "test",
@@ -29326,8 +29326,8 @@
       "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
       "branch": "main",
       "category": "conformance",
-      "status": "passed",
-      "fail_rate": 0
+      "status": "failed",
+      "fail_rate": 0.5
     },
     {
       "kind": "test",

@@ -74,6 +74,25 @@
       "gcs_bytes": 5686091
     }
   },
+  "agentic:universal:periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main:2062256728241606656:4d70866b6b8e825c": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main:2062256728241606656:4d70866b6b8e825c",
+    "created_at": "2026-06-03T15:24:29.159989-07:00",
+    "data": {
+      "summary": "Conformance test container failed due to invalid image tag in test configuration.",
+      "is_transient": false,
+      "root_cause": "The error 'error container run failed with exit code 1' originated from `conformance_test.go:209` attempting to run a container with an invalid image tag. Build logs show no image pull errors but the container failed immediately. Controller logs confirm Azure infrastructure was successfully deleted, ruling out resource cleanup issues. The cluster was fully operational with all nodes Ready, indicating the failure was specific to the test container configuration.",
+      "severity": "High",
+      "suggested_fix": "Update the container image tag in `test/e2e/conformance_test.go` to use a valid image tag that exists in the registry. For example, change the image tag from v1.24.0-63-gf682badf0d9deb-dirty to v1.24.0 and ensure the image is available in the registry.",
+      "relevant_files": [
+        "test/e2e/conformance_test.go"
+      ],
+      "tool_calls": 8,
+      "model_bytes": 68307,
+      "gcs_bytes": 5747264,
+      "critique_passed": true,
+      "critique_version": 3
+    }
+  },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-24:2059925059375468544:74f2c843741e37dd": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-24:2059925059375468544:74f2c843741e37dd",
     "created_at": "2026-06-01T17:33:23.249189-07:00",
@@ -148,21 +167,22 @@
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:127ba01af79f88d5": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:127ba01af79f88d5",
-    "created_at": "2026-06-03T13:46:39.855089-07:00",
+    "created_at": "2026-06-03T14:55:49.357992-07:00",
     "data": {
-      "summary": "CAPZ controller failed to generate cloud-init script for control plane nodes",
+      "summary": "Cluster creation failed due to missing webhook certificate configuration leading to untrusted certificates and context deadline exceeded errors.",
       "is_transient": false,
-      "root_cause": "CAPZ controller never created AzureMachine resources or triggered cloud-init execution. Evidence:\n1. boot.log shows successful kernel boot but cloud-init-output.log is empty (0 bytes)\n2. AzureMachine resource missing (HTTP 404) indicates CAPZ controller never reached provisioning\n3. CAPZ controller logs show no cloud-init related activity\n4. kubelet never started due to missing cloud-init configuration\nThis indicates a failure in the CAPZ controller's reconciliation loop before cloud-init generation.",
-      "severity": "Critical",
-      "suggested_fix": "Update CAPZ controller to handle AzureMachine creation correctly by:\n1. Fixing cloud-init template generation in cluster-api-provider-azure/controllers/azuremachine/actuators.go\n2. Adding proper error handling in AzureMachine controller's reconcileNormal() function\n3. Ensuring AzureMachine status conditions are properly reported\n4. Verifying cloud-init script is written to /var/lib/cloud/instance/scripts/boot.sh",
+      "root_cause": "The 'context deadline exceeded' errors originated from webhook certificate trust issues. The build logs show repeated 'certificate signed by unknown authority' errors (build-log.txt lines 1715-1725, 1956-1966, 3140-3150). The controller manager logs confirm webhook registration (manager.log lines 10-27) but no certificate issuance evidence. The missing 'certificates.yaml' file in config/webhook (confirmed by find_artifacts) indicates the certificate generation step in the test setup was not properly configured, leading to untrusted webhook certificates.",
+      "severity": "High",
+      "suggested_fix": "Create a valid certificates.yaml file in config/webhook with proper CA configuration. Example fix: \n```yaml\napiVersion: cert-manager.io/v1\nkind: Certificate\nmetadata:\n  name: webhook-cert\n  namespace: capz-system\nspec:\n  secretName: webhook-server-cert\n  duration: 8760h\n  renewBefore: 360h\n  subject:\n    organizations:\n    - cluster-api\n  commonName: webhook-service.capz-system.svc\n  isCA: false\n  keySize: 2048\n  keyAlgorithm: rsa\n  keyEncoding: pkcs1\n  usages:\n  - server auth\n  dnsNames:\n  - webhook-service.capz-system.svc\n  - webhook-service.capz-system.svc.cluster.local\n  ipAddresses:\n  - 127.0.0.1\n  - ::1\n```\nApply with: kubectl apply -f config/webhook/certificates.yaml",
       "relevant_files": [
-        "sigs.k8s.io/cluster-api-provider-azure/controllers/azuremachine/actuators.go",
-        "sigs.k8s.io/cluster-api-provider-azure/controllers/azuremachine/controller.go"
+        "config/webhook/certificates.yaml",
+        "controllers/webhook.go"
       ],
-      "tool_calls": 11,
-      "model_bytes": 49628,
-      "gcs_bytes": 2912944,
-      "critique_passed": true
+      "tool_calls": 8,
+      "model_bytes": 79042,
+      "gcs_bytes": 2447742,
+      "critique_passed": true,
+      "critique_version": 2
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:4e1ab994d8b6ae99": {
@@ -185,21 +205,22 @@
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:50748fbc056aa39f": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:50748fbc056aa39f",
-    "created_at": "2026-06-03T12:22:56.859993-07:00",
+    "created_at": "2026-06-03T15:36:06.95118-07:00",
     "data": {
-      "summary": "Cluster creation failed due to webhook certificate trust issues leading to context deadline exceeded errors.",
+      "summary": "Test failed due to webhook certificate validation failure causing cluster template application timeout.",
       "is_transient": false,
-      "root_cause": "The error occurs because the webhook's TLS certificate is signed by an unknown authority. Multiple retries fail with 'context deadline exceeded' after initial certificate verification errors. Key log lines in build-log.txt: 'tls: failed to verify certificate: x509: certificate signed by unknown authority' when calling webhook 'https://capz-webhook-service.capz-system.svc:443/validate-infrastructure-cluster-x-k8s-io-v1beta1-azurecluster'. Controller manager logs (manager.log) show no certificate errors, indicating the issue originates from the webhook service configuration rather than the controller itself.",
+      "root_cause": "Build-log.txt shows repeated webhook validation failures with 'tls: failed to verify certificate: x509: certificate signed by unknown authority' errors when creating AzureCluster and AzureMachineTemplate resources. These certificate validation failures prevented resource creation, leading to cascading context deadline exceeded errors. Azure activity logs confirm resource group creation succeeded but VM provisioning never started due to earlier webhook failures.",
       "severity": "Critical",
-      "suggested_fix": "Ensure the webhook's TLS certificate is signed by a trusted CA. Update the certificate configuration in the CAPZ webhook deployment manifests. Verify the CA certificate is installed in the system's trust store. Check the 'certificates' section in config/webhook/certificates.yaml and ensure the certificate chain is properly configured. Confirm the webhook service (config/webhook/service.yaml) references the correct TLS certificate.",
+      "suggested_fix": "Redeploy CAPZ with valid webhook TLS certificates. The certificate for 'capz-webhook-service' in the 'capz-system' namespace must be signed by a trusted certificate authority (CA). If using cert-manager, verify the Certificate and Issuer resources are correctly configured. If using self-signed certificates, ensure the CA bundle is trusted by the Kubernetes API server.",
       "relevant_files": [
-        "config/webhook/certificates.yaml",
-        "config/webhook/service.yaml",
-        "config/default/webhook.yaml"
+        "build-log.txt",
+        "artifacts/clusters/capz-e2e-5dhz3k-azl3/azure-activity-logs/capz-e2e-5dhz3k-azl3.log"
       ],
-      "tool_calls": 7,
-      "model_bytes": 46367,
-      "gcs_bytes": 2447742
+      "tool_calls": 8,
+      "model_bytes": 44346,
+      "gcs_bytes": 1022776,
+      "critique_passed": true,
+      "critique_version": 3
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:51f5b4b6a0be2875": {
@@ -242,40 +263,42 @@
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:5bda0480976d4527": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:5bda0480976d4527",
-    "created_at": "2026-06-03T12:27:37.91986-07:00",
+    "created_at": "2026-06-03T15:42:07.729342-07:00",
     "data": {
-      "summary": "Cluster creation failed due to CAPZ controller webhook TLS certificate verification failures causing cascading timeouts.",
+      "summary": "Cluster creation timed out due to webhook certificate validation failures",
       "is_transient": false,
-      "root_cause": "The CAPZ controller manager failed to validate AzureCluster resources due to TLS certificate errors when connecting to webhooks. Log lines from manager.log show repeated failures like: 'failed to call webhook: Post \"https://capz-webhook-service.capz-system.svc:443/validate-infrastructure-cluster-x-k8s-io-v1beta1-azurecluster\": tls: failed to verify certificate: x509: certificate signed by unknown authority'. This blocked resource creation, leading to context deadline exceeded errors in the test framework.",
+      "root_cause": "Build-log.txt shows repeated webhook failures with 'tls: failed to verify certificate: x509: certificate signed by unknown authority' when creating AzureCluster, AzureClusterIdentity, and AzureMachineTemplate resources. This certificate validation failure in the CAPZ webhook service caused all resource creation attempts to fail with retry backoff, eventually leading to the context deadline exceeded error.",
       "severity": "Critical",
-      "suggested_fix": "Ensure the CAPZ webhook service certificate is signed by a trusted certificate authority (CA) recognized by the controller manager. Update the CAPZ deployment manifests to include the required CA certificates in the webhook service pod's trust chain. Verify the certificate configuration in config/capz/webhook.yaml and ensure proper certificate injection via cert-manager or manual configuration.",
+      "suggested_fix": "Redeploy the CAPZ webhook service with a valid certificate signed by a trusted certificate authority by updating the certificate configuration in config/capz/webhook/certificates.yaml and ensuring the CA bundle is correctly referenced in the webhook service configuration.",
       "relevant_files": [
-        "config/capz/webhook.yaml",
-        "sigs.k8s.io/cluster-api-provider-azure/controllers/webhook.go",
-        "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-58f5d756d6-q8x7f/manager.log"
+        "config/capz/webhook/certificates.yaml",
+        "controllers/webhook.go"
       ],
       "tool_calls": 7,
-      "model_bytes": 46278,
-      "gcs_bytes": 1017582
+      "model_bytes": 30807,
+      "gcs_bytes": 1017582,
+      "critique_passed": true,
+      "critique_version": 3
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:70269197d9df8ec3": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:70269197d9df8ec3",
-    "created_at": "2026-06-03T13:42:44.380795-07:00",
+    "created_at": "2026-06-03T15:28:28.420909-07:00",
     "data": {
-      "summary": "Webhook certificate verification failure causing cluster template application timeout",
+      "summary": "Cluster template application failed due to webhook certificate verification errors",
       "is_transient": false,
-      "root_cause": "The build log shows repeated failures in creating AzureCluster, AzureClusterIdentity, and AzureMachineTemplate resources due to 'tls: failed to verify certificate: x509: certificate signed by unknown authority' errors (e.g., line 1720 in build-log.txt). These certificate verification failures occur when communicating with the CAPZ webhook service (capz-webhook-service.capz-system.svc), causing all resource creation attempts to fail and eventually leading to the context deadline exceeded error. The root cause is a certificate trust issue in the CAPZ webhook configuration.",
+      "root_cause": "The test failure was caused by repeated webhook validation errors during cluster template application. The logs show multiple failures like: 'Post \"https://capz-webhook-service.capz-system.svc:443/validate-infrastructure-cluster-x-k8s-io-v1beta1-azurecluster?timeout=10s\": tls: failed to verify certificate: x509: certificate signed by unknown authority' (build-log.txt:1715-1725). These certificate verification failures prevented successful creation of AzureCluster and related resources, eventually timing out with context deadline exceeded errors.",
       "severity": "Critical",
-      "suggested_fix": "Update the CAPZ webhook deployment to use a certificate with proper SANs and trusted CA. Modify the `--tls-cert-file` argument in the capz-webhook-service deployment (config/capz/webhook_service.yaml) to use a certificate that includes 'capz-webhook-service.capz-system.svc' and 'capz-webhook-service' in its SANs, and ensure the certificate is signed by a CA trusted by the management cluster. If using self-signed certificates, add the CA certificate to the management cluster's trust store via the node OS configuration.",
+      "suggested_fix": "Update the ValidatingWebhookConfiguration to include the CA certificate bundle from cert-manager. The CAPZ webhook certificate is automatically managed by cert-manager, but the ValidatingWebhookConfiguration must explicitly reference the CA certificate generated by cert-manager in the capz-system namespace. This requires modifying config/webhook/manifests.yaml to include the CA certificate from the cert-manager-issued certificate.",
       "relevant_files": [
-        "sigs.k8s.io/cluster-api-provider-azure/config/capz/webhook_service.yaml",
-        "sigs.k8s.io/cluster-api-provider-azure/webhook/certificates.go"
+        "config/webhook/manifests.yaml",
+        "config/certmanager/certificate.yaml"
       ],
-      "tool_calls": 6,
-      "model_bytes": 44918,
+      "tool_calls": 5,
+      "model_bytes": 34450,
       "gcs_bytes": 1017582,
-      "critique_passed": true
+      "critique_passed": true,
+      "critique_version": 3
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:804818ed02e175d4": {
@@ -299,37 +322,44 @@
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:970e49da1d18b2b2": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:970e49da1d18b2b2",
-    "created_at": "2026-06-03T11:09:05.517113-07:00",
+    "created_at": "2026-06-03T15:40:46.625309-07:00",
     "data": {
-      "summary": "Test failed due to timeout waiting for cluster template application, likely caused by spot VM provisioning issues.",
-      "is_transient": true,
-      "root_cause": "Multiple context deadline exceeded errors during cluster template application. Common transient causes include Azure spot VM quota limits, temporary resource unavailability, or throttling during VM provisioning.",
-      "severity": "High",
-      "suggested_fix": "Check AzureMachine resources in the target cluster for provisioning errors. Verify spot VM quota availability and retry transient failures. Consider increasing timeout thresholds for spot VM creation.",
+      "summary": "Cluster creation failed due to webhook certificate validation errors preventing resource creation.",
+      "is_transient": false,
+      "root_cause": "The CAPZ webhook service's certificate is untrusted, causing all resource validations to fail with 'x509: certificate signed by unknown authority' errors. This is evident in build-log.txt lines 1720, 1961, and 3798, where repeated webhook calls to https://capz-webhook-service.capz-system.svc:443 fail with certificate verification errors, leading to context deadlines being exceeded. The controller manager logs show resource deletions but no certificate-related errors, indicating the issue is at the webhook configuration level.",
+      "severity": "Critical",
+      "suggested_fix": "Redeploy the CAPZ controller with a trusted certificate by applying the fix from the CAPZ repository's `config/certmanager/certificates.yaml` file. Specifically, ensure the `ca.crt` is correctly configured in the certificate resource and redeploy the controller using `make deploy` or Helm with the correct CA values.",
       "relevant_files": [
-        "sigs.k8s.io/cluster-api-provider-azure/test/e2e/clusterctl/clusterctl_helpers.go"
+        "api/v1beta1/azuremachine_types.go",
+        "controllers/webhook.go",
+        "config/certmanager/certificates.yaml"
       ],
-      "tool_calls": 4,
-      "model_bytes": 13033,
-      "gcs_bytes": 9422
+      "tool_calls": 8,
+      "model_bytes": 70599,
+      "gcs_bytes": 1040672,
+      "critique_passed": true,
+      "critique_version": 3
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:c99be8419c28ca08": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:c99be8419c28ca08",
-    "created_at": "2026-06-03T13:09:30.884694-07:00",
+    "created_at": "2026-06-03T14:57:18.917756-07:00",
     "data": {
-      "summary": "Test timed out due to webhook certificate verification failure during AzureCluster creation, blocking cluster provisioning.",
+      "summary": "Cluster creation failed due to untrusted CAPZ webhook certificate, causing validation failures and timeouts.",
       "is_transient": false,
-      "root_cause": "The build-log.txt shows repeated failures calling the AzureCluster validation webhook with 'x509: certificate signed by unknown authority' errors. This indicates the CAPZ webhook's TLS certificate isn't trusted by the cluster, preventing AzureCluster resource creation. The error occurs at the earliest stage of cluster provisioning, causing all subsequent operations to fail with timeouts.",
+      "root_cause": "The CAPZ webhook certificate is untrusted (\"x509: certificate signed by unknown authority\" at build-log.txt:1720), blocking AzureCluster/AzureMachineTemplate creation and leading to cascading timeouts. The certificate lacks trust from the Kubernetes API server.",
       "severity": "Critical",
-      "suggested_fix": "Verify the CAPZ webhook certificate configuration. Ensure the webhook's serving certificate is signed by a trusted CA and matches the service DNS name 'capz-webhook-service.capz-system.svc'. Check cert-manager integration if used, and validate the certificate chain in the webhook deployment. Reinstall CAPZ with proper TLS configuration.",
+      "suggested_fix": "Regenerate the CAPZ webhook certificate with SANs matching the service DNS (capz-webhook-service.capz-system.svc) and signed by a trusted CA. Redeploy the certificate as a Kubernetes secret and restart the CAPZ controller manager pod to resolve validation failures.",
       "relevant_files": [
-        "sigs.k8s.io/cluster-api-provider-azure/api/v1beta1/azurecluster_webhook.go",
-        "sigs.k8s.io/cluster-api-provider-azure/controllers/webhook/certificates.go"
+        "build-log.txt",
+        "artifacts/clusters/capz-e2e-5dhz3k-azl3/AzureCluster/*.yaml",
+        "artifacts/clusters/capz-e2e-5dhz3k-azl3/AzureMachineTemplate/*.yaml"
       ],
-      "tool_calls": 7,
-      "model_bytes": 50062,
-      "gcs_bytes": 1017582
+      "tool_calls": 6,
+      "model_bytes": 72625,
+      "gcs_bytes": 1040672,
+      "critique_passed": true,
+      "critique_version": 2
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2059817348679864320:50e52941008b7ac6": {
@@ -382,17 +412,22 @@
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2060928682012184576:3d02626b0869fa2c": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2060928682012184576:3d02626b0869fa2c",
-    "created_at": "2026-06-01T17:19:54.558764-07:00",
+    "created_at": "2026-06-03T15:08:13.037992-07:00",
     "data": {
-      "summary": "The test failed because the deployment 'calico-kube-controllers' in the 'calico-system' namespace was not found during the autoscaling test. The deployment was successfully created and became available, but the test likely did not specify the correct namespace when checking for its existence.",
+      "summary": "The test failed because the Calico CNI deployment 'calico-kube-controllers' was not found, indicating the HelmChartProxy failed to install the CNI manifest. Evidence points to a missing 'cni=calico' label on the cluster, preventing HelmChartProxy reconciliation.",
       "is_transient": false,
-      "root_cause": "The deployment 'calico-kube-controllers' in the 'calico-system' namespace was not found during the test. Logs show the deployment was successfully created and became available (line 1480 in build-log.txt), but the test likely did not specify the namespace when checking for the deployment, leading to a 'not found' error.",
+      "root_cause": "The deployment 'calico-kube-controllers' was not found (404) in the workload cluster. Build logs show the deployment was available at 04:00:14.392 but later timed out. The root cause is a missing 'cni=calico' label on the cluster, causing the HelmChartProxy controller to skip CNI installation. This is confirmed by the absence of HelmChartProxy-related logs in the capz-controller-manager logs.",
       "severity": "High",
-      "suggested_fix": "Update the test to explicitly specify the 'calico-system' namespace when checking for the 'calico-kube-controllers' deployment. Ensure that the test logic correctly references the namespace to avoid missing the deployment in the default namespace.",
+      "suggested_fix": "Add the 'cni=calico' label to the Cluster resource to trigger HelmChartProxy reconciliation. This label is required for CNI installation via CAAPH. If the issue persists, verify the Helm chart version in CAAPH matches the Kubernetes version.",
       "relevant_files": [
-        "test/e2e/helpers.go",
-        "templates/addons/calico.yaml"
-      ]
+        "config/capz/overlays/cni/calico/kustomization.yaml",
+        "test/e2e/helpers.go"
+      ],
+      "tool_calls": 9,
+      "model_bytes": 55398,
+      "gcs_bytes": 2567215,
+      "critique_passed": true,
+      "critique_version": 2
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2060928682012184576:41abd03d97451a54": {
@@ -719,40 +754,41 @@
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24:2061015253067501568:b8174cd03e0070be": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24:2061015253067501568:b8174cd03e0070be",
-    "created_at": "2026-06-03T14:06:46.019501-07:00",
+    "created_at": "2026-06-03T15:52:24.609662-07:00",
     "data": {
-      "summary": "Test failed due to missing environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER in clusterctl configuration.",
+      "summary": "Missing environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER in clusterctl config",
       "is_transient": false,
-      "root_cause": "The clusterctl config cluster command failed because required environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER were not set in the test environment or clusterctl-config.yaml. This is confirmed by the absence of these variables in the clusterctl-config.yaml file (artifacts/repository/clusterctl-config.yaml) and multiple error instances in build-log.txt (lines 3557, 3614, etc.) showing the missing variables during cluster configuration attempts.",
+      "root_cause": "The error in build-log.txt (lines 3557, 3614) explicitly states that clusterctl failed due to missing variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER]. These variables were neither set in the environment nor in the clusterctl config file. This is confirmed by the error message: \"value for variables [...] is not set. Please set the value using os environment variables or the clusterctl config file\".",
       "severity": "High",
-      "suggested_fix": "Add the missing variables to clusterctl-config.yaml with appropriate values. For example:\n\nAZURE_BLOB_CONTAINER_NAME: \"my-container\"\nIMAGE_TAG_ACR_CREDENTIAL_PROVIDER: \"myacr.azurecr.io\"\n\nThese values should be added to the clusterctl-config.yaml file under the appropriate environment section or as top-level variables. The exact values depend on the Azure storage account and container registry configuration used in the test environment.",
+      "suggested_fix": "Set the missing variables in the clusterctl configuration file or as environment variables. For example, add to the clusterctl config file:\n\nvariables:\n  AZURE_BLOB_CONTAINER_NAME: \"my-container\"\n  IMAGE_TAG_ACR_CREDENTIAL_PROVIDER: \"v1.2.3\"\n\nOr set environment variables before running the test:\n\nexport AZURE_BLOB_CONTAINER_NAME=my-container\nexport IMAGE_TAG_ACR_CREDENTIAL_PROVIDER=v1.2.3",
       "relevant_files": [
-        "artifacts/repository/clusterctl-config.yaml",
-        "sigs.k8s.io/cluster-api/test@v1.13.2/framework/clusterctl/client.go"
+        "build-log.txt (lines 3557, 3614)"
       ],
-      "tool_calls": 7,
-      "model_bytes": 19094,
-      "gcs_bytes": 537042,
-      "critique_passed": true
+      "tool_calls": 6,
+      "model_bytes": 38960,
+      "gcs_bytes": 2381072,
+      "critique_passed": true,
+      "critique_version": 3
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24:2061015253067501568:d3aea6f1018b6f3c": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24:2061015253067501568:d3aea6f1018b6f3c",
-    "created_at": "2026-06-03T14:05:06.65243-07:00",
+    "created_at": "2026-06-03T15:13:00.369144-07:00",
     "data": {
-      "summary": "Test failed due to missing environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER required by clusterctl",
+      "summary": "Test failed due to missing AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER environment variables required for clusterctl configuration.",
       "is_transient": false,
-      "root_cause": "The error occurs during clusterctl config cluster execution when required variables are not set in either environment variables or clusterctl configuration files. The build-log.txt shows multiple instances of the missing variables (lines 3557, 3560, 3561, 3614, 3617, 3618) and the clusterctl-config.yaml file contains no references to these variables. The error message explicitly states these variables must be set via environment variables or clusterctl config files.",
-      "severity": "High",
-      "suggested_fix": "Set the missing environment variables in the test configuration:\n1. Export AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER in the test environment\n2. Or add them to the clusterctl config file under test (e.g., config/clusterctl/clusterctl.yaml)\n\nExample:\nexport AZURE_BLOB_CONTAINER_NAME=\"my-container\"\nexport IMAGE_TAG_ACR_CREDENTIAL_PROVIDER=\"mcr.microsoft.com/oss/azurek8s/credential-provider:latest\"\n\nThese variables are required for Azure blob container configuration and ACR credential provider image tagging in the test framework.",
+      "root_cause": "The error in build-log.txt line 3557 shows clusterctl failed because required variables were not set. The clusterctl-config.yaml file (2424 bytes) does not contain these variables, and no environment variable overrides were detected in the build artifacts. This is a configuration error in the test framework.",
+      "severity": "Critical",
+      "suggested_fix": "Add AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER to the clusterctl configuration file at artifacts/repository/clusterctl-config.yaml or set them as environment variables in the test runner. The variables are required for Azure blob storage integration during cluster creation.",
       "relevant_files": [
-        "config/clusterctl/clusterctl.yaml",
-        "artifacts/repository/clusterctl-config.yaml"
+        "artifacts/repository/clusterctl-config.yaml",
+        "/home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/clusterctl/client.go"
       ],
       "tool_calls": 6,
-      "model_bytes": 18447,
-      "gcs_bytes": 537042,
-      "critique_passed": true
+      "model_bytes": 8915,
+      "gcs_bytes": 527544,
+      "critique_passed": true,
+      "critique_version": 2
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main:2061103586208649216:5d4c9929046b4289": {
@@ -804,20 +840,22 @@
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-35-1-36-main:2062185004665933824:7635b0d7ccfe021d": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-35-1-36-main:2062185004665933824:7635b0d7ccfe021d",
-    "created_at": "2026-06-03T13:39:30.745354-07:00",
+    "created_at": "2026-06-03T15:22:35.335186-07:00",
     "data": {
-      "summary": "Test failed due to incorrect control plane machine count configuration, leading to timeout during HA cluster initialization.",
+      "summary": "Test failed due to timeout waiting for 3 control plane machines to exist, but only 2 were found. No concrete error evidence found in available artifacts.",
       "is_transient": false,
-      "root_cause": "Build-log.txt line 1507 shows the cluster was created with `--control-plane-machine-count 1` instead of the required 3 for HA. AzureMachine resources for the control plane were never created (cloud-init-output.log 404 error). The test configuration mismatched the expected HA setup.",
+      "root_cause": "The test timed out waiting for 3 control plane machines to exist, but only 2 were found. However, no concrete error evidence was found in the available artifacts. The cloud-init-output.log for one machine showed no errors, and the Azure activity logs were not accessible (404 error). The AzureMachine directory was empty, indicating possible issues with resource creation or artifact capture.",
       "severity": "High",
-      "suggested_fix": "Update the test's cluster creation command to use `--control-plane-machine-count 3` in the test configuration. The error originates from the test code in `sigs.k8s.io/cluster-api-provider-azure/test/e2e/e2e_suite_test.go` where the control plane count is incorrectly set to 1.",
+      "suggested_fix": "No remediation possible from available evidence: artifacts show missing AzureMachine resources and inaccessible logs; would need to re-run test with better logging or check Azure quotas and provisioning configurations.",
       "relevant_files": [
-        "sigs.k8s.io/cluster-api-provider-azure/test/e2e/e2e_suite_test.go"
+        "build-log.txt",
+        "artifacts/clusters/k8s-upgrade-and-conformance-1lsjdq/machines/k8s-upgrade-and-conformance-1lsjdq-control-plane-fskwk/cloud-init-output.log"
       ],
-      "tool_calls": 9,
-      "model_bytes": 46432,
-      "gcs_bytes": 212701,
-      "critique_passed": true
+      "tool_calls": 13,
+      "model_bytes": 19944,
+      "gcs_bytes": 619661,
+      "critique_passed": true,
+      "critique_version": 3
     }
   }
 }

@@ -155,11 +155,14 @@ ai:
     # satisfied min_tool_calls=3 with 6 list/tiny-read calls totaling
     # 13 KB and fabricated "no specific error found" on a build where
     # Claude found the actual webhook cert mismatch from 9 MB of
-    # logs. 200 KB requires the model to actually grep logs (a
-    # multi-MB grep with wide context easily satisfies this) rather
-    # than skimming directory listings. See
-    # prow-ai-dashboard/docs/agentic.md for full semantics.
-    min_gcs_bytes: 200000
+    # logs. Bumped 200000 → 500000 alongside the L.4 Step 2.5
+    # critique strengthening: Step 2 measured Qwen at p50 758 KB on
+    # critique-passing analyses, so 500 KB pushes only the
+    # below-median cases up to enough evidence to ground a concrete
+    # claim, without forcing every analysis to chase the heavy-tail
+    # 5 MB Claude reads. See prow-ai-dashboard/docs/agentic.md for
+    # full semantics.
+    min_gcs_bytes: 500000
     # Deterministic regex critique gate (L.4 Step 2). After the agentic
     # loop produces a tools-free final, the engine checks suggested_fix
     # for punt-shaped diagnostic TODO lists (imperative diagnostic verbs

@@ -551,25 +551,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/client.go#L353",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T21:05:06Z",
-            "summary": "Test failed due to missing environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER required by clusterctl",
+            "generated_at": "2026-06-03T22:13:00Z",
+            "summary": "Test failed due to missing AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER environment variables required for clusterctl configuration.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T21:05:06Z",
-            "root_cause": "The error occurs during clusterctl config cluster execution when required variables are not set in either environment variables or clusterctl configuration files. The build-log.txt shows multiple instances of the missing variables (lines 3557, 3560, 3561, 3614, 3617, 3618) and the clusterctl-config.yaml file contains no references to these variables. The error message explicitly states these variables must be set via environment variables or clusterctl config files.",
-            "severity": "High",
-            "suggested_fix": "Set the missing environment variables in the test configuration:\n1. Export AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER in the test environment\n2. Or add them to the clusterctl config file under test (e.g., config/clusterctl/clusterctl.yaml)\n\nExample:\nexport AZURE_BLOB_CONTAINER_NAME=\"my-container\"\nexport IMAGE_TAG_ACR_CREDENTIAL_PROVIDER=\"mcr.microsoft.com/oss/azurek8s/credential-provider:latest\"\n\nThese variables are required for Azure blob container configuration and ACR credential provider image tagging in the test framework.",
+            "generated_at": "2026-06-03T22:13:00Z",
+            "root_cause": "The error in build-log.txt line 3557 shows clusterctl failed because required variables were not set. The clusterctl-config.yaml file (2424 bytes) does not contain these variables, and no environment variable overrides were detected in the build artifacts. This is a configuration error in the test framework.",
+            "severity": "Critical",
+            "suggested_fix": "Add AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER to the clusterctl configuration file at artifacts/repository/clusterctl-config.yaml or set them as environment variables in the test runner. The variables are required for Azure blob storage integration during cluster creation.",
             "relevant_files": [
-              "config/clusterctl/clusterctl.yaml",
-              "artifacts/repository/clusterctl-config.yaml"
+              "artifacts/repository/clusterctl-config.yaml",
+              "/home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/clusterctl/client.go"
             ],
             "mode": "agentic-universal",
             "tool_calls": 6,
-            "model_bytes": 18447,
-            "gcs_bytes": 537042,
-            "elapsed_ms": 78368,
-            "critique_passed": true
+            "model_bytes": 8915,
+            "gcs_bytes": 527544,
+            "elapsed_ms": 62653,
+            "critique_passed": true,
+            "critique_version": 2
           }
         },
         {
@@ -582,25 +583,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/client.go#L353",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T21:06:46Z",
-            "summary": "Test failed due to missing environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER in clusterctl configuration.",
+            "generated_at": "2026-06-03T22:52:24Z",
+            "summary": "Missing environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER in clusterctl config",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T21:06:46Z",
-            "root_cause": "The clusterctl config cluster command failed because required environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER were not set in the test environment or clusterctl-config.yaml. This is confirmed by the absence of these variables in the clusterctl-config.yaml file (artifacts/repository/clusterctl-config.yaml) and multiple error instances in build-log.txt (lines 3557, 3614, etc.) showing the missing variables during cluster configuration attempts.",
+            "generated_at": "2026-06-03T22:52:24Z",
+            "root_cause": "The error in build-log.txt (lines 3557, 3614) explicitly states that clusterctl failed due to missing variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER]. These variables were neither set in the environment nor in the clusterctl config file. This is confirmed by the error message: \"value for variables [...] is not set. Please set the value using os environment variables or the clusterctl config file\".",
             "severity": "High",
-            "suggested_fix": "Add the missing variables to clusterctl-config.yaml with appropriate values. For example:\n\nAZURE_BLOB_CONTAINER_NAME: \"my-container\"\nIMAGE_TAG_ACR_CREDENTIAL_PROVIDER: \"myacr.azurecr.io\"\n\nThese values should be added to the clusterctl-config.yaml file under the appropriate environment section or as top-level variables. The exact values depend on the Azure storage account and container registry configuration used in the test environment.",
+            "suggested_fix": "Set the missing variables in the clusterctl configuration file or as environment variables. For example, add to the clusterctl config file:\n\nvariables:\n  AZURE_BLOB_CONTAINER_NAME: \"my-container\"\n  IMAGE_TAG_ACR_CREDENTIAL_PROVIDER: \"v1.2.3\"\n\nOr set environment variables before running the test:\n\nexport AZURE_BLOB_CONTAINER_NAME=my-container\nexport IMAGE_TAG_ACR_CREDENTIAL_PROVIDER=v1.2.3",
             "relevant_files": [
-              "artifacts/repository/clusterctl-config.yaml",
-              "sigs.k8s.io/cluster-api/test@v1.13.2/framework/clusterctl/client.go"
+              "build-log.txt (lines 3557, 3614)"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 7,
-            "model_bytes": 19094,
-            "gcs_bytes": 537042,
-            "elapsed_ms": 99365,
-            "critique_passed": true
+            "tool_calls": 6,
+            "model_bytes": 38960,
+            "gcs_bytes": 2381072,
+            "elapsed_ms": 87832,
+            "critique_passed": true,
+            "critique_version": 3
           }
         },
         {

@@ -1,8 +1,90 @@
 {
-  "generated_at": "2026-06-03T20:37:51Z",
+  "generated_at": "2026-06-03T22:20:40Z",
   "most_flaky": null,
   "persistent_failures": null,
   "recently_broken": [
+    {
+      "test_name": "[It] Conformance Tests conformance-tests",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2062256728241606656",
+        "timestamp": "2026-06-03T19:35:07Z",
+        "failure_message": "Unexpected error:\n    \u003cerrors.aggregate | len:1, cap:1\u003e: \n    Unable to run conformance tests: error container run failed with exit code 1\n    [\n        \u003c*errors.withStack | 0xc0020dabb8\u003e{\n            error: \u003c*errors.withMessage | 0xc00254eee0\u003e{\n                cause: \u003c*errors.errorString | 0xc001c63790\u003e{\n                    s: \"error container run failed with exit code 1\",\n                },\n                msg: \"Unable to run conformance tests\",\n            },\n            stack: [0x52bb43d, 0x552b206, 0x3fd81b3, 0x3fee9d3, 0x2108521],\n        },\n    ]\noccurred",
+        "error_hash": "f8f52ca1"
+      },
+      "first_failed_at": "2026-06-03T19:35:07Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Unexpected error: \u003cerrors.aggregate | len:\u003cnum\u003e, cap:\u003cnum\u003e\u003e: Unable to run conformance tests: error container run failed with exit code \u003cnum\u003e [ \u003c*errors.withStack | 0xc0020dabb8\u003e{ error: \u003c*errors.withMessage | 0xc00254eee0\u003e{ cause: \u003c*errors.errorString | 0xc001c63790\u003e{ s: \"error container run failed with exit code \u003cnum\u003e\", }, msg: \"Unable to run conformance tests\", }, stack: [0x52bb43d, 0x552b206, 0x3fd81b3, 0x3fee9d3, 0x2108521], }, ] occurred",
+          "error_hash": "f8f52ca1",
+          "count": 1,
+          "example_message": "Unexpected error:\n    \u003cerrors.aggregate | len:1, cap:1\u003e: \n    Unable to run conformance tests: error container run failed with exit code 1\n    [\n        \u003c*errors.withStack | 0xc0020dabb8\u003e{\n            error: \u003c*errors.withMessage | 0xc00254eee0\u003e{\n                cause: \u003c*errors.errorString | 0xc001c63790\u003e{\n                    s: \"error container run failed with exit code 1\",\n                },\n                msg: \"Unable to run conformance tests\",\n            },\n            stack: [0x52bb43d, 0x552b206, 0x3fd81b3, 0x3fee9d3, 0x2108521],\n        },\n    ]\noccurred"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2062256728241606656",
+          "timestamp": "2026-06-03T19:35:07Z",
+          "duration": 4665.422593162,
+          "passed": false
+        },
+        {
+          "build_id": "2062171666699522048",
+          "timestamp": "2026-06-03T13:57:07Z",
+          "duration": 4822.507316672,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must run pods with extended resource on dra nodes and device plugin nodes [KubeletMinVersion:1.35] [FeatureGate:DynamicResourceAllocation] [Serial] [kubelet: [\u003e=1.35]]",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "total_runs": 2,
+      "failures": 1,
+      "passes": 1,
+      "flip_rate": 1,
+      "fail_rate": 0.5,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2062256728241606656",
+        "timestamp": "2026-06-03T19:35:07Z",
+        "failure_message": "",
+        "error_hash": "e3b0c442"
+      },
+      "first_failed_at": "2026-06-03T19:35:07Z",
+      "error_patterns": [
+        {
+          "normalized_message": "",
+          "error_hash": "e3b0c442",
+          "count": 1,
+          "example_message": ""
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2062256728241606656",
+          "timestamp": "2026-06-03T19:35:07Z",
+          "duration": 326.002201587,
+          "passed": false
+        },
+        {
+          "build_id": "2062171666699522048",
+          "timestamp": "2026-06-03T13:57:07Z",
+          "duration": 31.040732943,
+          "passed": true
+        }
+      ]
+    },
     {
       "test_name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
       "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-35-1-36-main",
