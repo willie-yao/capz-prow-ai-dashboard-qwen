@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-02T00:10:14Z",
+  "generated_at": "2026-06-03T18:01:38Z",
   "entries": [
     {
       "kind": "job",
@@ -50,7 +50,7 @@
       "tab_name": "capz-periodic-apiversion-upgrade-main",
       "branch": "main",
       "category": "upgrade",
-      "status": "failed",
+      "status": "passed",
       "fail_rate": 0.5
     },
     {
@@ -89,7 +89,7 @@
       "tab_name": "capz-periodic-apiversion-upgrade-main",
       "branch": "main",
       "category": "upgrade",
-      "status": "failed",
+      "status": "passed",
       "fail_rate": 0.5
     },
     {
@@ -29028,7 +29028,7 @@
       "branch": "main",
       "category": "conformance",
       "status": "passed",
-      "fail_rate": 0
+      "fail_rate": 0.5
     },
     {
       "kind": "test",
@@ -29136,7 +29136,33 @@
     },
     {
       "kind": "test",
+      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must accurately populate ExtendedResourceClaimStatus [KubeletMinVersion:1.34] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.34]]",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_type": "periodic",
+      "repo": "",
+      "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
+      "branch": "main",
+      "category": "conformance",
+      "status": "passed",
+      "fail_rate": 0
+    },
+    {
+      "kind": "test",
       "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must cleanup extended resource claims when pods complete [KubeletMinVersion:1.34] [Beta] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.34]]",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_type": "periodic",
+      "repo": "",
+      "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
+      "branch": "main",
+      "category": "conformance",
+      "status": "passed",
+      "fail_rate": 0
+    },
+    {
+      "kind": "test",
+      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must cleanup extended resource claims when pods complete [KubeletMinVersion:1.34] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.34]]",
       "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
       "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
       "job_type": "periodic",
@@ -29162,7 +29188,33 @@
     },
     {
       "kind": "test",
+      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must cleanup extended resource claims when pods fail [KubeletMinVersion:1.34] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.34]]",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_type": "periodic",
+      "repo": "",
+      "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
+      "branch": "main",
+      "category": "conformance",
+      "status": "passed",
+      "fail_rate": 0
+    },
+    {
+      "kind": "test",
       "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must prefer device plugin over DRA when both advertise the same resource on a node [KubeletMinVersion:1.35] [Beta] [FeatureGate:DynamicResourceAllocation] [Serial] [kubelet: [\u003e=1.35]]",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_type": "periodic",
+      "repo": "",
+      "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
+      "branch": "main",
+      "category": "conformance",
+      "status": "passed",
+      "fail_rate": 0
+    },
+    {
+      "kind": "test",
+      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must prefer device plugin over DRA when both advertise the same resource on a node [KubeletMinVersion:1.35] [FeatureGate:DynamicResourceAllocation] [Serial] [kubelet: [\u003e=1.35]]",
       "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
       "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
       "job_type": "periodic",
@@ -29188,7 +29240,33 @@
     },
     {
       "kind": "test",
+      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must prevent overcommitment of extended resources [KubeletMinVersion:1.34] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.34]]",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_type": "periodic",
+      "repo": "",
+      "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
+      "branch": "main",
+      "category": "conformance",
+      "status": "passed",
+      "fail_rate": 0
+    },
+    {
+      "kind": "test",
       "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must process extended resource after Device Class creation [KubeletMinVersion:1.34] [Beta] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.34]]",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_type": "periodic",
+      "repo": "",
+      "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
+      "branch": "main",
+      "category": "conformance",
+      "status": "passed",
+      "fail_rate": 0
+    },
+    {
+      "kind": "test",
+      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must process extended resource after Device Class creation [KubeletMinVersion:1.34] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.34]]",
       "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
       "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
       "job_type": "periodic",
@@ -29214,7 +29292,33 @@
     },
     {
       "kind": "test",
+      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must reject pod with invalid extended resource name [KubeletMinVersion:1.34] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.34]]",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_type": "periodic",
+      "repo": "",
+      "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
+      "branch": "main",
+      "category": "conformance",
+      "status": "passed",
+      "fail_rate": 0
+    },
+    {
+      "kind": "test",
       "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must run a pod with both implicit and explicit extended resource with one container two resources [KubeletMinVersion:1.35] [Beta] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.35]]",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_type": "periodic",
+      "repo": "",
+      "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
+      "branch": "main",
+      "category": "conformance",
+      "status": "passed",
+      "fail_rate": 0
+    },
+    {
+      "kind": "test",
+      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must run a pod with both implicit and explicit extended resource with one container two resources [KubeletMinVersion:1.35] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.35]]",
       "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
       "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
       "job_type": "periodic",
@@ -29240,7 +29344,33 @@
     },
     {
       "kind": "test",
+      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must run a pod with explicit extended resource with one container one resource [KubeletMinVersion:1.34] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.34]]",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_type": "periodic",
+      "repo": "",
+      "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
+      "branch": "main",
+      "category": "conformance",
+      "status": "passed",
+      "fail_rate": 0
+    },
+    {
+      "kind": "test",
       "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must run a pod with explicit extended resource with one container three resources [KubeletMinVersion:1.34] [Beta] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.34]]",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_type": "periodic",
+      "repo": "",
+      "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
+      "branch": "main",
+      "category": "conformance",
+      "status": "passed",
+      "fail_rate": 0
+    },
+    {
+      "kind": "test",
+      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must run a pod with explicit extended resource with one container three resources [KubeletMinVersion:1.34] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.34]]",
       "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
       "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
       "job_type": "periodic",
@@ -29266,7 +29396,33 @@
     },
     {
       "kind": "test",
+      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must run a pod with explicit extended resource with three containers multiple resources each [KubeletMinVersion:1.34] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.34]]",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_type": "periodic",
+      "repo": "",
+      "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
+      "branch": "main",
+      "category": "conformance",
+      "status": "passed",
+      "fail_rate": 0
+    },
+    {
+      "kind": "test",
       "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must run a pod with explicit extended resource with three containers one resource each [KubeletMinVersion:1.34] [Beta] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.34]]",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_type": "periodic",
+      "repo": "",
+      "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
+      "branch": "main",
+      "category": "conformance",
+      "status": "passed",
+      "fail_rate": 0
+    },
+    {
+      "kind": "test",
+      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must run a pod with explicit extended resource with three containers one resource each [KubeletMinVersion:1.34] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.34]]",
       "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
       "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
       "job_type": "periodic",
@@ -29292,7 +29448,33 @@
     },
     {
       "kind": "test",
+      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must run a pod with extended resource requesting zero [KubeletMinVersion:1.34] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.34]]",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_type": "periodic",
+      "repo": "",
+      "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
+      "branch": "main",
+      "category": "conformance",
+      "status": "passed",
+      "fail_rate": 0
+    },
+    {
+      "kind": "test",
       "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must run a pod with extended resource with resource quota [KubeletMinVersion:1.35] [Beta] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.35]]",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_type": "periodic",
+      "repo": "",
+      "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
+      "branch": "main",
+      "category": "conformance",
+      "status": "passed",
+      "fail_rate": 0
+    },
+    {
+      "kind": "test",
+      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must run a pod with extended resource with resource quota [KubeletMinVersion:1.35] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.35]]",
       "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
       "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
       "job_type": "periodic",
@@ -29318,7 +29500,33 @@
     },
     {
       "kind": "test",
+      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must run a pod with implicit extended resource with one container one resource [KubeletMinVersion:1.35] [FeatureGate:DynamicResourceAllocation] [kubelet: [\u003e=1.35]]",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_type": "periodic",
+      "repo": "",
+      "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
+      "branch": "main",
+      "category": "conformance",
+      "status": "passed",
+      "fail_rate": 0
+    },
+    {
+      "kind": "test",
       "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must run pods with extended resource on dra nodes and device plugin nodes [KubeletMinVersion:1.35] [Beta] [FeatureGate:DynamicResourceAllocation] [Serial] [kubelet: [\u003e=1.35]]",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_type": "periodic",
+      "repo": "",
+      "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
+      "branch": "main",
+      "category": "conformance",
+      "status": "failed",
+      "fail_rate": 1
+    },
+    {
+      "kind": "test",
+      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] must run pods with extended resource on dra nodes and device plugin nodes [KubeletMinVersion:1.35] [FeatureGate:DynamicResourceAllocation] [Serial] [kubelet: [\u003e=1.35]]",
       "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
       "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
       "job_type": "periodic",
@@ -29332,6 +29540,19 @@
     {
       "kind": "test",
       "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] process extended resources after device plugin uninstall [KubeletMinVersion:1.35] [Beta] [FeatureGate:DynamicResourceAllocation] [Serial] [kubelet: [\u003e=1.35]]",
+      "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
+      "job_type": "periodic",
+      "repo": "",
+      "tab_name": "capz-periodic-conformance-k8s-ci-dra-main",
+      "branch": "main",
+      "category": "conformance",
+      "status": "passed",
+      "fail_rate": 0
+    },
+    {
+      "kind": "test",
+      "test_name": "[It] [sig-node] [DRA] [FeatureGate:DRAExtendedResource] [Feature:DynamicResourceAllocation] process extended resources after device plugin uninstall [KubeletMinVersion:1.35] [FeatureGate:DynamicResourceAllocation] [Serial] [kubelet: [\u003e=1.35]]",
       "job_name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
       "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
       "job_type": "periodic",
@@ -36295,7 +36516,7 @@
       "branch": "release-1.24",
       "category": "aks-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36308,7 +36529,7 @@
       "branch": "release-1.24",
       "category": "aks-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36321,7 +36542,7 @@
       "branch": "release-1.24",
       "category": "aks-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36334,7 +36555,7 @@
       "branch": "release-1.24",
       "category": "aks-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "job",
@@ -36372,7 +36593,7 @@
       "tab_name": "capz-periodic-e2e-main",
       "branch": "main",
       "category": "capz-e2e",
-      "status": "failed",
+      "status": "passed",
       "fail_rate": 0.5
     },
     {
@@ -36385,7 +36606,7 @@
       "tab_name": "capz-periodic-e2e-main",
       "branch": "main",
       "category": "capz-e2e",
-      "status": "failed",
+      "status": "passed",
       "fail_rate": 0.5
     },
     {
@@ -36398,7 +36619,7 @@
       "tab_name": "capz-periodic-e2e-main",
       "branch": "main",
       "category": "capz-e2e",
-      "status": "failed",
+      "status": "passed",
       "fail_rate": 0.5
     },
     {
@@ -36411,7 +36632,7 @@
       "tab_name": "capz-periodic-e2e-main",
       "branch": "main",
       "category": "capz-e2e",
-      "status": "failed",
+      "status": "passed",
       "fail_rate": 0.5
     },
     {
@@ -36424,7 +36645,7 @@
       "tab_name": "capz-periodic-e2e-main",
       "branch": "main",
       "category": "capz-e2e",
-      "status": "failed",
+      "status": "passed",
       "fail_rate": 0.5
     },
     {
@@ -36437,7 +36658,7 @@
       "tab_name": "capz-periodic-e2e-main",
       "branch": "main",
       "category": "capz-e2e",
-      "status": "failed",
+      "status": "passed",
       "fail_rate": 0.5
     },
     {
@@ -36451,7 +36672,7 @@
       "branch": "main",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36463,7 +36684,7 @@
       "tab_name": "capz-periodic-e2e-main",
       "branch": "main",
       "category": "capz-e2e",
-      "status": "failed",
+      "status": "passed",
       "fail_rate": 0.5
     },
     {
@@ -36476,7 +36697,7 @@
       "tab_name": "capz-periodic-e2e-main",
       "branch": "main",
       "category": "capz-e2e",
-      "status": "failed",
+      "status": "passed",
       "fail_rate": 0.5
     },
     {
@@ -36515,7 +36736,7 @@
       "tab_name": "capz-periodic-e2e-main",
       "branch": "main",
       "category": "capz-e2e",
-      "status": "failed",
+      "status": "passed",
       "fail_rate": 0.5
     },
     {
@@ -36541,7 +36762,7 @@
       "tab_name": "capz-periodic-e2e-main",
       "branch": "main",
       "category": "capz-e2e",
-      "status": "failed",
+      "status": "passed",
       "fail_rate": 0.5
     },
     {
@@ -36593,7 +36814,7 @@
       "tab_name": "capz-periodic-e2e-v1beta1-release-1-23",
       "branch": "release-1.23",
       "category": "capz-e2e",
-      "status": "failed",
+      "status": "passed",
       "fail_rate": 0.5
     },
     {
@@ -36645,7 +36866,7 @@
       "tab_name": "capz-periodic-e2e-v1beta1-release-1-23",
       "branch": "release-1.23",
       "category": "capz-e2e",
-      "status": "failed",
+      "status": "passed",
       "fail_rate": 0.5
     },
     {
@@ -36684,7 +36905,7 @@
       "tab_name": "capz-periodic-e2e-v1beta1-release-1-23",
       "branch": "release-1.23",
       "category": "capz-e2e",
-      "status": "failed",
+      "status": "passed",
       "fail_rate": 0.5
     },
     {
@@ -36724,7 +36945,7 @@
       "branch": "release-1.23",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36749,7 +36970,7 @@
       "tab_name": "capz-periodic-e2e-v1beta1-release-1-23",
       "branch": "release-1.23",
       "category": "capz-e2e",
-      "status": "failed",
+      "status": "passed",
       "fail_rate": 0.5
     },
     {
@@ -36762,7 +36983,7 @@
       "tab_name": "capz-periodic-e2e-v1beta1-release-1-23",
       "branch": "release-1.23",
       "category": "capz-e2e",
-      "status": "failed",
+      "status": "passed",
       "fail_rate": 0.5
     },
     {
@@ -36776,7 +36997,7 @@
       "branch": "release-1.23",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "job",
@@ -36802,7 +37023,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36815,7 +37036,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36828,7 +37049,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36841,7 +37062,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36854,7 +37075,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36867,7 +37088,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36880,7 +37101,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36893,7 +37114,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36906,7 +37127,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36918,8 +37139,8 @@
       "tab_name": "capz-periodic-e2e-v1beta1-release-1-24",
       "branch": "release-1.24",
       "category": "capz-e2e",
-      "status": "failed",
-      "fail_rate": 1
+      "status": "passed",
+      "fail_rate": 0.5
     },
     {
       "kind": "test",
@@ -36984,7 +37205,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36997,7 +37218,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -37010,7 +37231,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -37023,7 +37244,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -37036,7 +37257,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.5
+      "fail_rate": 0
     },
     {
       "kind": "job",
@@ -37178,8 +37399,8 @@
       "tab_name": "capi-periodic-upgrade-main-1-34-1-35",
       "branch": "main",
       "category": "upgrade",
-      "status": "failed",
-      "fail_rate": 1
+      "status": "passed",
+      "fail_rate": 0.5
     },
     {
       "kind": "test",
@@ -37193,19 +37414,6 @@
       "category": "upgrade",
       "status": "passed",
       "fail_rate": 0
-    },
-    {
-      "kind": "test",
-      "test_name": "[SynchronizedBeforeSuite]",
-      "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main",
-      "job_id": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main",
-      "job_type": "periodic",
-      "repo": "",
-      "tab_name": "capi-periodic-upgrade-main-1-34-1-35",
-      "branch": "main",
-      "category": "upgrade",
-      "status": "passed",
-      "fail_rate": 0.5
     },
     {
       "kind": "job",
@@ -37230,8 +37438,8 @@
       "tab_name": "capi-periodic-upgrade-main-1-35-1-36",
       "branch": "main",
       "category": "upgrade",
-      "status": "passed",
-      "fail_rate": 0
+      "status": "failed",
+      "fail_rate": 0.5
     },
     {
       "kind": "test",

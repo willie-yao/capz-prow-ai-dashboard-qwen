@@ -16,17 +16,53 @@
   },
   "agentic:universal:periodic-cluster-api-provider-azure-apiversion-upgrade-main:2061153162726739968:f709748781335ad4": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-apiversion-upgrade-main:2061153162726739968:f709748781335ad4",
-    "created_at": "2026-06-01T17:11:50.017099-07:00",
+    "created_at": "2026-06-03T11:03:13.492067-07:00",
     "data": {
-      "summary": "Deployment 'azureserviceoperator-controller-manager' failed to become ready within 5 minutes, causing API server connection timeout.",
-      "is_transient": true,
-      "root_cause": "Deployment 'azureserviceoperator-controller-manager' readiness probe failing with: Get \"https://clusterctl-upgrade-management-30t0ki-d9ff9690.canadacentral.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": context deadline exceeded",
+      "summary": "The azureserviceoperator-controller-manager deployment failed to become ready within the timeout period, causing the API server request to time out.",
+      "is_transient": false,
+      "root_cause": "The deployment 'azureserviceoperator-controller-manager' did not become ready within 5 minutes, leading to a context deadline exceeded error when attempting to access the API server. The controller manager logs show successful startup but no further progress, indicating a potential readiness probe failure or initialization issue.",
       "severity": "Critical",
-      "suggested_fix": "Check Azure resource provisioning for management cluster control plane (e.g., VM availability, API server pod status). Verify AzureMachine status conditions and cloud-init logs for bootstrap failures.",
+      "suggested_fix": "Check the readiness probe configuration for the azureserviceoperator-controller-manager deployment. Ensure the controller manager is correctly updating its status and that there are no dependency issues preventing it from becoming ready. Review the deployment's replicas and pod status to confirm it is running as expected.",
       "relevant_files": [
-        "sigs.k8s.io/cluster-api-provider-azure/test/e2e/clusterctl/upgrade_test.go",
-        "sigs.k8s.io/cluster-api-provider-azure/api/v1beta1/azuremachine_types.go"
-      ]
+        "artifacts/clusters/bootstrap/logs/capz-system/azureserviceoperator-controller-manager/azureserviceoperator-controller-manager-7998998bf5-lj7n5/manager.log"
+      ],
+      "tool_calls": 5,
+      "model_bytes": 67648,
+      "gcs_bytes": 65024
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main:2062089625383473152:4d70866b6b8e825c": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main:2062089625383473152:4d70866b6b8e825c",
+    "created_at": "2026-06-03T10:49:35.695261-07:00",
+    "data": {
+      "summary": "Conformance test container failed with exit code 1, but root cause remains undetermined due to missing logs from the test container.",
+      "is_transient": false,
+      "root_cause": "The error 'container run failed with exit code 1' occurred during conformance test execution. Cluster creation succeeded, and no errors were found in containerd logs, kubelet logs, or Azure activity logs. The specific failure in the test container could not be identified due to missing logs from the conformance test pod itself.",
+      "severity": "High",
+      "suggested_fix": "Add explicit logging for the conformance test container execution in the test framework. Verify the test container image (e.g., gcr.io/k8s-testimages/kubetest2-image) is correctly built and accessible. Ensure the test pod spec includes proper tolerations, resource limits, and environment variables for debugging.",
+      "relevant_files": [
+        "test/e2e/conformance_test.go",
+        "artifacts/clusters/capz-conf-r33zr9/machines/capz-conf-r33zr9-control-plane-2jdwk/containerd.log",
+        "artifacts/clusters/capz-conf-r33zr9/machines/capz-conf-r33zr9-control-plane-2jdwk/kubelet.log"
+      ],
+      "tool_calls": 7
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main:2062089625383473152:a9c43252def1ddfd": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main:2062089625383473152:a9c43252def1ddfd",
+    "created_at": "2026-06-03T10:51:09.624003-07:00",
+    "data": {
+      "summary": "Pod failed to start due to missing endpoint for extended resource 'example.com/resource', indicating DRA controller or device plugin misconfiguration.",
+      "is_transient": false,
+      "root_cause": "Pod status in junit.xml shows: 'endpoint not found in cache for a registered resource: example.com/resource'. CAPZ controller logs (manager.log) show no errors related to this resource. Next investigation steps would require checking kubelet/device plugin logs on node 'capz-conf-r33zr9-control-plane-2jdwk' to determine if device plugin registration failed or if ExtendedResourceClaim annotations are missing.",
+      "severity": "High",
+      "suggested_fix": "1. Check kubelet logs for device plugin registration errors\n2. Verify ExtendedResourceClaim objects exist and are properly annotated\n3. Ensure kubelet has --feature-gates=DynamicResourceAllocation=true\n4. Validate device plugin configuration on nodes",
+      "relevant_files": [
+        "k8s.io/kubernetes/test/e2e/dra/dra.go:3050",
+        "artifacts/clusters/capz-conf-r33zr9/machines/capz-conf-r33zr9-control-plane-2jdwk/kubelet.log",
+        "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-5fcbcb596-sxsh2/manager.log"
+      ],
+      "tool_calls": 7
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-24:2059925059375468544:74f2c843741e37dd": {
@@ -118,65 +154,76 @@
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:4e1ab994d8b6ae99": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:4e1ab994d8b6ae99",
-    "created_at": "2026-06-01T17:15:56.738257-07:00",
+    "created_at": "2026-06-03T11:05:48.667495-07:00",
     "data": {
-      "summary": "Cluster creation failed due to webhook certificate verification failure, leading to timeout",
+      "summary": "Cluster creation timed out due to repeated context deadline exceeded errors during template application",
       "is_transient": false,
-      "root_cause": "The error 'tls: failed to verify certificate: x509: certificate signed by unknown authority' occurs when creating AzureCluster resources. This indicates the CAPZ webhook certificate is not trusted by the Kubernetes API server, preventing validation of cluster resources and causing repeated timeouts.",
+      "root_cause": "Failed to apply the cluster template with multiple context deadline exceeded errors in Cluster API controllers. Azure activity logs show successful VM operations, but Kubernetes control plane initialization did not complete within timeout period.",
       "severity": "Critical",
-      "suggested_fix": "1. Verify the CAPZ webhook certificate secret (capz-webhook-server-cert) exists in capz-system namespace\n2. Check certificate chain validity and ensure CA bundle is properly configured in ValidatingWebhookConfiguration\n3. Confirm webhook pod is using the correct certificate secret and certificate contains proper SANs (including 'capz-webhook-service.capz-system.svc')\n4. If using self-signed certs, ensure the CA certificate is trusted by the Kubernetes API server",
+      "suggested_fix": "Investigate control plane node initialization (cloud-init/kubeadm) and consider increasing timeout thresholds. Check kubelet logs and CNI installation timing.",
       "relevant_files": [
-        "config/webhook/certmanager/certificate.yaml",
-        "config/webhook/validatingwebhook.yaml",
-        "controllers/webhook/controller.go"
-      ]
+        "sigs.k8s.io/cluster-api/test/framework/clusterctl/clusterctl_helpers.go",
+        "sigs.k8s.io/cluster-api-provider-azure/controllers/cluster_controller.go"
+      ],
+      "tool_calls": 4,
+      "model_bytes": 21870,
+      "gcs_bytes": 17614
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:50748fbc056aa39f": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:50748fbc056aa39f",
-    "created_at": "2026-06-01T17:16:19.872547-07:00",
+    "created_at": "2026-06-03T11:07:05.386636-07:00",
     "data": {
-      "summary": "Cluster creation timed out due to unreachable kubelet on nodes, caused by version skew between image kubelet and target version",
+      "summary": "Cluster creation timed out due to unreachable nodes. Azure VMs were provisioned but failed to register with the API server, with empty cloud-init logs indicating bootstrap failure.",
       "is_transient": false,
-      "root_cause": "Build log shows repeated 'dial tcp 10.0.0.4:10250: i/o timeout' errors when accessing kubelet logs. The GIT_VERSION in build logs shows 'v1.24.0-51-70144ba349945b-dirty' which indicates a version mismatch between the test's target version and the image's kubelet version. This causes cloud-init to fail starting kubelet silently.",
+      "root_cause": "Azure activity logs show successful VM provisioning, but cloud-init-output.log and kubelet.log are empty (artifacts/clusters/capz-e2e-5dhz3k-azl3/machines/capz-e2e-5dhz3k-azl3-control-plane-csdjf/). This indicates cloud-init failed to execute or encountered an error during node bootstrapping.",
       "severity": "Critical",
-      "suggested_fix": "Ensure the gallery image's kubelet version matches the test's target version. Update the image configuration in config/capz/manager_image_patch.yaml to use a compatible kubelet version.",
+      "suggested_fix": "1. Verify cloud-init script execution by checking cloud-init-output.log and cloud-init.log (both empty in this case). 2. Check if the VM image contains required binaries (kubelet, containerd) and validate cloud-init configuration. 3. Ensure network connectivity between nodes and API server (e.g., check security groups).",
       "relevant_files": [
-        "config/capz/manager_image_patch.yaml",
-        "version/version.go"
-      ]
+        "artifacts/clusters/capz-e2e-5dhz3k-azl3/azure-activity-logs/capz-e2e-5dhz3k-azl3.log",
+        "artifacts/clusters/capz-e2e-5dhz3k-azl3/machines/capz-e2e-5dhz3k-azl3-control-plane-csdjf/cloud-init-output.log",
+        "artifacts/clusters/capz-e2e-5dhz3k-azl3/machines/capz-e2e-5dhz3k-azl3-control-plane-csdjf/kubelet.log"
+      ],
+      "tool_calls": 7,
+      "model_bytes": 43620,
+      "gcs_bytes": 40704
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:51f5b4b6a0be2875": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:51f5b4b6a0be2875",
-    "created_at": "2026-06-01T17:17:03.553893-07:00",
+    "created_at": "2026-06-03T11:08:27.902607-07:00",
     "data": {
-      "summary": "Test timed out waiting for cluster creation due to kubelet connection failures on control plane nodes.",
+      "summary": "Cluster creation failed due to TLS certificate verification errors in CAPZ webhooks, leading to context deadlines.",
       "is_transient": false,
-      "root_cause": "Multiple 'dial tcp 10.0.0.x:10250: i/o timeout' errors in build-log.txt indicate kubelet is unreachable on control plane nodes. This prevents API server registration and cluster initialization. Root cause likely in failed node bootstrapping (cloud-init/kubeadm).",
+      "root_cause": "The CAPZ webhook certificate is untrusted, causing resource creation failures. Log lines show: 'tls: failed to verify certificate: x509: certificate signed by unknown authority' followed by 'context deadline exceeded' errors.",
       "severity": "Critical",
-      "suggested_fix": "Check cloud-init-output.log on control plane nodes for errors during kubelet installation. Verify Azure VM provisioning succeeded (no SkuNotAvailable). Ensure kubeadm init completed successfully on first control plane node.",
+      "suggested_fix": "Ensure the CAPZ webhook service certificate is signed by a trusted CA. Update the CA bundle in the webhook configuration (e.g., in `config/webhook/` manifests) or fix certificate generation in the controller manager deployment.",
       "relevant_files": [
-        "artifacts/clusters/{cluster-name}/machines/{control-plane-node}/cloud-init-output.log",
-        "artifacts/clusters/{cluster-name}/machines/{control-plane-node}/kubelet.log",
-        "artifacts/clusters/{cluster-name}/azure-activity-logs/{cluster-name}.log"
-      ]
+        "sigs.k8s.io/cluster-api-provider-azure/config/webhook/service.yaml",
+        "sigs.k8s.io/cluster-api-provider-azure/controllers/cluster_controller.go",
+        "sigs.k8s.io/cluster-api-provider-azure/controllers/webhook.go"
+      ],
+      "tool_calls": 3,
+      "model_bytes": 43161,
+      "gcs_bytes": 1017582
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:53d21bf04cf5c5c9": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:53d21bf04cf5c5c9",
-    "created_at": "2026-06-01T17:13:31.033866-07:00",
+    "created_at": "2026-06-03T11:05:01.74493-07:00",
     "data": {
-      "summary": "Test timed out due to kubelet not responding on nodes, leading to connection timeouts during cluster creation.",
+      "summary": "Cluster creation failed due to TLS certificate verification failure in AzureCluster webhook validation",
       "is_transient": false,
-      "root_cause": "Multiple 'i/o timeout' errors when connecting to kubelet on port 10250, indicating nodes failed to register or kubelet crashed. Evidence from build-log.txt: 'dial tcp 10.0.0.4:10250: i/o timeout' and 'dial tcp 10.0.0.6:10250: i/o timeout'.",
+      "root_cause": "Failed to verify certificate for webhook \"validation.azurecluster.infrastructure.cluster.x-k8s.io\": x509 certificate signed by unknown authority. Log line: \"tls: failed to verify certificate: x509: certificate signed by unknown authority\"",
       "severity": "Critical",
-      "suggested_fix": "Investigate cloud-init logs for VM bootstrapping failures, check kubelet logs for crashes, and validate dual-stack network configuration. Ensure CNI (Calico) is properly deployed and kubelet is running.",
+      "suggested_fix": "Ensure the webhook service's certificate is signed by a trusted CA. Verify the cert-manager configuration and CA certificate installation in the test environment. Check CAPZ webhook setup for IPv6 cluster scenarios.",
       "relevant_files": [
-        "build-log.txt",
-        "artifacts/clusters/capz-e2e-5dhz3k-azl3/machines/*/cloud-init-output.log",
-        "artifacts/clusters/capz-e2e-5dhz3k-azl3/machines/*/kubelet.log"
-      ]
+        "sigs.k8s.io/cluster-api-provider-azure/controllers/azurecluster_webhook.go",
+        "sigs.k8s.io/cluster-api-provider-azure/test/e2e/azure_test.go"
+      ],
+      "tool_calls": 5,
+      "model_bytes": 29823,
+      "gcs_bytes": 1017582
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:5bda0480976d4527": {
@@ -196,49 +243,55 @@
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:70269197d9df8ec3": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:70269197d9df8ec3",
-    "created_at": "2026-06-01T17:13:06.444441-07:00",
+    "created_at": "2026-06-03T11:04:08.71871-07:00",
     "data": {
-      "summary": "Test failed due to timeout accessing kubelet logs on nodes, indicating nodes did not become accessible. Likely caused by network configuration issues in the private cluster setup or VM provisioning failures.",
-      "is_transient": false,
-      "root_cause": "Multiple 'dial tcp 10.0.0.x:10250: i/o timeout' errors in build-log.txt when attempting to stream logs from pods. This suggests kubelet failed to start on nodes, possibly due to VM provisioning issues or network policies blocking communication.",
-      "severity": "Critical",
-      "suggested_fix": "Check AzureMachine FailureMessage for provisioning errors. Verify network security groups and custom vnet configuration for the private cluster. Investigate cloud-init-output.log and boot.log for control plane nodes to identify bootstrap failures.",
+      "summary": "The test failed due to multiple context deadline exceeded errors during workload cluster creation, indicating timeouts in establishing connections to node kubelets and API servers.",
+      "is_transient": true,
+      "root_cause": "The build log shows repeated 'dial tcp 10.0.0.4:10250: i/o timeout' errors when attempting to stream logs from pods like calico-node, cloud-controller-manager, and kube-proxy. This suggests the nodes were unreachable or failed to initialize their kubelet services, leading to timeouts during cluster creation.",
+      "severity": "High",
+      "suggested_fix": "Investigate transient network issues or node initialization failures. Check cloud-init logs for errors in node setup, verify network security group (NSG) rules for the custom vnet, and ensure proper image availability for node components.",
       "relevant_files": [
         "build-log.txt",
-        "artifacts/clusters/capz-e2e-5dhz3k-azl3/machines/*/cloud-init-output.log",
-        "artifacts/clusters/capz-e2e-5dhz3k-azl3/azure-activity-logs/capz-e2e-5dhz3k.log"
-      ]
+        "artifacts/clusters/capz-e2e-5dhz3k-azl3/azure-activity-logs/capz-e2e-5dhz3k-azl3.log"
+      ],
+      "tool_calls": 4,
+      "model_bytes": 34766,
+      "gcs_bytes": 1474592
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:804818ed02e175d4": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:804818ed02e175d4",
-    "created_at": "2026-06-01T17:16:38.642691-07:00",
+    "created_at": "2026-06-03T11:07:57.528751-07:00",
     "data": {
-      "summary": "Test failed due to Azure API rate limiting causing resource creation timeouts",
-      "is_transient": true,
-      "root_cause": "Multiple 'client rate limiter Wait returned an error: context deadline exceeded' errors in build-log.txt when creating AzureCluster and AzureMachineTemplate resources",
-      "severity": "High",
-      "suggested_fix": "Implement retry logic with exponential backoff for Azure resource creation operations in CAPZ controllers. Consider increasing Azure API quota limits for test environments.",
+      "summary": "The test failed due to TLS certificate verification errors when creating the AzureCluster resource, caused by an untrusted certificate authority.",
+      "is_transient": false,
+      "root_cause": "The webhook validation failed with 'x509: certificate signed by unknown authority' errors in the build log (line 1480), indicating the AzureCluster webhook certificate isn't trusted. This blocked cluster template application and led to timeouts. Cluster creation never progressed beyond the webhook validation step.",
+      "severity": "Critical",
+      "suggested_fix": "Update the webhook certificate configuration to use a trusted CA. Check the certificate generation process in `config/webhook/certmanager.yaml` and ensure the CA certificate is properly injected into the webhook deployment. Verify TLS settings in `controllers/azurecluster/webhook.go`.",
       "relevant_files": [
-        "controllers/azurecluster_controller.go",
-        "controllers/azuremachine_controller.go",
-        "api/v1beta1/azurecluster_types.go"
-      ]
+        "config/webhook/certmanager.yaml",
+        "controllers/azurecluster/webhook.go"
+      ],
+      "tool_calls": 4,
+      "model_bytes": 44581,
+      "gcs_bytes": 1017582
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:970e49da1d18b2b2": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:970e49da1d18b2b2",
-    "created_at": "2026-06-01T17:17:11.618446-07:00",
+    "created_at": "2026-06-03T11:09:05.517113-07:00",
     "data": {
-      "summary": "Cluster creation timed out due to Azure subscription VM quota limit preventing spot VM provisioning",
+      "summary": "Test failed due to timeout waiting for cluster template application, likely caused by spot VM provisioning issues.",
       "is_transient": true,
-      "root_cause": "Azure activity log shows: \"The subscription has reached its quota limit for the resource type 'virtualMachines'.\" Multiple context deadline exceeded errors in build-log.txt during cluster creation",
+      "root_cause": "Multiple context deadline exceeded errors during cluster template application. Common transient causes include Azure spot VM quota limits, temporary resource unavailability, or throttling during VM provisioning.",
       "severity": "High",
-      "suggested_fix": "Request Azure subscription quota increase for virtualMachines resource type, or reduce test cluster size. Consider adding retry logic for quota errors in CAPZ.",
+      "suggested_fix": "Check AzureMachine resources in the target cluster for provisioning errors. Verify spot VM quota availability and retry transient failures. Consider increasing timeout thresholds for spot VM creation.",
       "relevant_files": [
-        "artifacts/clusters/capz-e2e-abc123/azure-activity-logs/capz-e2e-abc123.log",
-        "build-log.txt"
-      ]
+        "sigs.k8s.io/cluster-api-provider-azure/test/e2e/clusterctl/clusterctl_helpers.go"
+      ],
+      "tool_calls": 4,
+      "model_bytes": 13033,
+      "gcs_bytes": 9422
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:c99be8419c28ca08": {
@@ -288,18 +341,21 @@
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2060928682012184576:234b674ddb49cfd8": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2060928682012184576:234b674ddb49cfd8",
-    "created_at": "2026-06-01T17:18:31.457772-07:00",
+    "created_at": "2026-06-03T11:09:59.802061-07:00",
     "data": {
-      "summary": "The test failed because the deployment 'calico-kube-controllers' was not found in the expected namespace, likely due to a misconfiguration in the HelmChartProxy or test logic.",
+      "summary": "Test timed out waiting for Calico kube-controllers deployment to be created, likely due to failed CNI installation via HelmChartProxy.",
       "is_transient": false,
-      "root_cause": "The error 'deployments.apps \"calico-kube-controllers\" not found' indicates the deployment was not created. Logs show Calico pods exist in 'calico-system', but the deployment might not have been installed correctly via Helm or the test is checking the wrong namespace.",
+      "root_cause": "Deployment 'calico-kube-controllers' not found in test namespace. Build-log shows test timed out waiting for deployment to exist. Common failure patterns indicate this is likely due to HelmChartProxy installation failure or node provisioning issues preventing pod scheduling.",
       "severity": "High",
-      "suggested_fix": "Verify the HelmChartProxy for Calico is correctly configured with the namespace 'calico-system' and the correct chart version. Check for Helm installation errors in the build logs and ensure the test is querying the correct namespace.",
+      "suggested_fix": "Check AzureMachinePool status for VMSS provisioning errors. Verify cluster labels (cni=calico) are correctly applied. Check tigera-operator pod logs for Helm installation errors. Validate Azure resource quotas and network configurations.",
       "relevant_files": [
         "test/e2e/helpers.go",
         "config/capz/manager_image_patch.yaml",
         "config/capz/manager_pull_policy.yaml"
-      ]
+      ],
+      "tool_calls": 6,
+      "model_bytes": 20417,
+      "gcs_bytes": 9455
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2060928682012184576:3d02626b0869fa2c": {
@@ -334,18 +390,20 @@
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2060928682012184576:d0d1ac65b8504a36": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2060928682012184576:d0d1ac65b8504a36",
-    "created_at": "2026-06-01T17:18:47.996575-07:00",
+    "created_at": "2026-06-03T11:11:31.118647-07:00",
     "data": {
-      "summary": "The test failed because the Calico CNI deployment was not found, indicating a failure in the Helm chart installation process.",
+      "summary": "The test failed because the deployment 'calico-kube-controllers' was not found in the 'calico-system' namespace, despite being created earlier. The deployment became available after 80 seconds but the test timed out after 900 seconds, indicating a possible race condition or resource cleanup.",
       "is_transient": false,
-      "root_cause": "The error 'deployments.apps \"calico-kube-controllers\" not found' indicates that the Calico Helm chart was not successfully deployed. This is likely due to a misconfiguration in the HelmChartProxy or CAAPH controller, as the deployment was never created in the cluster.",
+      "root_cause": "The deployment 'calico-kube-controllers' was created and marked available in the 'calico-system' namespace (e.g., 'May 31 04:00:35.922: INFO: Deployment calico-system/calico-kube-controllers is now available'), but the test timed out with 'deployments.apps \"calico-kube-controllers\" not found'. This suggests the deployment was deleted or not properly tracked after initial availability.",
       "severity": "High",
-      "suggested_fix": "Check the CAAPH (Cluster API Addon Provider Helm) configuration for Calico deployment. Verify that the HelmChartProxy resource for Calico (with label cni=calico) is correctly defined and that the controller has proper permissions. Inspect the CAAPH controller logs for errors during Helm chart installation.",
+      "suggested_fix": "1. Check the pod logs for 'calico-system/calico-kube-controllers-86bcc79966-9wfvg' to identify container crashes or readiness issues.\n2. Verify if the deployment was deleted by another test case or garbage collection.\n3. Ensure the test waits for the deployment's pod to be fully ready, not just the deployment's availability.",
       "relevant_files": [
-        "sigs.k8s.io/cluster-api-addon-provider-helm/pkg/controllers/helmchartproxy_controller.go",
-        "config/capz/manager_image_patch.yaml",
-        "config/capz/manager_pull_policy.yaml"
-      ]
+        "artifacts/clusters/capz-e2e-0j3e3v-flex/calico-system/calico-kube-controllers-86bcc79966-9wfvg/calico-kube-controllers.log",
+        "artifacts/clusters/capz-e2e-0j3e3v-flex/machines/\u003cmachine-name\u003e/kubelet.log"
+      ],
+      "tool_calls": 6,
+      "model_bytes": 48838,
+      "gcs_bytes": 539215
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24:2059911721539080192:1994ba1677a93f64": {
@@ -604,49 +662,57 @@
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24:2061015253067501568:2de77ee2e743fddf": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24:2061015253067501568:2de77ee2e743fddf",
-    "created_at": "2026-06-01T17:23:47.4819-07:00",
+    "created_at": "2026-06-03T11:12:31.313257-07:00",
     "data": {
-      "summary": "Deployment azureserviceoperator-controller-manager failed to become ready due to kubelet connectivity issues on nodes",
+      "summary": "Test failed due to deployment 'azureserviceoperator-controller-manager' not becoming ready within 5 minutes, caused by network timeouts to kubelet endpoints.",
       "is_transient": false,
-      "root_cause": "Multiple kubelet connection timeouts observed in build-log.txt: 'dial tcp 10.0.0.5:10250: i/o timeout'. Nodes failed to register with API server, preventing deployment rollout. Root cause appears to be node bootstrapping failure rather than deployment-specific issue.",
+      "root_cause": "The deployment readiness check timed out because the API server could not reach kubelet endpoints (e.g., 'dial tcp 10.0.0.6:10250: i/o timeout' in build-log.txt). This indicates kubelet failures or network misconfigurations in the custom VNet.",
       "severity": "Critical",
-      "suggested_fix": "Check cloud-init logs on nodes to verify kubelet startup, confirm Azure VM provisioning succeeded, and validate network security rules allow traffic on port 10250. Investigate kubelet.service status and journal logs on affected nodes.",
+      "suggested_fix": "1. Verify kubelet status on nodes by checking cloud-init logs for errors. 2. Ensure network security groups (NSGs) and routing tables in the custom VNet allow traffic between the API server and kubelet endpoints (port 10250). 3. Check Azure VM provisioning logs for failures in the custom VNet setup.",
       "relevant_files": [
         "build-log.txt",
-        "artifacts/clusters/*/machines/*/cloud-init-output.log",
-        "artifacts/clusters/*/machines/*/kubelet.log",
         "artifacts/clusters/*/azure-activity-logs/*.log"
-      ]
+      ],
+      "tool_calls": 3,
+      "model_bytes": 33440,
+      "gcs_bytes": 32512
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24:2061015253067501568:b8174cd03e0070be": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24:2061015253067501568:b8174cd03e0070be",
-    "created_at": "2026-06-01T17:24:14.966343-07:00",
+    "created_at": "2026-06-03T11:13:51.462928-07:00",
     "data": {
-      "summary": "Missing environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER caused clusterctl config cluster to fail during KubeRay test setup.",
+      "summary": "The test failed due to missing environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER required by clusterctl configuration.",
       "is_transient": false,
-      "root_cause": "The error message explicitly states that required variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER] were not set in either environment variables or clusterctl config file. This is a configuration issue in the test environment or template.",
+      "root_cause": "The build-log.txt explicitly shows missing variables in clusterctl config: \"value for variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER] is not set\" (line 3557). Grep confirms these variables were never defined in the environment or config files.",
       "severity": "Critical",
-      "suggested_fix": "Add the missing variables to either:\n1. The clusterctl config file (e.g., ~/.cluster-api/config.yaml) with:\n   AZURE_BLOB_CONTAINER_NAME: \"\u003cvalue\u003e\"\n   IMAGE_TAG_ACR_CREDENTIAL_PROVIDER: \"\u003cvalue\u003e\"\n2. Or set them as environment variables in the test setup:\n   export AZURE_BLOB_CONTAINER_NAME=\u003cvalue\u003e\n   export IMAGE_TAG_ACR_CREDENTIAL_PROVIDER=\u003cvalue\u003e",
+      "suggested_fix": "Set these variables in clusterctl.yaml or environment. For example, add to test/e2e/config/clusterctl.yaml:\nvariables:\n  AZURE_BLOB_CONTAINER_NAME: \"\u003cvalid-container-name\u003e\"\n  IMAGE_TAG_ACR_CREDENTIAL_PROVIDER: \"\u003cvalid-image-tag\u003e\"",
       "relevant_files": [
-        "sigs.k8s.io/cluster-api/test/framework/clusterctl/client.go",
-        "~/.cluster-api/config.yaml (if exists)"
-      ]
+        "test/e2e/config/clusterctl.yaml",
+        "test/e2e/framework/clusterctl/client.go"
+      ],
+      "tool_calls": 3,
+      "model_bytes": 34204,
+      "gcs_bytes": 557632
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24:2061015253067501568:d3aea6f1018b6f3c": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24:2061015253067501568:d3aea6f1018b6f3c",
-    "created_at": "2026-06-01T17:24:06.009187-07:00",
+    "created_at": "2026-06-03T11:13:11.045287-07:00",
     "data": {
-      "summary": "Cluster creation failed due to missing environment variables required by clusterctl configuration",
+      "summary": "Missing environment variables AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER during clusterctl config cluster execution",
       "is_transient": false,
-      "root_cause": "The clusterctl config cluster command failed with missing variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER]. These variables were not set in the environment or clusterctl config file as required by the error message: \"value for variables [...] is not set. Please set the value using os environment variables or the clusterctl config file\"",
+      "root_cause": "The error occurred in clusterctl client code when generating cluster configuration. The build-log.txt shows: \"value for variables [AZURE_BLOB_CONTAINER_NAME, IMAGE_TAG_ACR_CREDENTIAL_PROVIDER] is not set. Please set the value using os environment variables or the clusterctl config file\" (line 3557). This indicates missing required configuration parameters for Azure blob storage and ACR credential provider image tagging.",
       "severity": "High",
-      "suggested_fix": "Add AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER to either:\n1. The test's environment variables in the Prow job config, or\n2. The clusterctl config file used in test/e2e/config/clusterctl/ directory\nCheck if these variables should be set in the test's BeforeEach setup or in the CI environment",
+      "suggested_fix": "Set the missing environment variables in the test configuration. Add AZURE_BLOB_CONTAINER_NAME and IMAGE_TAG_ACR_CREDENTIAL_PROVIDER to the CI job environment variables or update the clusterctl config file in the test framework. Check config/capz/ directory files for configuration references.",
       "relevant_files": [
-        "test/e2e/config/clusterctl/clusterctl.yaml",
-        "test/e2e/workload_cluster_test.go"
-      ]
+        "sigs.k8s.io/cluster-api-provider-azure/test/e2e/clusterctl/client.go",
+        "sigs.k8s.io/cluster-api-provider-azure/config/capz/manager_image_patch.yaml",
+        "sigs.k8s.io/cluster-api-provider-azure/config/capz/manager_pull_policy.yaml"
+      ],
+      "tool_calls": 3,
+      "model_bytes": 13216,
+      "gcs_bytes": 534618
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main:2061103586208649216:5d4c9929046b4289": {
@@ -680,17 +746,37 @@
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main:2061471261799747584:4cedc23a2f9c55d9": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main:2061471261799747584:4cedc23a2f9c55d9",
-    "created_at": "2026-06-01T17:10:38.876851-07:00",
+    "created_at": "2026-06-03T11:02:20.163911-07:00",
     "data": {
-      "summary": "Control plane upgrade failed because old Machines were not deleted, causing a timeout after 3600s.",
-      "is_transient": false,
-      "root_cause": "The test timed out waiting for all control-plane machines to upgrade to v1.35.5. The error 'old Machines remain' indicates the upgrade process failed to replace old control plane nodes, likely due to misconfigured upgrade strategy or resource deletion issues.",
-      "severity": "Critical",
-      "suggested_fix": "1. Check the KubeadmControlPlane resource's upgrade strategy (e.g., maxSurge/maxUnavailable). 2. Verify AzureMachine deletion status and Azure activity logs for resource cleanup errors. 3. Review CAPZ controller logs for reconciliation errors during upgrade.",
+      "summary": "Control plane upgrade timed out because old machines remained due to Node registration failure",
+      "is_transient": true,
+      "root_cause": "Build log shows repeated \"Waiting for a Node with spec.providerID... to exist\" for control plane AzureMachine. AzureMachine reports VMRunning=True but Node was never registered. Likely cloud-init failure or kubelet startup issue. Evidence in build-log.txt: \"NodeHealthy: Waiting for a Node with spec.providerID azure://... to exist\"",
+      "severity": "High",
+      "suggested_fix": "Check cloud-init logs for the control plane machine to identify bootstrapping errors. Verify AzureMachine's image version compatibility with target Kubernetes version. Ensure proper network connectivity for kubelet registration.",
       "relevant_files": [
-        "sigs.k8s.io/cluster-api-provider-azure/test/e2e/workload-upgrade_test.go",
-        "sigs.k8s.io/cluster-api-provider-azure/config/capz/manager_image_patch.yaml"
-      ]
+        "build-log.txt",
+        "artifacts/clusters/k8s-upgrade-and-conformance-e8ed3q/azure-activity-logs/*.log"
+      ],
+      "tool_calls": 4,
+      "model_bytes": 33774,
+      "gcs_bytes": 32512
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-35-1-36-main:2062185004665933824:7635b0d7ccfe021d": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-35-1-36-main:2062185004665933824:7635b0d7ccfe021d",
+    "created_at": "2026-06-03T10:46:12.987577-07:00",
+    "data": {
+      "summary": "Third control plane machine (k8s-upgrade-and-conformance-pno55n-control-plane-c6zkh) failed to provision due to SSH connectivity issues and empty logs indicating VM boot failure.",
+      "is_transient": false,
+      "root_cause": "The third control plane machine's cloud-init and kubelet logs are empty (0 bytes) at artifacts/clusters/k8s-upgrade-and-conformance-pno55n/machines/k8s-upgrade-and-conformance-pno55n-control-plane-c6zkh/, while the build-log.txt shows \"ssh: rejected: connect failed (Temporary failure in name resolution)\" errors. This indicates the VM failed to boot or network connectivity was broken during provisioning.",
+      "severity": "Critical",
+      "suggested_fix": "Investigate Azure VM provisioning failures for the third control plane node. Check AzureMachine resource status conditions and ensure proper DNS configuration. Verify Azure quotas and network security rules allowing SSH access.",
+      "relevant_files": [
+        "artifacts/clusters/k8s-upgrade-and-conformance-pno55n/machines/k8s-upgrade-and-conformance-pno55n-control-plane-c6zkh/cloud-init-output.log",
+        "artifacts/clusters/k8s-upgrade-and-conformance-pno55n/machines/k8s-upgrade-and-conformance-pno55n-control-plane-c6zkh/kubelet.log",
+        "build-log.txt"
+      ],
+      "tool_calls": 8
     }
   }
 }

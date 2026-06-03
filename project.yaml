@@ -137,6 +137,15 @@ ai:
   agentic:
     enabled: true
     always: false
+    # Minimum tool calls before a tools-free final answer is accepted.
+    # Qwen3-235B tends to finalize from the prompt alone in 0-2 calls
+    # (A/B vs Claude Opus showed 24% zero-tool finals and several
+    # fabricated root causes), so we enforce a floor of 3 here to make
+    # the model at least list the build root, grep the failure logs,
+    # and read one artifact before declaring a root cause. The engine
+    # nudges and re-prompts when the model finalizes below the floor;
+    # see prow-ai-dashboard/docs/agentic.md for full semantics.
+    min_tool_calls: 3
     tools:
       - filesystem
       - k8s

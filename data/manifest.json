@@ -124,6 +124,7 @@
     },
     "agentic": {
       "enabled": true,
+      "min_tool_calls": 3,
       "tools": [
         "filesystem",
         "k8s"

@@ -5,6 +5,371 @@
   "repo": "",
   "runs": [
     {
+      "build_id": "2062038286246875136",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "started": "2026-06-03T05:06:59Z",
+      "finished": "2026-06-03T06:42:30Z",
+      "passed": true,
+      "result": "SUCCESS",
+      "duration_seconds": 5731,
+      "commit": "83d2de99f31a10148b35caaa5d0c964adeeecb5d",
+      "repo_version": "83d2de99f31a10148b35caaa5d0c964adeeecb5d",
+      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2062038286246875136/",
+      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2062038286246875136/build-log.txt",
+      "junit_urls": [
+        "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2062038286246875136/artifacts/junit.e2e_suite.1.xml"
+      ],
+      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2062038286246875136/",
+      "test_cases": [
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 102.582706975,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the quick-start spec Should create a workload cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the MachineDeployment rollout spec Should successfully upgrade Machines upon changes in relevant MachineDeployment fields",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the self-hosted spec Should pivot the bootstrap cluster to a self-hosted cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully remediate unhealthy worker machines with MachineHealthCheck Should replace unhealthy machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully exercise machine pools Should successfully create a cluster with machine pool machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully scale out and scale in a MachineDeployment Should successfully scale a MachineDeployment up and down upon changes to the MachineDeployment replica count",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the workload cluster upgrade spec [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a private cluster [OPTIONAL] Creates a public management cluster in a custom vnet",
+          "status": "passed",
+          "duration_seconds": 3474.090969855,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 1274.636984355,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 102.591292442,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for control plane tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster using ClusterClass [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster with the ASO API [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a dual-stack cluster [OPTIONAL] With dual-stack worker node",
+          "status": "passed",
+          "duration_seconds": 2002.381817214,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Conformance Tests conformance-tests",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000583969,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 102.532996156,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a GPU-enabled cluster [OPTIONAL] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 2.399499415,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters using clusterclass [OPTIONAL] with a single control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 1071.728616343,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating RKE2 clusters using clusterclass [OPTIONAL] with 3 control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 1539.491524804,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000278154,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 102.57984079,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly available cluster [REQUIRED] With 3 control-plane nodes and 2 Linux and 2 Windows worker nodes",
+          "status": "passed",
+          "duration_seconds": 2616.741557435,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000269574,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 102.596755342,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a ipv6 control-plane cluster [REQUIRED] With ipv6 worker node",
+          "status": "passed",
+          "duration_seconds": 1692.03354145,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayCluster and verifies it becomes ready",
+          "status": "passed",
+          "duration_seconds": 937.964461101,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000230704,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 102.593447923,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with spot vms [OPTIONAL] With spot vm machine deployments",
+          "status": "passed",
+          "duration_seconds": 1137.526533238,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters on public MEC [OPTIONAL] with 1 control plane nodes and 1 worker node",
+          "status": "skipped",
+          "duration_seconds": 1.428803883,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate using default template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1521.174041407,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000262284,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 102.527094667,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a Flatcar sysext cluster [OPTIONAL] With Flatcar control-plane and worker nodes",
+          "status": "passed",
+          "duration_seconds": 1218.356996894,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate and fully spec-ed out APIServer ILB template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1534.719595093,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000275734,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 102.579396504,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation when Creating a highly available cluster with Azure CNI v1 [REQUIRED] can create 3 control-plane nodes and 2 Linux worker nodes [Azure CNI v1]",
+          "status": "passed",
+          "duration_seconds": 1815.724996642,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayJob and verifies it completes successfully",
+          "status": "passed",
+          "duration_seconds": 1015.309642267,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000265974,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 102.598933536,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a VMSS cluster [REQUIRED] with a single control plane node and an AzureMachinePool with 2 Linux nodes",
+          "status": "passed",
+          "duration_seconds": 1620.269430461,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Testing autoscaling from zero with Cluster Autoscaler [REQUIRED] Scales MachineDeployment from 0 to 1+ when workload is scheduled",
+          "status": "passed",
+          "duration_seconds": 1242.026671109,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000378866,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 102.587928231,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with VMSS flex machinepools [OPTIONAL] with 1 control plane node and 1 machinepool",
+          "status": "passed",
+          "duration_seconds": 1438.357331395,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly-available cluster with Azure Linux 3 [OPTIONAL] with three controlplane node and two worker nodes",
+          "status": "passed",
+          "duration_seconds": 3310.33908966,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000338656,
+          "junit_file": "junit.e2e_suite.1.xml"
+        }
+      ],
+      "tests_total": 57,
+      "tests_passed": 37,
+      "tests_failed": 0,
+      "tests_skipped": 20
+    },
+    {
       "build_id": "2060928682012184576",
       "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
       "started": "2026-05-31T03:37:48Z",
@@ -193,25 +558,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/helpers.go#L124",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-02T00:18:31Z",
-            "summary": "The test failed because the deployment 'calico-kube-controllers' was not found in the expected namespace, likely due to a misconfiguration in the HelmChartProxy or test logic.",
+            "generated_at": "2026-06-03T18:09:59Z",
+            "summary": "Test timed out waiting for Calico kube-controllers deployment to be created, likely due to failed CNI installation via HelmChartProxy.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-02T00:18:31Z",
-            "root_cause": "The error 'deployments.apps \"calico-kube-controllers\" not found' indicates the deployment was not created. Logs show Calico pods exist in 'calico-system', but the deployment might not have been installed correctly via Helm or the test is checking the wrong namespace.",
+            "generated_at": "2026-06-03T18:09:59Z",
+            "root_cause": "Deployment 'calico-kube-controllers' not found in test namespace. Build-log shows test timed out waiting for deployment to exist. Common failure patterns indicate this is likely due to HelmChartProxy installation failure or node provisioning issues preventing pod scheduling.",
             "severity": "High",
-            "suggested_fix": "Verify the HelmChartProxy for Calico is correctly configured with the namespace 'calico-system' and the correct chart version. Check for Helm installation errors in the build logs and ensure the test is querying the correct namespace.",
+            "suggested_fix": "Check AzureMachinePool status for VMSS provisioning errors. Verify cluster labels (cni=calico) are correctly applied. Check tigera-operator pod logs for Helm installation errors. Validate Azure resource quotas and network configurations.",
             "relevant_files": [
               "test/e2e/helpers.go",
               "config/capz/manager_image_patch.yaml",
               "config/capz/manager_pull_policy.yaml"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 1,
-            "model_bytes": 32788,
-            "gcs_bytes": 32512,
-            "elapsed_ms": 22801
+            "tool_calls": 6,
+            "model_bytes": 20417,
+            "gcs_bytes": 9455,
+            "elapsed_ms": 54282
           }
         },
         {
@@ -320,25 +685,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/helpers.go#L124",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-02T00:18:47Z",
-            "summary": "The test failed because the Calico CNI deployment was not found, indicating a failure in the Helm chart installation process.",
+            "generated_at": "2026-06-03T18:11:31Z",
+            "summary": "The test failed because the deployment 'calico-kube-controllers' was not found in the 'calico-system' namespace, despite being created earlier. The deployment became available after 80 seconds but the test timed out after 900 seconds, indicating a possible race condition or resource cleanup.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-02T00:18:47Z",
-            "root_cause": "The error 'deployments.apps \"calico-kube-controllers\" not found' indicates that the Calico Helm chart was not successfully deployed. This is likely due to a misconfiguration in the HelmChartProxy or CAAPH controller, as the deployment was never created in the cluster.",
+            "generated_at": "2026-06-03T18:11:31Z",
+            "root_cause": "The deployment 'calico-kube-controllers' was created and marked available in the 'calico-system' namespace (e.g., 'May 31 04:00:35.922: INFO: Deployment calico-system/calico-kube-controllers is now available'), but the test timed out with 'deployments.apps \"calico-kube-controllers\" not found'. This suggests the deployment was deleted or not properly tracked after initial availability.",
             "severity": "High",
-            "suggested_fix": "Check the CAAPH (Cluster API Addon Provider Helm) configuration for Calico deployment. Verify that the HelmChartProxy resource for Calico (with label cni=calico) is correctly defined and that the controller has proper permissions. Inspect the CAAPH controller logs for errors during Helm chart installation.",
+            "suggested_fix": "1. Check the pod logs for 'calico-system/calico-kube-controllers-86bcc79966-9wfvg' to identify container crashes or readiness issues.\n2. Verify if the deployment was deleted by another test case or garbage collection.\n3. Ensure the test waits for the deployment's pod to be fully ready, not just the deployment's availability.",
             "relevant_files": [
-              "sigs.k8s.io/cluster-api-addon-provider-helm/pkg/controllers/helmchartproxy_controller.go",
-              "config/capz/manager_image_patch.yaml",
-              "config/capz/manager_pull_policy.yaml"
+              "artifacts/clusters/capz-e2e-0j3e3v-flex/calico-system/calico-kube-controllers-86bcc79966-9wfvg/calico-kube-controllers.log",
+              "artifacts/clusters/capz-e2e-0j3e3v-flex/machines/\u003cmachine-name\u003e/kubelet.log"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 1,
-            "model_bytes": 10136,
-            "gcs_bytes": 9455,
-            "elapsed_ms": 16538
+            "tool_calls": 6,
+            "model_bytes": 48838,
+            "gcs_bytes": 539215,
+            "elapsed_ms": 91315
           }
         },
         {
@@ -474,419 +838,6 @@
       "tests_total": 57,
       "tests_passed": 32,
       "tests_failed": 5,
-      "tests_skipped": 20
-    },
-    {
-      "build_id": "2059817348679864320",
-      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
-      "started": "2026-05-28T02:01:46Z",
-      "finished": "2026-05-28T03:36:36Z",
-      "passed": false,
-      "result": "FAILURE",
-      "duration_seconds": 5690,
-      "commit": "3b67c11562b97890b1590f6006072e03d10c28d6",
-      "repo_version": "3b67c11562b97890b1590f6006072e03d10c28d6",
-      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2059817348679864320/",
-      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2059817348679864320/build-log.txt",
-      "junit_urls": [
-        "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2059817348679864320/artifacts/junit.e2e_suite.1.xml"
-      ],
-      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2059817348679864320/",
-      "test_cases": [
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 99.823774093,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Conformance Tests conformance-tests",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Running the quick-start spec Should create a workload cluster",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Running the MachineDeployment rollout spec Should successfully upgrade Machines upon changes in relevant MachineDeployment fields",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Running the self-hosted spec Should pivot the bootstrap cluster to a self-hosted cluster",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Should successfully remediate unhealthy worker machines with MachineHealthCheck Should replace unhealthy machines",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Should successfully exercise machine pools Should successfully create a cluster with machine pool machines",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Should successfully scale out and scale in a MachineDeployment Should successfully scale a MachineDeployment up and down upon changes to the MachineDeployment replica count",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Running the workload cluster upgrade spec [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a private cluster [OPTIONAL] Creates a public management cluster in a custom vnet",
-          "status": "passed",
-          "duration_seconds": 3633.688999707,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 1137.655153135,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 99.844520072,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a Flatcar sysext cluster [OPTIONAL] With Flatcar control-plane and worker nodes",
-          "status": "passed",
-          "duration_seconds": 953.790670834,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating RKE2 clusters using clusterclass [OPTIONAL] with 3 control plane node and one linux worker node",
-          "status": "passed",
-          "duration_seconds": 1491.821810658,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000590788,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 99.854905271,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a cluster with spot vms [OPTIONAL] With spot vm machine deployments",
-          "status": "passed",
-          "duration_seconds": 983.06536711,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating clusters on public MEC [OPTIONAL] with 1 control plane nodes and 1 worker node",
-          "status": "skipped",
-          "duration_seconds": 1.19060317,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate using default template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
-          "status": "passed",
-          "duration_seconds": 1473.324061928,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000573368,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 99.858365603,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a ipv6 control-plane cluster [REQUIRED] With ipv6 worker node",
-          "status": "passed",
-          "duration_seconds": 1585.356133674,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayCluster and verifies it becomes ready",
-          "status": "passed",
-          "duration_seconds": 894.617477004,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000293044,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 99.859069812,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a cluster with VMSS flex machinepools [OPTIONAL] with 1 control plane node and 1 machinepool",
-          "status": "passed",
-          "duration_seconds": 1454.890410579,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Testing autoscaling from zero with Cluster Autoscaler [REQUIRED] Scales MachineDeployment from 0 to 1+ when workload is scheduled",
-          "status": "passed",
-          "duration_seconds": 1072.764013171,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000638498,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 99.860914765,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating an AKS cluster for control plane tests [Managed Kubernetes] with a single control plane node and 1 node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating an AKS cluster using ClusterClass [Managed Kubernetes] with a single control plane node and 1 node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating an AKS cluster with the ASO API [Managed Kubernetes] with a single control plane node and 1 node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a dual-stack cluster [OPTIONAL] With dual-stack worker node",
-          "status": "passed",
-          "duration_seconds": 1778.835672597,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayJob and verifies it completes successfully",
-          "status": "passed",
-          "duration_seconds": 863.009817785,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000300414,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 99.859422166,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a highly available cluster [REQUIRED] With 3 control-plane nodes and 2 Linux and 2 Windows worker nodes",
-          "status": "passed",
-          "duration_seconds": 2721.664334015,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000578358,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 99.852623772,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a GPU-enabled cluster [OPTIONAL] with a single control plane node and 1 node",
-          "status": "skipped",
-          "duration_seconds": 2.354370521,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating clusters using clusterclass [OPTIONAL] with a single control plane node and one linux worker node",
-          "status": "passed",
-          "duration_seconds": 1006.212524884,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate and fully spec-ed out APIServer ILB template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
-          "status": "failed",
-          "duration_seconds": 1806.821004541,
-          "failure_message": "Timed out after 900.001s.\nDeployment calico-system/calico-kube-controllers failed\nDeployment:\n{\n  \"metadata\": {\n    \"name\": \"calico-kube-controllers\",\n    \"namespace\": \"calico-system\",\n    \"uid\": \"a8211f71-0c7d-44d3-b72d-e51b93ef1f24\",\n    \"resourceVersion\": \"2960\",\n    \"generation\": 1,\n    \"creationTimestamp\": \"2026-05-28T02:39:48Z\",\n    \"labels\": {\n      \"app.kubernetes.io/name\": \"calico-kube-controllers\",\n      \"k8s-app\": \"calico-kube-controllers\"\n    },\n    \"annotations\": {\n      \"deployment.kubernetes.io/revision\": \"1\"\n    },\n    \"ownerReferences\": [\n      {\n        \"apiVersion\": \"operator.tigera.io/v1\",\n        \"kind\": \"Installation\",\n        \"name\": \"default\",\n        \"uid\": \"2c3ab702-a38d-4693-b879-150e2891c171\",\n        \"controller\": true,\n        \"blockOwnerDeletion\": true\n      }\n    ],\n    \"managedFields\": [\n      {\n        \"manager\": \"operator\",\n        \"operation\": \"Update\",\n        \"apiVersion\": \"apps/v1\",\n        \"time\": \"2026-05-28T02:39:48Z\",\n        \"fieldsType\": \"FieldsV1\",\n        \"fieldsV1\": {\n          \"f:metadata\": {\n            \"f:labels\": {\n              \".\": {},\n              \"f:app.kubernetes.io/name\": {},\n              \"f:k8s-app\": {}\n            },\n            \"f:ownerReferences\": {\n              \".\": {},\n              \"k:{\\\"uid\\\":\\\"2c3ab702-a38d-4693-b879-150e2891c171\\\"}\": {}\n            }\n          },\n          \"f:spec\": {\n            \"f:progressDeadlineSeconds\": {},\n            \"f:replicas\": {},\n            \"f:revisionHistoryLimit\": {},\n            \"f:selector\": {},\n            \"f:strategy\": {\n              \"f:type\": {}\n            },\n            \"f:template\": {\n              \"f:metadata\": {\n                \"f:annotations\": {\n                  \".\": {},\n                  \"f:hash.operator.tigera.io/system\": {},\n                  \"f:tigera-operator.hash.operator.tigera.io/tigera-ca-private\": {}\n                },\n                \"f:labels\": {\n                  \".\": {},\n                  \"f:app.kubernetes.io/name\": {},\n                  \"f:k8s-app\": {}\n                },\n                \"f:name\": {},\n                \"f:namespace\": {}\n              },\n              \"f:spec\": {\n                \"f:containers\": {\n                  \"k:{\\\"name\\\":\\\"calico-kube-controllers\\\"}\": {\n                    \".\": {},\n                    \"f:env\": {\n                      \".\": {},\n                      \"k:{\\\"name\\\":\\\"CA_CRT_PATH\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"DATASTORE_TYPE\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"DISABLE_KUBE_CONTROLLERS_CONFIG_API\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"ENABLED_CONTROLLERS\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"FIPS_MODE_ENABLED\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"KUBERNETES_SERVICE_HOST\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"KUBERNETES_SERVICE_PORT\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"KUBE_CONTROLLERS_CONFIG_NAME\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      }\n                    },\n                    \"f:image\": {},\n                    \"f:imagePullPolicy\": {},\n                    \"f:livenessProbe\": {\n                      \".\": {},\n                      \"f:exec\": {\n                        \".\": {},\n                        \"f:command\": {}\n                      },\n                      \"f:failureThreshold\": {},\n                      \"f:initialDelaySeconds\": {},\n                      \"f:periodSeconds\": {},\n                      \"f:successThreshold\": {},\n                      \"f:timeoutSeconds\": {}\n                    },\n                    \"f:name\": {},\n                    \"f:readinessProbe\": {\n                      \".\": {},\n                      \"f:exec\": {\n                        \".\": {},\n                        \"f:command\": {}\n                      },\n                      \"f:failureThreshold\": {},\n                      \"f:periodSeconds\": {},\n                      \"f:successThreshold\": {},\n                      \"f:timeoutSeconds\": {}\n                    },\n                    \"f:resources\": {},\n                    \"f:securityContext\": {\n                      \".\": {},\n                      \"f:allowPrivilegeEscalation\": {},\n                      \"f:capabilities\": {\n                        \".\": {},\n                        \"f:drop\": {}\n                      },\n                      \"f:privileged\": {},\n                      \"f:runAsGroup\": {},\n                      \"f:runAsNonRoot\": {},\n                      \"f:runAsUser\": {},\n                      \"f:seccompProfile\": {\n                        \".\": {},\n                        \"f:type\": {}\n                      }\n                    },\n                    \"f:terminationMessagePath\": {},\n                    \"f:terminationMessagePolicy\": {},\n                    \"f:volumeMounts\": {\n                      \".\": {},\n                      \"k:{\\\"mountPath\\\":\\\"/etc/pki/tls/cert.pem\\\"}\": {\n                        \".\": {},\n                        \"f:mountPath\": {},\n                        \"f:name\": {},\n                        \"f:readOnly\": {},\n                        \"f:subPath\": {}\n                      },\n                      \"k:{\\\"mountPath\\\":\\\"/etc/pki/tls/certs\\\"}\": {\n                        \".\": {},\n                        \"f:mountPath\": {},\n                        \"f:name\": {},\n                        \"f:readOnly\": {}\n                      }\n                    }\n                  }\n                },\n                \"f:dnsPolicy\": {},\n                \"f:nodeSelector\": {},\n                \"f:priorityClassName\": {},\n                \"f:restartPolicy\": {},\n                \"f:schedulerName\": {},\n                \"f:securityContext\": {},\n                \"f:serviceAccount\": {},\n                \"f:serviceAccountName\": {},\n                \"f:terminationGracePeriodSeconds\": {},\n                \"f:tolerations\": {},\n                \"f:volumes\": {\n                  \".\": {},\n                  \"k:{\\\"name\\\":\\\"tigera-ca-bundle\\\"}\": {\n                    \".\": {},\n                    \"f:configMap\": {\n                      \".\": {},\n                      \"f:defaultMode\": {},\n                      \"f:name\": {}\n                    },\n                    \"f:name\": {}\n                  }\n                }\n              }\n            }\n          }\n        }\n      },\n      {\n        \"manager\": \"kube-controller-manager\",\n        \"operation\": \"Update\",\n        \"apiVersion\": \"apps/v1\",\n        \"time\": \"2026-05-28T02:49:49Z\",\n        \"fieldsType\": \"FieldsV1\",\n        \"fieldsV1\": {\n          \"f:metadata\": {\n            \"f:annotations\": {\n              \".\": {},\n              \"f:deployment.kubernetes.io/revision\": {}\n            }\n          },\n          \"f:status\": {\n            \"f:conditions\": {\n              \".\": {},\n              \"k:{\\\"type\\\":\\\"Available\\\"}\": {\n                \".\": {},\n                \"f:lastTransitionTime\": {},\n                \"f:lastUpdateTime\": {},\n                \"f:message\": {},\n                \"f:reason\": {},\n                \"f:status\": {},\n                \"f:type\": {}\n              },\n              \"k:{\\\"type\\\":\\\"Progressing\\\"}\": {\n                \".\": {},\n                \"f:lastTransitionTime\": {},\n                \"f:lastUpdateTime\": {},\n                \"f:message\": {},\n                \"f:reason\": {},\n                \"f:status\": {},\n                \"f:type\": {}\n              }\n            },\n            \"f:observedGeneration\": {},\n            \"f:replicas\": {},\n            \"f:unavailableReplicas\": {},\n            \"f:updatedReplicas\": {}\n          }\n        },\n        \"subresource\": \"status\"\n      }\n    ]\n  },\n  \"spec\": {\n    \"replicas\": 1,\n    \"selector\": {\n      \"matchLabels\": {\n        \"k8s-app\": \"calico-kube-controllers\"\n      }\n    },\n    \"template\": {\n      \"metadata\": {\n        \"name\": \"calico-kube-controllers\",\n        \"namespace\": \"calico-system\",\n        \"labels\": {\n          \"app.kubernetes.io/name\": \"calico-kube-controllers\",\n          \"k8s-app\": \"calico-kube-controllers\"\n        },\n        \"annotations\": {\n          \"hash.operator.tigera.io/system\": \"fdde45054a8ae4f629960ce37570929502e59449\",\n          \"tigera-operator.hash.operator.tigera.io/tigera-ca-private\": \"235d6600db621b955a0917aab420331820276170\"\n        }\n      },\n      \"spec\": {\n        \"volumes\": [\n          {\n            \"name\": \"tigera-ca-bundle\",\n            \"configMap\": {\n              \"name\": \"tigera-ca-bundle\",\n              \"defaultMode\": 420\n            }\n          }\n        ],\n        \"containers\": [\n          {\n            \"name\": \"calico-kube-controllers\",\n            \"image\": \"capzcicommunity.azurecr.io/calico/kube-controllers:v3.29.4\",\n            \"env\": [\n              {\n                \"name\": \"KUBE_CONTROLLERS_CONFIG_NAME\",\n                \"value\": \"default\"\n              },\n              {\n                \"name\": \"DATASTORE_TYPE\",\n                \"value\": \"kubernetes\"\n              },\n              {\n                \"name\": \"ENABLED_CONTROLLERS\",\n                \"value\": \"node\"\n              },\n              {\n                \"name\": \"FIPS_MODE_ENABLED\",\n                \"value\": \"false\"\n              },\n              {\n                \"name\": \"DISABLE_KUBE_CONTROLLERS_CONFIG_API\",\n                \"value\": \"false\"\n              },\n              {\n                \"name\": \"KUBERNETES_SERVICE_HOST\",\n                \"value\": \"capz-e2e-imdw5p-apiserver-ilb-h040pj68pc.francecentral.cloudapp.azure.com\"\n              },\n              {\n                \"name\": \"KUBERNETES_SERVICE_PORT\",\n                \"value\": \"6443\"\n              },\n              {\n                \"name\": \"CA_CRT_PATH\",\n                \"value\": \"/etc/pki/tls/certs/tigera-ca-bundle.crt\"\n              }\n            ],\n            \"resources\": {},\n            \"volumeMounts\": [\n              {\n                \"name\": \"tigera-ca-bundle\",\n                \"readOnly\": true,\n                \"mountPath\": \"/etc/pki/tls/certs\"\n              },\n              {\n                \"name\": \"tigera-ca-bundle\",\n                \"readOnly\": true,\n                \"mountPath\": \"/etc/pki/tls/cert.pem\",\n                \"subPath\": \"ca-bundle.crt\"\n              }\n            ],\n            \"livenessProbe\": {\n              \"exec\": {\n                \"command\": [\n                  \"/usr/bin/check-status\",\n                  \"-l\"\n                ]\n              },\n              \"initialDelaySeconds\": 10,\n              \"timeoutSeconds\": 10,\n              \"periodSeconds\": 60,\n              \"successThreshold\": 1,\n              \"failureThreshold\": 6\n            },\n            \"readinessProbe\": {\n              \"exec\": {\n                \"command\": [\n                  \"/usr/bin/check-status\",\n                  \"-r\"\n                ]\n              },\n              \"timeoutSeconds\": 10,\n              \"periodSeconds\": 30,\n              \"successThreshold\": 1,\n              \"failureThreshold\": 3\n            },\n            \"terminationMessagePath\": \"/dev/termination-log\",\n            \"terminationMessagePolicy\": \"File\",\n            \"imagePullPolicy\": \"IfNotPresent\",\n            \"securityContext\": {\n              \"capabilities\": {\n                \"drop\": [\n                  \"ALL\"\n                ]\n              },\n              \"privileged\": false,\n              \"runAsUser\": 999,\n              \"runAsGroup\": 0,\n              \"runAsNonRoot\": true,\n              \"allowPrivilegeEscalation\": false,\n              \"seccompProfile\": {\n                \"type\": \"RuntimeDefault\"\n              }\n            }\n          }\n        ],\n        \"restartPolicy\": \"Always\",\n        \"terminationGracePeriodSeconds\": 30,\n        \"dnsPolicy\": \"ClusterFirst\",\n        \"nodeSelector\": {\n          \"kubernetes.io/os\": \"linux\"\n        },\n        \"serviceAccountName\": \"calico-kube-controllers\",\n        \"serviceAccount\": \"calico-kube-controllers\",\n        \"securityContext\": {},\n        \"schedulerName\": \"default-scheduler\",\n        \"tolerations\": [\n          {\n            \"key\": \"node-role.kubernetes.io/master\",\n            \"effect\": \"NoSchedule\"\n          },\n          {\n            \"key\": \"node-role.kubernetes.io/control-plane\",\n            \"effect\": \"NoSchedule\"\n          },\n          {\n            \"key\": \"CriticalAddonsOnly\",\n            \"operator\": \"Exists\"\n          }\n        ],\n        \"priorityClassName\": \"system-cluster-critical\"\n      }\n    },\n    \"strategy\": {\n      \"type\": \"Recreate\"\n    },\n    \"revisionHistoryLimit\": 10,\n    \"progressDeadlineSeconds\": 600\n  },\n  \"status\": {\n    \"observedGeneration\": 1,\n    \"replicas\": 1,\n    \"updatedReplicas\": 1,\n    \"unavailableReplicas\": 1,\n    \"conditions\": [\n      {\n        \"type\": \"Available\",\n        \"status\": \"False\",\n        \"lastUpdateTime\": \"2026-05-28T02:39:48Z\",\n        \"lastTransitionTime\": \"2026-05-28T02:39:48Z\",\n        \"reason\": \"MinimumReplicasUnavailable\",\n        \"message\": \"Deployment does not have minimum availability.\"\n      },\n      {\n        \"type\": \"Progressing\",\n        \"status\": \"False\",\n        \"lastUpdateTime\": \"2026-05-28T02:49:49Z\",\n        \"lastTransitionTime\": \"2026-05-28T02:49:49Z\",\n        \"reason\": \"ProgressDeadlineExceeded\",\n        \"message\": \"ReplicaSet \\\"calico-kube-controllers-84b4cc9968\\\" has timed out progressing.\"\n      }\n    ]\n  }\n}\nLAST SEEN                      TYPE    REASON             OBJECT                              MESSAGE\n2026-05-28 02:39:48 +0000 UTC  Normal  ScalingReplicaSet  deployment/calico-kube-controllers  Scaled up replica set calico-kube-controllers-84b4cc9968 from 0 to 1\n\nExpected\n    \u003cbool\u003e: false\nto be true",
-          "failure_body": "[FAILED] Timed out after 900.001s.\nDeployment calico-system/calico-kube-controllers failed\nDeployment:\n{\n  \"metadata\": {\n    \"name\": \"calico-kube-controllers\",\n    \"namespace\": \"calico-system\",\n    \"uid\": \"a8211f71-0c7d-44d3-b72d-e51b93ef1f24\",\n    \"resourceVersion\": \"2960\",\n    \"generation\": 1,\n    \"creationTimestamp\": \"2026-05-28T02:39:48Z\",\n    \"labels\": {\n      \"app.kubernetes.io/name\": \"calico-kube-controllers\",\n      \"k8s-app\": \"calico-kube-controllers\"\n    },\n    \"annotations\": {\n      \"deployment.kubernetes.io/revision\": \"1\"\n    },\n    \"ownerReferences\": [\n      {\n        \"apiVersion\": \"operator.tigera.io/v1\",\n        \"kind\": \"Installation\",\n        \"name\": \"default\",\n        \"uid\": \"2c3ab702-a38d-4693-b879-150e2891c171\",\n        \"controller\": true,\n        \"blockOwnerDeletion\": true\n      }\n    ],\n    \"managedFields\": [\n      {\n        \"manager\": \"operator\",\n        \"operation\": \"Update\",\n        \"apiVersion\": \"apps/v1\",\n        \"time\": \"2026-05-28T02:39:48Z\",\n        \"fieldsType\": \"FieldsV1\",\n        \"fieldsV1\": {\n          \"f:metadata\": {\n            \"f:labels\": {\n              \".\": {},\n              \"f:app.kubernetes.io/name\": {},\n              \"f:k8s-app\": {}\n            },\n            \"f:ownerReferences\": {\n              \".\": {},\n              \"k:{\\\"uid\\\":\\\"2c3ab702-a38d-4693-b879-150e2891c171\\\"}\": {}\n            }\n          },\n          \"f:spec\": {\n            \"f:progressDeadlineSeconds\": {},\n            \"f:replicas\": {},\n            \"f:revisionHistoryLimit\": {},\n            \"f:selector\": {},\n            \"f:strategy\": {\n              \"f:type\": {}\n            },\n            \"f:template\": {\n              \"f:metadata\": {\n                \"f:annotations\": {\n                  \".\": {},\n                  \"f:hash.operator.tigera.io/system\": {},\n                  \"f:tigera-operator.hash.operator.tigera.io/tigera-ca-private\": {}\n                },\n                \"f:labels\": {\n                  \".\": {},\n                  \"f:app.kubernetes.io/name\": {},\n                  \"f:k8s-app\": {}\n                },\n                \"f:name\": {},\n                \"f:namespace\": {}\n              },\n              \"f:spec\": {\n                \"f:containers\": {\n                  \"k:{\\\"name\\\":\\\"calico-kube-controllers\\\"}\": {\n                    \".\": {},\n                    \"f:env\": {\n                      \".\": {},\n                      \"k:{\\\"name\\\":\\\"CA_CRT_PATH\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"DATASTORE_TYPE\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"DISABLE_KUBE_CONTROLLERS_CONFIG_API\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"ENABLED_CONTROLLERS\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"FIPS_MODE_ENABLED\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"KUBERNETES_SERVICE_HOST\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"KUBERNETES_SERVICE_PORT\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"KUBE_CONTROLLERS_CONFIG_NAME\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      }\n                    },\n                    \"f:image\": {},\n                    \"f:imagePullPolicy\": {},\n                    \"f:livenessProbe\": {\n                      \".\": {},\n                      \"f:exec\": {\n                        \".\": {},\n                        \"f:command\": {}\n                      },\n                      \"f:failureThreshold\": {},\n                      \"f:initialDelaySeconds\": {},\n                      \"f:periodSeconds\": {},\n                      \"f:successThreshold\": {},\n                      \"f:timeoutSeconds\": {}\n                    },\n                    \"f:name\": {},\n                    \"f:readinessProbe\": {\n                      \".\": {},\n                      \"f:exec\": {\n                        \".\": {},\n                        \"f:command\": {}\n                      },\n                      \"f:failureThreshold\": {},\n                      \"f:periodSeconds\": {},\n                      \"f:successThreshold\": {},\n                      \"f:timeoutSeconds\": {}\n                    },\n                    \"f:resources\": {},\n                    \"f:securityContext\": {\n                      \".\": {},\n                      \"f:allowPrivilegeEscalation\": {},\n                      \"f:capabilities\": {\n                        \".\": {},\n                        \"f:drop\": {}\n                      },\n                      \"f:privileged\": {},\n                      \"f:runAsGroup\": {},\n                      \"f:runAsNonRoot\": {},\n                      \"f:runAsUser\": {},\n                      \"f:seccompProfile\": {\n                        \".\": {},\n                        \"f:type\": {}\n                      }\n                    },\n                    \"f:terminationMessagePath\": {},\n                    \"f:terminationMessagePolicy\": {},\n                    \"f:volumeMounts\": {\n                      \".\": {},\n                      \"k:{\\\"mountPath\\\":\\\"/etc/pki/tls/cert.pem\\\"}\": {\n                        \".\": {},\n                        \"f:mountPath\": {},\n                        \"f:name\": {},\n                        \"f:readOnly\": {},\n                        \"f:subPath\": {}\n                      },\n                      \"k:{\\\"mountPath\\\":\\\"/etc/pki/tls/certs\\\"}\": {\n                        \".\": {},\n                        \"f:mountPath\": {},\n                        \"f:name\": {},\n                        \"f:readOnly\": {}\n                      }\n                    }\n                  }\n                },\n                \"f:dnsPolicy\": {},\n                \"f:nodeSelector\": {},\n                \"f:priorityClassName\": {},\n                \"f:restartPolicy\": {},\n                \"f:schedulerName\": {},\n                \"f:securityContext\": {},\n                \"f:serviceAccount\": {},\n                \"f:serviceAccountName\": {},\n                \"f:terminationGracePeriodSeconds\": {},\n                \"f:tolerations\": {},\n                \"f:volumes\": {\n                  \".\": {},\n                  \"k:{\\\"name\\\":\\\"tigera-ca-bundle\\\"}\": {\n                    \".\": {},\n                    \"f:configMap\": {\n                      \".\": {},\n                      \"f:defaultMode\": {},\n                      \"f:name\": {}\n                    },\n                    \"f:name\": {}\n                  }\n                }\n              }\n            }\n          }\n        }\n      },\n      {\n        \"manager\": \"kube-controller-manager\",\n        \"operation\": \"Update\",\n        \"apiVersion\": \"apps/v1\",\n        \"time\": \"2026-05-28T02:49:49Z\",\n        \"fieldsType\": \"FieldsV1\",\n        \"fieldsV1\": {\n          \"f:metadata\": {\n            \"f:annotations\": {\n              \".\": {},\n              \"f:deployment.kubernetes.io/revision\": {}\n            }\n          },\n          \"f:status\": {\n            \"f:conditions\": {\n              \".\": {},\n              \"k:{\\\"type\\\":\\\"Available\\\"}\": {\n                \".\": {},\n                \"f:lastTransitionTime\": {},\n                \"f:lastUpdateTime\": {},\n                \"f:message\": {},\n                \"f:reason\": {},\n                \"f:status\": {},\n                \"f:type\": {}\n              },\n              \"k:{\\\"type\\\":\\\"Progressing\\\"}\": {\n                \".\": {},\n                \"f:lastTransitionTime\": {},\n                \"f:lastUpdateTime\": {},\n                \"f:message\": {},\n                \"f:reason\": {},\n                \"f:status\": {},\n                \"f:type\": {}\n              }\n            },\n            \"f:observedGeneration\": {},\n            \"f:replicas\": {},\n            \"f:unavailableReplicas\": {},\n            \"f:updatedReplicas\": {}\n          }\n        },\n        \"subresource\": \"status\"\n      }\n    ]\n  },\n  \"spec\": {\n    \"replicas\": 1,\n    \"selector\": {\n      \"matchLabels\": {\n        \"k8s-app\": \"calico-kube-controllers\"\n      }\n    },\n    \"template\": {\n      \"metadata\": {\n        \"name\": \"calico-kube-controllers\",\n        \"namespace\": \"calico-system\",\n        \"labels\": {\n          \"app.kubernetes.io/name\": \"calico-kube-controllers\",\n          \"k8s-app\": \"calico-kube-controllers\"\n        },\n        \"annotations\": {\n          \"hash.operator.tigera.io/system\": \"fdde45054a8ae4f629960ce37570929502e59449\",\n          \"tigera-operator.hash.operator.tigera.io/tigera-ca-private\": \"235d6600db621b955a0917aab420331820276170\"\n        }\n      },\n      \"spec\": {\n        \"volumes\": [\n          {\n            \"name\": \"tigera-ca-bundle\",\n            \"configMap\": {\n              \"name\": \"tigera-ca-bundle\",\n              \"defaultMode\": 420\n            }\n          }\n        ],\n        \"containers\": [\n          {\n            \"name\": \"calico-kube-controllers\",\n            \"image\": \"capzcicommunity.azurecr.io/calico/kube-controllers:v3.29.4\",\n            \"env\": [\n              {\n                \"name\": \"KUBE_CONTROLLERS_CONFIG_NAME\",\n                \"value\": \"default\"\n              },\n              {\n                \"name\": \"DATASTORE_TYPE\",\n                \"value\": \"kubernetes\"\n              },\n              {\n                \"name\": \"ENABLED_CONTROLLERS\",\n                \"value\": \"node\"\n              },\n              {\n                \"name\": \"FIPS_MODE_ENABLED\",\n                \"value\": \"false\"\n              },\n              {\n                \"name\": \"DISABLE_KUBE_CONTROLLERS_CONFIG_API\",\n                \"value\": \"false\"\n              },\n              {\n                \"name\": \"KUBERNETES_SERVICE_HOST\",\n                \"value\": \"capz-e2e-imdw5p-apiserver-ilb-h040pj68pc.francecentral.cloudapp.azure.com\"\n              },\n              {\n                \"name\": \"KUBERNETES_SERVICE_PORT\",\n                \"value\": \"6443\"\n              },\n              {\n                \"name\": \"CA_CRT_PATH\",\n                \"value\": \"/etc/pki/tls/certs/tigera-ca-bundle.crt\"\n              }\n            ],\n            \"resources\": {},\n            \"volumeMounts\": [\n              {\n                \"name\": \"tigera-ca-bundle\",\n                \"readOnly\": true,\n                \"mountPath\": \"/etc/pki/tls/certs\"\n              },\n              {\n                \"name\": \"tigera-ca-bundle\",\n                \"readOnly\": true,\n                \"mountPath\": \"/etc/pki/tls/cert.pem\",\n                \"subPath\": \"ca-bundle.crt\"\n              }\n            ],\n            \"livenessProbe\": {\n              \"exec\": {\n                \"command\": [\n                  \"/usr/bin/check-status\",\n                  \"-l\"\n                ]\n              },\n              \"initialDelaySeconds\": 10,\n              \"timeoutSeconds\": 10,\n              \"periodSeconds\": 60,\n              \"successThreshold\": 1,\n              \"failureThreshold\": 6\n            },\n            \"readinessProbe\": {\n              \"exec\": {\n                \"command\": [\n                  \"/usr/bin/check-status\",\n                  \"-r\"\n                ]\n              },\n              \"timeoutSeconds\": 10,\n              \"periodSeconds\": 30,\n              \"successThreshold\": 1,\n              \"failureThreshold\": 3\n            },\n            \"terminationMessagePath\": \"/dev/termination-log\",\n            \"terminationMessagePolicy\": \"File\",\n            \"imagePullPolicy\": \"IfNotPresent\",\n            \"securityContext\": {\n              \"capabilities\": {\n                \"drop\": [\n                  \"ALL\"\n                ]\n              },\n              \"privileged\": false,\n              \"runAsUser\": 999,\n              \"runAsGroup\": 0,\n              \"runAsNonRoot\": true,\n              \"allowPrivilegeEscalation\": false,\n              \"seccompProfile\": {\n                \"type\": \"RuntimeDefault\"\n              }\n            }\n          }\n        ],\n        \"restartPolicy\": \"Always\",\n        \"terminationGracePeriodSeconds\": 30,\n        \"dnsPolicy\": \"ClusterFirst\",\n        \"nodeSelector\": {\n          \"kubernetes.io/os\": \"linux\"\n        },\n        \"serviceAccountName\": \"calico-kube-controllers\",\n        \"serviceAccount\": \"calico-kube-controllers\",\n        \"securityContext\": {},\n        \"schedulerName\": \"default-scheduler\",\n        \"tolerations\": [\n          {\n            \"key\": \"node-role.kubernetes.io/master\",\n            \"effect\": \"NoSchedule\"\n          },\n          {\n            \"key\": \"node-role.kubernetes.io/control-plane\",\n            \"effect\": \"NoSchedule\"\n          },\n          {\n            \"key\": \"CriticalAddonsOnly\",\n            \"operator\": \"Exists\"\n          }\n        ],\n        \"priorityClassName\": \"system-cluster-critical\"\n      }\n    },\n    \"strategy\": {\n      \"type\": \"Recreate\"\n    },\n    \"revisionHistoryLimit\": 10,\n    \"progressDeadlineSeconds\": 600\n  },\n  \"status\": {\n    \"observedGeneration\": 1,\n    \"replicas\": 1,\n    \"updatedReplicas\": 1,\n    \"unavailableReplicas\": 1,\n    \"conditions\": [\n      {\n        \"type\": \"Available\",\n        \"status\": \"False\",\n        \"lastUpdateTime\": \"2026-05-28T02:39:48Z\",\n        \"lastTransitionTime\": \"2026-05-28T02:39:48Z\",\n        \"reason\": \"MinimumReplicasUnavailable\",\n        \"message\": \"Deployment does not have minimum availability.\"\n      },\n      {\n        \"type\": \"Progressing\",\n        \"status\": \"False\",\n        \"lastUpdateTime\": \"2026-05-28T02:49:49Z\",\n        \"lastTransitionTime\": \"2026-05-28T02:49:49Z\",\n        \"reason\": \"ProgressDeadlineExceeded\",\n        \"message\": \"ReplicaSet \\\"calico-kube-controllers-84b4cc9968\\\" has timed out progressing.\"\n      }\n    ]\n  }\n}\nLAST SEEN                      TYPE    REASON             OBJECT                              MESSAGE\n2026-05-28 02:39:48 +0000 UTC  Normal  ScalingReplicaSet  deployment/calico-kube-controllers  Scaled up replica set calico-kube-controllers-84b4cc9968 from 0 to 1\n\nExpected\n    \u003cbool\u003e: false\nto be true\nIn [It] at: /home/prow/go/src/sigs.k8s.io/cluster-api-provider-azure/test/e2e/helpers.go:113 @ 05/28/26 02:54:58.123",
-          "failure_location": "sigs.k8s.io/cluster-api-provider-azure/test/e2e/helpers.go:113",
-          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/helpers.go#L113",
-          "junit_file": "junit.e2e_suite.1.xml",
-          "ai_summary": {
-            "generated_at": "2026-06-02T00:22:27Z",
-            "summary": "Test timed out waiting for calico-kube-controllers deployment to become available due to DNS resolution failure for the API server.",
-            "is_transient": false
-          },
-          "ai_analysis": {
-            "generated_at": "2026-06-02T00:22:27Z",
-            "root_cause": "DNS resolution failure for the API server endpoint: \"dial tcp: lookup capz-e2e-p53ngf-public-custom-vnet-920620e.francecentral.cloudapp.azure.com on 172.20.0.10:53: no such host\" in build-log.txt. This prevented nodes from connecting to the API server, causing the deployment to fail.",
-            "severity": "Critical",
-            "suggested_fix": "Investigate Azure resource provisioning for the API server (public IP, DNS, load balancer) and ensure CAPZ controller correctly configures these resources.",
-            "relevant_files": [
-              "build-log.txt",
-              "junit.e2e_suite.1.xml"
-            ],
-            "mode": "agentic-universal",
-            "tool_calls": 1,
-            "model_bytes": 32788,
-            "gcs_bytes": 32512,
-            "elapsed_ms": 15664
-          }
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000342905,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 99.85083454,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a VMSS cluster [REQUIRED] with a single control plane node and an AzureMachinePool with 2 Linux nodes",
-          "status": "passed",
-          "duration_seconds": 1390.529425684,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a highly-available cluster with Azure Linux 3 [OPTIONAL] with three controlplane node and two worker nodes",
-          "status": "passed",
-          "duration_seconds": 3077.829037276,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000335695,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 99.859150043,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation when Creating a highly available cluster with Azure CNI v1 [REQUIRED] can create 3 control-plane nodes and 2 Linux worker nodes [Azure CNI v1]",
-          "status": "failed",
-          "duration_seconds": 4771.288517741,
-          "failure_message": "Timed out after 3600.001s.\nTimed out waiting for 3 control plane machines to exist\nExpected\n    \u003cint\u003e: 1\nto equal\n    \u003cint\u003e: 3",
-          "failure_body": "[FAILED] Timed out after 3600.001s.\nTimed out waiting for 3 control plane machines to exist\nExpected\n    \u003cint\u003e: 1\nto equal\n    \u003cint\u003e: 3\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.12.8/framework/controlplane_helpers.go:115 @ 05/28/26 03:21:57.341",
-          "failure_location": "sigs.k8s.io/cluster-api/test@v1.12.8/framework/controlplane_helpers.go:115",
-          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.12.8/test/framework/controlplane_helpers.go#L115",
-          "junit_file": "junit.e2e_suite.1.xml",
-          "ai_summary": {
-            "generated_at": "2026-06-02T00:23:25Z",
-            "summary": "Test timed out waiting for 3 control plane machines to exist in Azure CNI v1 cluster. AzureMachine resources not found, indicating infrastructure provisioning failure.",
-            "is_transient": true
-          },
-          "ai_analysis": {
-            "generated_at": "2026-06-02T00:23:25Z",
-            "root_cause": "Build-log shows timeout waiting for 3 control plane machines (found 1). AzureMachine directory is empty, suggesting VM provisioning never started. Common transient causes include Azure quota limits, SKU unavailability, or spot eviction.",
-            "severity": "High",
-            "suggested_fix": "Check Azure subscription quotas and region availability. Verify CAPZ template parameters for correct VM SKUs and spot instance policies. Add retry logic for transient provisioning errors.",
-            "relevant_files": [
-              "sigs.k8s.io/cluster-api-provider-azure/test/e2e/helpers.go",
-              "sigs.k8s.io/cluster-api-provider-azure/config/capz/manager_image_patch.yaml"
-            ],
-            "mode": "agentic-universal",
-            "tool_calls": 5,
-            "model_bytes": 15745,
-            "gcs_bytes": 9634,
-            "elapsed_ms": 58059
-          }
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000401025,
-          "junit_file": "junit.e2e_suite.1.xml"
-        }
-      ],
-      "tests_total": 57,
-      "tests_passed": 35,
-      "tests_failed": 2,
       "tests_skipped": 20
     }
   ]
