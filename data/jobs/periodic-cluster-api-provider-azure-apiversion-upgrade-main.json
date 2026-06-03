@@ -743,24 +743,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/client.go#L190",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-02T00:12:37Z",
-            "summary": "The azureserviceoperator-controller-manager deployment failed to become ready within 5 minutes, timing out when accessing the API server.",
+            "generated_at": "2026-06-03T19:16:07Z",
+            "summary": "The deployment 'azureserviceoperator-controller-manager' failed to become ready due to the Kubernetes API server being unreachable, likely caused by the control plane node's kube-apiserver container not starting.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-02T00:12:37Z",
-            "root_cause": "The deployment 'azureserviceoperator-controller-manager' did not become ready within the timeout period. The manager.log shows successful startup and webhook registration but does not indicate any errors, suggesting the readiness probe may be failing or the deployment is not scaling up. The error 'context deadline exceeded' occurs when attempting to check the deployment's status.",
+            "generated_at": "2026-06-03T19:16:07Z",
+            "root_cause": "The deployment 'azureserviceoperator-controller-manager' in namespace 'capz-system' did not reach a ready state. The manager.log shows successful webhook registration and startup, but the deployment check timed out. The root cause is likely the control plane node's kube-apiserver container failing to start, as indicated by the empty kube-apiserver.log and potential errors in the control plane node's kubelet.log. This would prevent any communication with the API server, causing the deployment check to time out.",
             "severity": "Critical",
-            "suggested_fix": "1. Check the deployment's pods for status (e.g., 'kubectl get pods -n capz-system') to identify scheduling issues, image pull errors, or readiness probe failures. 2. Verify the readinessProbe settings in the deployment manifest (e.g., timeoutSeconds, periodSeconds). 3. Ensure the manager binary is correctly built and all dependencies (e.g., CRDs, RBAC) are properly applied.",
+            "suggested_fix": "1. Check the kubelet.log of the control plane node (clusterctl-upgrade-management-0eevz0-control-plane-rswtf) for errors starting the kube-apiserver container. 2. Verify the kube-apiserver manifest and configuration. 3. Ensure the API server certificate is valid and not expired. 4. Check for resource constraints (CPU/Memory) that might prevent the API server from starting.",
             "relevant_files": [
-              "kubernetes-sigs/cluster-api-provider-azure/config/manager/manager.yaml",
-              "kubernetes-sigs/cluster-api-provider-azure/controllers/azureoperator/controllers.go"
+              "sigs.k8s.io/cluster-api-provider-azure/controllers/azureoperator_controller.go",
+              "sigs.k8s.io/cluster-api-provider-azure/config/capz/manager_image_patch.yaml",
+              "sigs.k8s.io/cluster-api-provider-azure/config/capz/manager_pull_policy.yaml",
+              "artifacts/clusters/clusterctl-upgrade-management-0eevz0/machines/clusterctl-upgrade-management-0eevz0-control-plane-rswtf/kubelet.log"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 3,
-            "model_bytes": 43461,
-            "gcs_bytes": 41933,
-            "elapsed_ms": 47383
+            "tool_calls": 9,
+            "model_bytes": 59399,
+            "gcs_bytes": 353053,
+            "elapsed_ms": 110257
           }
         },
         {

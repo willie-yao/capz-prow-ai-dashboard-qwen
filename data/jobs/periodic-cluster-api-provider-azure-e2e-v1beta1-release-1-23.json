@@ -558,25 +558,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/helpers.go#L124",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T18:09:59Z",
-            "summary": "Test timed out waiting for Calico kube-controllers deployment to be created, likely due to failed CNI installation via HelmChartProxy.",
+            "generated_at": "2026-06-03T19:28:57Z",
+            "summary": "The test failed because the 'calico-kube-controllers' deployment was not found in the 'kube-system' namespace, but it was actually deployed in the 'calico-system' namespace.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T18:09:59Z",
-            "root_cause": "Deployment 'calico-kube-controllers' not found in test namespace. Build-log shows test timed out waiting for deployment to exist. Common failure patterns indicate this is likely due to HelmChartProxy installation failure or node provisioning issues preventing pod scheduling.",
+            "generated_at": "2026-06-03T19:28:57Z",
+            "root_cause": "The test expected the 'calico-kube-controllers' deployment to be in the 'kube-system' namespace, but the HelmChartProxy deployed it in 'calico-system'. The build-log.txt shows the deployment became available in 'calico-system' (line 1480: 'Deployment calico-system/calico-kube-controllers is now available'), but the test's assertion checked 'kube-system', leading to a timeout. This mismatch indicates a configuration error in the test's expectations or HelmChartProxy namespace specification.",
             "severity": "High",
-            "suggested_fix": "Check AzureMachinePool status for VMSS provisioning errors. Verify cluster labels (cni=calico) are correctly applied. Check tigera-operator pod logs for Helm installation errors. Validate Azure resource quotas and network configurations.",
+            "suggested_fix": "Update the test's HelmChartProxy configuration for Calico to explicitly set the namespace to 'kube-system' if required, or modify the test's assertion to check the 'calico-system' namespace. Verify the HelmChartProxy resource in the cluster's YAML dumps (e.g., 'artifacts/clusters/capz-e2e-8pznw0-vmss/') to confirm the namespace field.",
             "relevant_files": [
-              "test/e2e/helpers.go",
-              "config/capz/manager_image_patch.yaml",
-              "config/capz/manager_pull_policy.yaml"
+              "sigs.k8s.io/cluster-api-addon-provider-helm/config/samples/calico_v3_26_1.yaml",
+              "sigs.k8s.io/cluster-api-provider-azure/test/e2e/helpers.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 6,
-            "model_bytes": 20417,
-            "gcs_bytes": 9455,
-            "elapsed_ms": 54282
+            "tool_calls": 7,
+            "model_bytes": 29334,
+            "gcs_bytes": 539215,
+            "elapsed_ms": 79684
           }
         },
         {
@@ -817,9 +816,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/helpers.go#L124",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-02T00:22:11Z",
-            "summary": "AI analysis unavailable: agentic iter 7: chat returned 500: {\"message\":\"Failed to generate completions: No disaggregated params in prefill response: Prefill router output missing disaggregated_params\",\"type\":\"Internal Server Error\",\"code\":500}",
-            "is_transient": false
+            "generated_at": "2026-06-03T19:31:38Z",
+            "summary": "Test failed due to missing 'calico-kube-controllers' deployment caused by spot VM worker node provisioning failure. The root cause is AzureMachinePool unable to create spot VM instances due to quota exhaustion or spot eviction.",
+            "is_transient": true
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-03T19:31:38Z",
+            "root_cause": "AzureMachinePool failed to provision spot VM worker node (capz-e2e-f7m9bu-spot-md-0-rf6cw-zgpwr) due to Azure quota limits or spot eviction. This prevented node creation, blocking CAAPH from deploying Calico CNI. Evidence shows control plane initialized successfully but no worker node resources were created (AzureMachine directory empty).",
+            "severity": "Critical",
+            "suggested_fix": "1. Check AzureMachinePool status for spot VM provisioning errors\n2. Verify Azure quota availability for spot instances in the region\n3. Adjust spot eviction policy to 'Deallocate' instead of 'Delete' in AzureMachinePool spec\n4. Add retry logic for AzureMachine creation in CAPZ controllers",
+            "relevant_files": [
+              "artifacts/clusters/capz-e2e-f7m9bu-spot/AzureMachinePool/capz-e2e-f7m9bu-spot-md-0.yaml",
+              "artifacts/clusters/capz-e2e-f7m9bu-spot/azure-activity-logs/capz-e2e-f7m9bu-spot.log"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 10,
+            "model_bytes": 30114,
+            "gcs_bytes": 477889,
+            "elapsed_ms": 120847
           }
         },
         {

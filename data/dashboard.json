@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-03T18:01:38.162795Z",
+  "generated_at": "2026-06-03T19:11:07.092188Z",
   "jobs": [
     {
       "name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main",
@@ -105,15 +105,16 @@
       "job_id": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main",
       "overall_status": "FLAKY",
       "last_run": {
-        "build_id": "2061859356063830016",
-        "passed": true,
-        "timestamp": "2026-06-02T17:17:19Z",
-        "duration_seconds": 3605,
-        "tests_total": 59,
-        "tests_passed": 23,
-        "tests_skipped": 36
+        "build_id": "2062237350045421568",
+        "passed": false,
+        "timestamp": "2026-06-03T18:19:15Z"
       },
       "recent_runs": [
+        {
+          "build_id": "2062237350045421568",
+          "passed": false,
+          "timestamp": "2026-06-03T18:19:15Z"
+        },
         {
           "build_id": "2061859356063830016",
           "passed": true,
@@ -121,16 +122,6 @@
           "duration_seconds": 3605,
           "tests_total": 59,
           "tests_passed": 23,
-          "tests_skipped": 36
-        },
-        {
-          "build_id": "2061471261799747584",
-          "passed": false,
-          "timestamp": "2026-06-01T15:35:05Z",
-          "duration_seconds": 6003,
-          "tests_total": 59,
-          "tests_passed": 22,
-          "tests_failed": 1,
           "tests_skipped": 36
         }
       ],
@@ -241,17 +232,25 @@
       "job_type": "periodic",
       "repo": "",
       "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-main",
-      "overall_status": "FLAKY",
+      "overall_status": "PASSING",
       "last_run": {
         "build_id": "2062190541235294208",
-        "passed": false,
-        "timestamp": "2026-06-03T15:12:08Z"
+        "passed": true,
+        "timestamp": "2026-06-03T15:12:08Z",
+        "duration_seconds": 10579,
+        "tests_total": 7636,
+        "tests_passed": 456,
+        "tests_skipped": 7180
       },
       "recent_runs": [
         {
           "build_id": "2062190541235294208",
-          "passed": false,
-          "timestamp": "2026-06-03T15:12:08Z"
+          "passed": true,
+          "timestamp": "2026-06-03T15:12:08Z",
+          "duration_seconds": 10579,
+          "tests_total": 7636,
+          "tests_passed": 456,
+          "tests_skipped": 7180
         },
         {
           "build_id": "2061425711104659456",
@@ -263,8 +262,8 @@
           "tests_skipped": 7180
         }
       ],
-      "pass_rate_7d": 0.5,
-      "pass_rate_30d": 0.5
+      "pass_rate_7d": 1,
+      "pass_rate_30d": 1
     },
     {
       "name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",

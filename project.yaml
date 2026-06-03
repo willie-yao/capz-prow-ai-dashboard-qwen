@@ -137,15 +137,29 @@ ai:
   agentic:
     enabled: true
     always: false
+    # Allow more rounds than the engine default (15) so the model has
+    # room to satisfy both the calls and bytes floors below — a typical
+    # investigation needs ~5-8 calls and ~200-500 KB of evidence, and
+    # the L.3 A/B showed Qwen frequently hitting the iter cap before
+    # accumulating enough bytes.
+    max_iters: 20
     # Minimum tool calls before a tools-free final answer is accepted.
-    # Qwen3-235B tends to finalize from the prompt alone in 0-2 calls
-    # (A/B vs Claude Opus showed 24% zero-tool finals and several
-    # fabricated root causes), so we enforce a floor of 3 here to make
-    # the model at least list the build root, grep the failure logs,
-    # and read one artifact before declaring a root cause. The engine
-    # nudges and re-prompts when the model finalizes below the floor;
-    # see prow-ai-dashboard/docs/agentic.md for full semantics.
-    min_tool_calls: 3
+    # Bumped from 3 → 5 after the 2026-06-03 A/B: with floor=3 Qwen
+    # parked at the floor on 50% of failures and produced 5x shorter
+    # root causes than Claude on the same builds. 5 forces the model
+    # to do meaningful investigation rather than terminating the
+    # moment the floor allows.
+    min_tool_calls: 5
+    # Minimum cumulative GCS bytes fetched before a final answer is
+    # accepted. Calls alone are gameable: in the L.3 A/B Qwen
+    # satisfied min_tool_calls=3 with 6 list/tiny-read calls totaling
+    # 13 KB and fabricated "no specific error found" on a build where
+    # Claude found the actual webhook cert mismatch from 9 MB of
+    # logs. 200 KB requires the model to actually grep logs (a
+    # multi-MB grep with wide context easily satisfies this) rather
+    # than skimming directory listings. See
+    # prow-ai-dashboard/docs/agentic.md for full semantics.
+    min_gcs_bytes: 200000
     tools:
       - filesystem
       - k8s

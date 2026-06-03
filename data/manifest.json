@@ -124,7 +124,9 @@
     },
     "agentic": {
       "enabled": true,
-      "min_tool_calls": 3,
+      "max_iters": 20,
+      "min_tool_calls": 5,
+      "min_gcs_bytes": 200000,
       "tools": [
         "filesystem",
         "k8s"
