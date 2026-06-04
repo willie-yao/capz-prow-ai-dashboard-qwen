@@ -1,0 +1,44 @@
+id: vmss-instance-failed
+name: VMSS instance or AzureMachinePool failure (Flex / Uniform)
+description: |
+  An AzureMachinePool backed by a VMSS (Flex or Uniform orchestration)
+  reports a failed instance, or the pool fails to scale to its desired
+  count. Diagnostic path uses the AzureMachinePool YAML +
+  per-instance logs under artifacts/clusters/<cluster>/AzureMachinePool/
+  and the azure-activity-log.
+
+priority: 120
+
+triggers:
+  - "(?i)AzureMachinePool.*(fail|err)"
+  - "(?i)VMSS.*(instance|provisioning).*fail"
+  - "(?i)machinepool.*(not\\s+ready|stuck)"
+
+required_evidence:
+  - id: machinepool-yaml
+    description: AzureMachinePool resource YAML with status.instances
+    any_of:
+      - "artifacts/clusters/.*/AzureMachinePool/.*\\.ya?ml"
+      - "artifacts/clusters/.*/MachinePool/.*\\.ya?ml"
+  - id: azure-activity-log
+    description: Azure activity log for the cluster
+    any_of:
+      - "artifacts/clusters/.*/azure-activity-logs/.*\\.log"
+
+procedure: |
+  1. Read the AzureMachinePool YAML. Identify which instance(s) are
+     failed via status.instances[].provisioningState and
+     status.conditions.
+  2. Read azure-activity-logs/<cluster>.log filtered for the VMSS
+     name OR the failed instance ID. Look for SkuNotAvailable,
+     QuotaExceeded, AllocationFailed, or per-instance
+     OSProvisioningTimedOut.
+  3. If the failure is per-instance (one in N): typically a transient
+     allocation failure or a sku-zone availability issue. Document
+     the exact instance + reason.
+  4. If the entire pool fails: usually a template-level problem
+     (image not in the right region, identity not propagated, missing
+     subnet). Cite the AzureMachinePool.spec field that is
+     misconfigured.
+  5. Do NOT punt to "check VMSS in Azure portal" — the activity log
+     contains the specific reason.

@@ -176,6 +176,18 @@ ai:
     critique:
       enabled: true
       max_retries: 2
+    # L.4 Step 3 skills/recipes registry. Loads skills/*.yaml at fetcher
+    # startup (10 seed CAPZ recipes as of 2026-06-03). Critique gate
+    # consults the loaded set: when any recipe's triggers match the
+    # draft, the agent must have read evidence matching each of the
+    # recipe's `required_evidence` groups, else critique fails and the
+    # model re-prompts with the recipe procedure quoted under a
+    # "consumer guidance, not engine instruction" disclaimer.
+    # Cache entries are stamped with skill_set_hash; editing any
+    # recipe invalidates affected entries on next run. See
+    # prow-ai-dashboard/docs/skills.md for the schema and authoring guide.
+    skills:
+      enabled: true
     tools:
       - filesystem
       - k8s
