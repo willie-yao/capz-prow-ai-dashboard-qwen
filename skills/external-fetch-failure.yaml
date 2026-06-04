@@ -1,0 +1,62 @@
+id: external-fetch-failure
+name: External dependency fetch failure (GitHub, ghcr, registry)
+description: |
+  A test setup phase failed to fetch a build dependency from an
+  external service (GitHub release, ghcr.io image, k8s.io registry,
+  golang.org/x module proxy, etc.). Symptoms: HTTP 5xx from the
+  external service, DNS resolution failures, TCP timeouts. These
+  are almost always transient infra outages unrelated to CAPZ.
+  Common manifestation: SynchronizedBeforeSuite fails with
+  GitHub-502 while pulling ginkgo / kubetest / a Helm chart from
+  github.com. Recipe pushes the model toward marking these as
+  transient infra issues rather than fabricating a CAPZ-side root
+  cause. The Step 3 A/B refetch hit one of these on every batch.
+
+priority: 180
+
+triggers:
+  - "(?i)SynchronizedBeforeSuite"
+  - "(?i)(502|503|504)\\s+(Bad\\s+Gateway|Service\\s+Unavailable|Gateway\\s+Timeout)"
+  - "(?i)(github\\.com|ghcr\\.io|registry\\.k8s\\.io|gcr\\.io|quay\\.io|docker\\.io).*(?:dial tcp|EOF|connection refused|TLS handshake timeout|no such host)"
+  - "(?i)Temporary\\s+failure\\s+in\\s+name\\s+resolution"
+  - "(?i)ssh:?\\s+rejected:?\\s+connect\\s+failed"
+
+required_evidence:
+  - id: build-log
+    description: Top-level build-log.txt showing the failing fetch / suite-setup line
+    any_of:
+      - "build-log\\.txt"
+      - ".*build-log\\.txt"
+  - id: test-runner-output
+    description: Any artifact that captures the setup-phase output (ginkgo, kubetest, junit)
+    any_of:
+      - "artifacts/.*junit.*\\.xml"
+      - "artifacts/.*setup.*\\.log"
+      - "artifacts/.*ginkgo.*\\.log"
+
+procedure: |
+  1. Read build-log.txt around the failing setup line. The exact
+     HTTP status code, hostname, and path are usually printed
+     verbatim (e.g. "Get https://github.com/.../releases/download/...:
+     502 Bad Gateway"). Quote it verbatim in root_cause.
+  2. Confirm the failure is a fetch / setup phase, not a real test
+     assertion. Setup failures appear before any [It] block runs
+     (SynchronizedBeforeSuite, BeforeSuite, or top-level kubetest
+     setup).
+  3. Determine the upstream service:
+     - github.com 5xx → GitHub outage (check status.github.com)
+     - ghcr.io / docker.io 5xx → registry outage
+     - registry.k8s.io / k8s.gcr.io 5xx → k8s registry outage
+     - "Temporary failure in name resolution" → DNS outage on the
+       test runner (usually transient, but check kube-system DNS
+       if the failure is on a workload cluster)
+     - "ssh: rejected" → typically a follow-on of a VM that never
+       got network (see machine-bootstrap-empty-logs recipe)
+  4. Set is_transient=true. The root_cause should name the external
+     service + the HTTP / DNS error. The suggested_fix should be
+     "re-run the job once the upstream service recovers; no CAPZ-side
+     change required" — NOT "investigate CAPZ" or a code edit.
+  5. If the same external-fetch failure repeats across many builds
+     of the same job, note that in root_cause so the operator can
+     escalate to the upstream service, but still mark
+     is_transient=true (it's an infra issue, not a CAPZ regression).
