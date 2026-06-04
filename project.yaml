@@ -1,0 +1,167 @@
+# Project config for the CAPZ Prow dashboard (Qwen/Dynamo demo).
+#
+# Mirrors willie-yao/capz-prow-ai-dashboard exactly EXCEPT for the AI
+# endpoint and runtime: this dashboard's analyses are produced by an
+# in-cluster Qwen3-235B-FP8 model served via NVIDIA Dynamo (trtllm
+# backend) on the demo AKS cluster, reached over cluster-internal DNS
+# from a self-hosted GitHub Actions runner. Same prow jobs, same
+# prompt — different model + endpoint. Lets the team
+# compare summary quality side-by-side at:
+#
+#   prod (Claude):     https://willie-yao.github.io/capz-prow-ai-dashboard/
+#   demo (Qwen):       https://willie-yao.github.io/capz-prow-ai-dashboard-qwen/
+
+id: capz-qwen
+name: "Cluster API Provider Azure (Qwen demo)"
+short_name: "CAPZ-Qwen"
+
+# Where in kubernetes/test-infra to find the prow job YAMLs.
+source:
+  test_infra_paths:
+    - "config/jobs/kubernetes-sigs/cluster-api-provider-azure"
+  file_prefix: "cluster-api-provider-azure-"
+
+# Only jobs that advertise this testgrid dashboard are included.
+testgrid:
+  dashboard: "sig-cluster-lifecycle-cluster-api-provider-azure"
+
+# Same category rules as the prod CAPZ dashboard so a side-by-side
+# comparison is apples-to-apples.
+categories:
+  - match: "conformance"
+    id: "conformance"
+    label: "Conformance"
+  - match: "[managed kubernetes]"
+    id: "aks-e2e"
+    label: "AKS E2E"
+  - match: "e2e-aks"
+    id: "aks-e2e"
+    label: "AKS E2E"
+  - match: "capi-e2e"
+    id: "capi-e2e"
+    label: "CAPI E2E"
+  - match: "upgrade"
+    id: "upgrade"
+    label: "Upgrade"
+  - match: "coverage"
+    id: "coverage"
+    label: "Coverage"
+  - match: "scalability"
+    id: "scalability"
+    label: "Scalability"
+  - match: "e2e"
+    id: "capz-e2e"
+    label: "CAPZ E2E"
+
+category_display_order:
+  - capz-e2e
+  - aks-e2e
+  - upgrade
+  - capi-e2e
+  - conformance
+  - coverage
+  - scalability
+
+# GCS bucket holding build artifacts.
+gcs:
+  bucket: "kubernetes-ci-logs"
+
+# UI branding. The "(Qwen demo)" suffix in the title makes it obvious
+# at a glance which dashboard the viewer is on.
+branding:
+  title: "CAPZ Prow Dashboard (Qwen demo)"
+  base_path: "/capz-prow-ai-dashboard-qwen"
+  site_url: "https://willie-yao.github.io/capz-prow-ai-dashboard-qwen"
+  source_repo:
+    owner: "kubernetes-sigs"
+    name: "cluster-api-provider-azure"
+
+# AI analysis settings.
+#
+# Endpoint and model come from repo variables wired in
+# .github/workflows/deploy.yml. For this demo, set:
+#
+#   gh variable set AI_ENDPOINT \
+#     -b "http://qwen3-235b-a22b-disagg-frontend.default.svc:8000/v1/chat/completions"
+#   gh variable set AI_MODEL -b "Qwen/Qwen3-235B-A22B-FP8"
+#
+# AI_ENDPOINT uses cluster-internal DNS because the GHA runner is the
+# in-cluster ARC runner labelled `arc-qwen-runner` (see deploy.yml).
+# The Dynamo frontend doesn't require an API key, but the engine
+# expects AI_TOKEN to be non-empty — any string works.
+ai:
+  # Phase L universal agentic path. Same as the prod CAPZ dashboard so
+  # the only intentional variable between the two deployments is the
+  # endpoint + model.
+  use_universal_path: true
+
+  agentic:
+    enabled: true
+    always: false
+    # Allow more rounds than the engine default (15) so the model has
+    # room to satisfy both the calls and bytes floors below — a typical
+    # investigation needs ~5-8 calls and ~200-500 KB of evidence, and
+    # the L.3 A/B showed Qwen frequently hitting the iter cap before
+    # accumulating enough bytes.
+    max_iters: 20
+    # Per-call evidence budget: how many bytes of tool-call output the
+    # model sees across the agentic loop. Engine default is 300_000.
+    # Capped at 100_000 (2026-06-04) because the in-cluster Dynamo
+    # prefill workers have max_num_tokens=32768 — the previous attempt
+    # to push this to 600_000 produced prompts of 36-37K tokens and
+    # 100% prefill-router 500 errors ("Prefill router output missing
+    # disaggregated_params"). Even the 300K engine default produced
+    # intermittent overruns when evidence accumulation was heavy.
+    # 100K bytes ≈ 25K tokens of evidence, leaving ~7K headroom for
+    # the system prompt + skills + tool defs under the 32K deployment
+    # limit. Bump only if Dynamo prefill workers are reconfigured for
+    # a larger context window.
+    model_byte_budget: 100000
+    # Minimum tool calls before a tools-free final answer is accepted.
+    # Bumped from 3 → 5 after the 2026-06-03 A/B: with floor=3 Qwen
+    # parked at the floor on 50% of failures and produced 5x shorter
+    # root causes than Claude on the same builds. 5 forces the model
+    # to do meaningful investigation rather than terminating the
+    # moment the floor allows.
+    min_tool_calls: 5
+    # Minimum cumulative GCS bytes fetched before a final answer is
+    # accepted. Calls alone are gameable: in the L.3 A/B Qwen
+    # satisfied min_tool_calls=3 with 6 list/tiny-read calls totaling
+    # 13 KB and fabricated "no specific error found" on a build where
+    # Claude found the actual webhook cert mismatch from 9 MB of
+    # logs. Bumped 200000 → 500000 alongside the L.4 Step 2.5
+    # critique strengthening: Step 2 measured Qwen at p50 758 KB on
+    # critique-passing analyses, so 500 KB pushes only the
+    # below-median cases up to enough evidence to ground a concrete
+    # claim, without forcing every analysis to chase the heavy-tail
+    # 5 MB Claude reads. See prow-ai-dashboard/docs/agentic.md for
+    # full semantics.
+    min_gcs_bytes: 500000
+    # Deterministic regex critique gate (L.4 Step 2). After the agentic
+    # loop produces a tools-free final, the engine checks suggested_fix
+    # for punt-shaped diagnostic TODO lists (imperative diagnostic verbs
+    # at sentence start, "should/need" + diag-verb, "recommend" +
+    # diag-gerund). On match, feedback is appended and the model
+    # re-prompts up to max_retries times with a per-retry budget bump.
+    # Drafts that still punt after retries are published but NOT cached
+    # (anti-thrash, same pattern as the floors above). L.4 Step 1
+    # measured Qwen at 80% punt rate on fresh CAPZ analyses; this gate
+    # targets <50%. See prow-ai-dashboard/docs/agentic.md for semantics.
+    critique:
+      enabled: true
+      max_retries: 2
+    # L.4 Step 3 skills/recipes registry. Loads skills/*.yaml at fetcher
+    # startup (10 seed CAPZ recipes as of 2026-06-03). Critique gate
+    # consults the loaded set: when any recipe's triggers match the
+    # draft, the agent must have read evidence matching each of the
+    # recipe's `required_evidence` groups, else critique fails and the
+    # model re-prompts with the recipe procedure quoted under a
+    # "consumer guidance, not engine instruction" disclaimer.
+    # Cache entries are stamped with skill_set_hash; editing any
+    # recipe invalidates affected entries on next run. See
+    # prow-ai-dashboard/docs/skills.md for the schema and authoring guide.
+    skills:
+      enabled: true
+    tools:
+      - filesystem
+      - k8s
