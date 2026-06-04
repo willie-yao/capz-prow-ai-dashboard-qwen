@@ -143,6 +143,15 @@ ai:
     # the L.3 A/B showed Qwen frequently hitting the iter cap before
     # accumulating enough bytes.
     max_iters: 20
+    # Per-call evidence budget: how many bytes of tool-call output the
+    # model sees across the agentic loop. Engine default is 300_000.
+    # Bumped to 600_000 (2026-06-04, post-L.4 Step 3) after observing
+    # median Qwen rc=428 chars vs Claude's 1492 on the same builds, and
+    # median Qwen reads of ~500 KB vs Claude's ~5 MB. Doubling this
+    # budget gives Qwen room to absorb more evidence per iteration
+    # before being forced to summarize. Costs more model input tokens
+    # but Dynamo is in-cluster and free; cost is wall clock.
+    model_byte_budget: 600000
     # Minimum tool calls before a tools-free final answer is accepted.
     # Bumped from 3 → 5 after the 2026-06-03 A/B: with floor=3 Qwen
     # parked at the floor on 50% of failures and produced 5x shorter
