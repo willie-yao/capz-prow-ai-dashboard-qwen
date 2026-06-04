@@ -149,22 +149,6 @@
       ]
     }
   },
-  "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2060523508684820480:a7074d401f8918a7": {
-    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2060523508684820480:a7074d401f8918a7",
-    "created_at": "2026-06-01T17:18:08.656134-07:00",
-    "data": {
-      "summary": "Test timed out waiting for cluster creation due to DNS resolution failure for the Kubernetes API server endpoint.",
-      "is_transient": false,
-      "root_cause": "The test failed with repeated errors: \"dial tcp: lookup capz-e2e-ti5gy2-public-custom-vnet-56a172e4.canadacentral.cloudapp.azure.com on 172.20.0.10:53: no such host\" in the build-log.txt. This indicates the Kubernetes API server endpoint DNS name could not be resolved, preventing cluster creation completion.",
-      "severity": "Critical",
-      "suggested_fix": "Investigate Azure VM provisioning for the control plane nodes. Check AzureMachine resources for failure messages, verify the Azure Public IP and Load Balancer configuration, and ensure the cloudapp.azure.com DNS entry was created. Also, check cloud-init logs on the first control plane node for kubeadm init failures.",
-      "relevant_files": [
-        "build-log.txt",
-        "artifacts/clusters/{cluster-name}/AzureMachine/*.yaml",
-        "artifacts/clusters/{cluster-name}/machines/{first-cp-machine}/cloud-init-output.log"
-      ]
-    }
-  },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:127ba01af79f88d5": {
     "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-main:2061280503188688896:127ba01af79f88d5",
     "created_at": "2026-06-03T14:55:49.357992-07:00",
@@ -360,21 +344,6 @@
       "gcs_bytes": 1040672,
       "critique_passed": true,
       "critique_version": 2
-    }
-  },
-  "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2059817348679864320:50e52941008b7ac6": {
-    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2059817348679864320:50e52941008b7ac6",
-    "created_at": "2026-06-01T17:22:27.286992-07:00",
-    "data": {
-      "summary": "Test timed out waiting for calico-kube-controllers deployment to become available due to DNS resolution failure for the API server.",
-      "is_transient": false,
-      "root_cause": "DNS resolution failure for the API server endpoint: \"dial tcp: lookup capz-e2e-p53ngf-public-custom-vnet-920620e.francecentral.cloudapp.azure.com on 172.20.0.10:53: no such host\" in build-log.txt. This prevented nodes from connecting to the API server, causing the deployment to fail.",
-      "severity": "Critical",
-      "suggested_fix": "Investigate Azure resource provisioning for the API server (public IP, DNS, load balancer) and ensure CAPZ controller correctly configures these resources.",
-      "relevant_files": [
-        "build-log.txt",
-        "junit.e2e_suite.1.xml"
-      ]
     }
   },
   "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2059817348679864320:8e26d93e398aed9c": {

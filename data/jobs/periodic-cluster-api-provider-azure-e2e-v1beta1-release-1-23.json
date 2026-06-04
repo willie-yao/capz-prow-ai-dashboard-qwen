@@ -855,6 +855,2971 @@
       "tests_passed": 32,
       "tests_failed": 5,
       "tests_skipped": 20
+    },
+    {
+      "build_id": "2059817348679864320",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "started": "2026-05-28T02:01:46Z",
+      "finished": "2026-05-28T03:36:36Z",
+      "passed": false,
+      "result": "FAILURE",
+      "duration_seconds": 5690,
+      "commit": "3b67c11562b97890b1590f6006072e03d10c28d6",
+      "repo_version": "3b67c11562b97890b1590f6006072e03d10c28d6",
+      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2059817348679864320/",
+      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2059817348679864320/build-log.txt",
+      "junit_urls": [
+        "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2059817348679864320/artifacts/junit.e2e_suite.1.xml"
+      ],
+      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2059817348679864320/",
+      "test_cases": [
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.823774093,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Conformance Tests conformance-tests",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the quick-start spec Should create a workload cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the MachineDeployment rollout spec Should successfully upgrade Machines upon changes in relevant MachineDeployment fields",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the self-hosted spec Should pivot the bootstrap cluster to a self-hosted cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully remediate unhealthy worker machines with MachineHealthCheck Should replace unhealthy machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully exercise machine pools Should successfully create a cluster with machine pool machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully scale out and scale in a MachineDeployment Should successfully scale a MachineDeployment up and down upon changes to the MachineDeployment replica count",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the workload cluster upgrade spec [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a private cluster [OPTIONAL] Creates a public management cluster in a custom vnet",
+          "status": "passed",
+          "duration_seconds": 3633.688999707,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 1137.655153135,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.844520072,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a Flatcar sysext cluster [OPTIONAL] With Flatcar control-plane and worker nodes",
+          "status": "passed",
+          "duration_seconds": 953.790670834,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating RKE2 clusters using clusterclass [OPTIONAL] with 3 control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 1491.821810658,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000590788,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.854905271,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with spot vms [OPTIONAL] With spot vm machine deployments",
+          "status": "passed",
+          "duration_seconds": 983.06536711,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters on public MEC [OPTIONAL] with 1 control plane nodes and 1 worker node",
+          "status": "skipped",
+          "duration_seconds": 1.19060317,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate using default template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1473.324061928,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000573368,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.858365603,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a ipv6 control-plane cluster [REQUIRED] With ipv6 worker node",
+          "status": "passed",
+          "duration_seconds": 1585.356133674,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayCluster and verifies it becomes ready",
+          "status": "passed",
+          "duration_seconds": 894.617477004,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000293044,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.859069812,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with VMSS flex machinepools [OPTIONAL] with 1 control plane node and 1 machinepool",
+          "status": "passed",
+          "duration_seconds": 1454.890410579,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Testing autoscaling from zero with Cluster Autoscaler [REQUIRED] Scales MachineDeployment from 0 to 1+ when workload is scheduled",
+          "status": "passed",
+          "duration_seconds": 1072.764013171,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000638498,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.860914765,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for control plane tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster using ClusterClass [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster with the ASO API [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a dual-stack cluster [OPTIONAL] With dual-stack worker node",
+          "status": "passed",
+          "duration_seconds": 1778.835672597,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayJob and verifies it completes successfully",
+          "status": "passed",
+          "duration_seconds": 863.009817785,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000300414,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.859422166,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly available cluster [REQUIRED] With 3 control-plane nodes and 2 Linux and 2 Windows worker nodes",
+          "status": "passed",
+          "duration_seconds": 2721.664334015,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000578358,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.852623772,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a GPU-enabled cluster [OPTIONAL] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 2.354370521,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters using clusterclass [OPTIONAL] with a single control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 1006.212524884,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate and fully spec-ed out APIServer ILB template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "failed",
+          "duration_seconds": 1806.821004541,
+          "failure_message": "Timed out after 900.001s.\nDeployment calico-system/calico-kube-controllers failed\nDeployment:\n{\n  \"metadata\": {\n    \"name\": \"calico-kube-controllers\",\n    \"namespace\": \"calico-system\",\n    \"uid\": \"a8211f71-0c7d-44d3-b72d-e51b93ef1f24\",\n    \"resourceVersion\": \"2960\",\n    \"generation\": 1,\n    \"creationTimestamp\": \"2026-05-28T02:39:48Z\",\n    \"labels\": {\n      \"app.kubernetes.io/name\": \"calico-kube-controllers\",\n      \"k8s-app\": \"calico-kube-controllers\"\n    },\n    \"annotations\": {\n      \"deployment.kubernetes.io/revision\": \"1\"\n    },\n    \"ownerReferences\": [\n      {\n        \"apiVersion\": \"operator.tigera.io/v1\",\n        \"kind\": \"Installation\",\n        \"name\": \"default\",\n        \"uid\": \"2c3ab702-a38d-4693-b879-150e2891c171\",\n        \"controller\": true,\n        \"blockOwnerDeletion\": true\n      }\n    ],\n    \"managedFields\": [\n      {\n        \"manager\": \"operator\",\n        \"operation\": \"Update\",\n        \"apiVersion\": \"apps/v1\",\n        \"time\": \"2026-05-28T02:39:48Z\",\n        \"fieldsType\": \"FieldsV1\",\n        \"fieldsV1\": {\n          \"f:metadata\": {\n            \"f:labels\": {\n              \".\": {},\n              \"f:app.kubernetes.io/name\": {},\n              \"f:k8s-app\": {}\n            },\n            \"f:ownerReferences\": {\n              \".\": {},\n              \"k:{\\\"uid\\\":\\\"2c3ab702-a38d-4693-b879-150e2891c171\\\"}\": {}\n            }\n          },\n          \"f:spec\": {\n            \"f:progressDeadlineSeconds\": {},\n            \"f:replicas\": {},\n            \"f:revisionHistoryLimit\": {},\n            \"f:selector\": {},\n            \"f:strategy\": {\n              \"f:type\": {}\n            },\n            \"f:template\": {\n              \"f:metadata\": {\n                \"f:annotations\": {\n                  \".\": {},\n                  \"f:hash.operator.tigera.io/system\": {},\n                  \"f:tigera-operator.hash.operator.tigera.io/tigera-ca-private\": {}\n                },\n                \"f:labels\": {\n                  \".\": {},\n                  \"f:app.kubernetes.io/name\": {},\n                  \"f:k8s-app\": {}\n                },\n                \"f:name\": {},\n                \"f:namespace\": {}\n              },\n              \"f:spec\": {\n                \"f:containers\": {\n                  \"k:{\\\"name\\\":\\\"calico-kube-controllers\\\"}\": {\n                    \".\": {},\n                    \"f:env\": {\n                      \".\": {},\n                      \"k:{\\\"name\\\":\\\"CA_CRT_PATH\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"DATASTORE_TYPE\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"DISABLE_KUBE_CONTROLLERS_CONFIG_API\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"ENABLED_CONTROLLERS\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"FIPS_MODE_ENABLED\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"KUBERNETES_SERVICE_HOST\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"KUBERNETES_SERVICE_PORT\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"KUBE_CONTROLLERS_CONFIG_NAME\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      }\n                    },\n                    \"f:image\": {},\n                    \"f:imagePullPolicy\": {},\n                    \"f:livenessProbe\": {\n                      \".\": {},\n                      \"f:exec\": {\n                        \".\": {},\n                        \"f:command\": {}\n                      },\n                      \"f:failureThreshold\": {},\n                      \"f:initialDelaySeconds\": {},\n                      \"f:periodSeconds\": {},\n                      \"f:successThreshold\": {},\n                      \"f:timeoutSeconds\": {}\n                    },\n                    \"f:name\": {},\n                    \"f:readinessProbe\": {\n                      \".\": {},\n                      \"f:exec\": {\n                        \".\": {},\n                        \"f:command\": {}\n                      },\n                      \"f:failureThreshold\": {},\n                      \"f:periodSeconds\": {},\n                      \"f:successThreshold\": {},\n                      \"f:timeoutSeconds\": {}\n                    },\n                    \"f:resources\": {},\n                    \"f:securityContext\": {\n                      \".\": {},\n                      \"f:allowPrivilegeEscalation\": {},\n                      \"f:capabilities\": {\n                        \".\": {},\n                        \"f:drop\": {}\n                      },\n                      \"f:privileged\": {},\n                      \"f:runAsGroup\": {},\n                      \"f:runAsNonRoot\": {},\n                      \"f:runAsUser\": {},\n                      \"f:seccompProfile\": {\n                        \".\": {},\n                        \"f:type\": {}\n                      }\n                    },\n                    \"f:terminationMessagePath\": {},\n                    \"f:terminationMessagePolicy\": {},\n                    \"f:volumeMounts\": {\n                      \".\": {},\n                      \"k:{\\\"mountPath\\\":\\\"/etc/pki/tls/cert.pem\\\"}\": {\n                        \".\": {},\n                        \"f:mountPath\": {},\n                        \"f:name\": {},\n                        \"f:readOnly\": {},\n                        \"f:subPath\": {}\n                      },\n                      \"k:{\\\"mountPath\\\":\\\"/etc/pki/tls/certs\\\"}\": {\n                        \".\": {},\n                        \"f:mountPath\": {},\n                        \"f:name\": {},\n                        \"f:readOnly\": {}\n                      }\n                    }\n                  }\n                },\n                \"f:dnsPolicy\": {},\n                \"f:nodeSelector\": {},\n                \"f:priorityClassName\": {},\n                \"f:restartPolicy\": {},\n                \"f:schedulerName\": {},\n                \"f:securityContext\": {},\n                \"f:serviceAccount\": {},\n                \"f:serviceAccountName\": {},\n                \"f:terminationGracePeriodSeconds\": {},\n                \"f:tolerations\": {},\n                \"f:volumes\": {\n                  \".\": {},\n                  \"k:{\\\"name\\\":\\\"tigera-ca-bundle\\\"}\": {\n                    \".\": {},\n                    \"f:configMap\": {\n                      \".\": {},\n                      \"f:defaultMode\": {},\n                      \"f:name\": {}\n                    },\n                    \"f:name\": {}\n                  }\n                }\n              }\n            }\n          }\n        }\n      },\n      {\n        \"manager\": \"kube-controller-manager\",\n        \"operation\": \"Update\",\n        \"apiVersion\": \"apps/v1\",\n        \"time\": \"2026-05-28T02:49:49Z\",\n        \"fieldsType\": \"FieldsV1\",\n        \"fieldsV1\": {\n          \"f:metadata\": {\n            \"f:annotations\": {\n              \".\": {},\n              \"f:deployment.kubernetes.io/revision\": {}\n            }\n          },\n          \"f:status\": {\n            \"f:conditions\": {\n              \".\": {},\n              \"k:{\\\"type\\\":\\\"Available\\\"}\": {\n                \".\": {},\n                \"f:lastTransitionTime\": {},\n                \"f:lastUpdateTime\": {},\n                \"f:message\": {},\n                \"f:reason\": {},\n                \"f:status\": {},\n                \"f:type\": {}\n              },\n              \"k:{\\\"type\\\":\\\"Progressing\\\"}\": {\n                \".\": {},\n                \"f:lastTransitionTime\": {},\n                \"f:lastUpdateTime\": {},\n                \"f:message\": {},\n                \"f:reason\": {},\n                \"f:status\": {},\n                \"f:type\": {}\n              }\n            },\n            \"f:observedGeneration\": {},\n            \"f:replicas\": {},\n            \"f:unavailableReplicas\": {},\n            \"f:updatedReplicas\": {}\n          }\n        },\n        \"subresource\": \"status\"\n      }\n    ]\n  },\n  \"spec\": {\n    \"replicas\": 1,\n    \"selector\": {\n      \"matchLabels\": {\n        \"k8s-app\": \"calico-kube-controllers\"\n      }\n    },\n    \"template\": {\n      \"metadata\": {\n        \"name\": \"calico-kube-controllers\",\n        \"namespace\": \"calico-system\",\n        \"labels\": {\n          \"app.kubernetes.io/name\": \"calico-kube-controllers\",\n          \"k8s-app\": \"calico-kube-controllers\"\n        },\n        \"annotations\": {\n          \"hash.operator.tigera.io/system\": \"fdde45054a8ae4f629960ce37570929502e59449\",\n          \"tigera-operator.hash.operator.tigera.io/tigera-ca-private\": \"235d6600db621b955a0917aab420331820276170\"\n        }\n      },\n      \"spec\": {\n        \"volumes\": [\n          {\n            \"name\": \"tigera-ca-bundle\",\n            \"configMap\": {\n              \"name\": \"tigera-ca-bundle\",\n              \"defaultMode\": 420\n            }\n          }\n        ],\n        \"containers\": [\n          {\n            \"name\": \"calico-kube-controllers\",\n            \"image\": \"capzcicommunity.azurecr.io/calico/kube-controllers:v3.29.4\",\n            \"env\": [\n              {\n                \"name\": \"KUBE_CONTROLLERS_CONFIG_NAME\",\n                \"value\": \"default\"\n              },\n              {\n                \"name\": \"DATASTORE_TYPE\",\n                \"value\": \"kubernetes\"\n              },\n              {\n                \"name\": \"ENABLED_CONTROLLERS\",\n                \"value\": \"node\"\n              },\n              {\n                \"name\": \"FIPS_MODE_ENABLED\",\n                \"value\": \"false\"\n              },\n              {\n                \"name\": \"DISABLE_KUBE_CONTROLLERS_CONFIG_API\",\n                \"value\": \"false\"\n              },\n              {\n                \"name\": \"KUBERNETES_SERVICE_HOST\",\n                \"value\": \"capz-e2e-imdw5p-apiserver-ilb-h040pj68pc.francecentral.cloudapp.azure.com\"\n              },\n              {\n                \"name\": \"KUBERNETES_SERVICE_PORT\",\n                \"value\": \"6443\"\n              },\n              {\n                \"name\": \"CA_CRT_PATH\",\n                \"value\": \"/etc/pki/tls/certs/tigera-ca-bundle.crt\"\n              }\n            ],\n            \"resources\": {},\n            \"volumeMounts\": [\n              {\n                \"name\": \"tigera-ca-bundle\",\n                \"readOnly\": true,\n                \"mountPath\": \"/etc/pki/tls/certs\"\n              },\n              {\n                \"name\": \"tigera-ca-bundle\",\n                \"readOnly\": true,\n                \"mountPath\": \"/etc/pki/tls/cert.pem\",\n                \"subPath\": \"ca-bundle.crt\"\n              }\n            ],\n            \"livenessProbe\": {\n              \"exec\": {\n                \"command\": [\n                  \"/usr/bin/check-status\",\n                  \"-l\"\n                ]\n              },\n              \"initialDelaySeconds\": 10,\n              \"timeoutSeconds\": 10,\n              \"periodSeconds\": 60,\n              \"successThreshold\": 1,\n              \"failureThreshold\": 6\n            },\n            \"readinessProbe\": {\n              \"exec\": {\n                \"command\": [\n                  \"/usr/bin/check-status\",\n                  \"-r\"\n                ]\n              },\n              \"timeoutSeconds\": 10,\n              \"periodSeconds\": 30,\n              \"successThreshold\": 1,\n              \"failureThreshold\": 3\n            },\n            \"terminationMessagePath\": \"/dev/termination-log\",\n            \"terminationMessagePolicy\": \"File\",\n            \"imagePullPolicy\": \"IfNotPresent\",\n            \"securityContext\": {\n              \"capabilities\": {\n                \"drop\": [\n                  \"ALL\"\n                ]\n              },\n              \"privileged\": false,\n              \"runAsUser\": 999,\n              \"runAsGroup\": 0,\n              \"runAsNonRoot\": true,\n              \"allowPrivilegeEscalation\": false,\n              \"seccompProfile\": {\n                \"type\": \"RuntimeDefault\"\n              }\n            }\n          }\n        ],\n        \"restartPolicy\": \"Always\",\n        \"terminationGracePeriodSeconds\": 30,\n        \"dnsPolicy\": \"ClusterFirst\",\n        \"nodeSelector\": {\n          \"kubernetes.io/os\": \"linux\"\n        },\n        \"serviceAccountName\": \"calico-kube-controllers\",\n        \"serviceAccount\": \"calico-kube-controllers\",\n        \"securityContext\": {},\n        \"schedulerName\": \"default-scheduler\",\n        \"tolerations\": [\n          {\n            \"key\": \"node-role.kubernetes.io/master\",\n            \"effect\": \"NoSchedule\"\n          },\n          {\n            \"key\": \"node-role.kubernetes.io/control-plane\",\n            \"effect\": \"NoSchedule\"\n          },\n          {\n            \"key\": \"CriticalAddonsOnly\",\n            \"operator\": \"Exists\"\n          }\n        ],\n        \"priorityClassName\": \"system-cluster-critical\"\n      }\n    },\n    \"strategy\": {\n      \"type\": \"Recreate\"\n    },\n    \"revisionHistoryLimit\": 10,\n    \"progressDeadlineSeconds\": 600\n  },\n  \"status\": {\n    \"observedGeneration\": 1,\n    \"replicas\": 1,\n    \"updatedReplicas\": 1,\n    \"unavailableReplicas\": 1,\n    \"conditions\": [\n      {\n        \"type\": \"Available\",\n        \"status\": \"False\",\n        \"lastUpdateTime\": \"2026-05-28T02:39:48Z\",\n        \"lastTransitionTime\": \"2026-05-28T02:39:48Z\",\n        \"reason\": \"MinimumReplicasUnavailable\",\n        \"message\": \"Deployment does not have minimum availability.\"\n      },\n      {\n        \"type\": \"Progressing\",\n        \"status\": \"False\",\n        \"lastUpdateTime\": \"2026-05-28T02:49:49Z\",\n        \"lastTransitionTime\": \"2026-05-28T02:49:49Z\",\n        \"reason\": \"ProgressDeadlineExceeded\",\n        \"message\": \"ReplicaSet \\\"calico-kube-controllers-84b4cc9968\\\" has timed out progressing.\"\n      }\n    ]\n  }\n}\nLAST SEEN                      TYPE    REASON             OBJECT                              MESSAGE\n2026-05-28 02:39:48 +0000 UTC  Normal  ScalingReplicaSet  deployment/calico-kube-controllers  Scaled up replica set calico-kube-controllers-84b4cc9968 from 0 to 1\n\nExpected\n    \u003cbool\u003e: false\nto be true",
+          "failure_body": "[FAILED] Timed out after 900.001s.\nDeployment calico-system/calico-kube-controllers failed\nDeployment:\n{\n  \"metadata\": {\n    \"name\": \"calico-kube-controllers\",\n    \"namespace\": \"calico-system\",\n    \"uid\": \"a8211f71-0c7d-44d3-b72d-e51b93ef1f24\",\n    \"resourceVersion\": \"2960\",\n    \"generation\": 1,\n    \"creationTimestamp\": \"2026-05-28T02:39:48Z\",\n    \"labels\": {\n      \"app.kubernetes.io/name\": \"calico-kube-controllers\",\n      \"k8s-app\": \"calico-kube-controllers\"\n    },\n    \"annotations\": {\n      \"deployment.kubernetes.io/revision\": \"1\"\n    },\n    \"ownerReferences\": [\n      {\n        \"apiVersion\": \"operator.tigera.io/v1\",\n        \"kind\": \"Installation\",\n        \"name\": \"default\",\n        \"uid\": \"2c3ab702-a38d-4693-b879-150e2891c171\",\n        \"controller\": true,\n        \"blockOwnerDeletion\": true\n      }\n    ],\n    \"managedFields\": [\n      {\n        \"manager\": \"operator\",\n        \"operation\": \"Update\",\n        \"apiVersion\": \"apps/v1\",\n        \"time\": \"2026-05-28T02:39:48Z\",\n        \"fieldsType\": \"FieldsV1\",\n        \"fieldsV1\": {\n          \"f:metadata\": {\n            \"f:labels\": {\n              \".\": {},\n              \"f:app.kubernetes.io/name\": {},\n              \"f:k8s-app\": {}\n            },\n            \"f:ownerReferences\": {\n              \".\": {},\n              \"k:{\\\"uid\\\":\\\"2c3ab702-a38d-4693-b879-150e2891c171\\\"}\": {}\n            }\n          },\n          \"f:spec\": {\n            \"f:progressDeadlineSeconds\": {},\n            \"f:replicas\": {},\n            \"f:revisionHistoryLimit\": {},\n            \"f:selector\": {},\n            \"f:strategy\": {\n              \"f:type\": {}\n            },\n            \"f:template\": {\n              \"f:metadata\": {\n                \"f:annotations\": {\n                  \".\": {},\n                  \"f:hash.operator.tigera.io/system\": {},\n                  \"f:tigera-operator.hash.operator.tigera.io/tigera-ca-private\": {}\n                },\n                \"f:labels\": {\n                  \".\": {},\n                  \"f:app.kubernetes.io/name\": {},\n                  \"f:k8s-app\": {}\n                },\n                \"f:name\": {},\n                \"f:namespace\": {}\n              },\n              \"f:spec\": {\n                \"f:containers\": {\n                  \"k:{\\\"name\\\":\\\"calico-kube-controllers\\\"}\": {\n                    \".\": {},\n                    \"f:env\": {\n                      \".\": {},\n                      \"k:{\\\"name\\\":\\\"CA_CRT_PATH\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"DATASTORE_TYPE\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"DISABLE_KUBE_CONTROLLERS_CONFIG_API\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"ENABLED_CONTROLLERS\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"FIPS_MODE_ENABLED\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"KUBERNETES_SERVICE_HOST\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"KUBERNETES_SERVICE_PORT\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      },\n                      \"k:{\\\"name\\\":\\\"KUBE_CONTROLLERS_CONFIG_NAME\\\"}\": {\n                        \".\": {},\n                        \"f:name\": {},\n                        \"f:value\": {}\n                      }\n                    },\n                    \"f:image\": {},\n                    \"f:imagePullPolicy\": {},\n                    \"f:livenessProbe\": {\n                      \".\": {},\n                      \"f:exec\": {\n                        \".\": {},\n                        \"f:command\": {}\n                      },\n                      \"f:failureThreshold\": {},\n                      \"f:initialDelaySeconds\": {},\n                      \"f:periodSeconds\": {},\n                      \"f:successThreshold\": {},\n                      \"f:timeoutSeconds\": {}\n                    },\n                    \"f:name\": {},\n                    \"f:readinessProbe\": {\n                      \".\": {},\n                      \"f:exec\": {\n                        \".\": {},\n                        \"f:command\": {}\n                      },\n                      \"f:failureThreshold\": {},\n                      \"f:periodSeconds\": {},\n                      \"f:successThreshold\": {},\n                      \"f:timeoutSeconds\": {}\n                    },\n                    \"f:resources\": {},\n                    \"f:securityContext\": {\n                      \".\": {},\n                      \"f:allowPrivilegeEscalation\": {},\n                      \"f:capabilities\": {\n                        \".\": {},\n                        \"f:drop\": {}\n                      },\n                      \"f:privileged\": {},\n                      \"f:runAsGroup\": {},\n                      \"f:runAsNonRoot\": {},\n                      \"f:runAsUser\": {},\n                      \"f:seccompProfile\": {\n                        \".\": {},\n                        \"f:type\": {}\n                      }\n                    },\n                    \"f:terminationMessagePath\": {},\n                    \"f:terminationMessagePolicy\": {},\n                    \"f:volumeMounts\": {\n                      \".\": {},\n                      \"k:{\\\"mountPath\\\":\\\"/etc/pki/tls/cert.pem\\\"}\": {\n                        \".\": {},\n                        \"f:mountPath\": {},\n                        \"f:name\": {},\n                        \"f:readOnly\": {},\n                        \"f:subPath\": {}\n                      },\n                      \"k:{\\\"mountPath\\\":\\\"/etc/pki/tls/certs\\\"}\": {\n                        \".\": {},\n                        \"f:mountPath\": {},\n                        \"f:name\": {},\n                        \"f:readOnly\": {}\n                      }\n                    }\n                  }\n                },\n                \"f:dnsPolicy\": {},\n                \"f:nodeSelector\": {},\n                \"f:priorityClassName\": {},\n                \"f:restartPolicy\": {},\n                \"f:schedulerName\": {},\n                \"f:securityContext\": {},\n                \"f:serviceAccount\": {},\n                \"f:serviceAccountName\": {},\n                \"f:terminationGracePeriodSeconds\": {},\n                \"f:tolerations\": {},\n                \"f:volumes\": {\n                  \".\": {},\n                  \"k:{\\\"name\\\":\\\"tigera-ca-bundle\\\"}\": {\n                    \".\": {},\n                    \"f:configMap\": {\n                      \".\": {},\n                      \"f:defaultMode\": {},\n                      \"f:name\": {}\n                    },\n                    \"f:name\": {}\n                  }\n                }\n              }\n            }\n          }\n        }\n      },\n      {\n        \"manager\": \"kube-controller-manager\",\n        \"operation\": \"Update\",\n        \"apiVersion\": \"apps/v1\",\n        \"time\": \"2026-05-28T02:49:49Z\",\n        \"fieldsType\": \"FieldsV1\",\n        \"fieldsV1\": {\n          \"f:metadata\": {\n            \"f:annotations\": {\n              \".\": {},\n              \"f:deployment.kubernetes.io/revision\": {}\n            }\n          },\n          \"f:status\": {\n            \"f:conditions\": {\n              \".\": {},\n              \"k:{\\\"type\\\":\\\"Available\\\"}\": {\n                \".\": {},\n                \"f:lastTransitionTime\": {},\n                \"f:lastUpdateTime\": {},\n                \"f:message\": {},\n                \"f:reason\": {},\n                \"f:status\": {},\n                \"f:type\": {}\n              },\n              \"k:{\\\"type\\\":\\\"Progressing\\\"}\": {\n                \".\": {},\n                \"f:lastTransitionTime\": {},\n                \"f:lastUpdateTime\": {},\n                \"f:message\": {},\n                \"f:reason\": {},\n                \"f:status\": {},\n                \"f:type\": {}\n              }\n            },\n            \"f:observedGeneration\": {},\n            \"f:replicas\": {},\n            \"f:unavailableReplicas\": {},\n            \"f:updatedReplicas\": {}\n          }\n        },\n        \"subresource\": \"status\"\n      }\n    ]\n  },\n  \"spec\": {\n    \"replicas\": 1,\n    \"selector\": {\n      \"matchLabels\": {\n        \"k8s-app\": \"calico-kube-controllers\"\n      }\n    },\n    \"template\": {\n      \"metadata\": {\n        \"name\": \"calico-kube-controllers\",\n        \"namespace\": \"calico-system\",\n        \"labels\": {\n          \"app.kubernetes.io/name\": \"calico-kube-controllers\",\n          \"k8s-app\": \"calico-kube-controllers\"\n        },\n        \"annotations\": {\n          \"hash.operator.tigera.io/system\": \"fdde45054a8ae4f629960ce37570929502e59449\",\n          \"tigera-operator.hash.operator.tigera.io/tigera-ca-private\": \"235d6600db621b955a0917aab420331820276170\"\n        }\n      },\n      \"spec\": {\n        \"volumes\": [\n          {\n            \"name\": \"tigera-ca-bundle\",\n            \"configMap\": {\n              \"name\": \"tigera-ca-bundle\",\n              \"defaultMode\": 420\n            }\n          }\n        ],\n        \"containers\": [\n          {\n            \"name\": \"calico-kube-controllers\",\n            \"image\": \"capzcicommunity.azurecr.io/calico/kube-controllers:v3.29.4\",\n            \"env\": [\n              {\n                \"name\": \"KUBE_CONTROLLERS_CONFIG_NAME\",\n                \"value\": \"default\"\n              },\n              {\n                \"name\": \"DATASTORE_TYPE\",\n                \"value\": \"kubernetes\"\n              },\n              {\n                \"name\": \"ENABLED_CONTROLLERS\",\n                \"value\": \"node\"\n              },\n              {\n                \"name\": \"FIPS_MODE_ENABLED\",\n                \"value\": \"false\"\n              },\n              {\n                \"name\": \"DISABLE_KUBE_CONTROLLERS_CONFIG_API\",\n                \"value\": \"false\"\n              },\n              {\n                \"name\": \"KUBERNETES_SERVICE_HOST\",\n                \"value\": \"capz-e2e-imdw5p-apiserver-ilb-h040pj68pc.francecentral.cloudapp.azure.com\"\n              },\n              {\n                \"name\": \"KUBERNETES_SERVICE_PORT\",\n                \"value\": \"6443\"\n              },\n              {\n                \"name\": \"CA_CRT_PATH\",\n                \"value\": \"/etc/pki/tls/certs/tigera-ca-bundle.crt\"\n              }\n            ],\n            \"resources\": {},\n            \"volumeMounts\": [\n              {\n                \"name\": \"tigera-ca-bundle\",\n                \"readOnly\": true,\n                \"mountPath\": \"/etc/pki/tls/certs\"\n              },\n              {\n                \"name\": \"tigera-ca-bundle\",\n                \"readOnly\": true,\n                \"mountPath\": \"/etc/pki/tls/cert.pem\",\n                \"subPath\": \"ca-bundle.crt\"\n              }\n            ],\n            \"livenessProbe\": {\n              \"exec\": {\n                \"command\": [\n                  \"/usr/bin/check-status\",\n                  \"-l\"\n                ]\n              },\n              \"initialDelaySeconds\": 10,\n              \"timeoutSeconds\": 10,\n              \"periodSeconds\": 60,\n              \"successThreshold\": 1,\n              \"failureThreshold\": 6\n            },\n            \"readinessProbe\": {\n              \"exec\": {\n                \"command\": [\n                  \"/usr/bin/check-status\",\n                  \"-r\"\n                ]\n              },\n              \"timeoutSeconds\": 10,\n              \"periodSeconds\": 30,\n              \"successThreshold\": 1,\n              \"failureThreshold\": 3\n            },\n            \"terminationMessagePath\": \"/dev/termination-log\",\n            \"terminationMessagePolicy\": \"File\",\n            \"imagePullPolicy\": \"IfNotPresent\",\n            \"securityContext\": {\n              \"capabilities\": {\n                \"drop\": [\n                  \"ALL\"\n                ]\n              },\n              \"privileged\": false,\n              \"runAsUser\": 999,\n              \"runAsGroup\": 0,\n              \"runAsNonRoot\": true,\n              \"allowPrivilegeEscalation\": false,\n              \"seccompProfile\": {\n                \"type\": \"RuntimeDefault\"\n              }\n            }\n          }\n        ],\n        \"restartPolicy\": \"Always\",\n        \"terminationGracePeriodSeconds\": 30,\n        \"dnsPolicy\": \"ClusterFirst\",\n        \"nodeSelector\": {\n          \"kubernetes.io/os\": \"linux\"\n        },\n        \"serviceAccountName\": \"calico-kube-controllers\",\n        \"serviceAccount\": \"calico-kube-controllers\",\n        \"securityContext\": {},\n        \"schedulerName\": \"default-scheduler\",\n        \"tolerations\": [\n          {\n            \"key\": \"node-role.kubernetes.io/master\",\n            \"effect\": \"NoSchedule\"\n          },\n          {\n            \"key\": \"node-role.kubernetes.io/control-plane\",\n            \"effect\": \"NoSchedule\"\n          },\n          {\n            \"key\": \"CriticalAddonsOnly\",\n            \"operator\": \"Exists\"\n          }\n        ],\n        \"priorityClassName\": \"system-cluster-critical\"\n      }\n    },\n    \"strategy\": {\n      \"type\": \"Recreate\"\n    },\n    \"revisionHistoryLimit\": 10,\n    \"progressDeadlineSeconds\": 600\n  },\n  \"status\": {\n    \"observedGeneration\": 1,\n    \"replicas\": 1,\n    \"updatedReplicas\": 1,\n    \"unavailableReplicas\": 1,\n    \"conditions\": [\n      {\n        \"type\": \"Available\",\n        \"status\": \"False\",\n        \"lastUpdateTime\": \"2026-05-28T02:39:48Z\",\n        \"lastTransitionTime\": \"2026-05-28T02:39:48Z\",\n        \"reason\": \"MinimumReplicasUnavailable\",\n        \"message\": \"Deployment does not have minimum availability.\"\n      },\n      {\n        \"type\": \"Progressing\",\n        \"status\": \"False\",\n        \"lastUpdateTime\": \"2026-05-28T02:49:49Z\",\n        \"lastTransitionTime\": \"2026-05-28T02:49:49Z\",\n        \"reason\": \"ProgressDeadlineExceeded\",\n        \"message\": \"ReplicaSet \\\"calico-kube-controllers-84b4cc9968\\\" has timed out progressing.\"\n      }\n    ]\n  }\n}\nLAST SEEN                      TYPE    REASON             OBJECT                              MESSAGE\n2026-05-28 02:39:48 +0000 UTC  Normal  ScalingReplicaSet  deployment/calico-kube-controllers  Scaled up replica set calico-kube-controllers-84b4cc9968 from 0 to 1\n\nExpected\n    \u003cbool\u003e: false\nto be true\nIn [It] at: /home/prow/go/src/sigs.k8s.io/cluster-api-provider-azure/test/e2e/helpers.go:113 @ 05/28/26 02:54:58.123",
+          "failure_location": "sigs.k8s.io/cluster-api-provider-azure/test/e2e/helpers.go:113",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/helpers.go#L113",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-04T02:47:12Z",
+            "summary": "AI analysis unavailable: agentic iter 1: post: Post \"http://localhost:8000/v1/chat/completions\": dial tcp [::1]:8000: connect: connection refused",
+            "is_transient": false
+          }
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000342905,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.85083454,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a VMSS cluster [REQUIRED] with a single control plane node and an AzureMachinePool with 2 Linux nodes",
+          "status": "passed",
+          "duration_seconds": 1390.529425684,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly-available cluster with Azure Linux 3 [OPTIONAL] with three controlplane node and two worker nodes",
+          "status": "passed",
+          "duration_seconds": 3077.829037276,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000335695,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.859150043,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation when Creating a highly available cluster with Azure CNI v1 [REQUIRED] can create 3 control-plane nodes and 2 Linux worker nodes [Azure CNI v1]",
+          "status": "failed",
+          "duration_seconds": 4771.288517741,
+          "failure_message": "Timed out after 3600.001s.\nTimed out waiting for 3 control plane machines to exist\nExpected\n    \u003cint\u003e: 1\nto equal\n    \u003cint\u003e: 3",
+          "failure_body": "[FAILED] Timed out after 3600.001s.\nTimed out waiting for 3 control plane machines to exist\nExpected\n    \u003cint\u003e: 1\nto equal\n    \u003cint\u003e: 3\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.12.8/framework/controlplane_helpers.go:115 @ 05/28/26 03:21:57.341",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.12.8/framework/controlplane_helpers.go:115",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.12.8/test/framework/controlplane_helpers.go#L115",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-04T02:47:13Z",
+            "summary": "AI analysis unavailable: agentic iter 1: post: Post \"http://localhost:8000/v1/chat/completions\": dial tcp [::1]:8000: connect: connection refused",
+            "is_transient": false
+          }
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000401025,
+          "junit_file": "junit.e2e_suite.1.xml"
+        }
+      ],
+      "tests_total": 57,
+      "tests_passed": 35,
+      "tests_failed": 2,
+      "tests_skipped": 20
+    },
+    {
+      "build_id": "2058704012085039104",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "started": "2026-05-25T00:17:46Z",
+      "finished": "2026-05-25T01:59:43Z",
+      "passed": true,
+      "result": "SUCCESS",
+      "duration_seconds": 6117,
+      "commit": "3b67c11562b97890b1590f6006072e03d10c28d6",
+      "repo_version": "3b67c11562b97890b1590f6006072e03d10c28d6",
+      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2058704012085039104/",
+      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2058704012085039104/build-log.txt",
+      "junit_urls": [
+        "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2058704012085039104/artifacts/junit.e2e_suite.1.xml"
+      ],
+      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2058704012085039104/",
+      "test_cases": [
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.319779573,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a private cluster [OPTIONAL] Creates a public management cluster in a custom vnet",
+          "status": "passed",
+          "duration_seconds": 3302.515647676,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 1801.800181199,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.356833181,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation when Creating a highly available cluster with Azure CNI v1 [REQUIRED] can create 3 control-plane nodes and 2 Linux worker nodes [Azure CNI v1]",
+          "status": "passed",
+          "duration_seconds": 1783.526278581,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the quick-start spec Should create a workload cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the MachineDeployment rollout spec Should successfully upgrade Machines upon changes in relevant MachineDeployment fields",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the self-hosted spec Should pivot the bootstrap cluster to a self-hosted cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully remediate unhealthy worker machines with MachineHealthCheck Should replace unhealthy machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully exercise machine pools Should successfully create a cluster with machine pool machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully scale out and scale in a MachineDeployment Should successfully scale a MachineDeployment up and down upon changes to the MachineDeployment replica count",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the workload cluster upgrade spec [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Conformance Tests conformance-tests",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000262854,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.344948768,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with spot vms [OPTIONAL] With spot vm machine deployments",
+          "status": "passed",
+          "duration_seconds": 955.39971095,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating RKE2 clusters using clusterclass [OPTIONAL] with 3 control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 1348.83350935,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000273714,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.353612057,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a Flatcar sysext cluster [OPTIONAL] With Flatcar control-plane and worker nodes",
+          "status": "passed",
+          "duration_seconds": 976.88404399,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters on public MEC [OPTIONAL] with 1 control plane nodes and 1 worker node",
+          "status": "skipped",
+          "duration_seconds": 1.13181553,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate using default template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1471.0884556,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000268964,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.339435822,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a GPU-enabled cluster [OPTIONAL] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 2.442515393,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters using clusterclass [OPTIONAL] with a single control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 1006.39297584,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate and fully spec-ed out APIServer ILB template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1466.89532595,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000239023,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.359322075,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with VMSS flex machinepools [OPTIONAL] with 1 control plane node and 1 machinepool",
+          "status": "passed",
+          "duration_seconds": 1523.440103672,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Testing autoscaling from zero with Cluster Autoscaler [REQUIRED] Scales MachineDeployment from 0 to 1+ when workload is scheduled",
+          "status": "passed",
+          "duration_seconds": 1105.095991645,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000277723,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.349255407,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a ipv6 control-plane cluster [REQUIRED] With ipv6 worker node",
+          "status": "passed",
+          "duration_seconds": 1653.415789341,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayCluster and verifies it becomes ready",
+          "status": "passed",
+          "duration_seconds": 1011.712120834,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000261674,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.349296848,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for control plane tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster using ClusterClass [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster with the ASO API [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a dual-stack cluster [OPTIONAL] With dual-stack worker node",
+          "status": "passed",
+          "duration_seconds": 1730.174431925,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayJob and verifies it completes successfully",
+          "status": "passed",
+          "duration_seconds": 949.830002951,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000286004,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.348718,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly available cluster [REQUIRED] With 3 control-plane nodes and 2 Linux and 2 Windows worker nodes",
+          "status": "passed",
+          "duration_seconds": 2692.89869745,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000279704,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.358264841,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a VMSS cluster [REQUIRED] with a single control plane node and an AzureMachinePool with 2 Linux nodes",
+          "status": "passed",
+          "duration_seconds": 1460.867052537,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly-available cluster with Azure Linux 3 [OPTIONAL] with three controlplane node and two worker nodes",
+          "status": "passed",
+          "duration_seconds": 3643.363305588,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000251883,
+          "junit_file": "junit.e2e_suite.1.xml"
+        }
+      ],
+      "tests_total": 57,
+      "tests_passed": 37,
+      "tests_failed": 0,
+      "tests_skipped": 20
+    },
+    {
+      "build_id": "2057593434184617984",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "started": "2026-05-21T22:44:43Z",
+      "finished": "2026-05-22T00:16:15Z",
+      "passed": true,
+      "result": "SUCCESS",
+      "duration_seconds": 5492,
+      "commit": "3b67c11562b97890b1590f6006072e03d10c28d6",
+      "repo_version": "3b67c11562b97890b1590f6006072e03d10c28d6",
+      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2057593434184617984/",
+      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2057593434184617984/build-log.txt",
+      "junit_urls": [
+        "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2057593434184617984/artifacts/junit.e2e_suite.1.xml"
+      ],
+      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2057593434184617984/",
+      "test_cases": [
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 106.945680356,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a private cluster [OPTIONAL] Creates a public management cluster in a custom vnet",
+          "status": "passed",
+          "duration_seconds": 3792.952921155,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 789.134137305,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 106.951763921,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation when Creating a highly available cluster with Azure CNI v1 [REQUIRED] can create 3 control-plane nodes and 2 Linux worker nodes [Azure CNI v1]",
+          "status": "passed",
+          "duration_seconds": 1766.327818338,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the quick-start spec Should create a workload cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the MachineDeployment rollout spec Should successfully upgrade Machines upon changes in relevant MachineDeployment fields",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the self-hosted spec Should pivot the bootstrap cluster to a self-hosted cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully remediate unhealthy worker machines with MachineHealthCheck Should replace unhealthy machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully exercise machine pools Should successfully create a cluster with machine pool machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully scale out and scale in a MachineDeployment Should successfully scale a MachineDeployment up and down upon changes to the MachineDeployment replica count",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the workload cluster upgrade spec [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Conformance Tests conformance-tests",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000238183,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 106.956093503,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a GPU-enabled cluster [OPTIONAL] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 2.420922167,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters using clusterclass [OPTIONAL] with a single control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 913.704355024,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating RKE2 clusters using clusterclass [OPTIONAL] with 3 control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 1342.250548883,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000322235,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 106.956850992,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with spot vms [OPTIONAL] With spot vm machine deployments",
+          "status": "passed",
+          "duration_seconds": 961.035315374,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters on public MEC [OPTIONAL] with 1 control plane nodes and 1 worker node",
+          "status": "skipped",
+          "duration_seconds": 1.096330737,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate using default template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1559.283004895,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000693688,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 106.955415564,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a ipv6 control-plane cluster [REQUIRED] With ipv6 worker node",
+          "status": "passed",
+          "duration_seconds": 1666.569500579,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayCluster and verifies it becomes ready",
+          "status": "passed",
+          "duration_seconds": 861.060915837,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000270603,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 106.957725873,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a Flatcar sysext cluster [OPTIONAL] With Flatcar control-plane and worker nodes",
+          "status": "passed",
+          "duration_seconds": 1009.568155589,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate and fully spec-ed out APIServer ILB template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1545.50415442,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000243993,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 106.952653882,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a VMSS cluster [REQUIRED] with a single control plane node and an AzureMachinePool with 2 Linux nodes",
+          "status": "passed",
+          "duration_seconds": 1558.394936172,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Testing autoscaling from zero with Cluster Autoscaler [REQUIRED] Scales MachineDeployment from 0 to 1+ when workload is scheduled",
+          "status": "passed",
+          "duration_seconds": 1067.299674749,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000254293,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 106.955183052,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for control plane tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster using ClusterClass [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster with the ASO API [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a dual-stack cluster [OPTIONAL] With dual-stack worker node",
+          "status": "passed",
+          "duration_seconds": 1732.282238685,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayJob and verifies it completes successfully",
+          "status": "passed",
+          "duration_seconds": 934.036675505,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000263133,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 106.954665956,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly available cluster [REQUIRED] With 3 control-plane nodes and 2 Linux and 2 Windows worker nodes",
+          "status": "passed",
+          "duration_seconds": 2684.307764771,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000284634,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 106.897196241,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with VMSS flex machinepools [OPTIONAL] with 1 control plane node and 1 machinepool",
+          "status": "passed",
+          "duration_seconds": 1501.941552369,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly-available cluster with Azure Linux 3 [OPTIONAL] with three controlplane node and two worker nodes",
+          "status": "passed",
+          "duration_seconds": 3080.100734567,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000262843,
+          "junit_file": "junit.e2e_suite.1.xml"
+        }
+      ],
+      "tests_total": 57,
+      "tests_passed": 37,
+      "tests_failed": 0,
+      "tests_skipped": 20
+    },
+    {
+      "build_id": "2056475611907493888",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "started": "2026-05-18T20:42:55Z",
+      "finished": "2026-05-18T22:42:40Z",
+      "passed": false,
+      "result": "FAILURE",
+      "duration_seconds": 7185,
+      "commit": "3b67c11562b97890b1590f6006072e03d10c28d6",
+      "repo_version": "3b67c11562b97890b1590f6006072e03d10c28d6",
+      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2056475611907493888/",
+      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2056475611907493888/build-log.txt",
+      "junit_urls": [
+        "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2056475611907493888/artifacts/junit.e2e_suite.1.xml"
+      ],
+      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2056475611907493888/",
+      "test_cases": [
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 108.754177523,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a private cluster [OPTIONAL] Creates a public management cluster in a custom vnet",
+          "status": "passed",
+          "duration_seconds": 3190.447841732,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 3033.291460482,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 108.797943297,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for control plane tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster using ClusterClass [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster with the ASO API [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a dual-stack cluster [OPTIONAL] With dual-stack worker node",
+          "status": "passed",
+          "duration_seconds": 2130.348607447,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Conformance Tests conformance-tests",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the quick-start spec Should create a workload cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the MachineDeployment rollout spec Should successfully upgrade Machines upon changes in relevant MachineDeployment fields",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the self-hosted spec Should pivot the bootstrap cluster to a self-hosted cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully remediate unhealthy worker machines with MachineHealthCheck Should replace unhealthy machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully exercise machine pools Should successfully create a cluster with machine pool machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully scale out and scale in a MachineDeployment Should successfully scale a MachineDeployment up and down upon changes to the MachineDeployment replica count",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the workload cluster upgrade spec [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000256524,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 108.746547632,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with spot vms [OPTIONAL] With spot vm machine deployments",
+          "status": "passed",
+          "duration_seconds": 945.785564841,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating RKE2 clusters using clusterclass [OPTIONAL] with 3 control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 1351.857126836,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000257884,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 108.799310882,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a GPU-enabled cluster [OPTIONAL] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 3.159367196,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters using clusterclass [OPTIONAL] with a single control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 952.180240203,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters on public MEC [OPTIONAL] with 1 control plane nodes and 1 worker node",
+          "status": "skipped",
+          "duration_seconds": 1.115262464,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate using default template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1386.241667789,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000274934,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 108.795525728,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a Flatcar sysext cluster [OPTIONAL] With Flatcar control-plane and worker nodes",
+          "status": "passed",
+          "duration_seconds": 988.264383563,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate and fully spec-ed out APIServer ILB template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1358.85432675,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000236013,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 108.79318018,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a ipv6 control-plane cluster [REQUIRED] With ipv6 worker node",
+          "status": "passed",
+          "duration_seconds": 1560.126443768,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayCluster and verifies it becomes ready",
+          "status": "passed",
+          "duration_seconds": 969.223512709,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000345595,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 108.804518969,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with VMSS flex machinepools [OPTIONAL] with 1 control plane node and 1 machinepool",
+          "status": "passed",
+          "duration_seconds": 1454.287525679,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Testing autoscaling from zero with Cluster Autoscaler [REQUIRED] Scales MachineDeployment from 0 to 1+ when workload is scheduled",
+          "status": "passed",
+          "duration_seconds": 1092.390637787,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000844304,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 108.80761166,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly available cluster [REQUIRED] With 3 control-plane nodes and 2 Linux and 2 Windows worker nodes",
+          "status": "passed",
+          "duration_seconds": 2653.531721738,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000297844,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 108.745767149,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation when Creating a highly available cluster with Azure CNI v1 [REQUIRED] can create 3 control-plane nodes and 2 Linux worker nodes [Azure CNI v1]",
+          "status": "passed",
+          "duration_seconds": 1744.683349543,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayJob and verifies it completes successfully",
+          "status": "passed",
+          "duration_seconds": 977.915301509,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000228103,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 108.807532547,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a VMSS cluster [REQUIRED] with a single control plane node and an AzureMachinePool with 2 Linux nodes",
+          "status": "passed",
+          "duration_seconds": 1389.856371321,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly-available cluster with Azure Linux 3 [OPTIONAL] with three controlplane node and two worker nodes",
+          "status": "failed",
+          "duration_seconds": 4833.776832773,
+          "failure_message": "Timed out after 3600.000s.\nTimed out waiting for 3 control plane machines to exist\nExpected\n    \u003cint\u003e: 1\nto equal\n    \u003cint\u003e: 3",
+          "failure_body": "[FAILED] Timed out after 3600.000s.\nTimed out waiting for 3 control plane machines to exist\nExpected\n    \u003cint\u003e: 1\nto equal\n    \u003cint\u003e: 3\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.12.8/framework/controlplane_helpers.go:115 @ 05/18/26 22:28:32.385",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.12.8/framework/controlplane_helpers.go:115",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.12.8/test/framework/controlplane_helpers.go#L115",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-04T02:47:13Z",
+            "summary": "AI analysis unavailable: agentic iter 1: post: Post \"http://localhost:8000/v1/chat/completions\": dial tcp [::1]:8000: connect: connection refused",
+            "is_transient": false
+          }
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000312085,
+          "junit_file": "junit.e2e_suite.1.xml"
+        }
+      ],
+      "tests_total": 57,
+      "tests_passed": 36,
+      "tests_failed": 1,
+      "tests_skipped": 20
+    },
+    {
+      "build_id": "2055364897696387072",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "started": "2026-05-15T19:09:18Z",
+      "finished": "2026-05-15T20:41:11Z",
+      "passed": false,
+      "result": "FAILURE",
+      "duration_seconds": 5513,
+      "commit": "f9e684e368796858aa6243624596f9cc264cebd6",
+      "repo_version": "f9e684e368796858aa6243624596f9cc264cebd6",
+      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2055364897696387072/",
+      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2055364897696387072/build-log.txt",
+      "junit_urls": [
+        "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2055364897696387072/artifacts/junit.e2e_suite.1.xml"
+      ],
+      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2055364897696387072/",
+      "test_cases": [
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.903633567,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a private cluster [OPTIONAL] Creates a public management cluster in a custom vnet",
+          "status": "passed",
+          "duration_seconds": 2995.379439332,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 1519.720905033,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.93411636,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a GPU-enabled cluster [OPTIONAL] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 2.545334978,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters using clusterclass [OPTIONAL] with a single control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 1081.094501582,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate and fully spec-ed out APIServer ILB template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1429.802840378,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the quick-start spec Should create a workload cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the MachineDeployment rollout spec Should successfully upgrade Machines upon changes in relevant MachineDeployment fields",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the self-hosted spec Should pivot the bootstrap cluster to a self-hosted cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully remediate unhealthy worker machines with MachineHealthCheck Should replace unhealthy machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully exercise machine pools Should successfully create a cluster with machine pool machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully scale out and scale in a MachineDeployment Should successfully scale a MachineDeployment up and down upon changes to the MachineDeployment replica count",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the workload cluster upgrade spec [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Conformance Tests conformance-tests",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000309114,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.879560322,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a VMSS cluster [REQUIRED] with a single control plane node and an AzureMachinePool with 2 Linux nodes",
+          "status": "passed",
+          "duration_seconds": 1456.695389293,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Testing autoscaling from zero with Cluster Autoscaler [REQUIRED] Scales MachineDeployment from 0 to 1+ when workload is scheduled",
+          "status": "passed",
+          "duration_seconds": 1075.967638936,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000270613,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.876319787,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation when Creating a highly available cluster with Azure CNI v1 [REQUIRED] can create 3 control-plane nodes and 2 Linux worker nodes [Azure CNI v1]",
+          "status": "passed",
+          "duration_seconds": 1676.093027944,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayCluster and verifies it becomes ready",
+          "status": "passed",
+          "duration_seconds": 874.247133316,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000324075,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.9348044,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly available cluster [REQUIRED] With 3 control-plane nodes and 2 Linux and 2 Windows worker nodes",
+          "status": "passed",
+          "duration_seconds": 2553.476718827,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000305594,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.876804675,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a ipv6 control-plane cluster [REQUIRED] With ipv6 worker node",
+          "status": "passed",
+          "duration_seconds": 2558.58200072,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000272404,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.947533352,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for control plane tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster using ClusterClass [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster with the ASO API [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a dual-stack cluster [OPTIONAL] With dual-stack worker node",
+          "status": "passed",
+          "duration_seconds": 2700.999971209,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000296594,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.93693804,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with spot vms [OPTIONAL] With spot vm machine deployments",
+          "status": "passed",
+          "duration_seconds": 1025.638945958,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters on public MEC [OPTIONAL] with 1 control plane nodes and 1 worker node",
+          "status": "skipped",
+          "duration_seconds": 1.3298992250000001,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate using default template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1197.825835016,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayJob and verifies it completes successfully",
+          "status": "passed",
+          "duration_seconds": 831.638334829,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000246203,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.871796045,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a Flatcar sysext cluster [OPTIONAL] With Flatcar control-plane and worker nodes",
+          "status": "passed",
+          "duration_seconds": 910.119728776,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating RKE2 clusters using clusterclass [OPTIONAL] with 3 control plane node and one linux worker node",
+          "status": "failed",
+          "duration_seconds": 2724.400112888,
+          "failure_message": "Timed out after 2400.001s.\nTimed out waiting for 3 control plane machines to exist\nExpected\n    \u003cint\u003e: 0\nto equal\n    \u003cint\u003e: 3",
+          "failure_body": "[FAILED] Timed out after 2400.001s.\nTimed out waiting for 3 control plane machines to exist\nExpected\n    \u003cint\u003e: 0\nto equal\n    \u003cint\u003e: 3\nIn [It] at: /home/prow/go/src/sigs.k8s.io/cluster-api-provider-azure/test/e2e/common.go:317 @ 05/15/26 20:22:33.017\n\nThere were additional failures detected after the initial failure. These are visible in the timeline",
+          "failure_location": "sigs.k8s.io/cluster-api-provider-azure/test/e2e/common.go:317",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/common.go#L317",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-04T02:47:14Z",
+            "summary": "AI analysis unavailable: agentic iter 1: post: Post \"http://localhost:8000/v1/chat/completions\": dial tcp [::1]:8000: connect: connection refused",
+            "is_transient": false
+          }
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000283024,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 115.883348061,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with VMSS flex machinepools [OPTIONAL] with 1 control plane node and 1 machinepool",
+          "status": "passed",
+          "duration_seconds": 1393.214955498,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly-available cluster with Azure Linux 3 [OPTIONAL] with three controlplane node and two worker nodes",
+          "status": "passed",
+          "duration_seconds": 3121.779280918,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000235693,
+          "junit_file": "junit.e2e_suite.1.xml"
+        }
+      ],
+      "tests_total": 57,
+      "tests_passed": 36,
+      "tests_failed": 1,
+      "tests_skipped": 20
+    },
+    {
+      "build_id": "2054254164170510336",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "started": "2026-05-12T17:35:39Z",
+      "finished": "2026-05-12T19:07:45Z",
+      "passed": false,
+      "result": "FAILURE",
+      "duration_seconds": 5526,
+      "commit": "b93f3a2aec1e4460f851e5fadf25d2b59fdbe449",
+      "repo_version": "b93f3a2aec1e4460f851e5fadf25d2b59fdbe449",
+      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2054254164170510336/",
+      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2054254164170510336/build-log.txt",
+      "junit_urls": [
+        "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2054254164170510336/artifacts/junit.e2e_suite.1.xml"
+      ],
+      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2054254164170510336/",
+      "test_cases": [
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.643814285,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a private cluster [OPTIONAL] Creates a public management cluster in a custom vnet",
+          "status": "passed",
+          "duration_seconds": 3106.961342238,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 1529.625453992,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.678936512,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a ipv6 control-plane cluster [REQUIRED] With ipv6 worker node",
+          "status": "passed",
+          "duration_seconds": 1483.25019654,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayCluster and verifies it becomes ready",
+          "status": "passed",
+          "duration_seconds": 780.833780507,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Conformance Tests conformance-tests",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the quick-start spec Should create a workload cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the MachineDeployment rollout spec Should successfully upgrade Machines upon changes in relevant MachineDeployment fields",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the self-hosted spec Should pivot the bootstrap cluster to a self-hosted cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully remediate unhealthy worker machines with MachineHealthCheck Should replace unhealthy machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully exercise machine pools Should successfully create a cluster with machine pool machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully scale out and scale in a MachineDeployment Should successfully scale a MachineDeployment up and down upon changes to the MachineDeployment replica count",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the workload cluster upgrade spec [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000239254,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.671392858,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a Flatcar sysext cluster [OPTIONAL] With Flatcar control-plane and worker nodes",
+          "status": "passed",
+          "duration_seconds": 977.824260838,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters on public MEC [OPTIONAL] with 1 control plane nodes and 1 worker node",
+          "status": "skipped",
+          "duration_seconds": 1.084548132,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate using default template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1296.464753759,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000292475,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.673156839,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a GPU-enabled cluster [OPTIONAL] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 2.462903205,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters using clusterclass [OPTIONAL] with a single control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 1033.896653488,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate and fully spec-ed out APIServer ILB template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1312.841326959,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000303265,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.685963836,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a VMSS cluster [REQUIRED] with a single control plane node and an AzureMachinePool with 2 Linux nodes",
+          "status": "passed",
+          "duration_seconds": 1354.868981625,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Testing autoscaling from zero with Cluster Autoscaler [REQUIRED] Scales MachineDeployment from 0 to 1+ when workload is scheduled",
+          "status": "passed",
+          "duration_seconds": 1155.707795081,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000279805,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.673527746,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly available cluster [REQUIRED] With 3 control-plane nodes and 2 Linux and 2 Windows worker nodes",
+          "status": "passed",
+          "duration_seconds": 2553.044177546,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000267194,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.672803492,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation when Creating a highly available cluster with Azure CNI v1 [REQUIRED] can create 3 control-plane nodes and 2 Linux worker nodes [Azure CNI v1]",
+          "status": "passed",
+          "duration_seconds": 2769.513082716,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000495328,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.684119584,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with spot vms [OPTIONAL] With spot vm machine deployments",
+          "status": "passed",
+          "duration_seconds": 882.545728395,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating RKE2 clusters using clusterclass [OPTIONAL] with 3 control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 1170.878357255,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayJob and verifies it completes successfully",
+          "status": "passed",
+          "duration_seconds": 943.955021829,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000434018,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.668689,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with VMSS flex machinepools [OPTIONAL] with 1 control plane node and 1 machinepool",
+          "status": "passed",
+          "duration_seconds": 1353.838069503,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly-available cluster with Azure Linux 3 [OPTIONAL] with three controlplane node and two worker nodes",
+          "status": "passed",
+          "duration_seconds": 2954.938406212,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000266246,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 104.669479094,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for control plane tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster using ClusterClass [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster with the ASO API [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a dual-stack cluster [OPTIONAL] With dual-stack worker node",
+          "status": "failed",
+          "duration_seconds": 4636.493691144,
+          "failure_message": "Timed out after 3600.000s.\nTimed out waiting for 3 control plane machines to exist\nExpected\n    \u003cint\u003e: 1\nto equal\n    \u003cint\u003e: 3",
+          "failure_body": "[FAILED] Timed out after 3600.000s.\nTimed out waiting for 3 control plane machines to exist\nExpected\n    \u003cint\u003e: 1\nto equal\n    \u003cint\u003e: 3\nIn [It] at: /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.12.7/framework/controlplane_helpers.go:115 @ 05/12/26 18:57:41.042",
+          "failure_location": "sigs.k8s.io/cluster-api/test@v1.12.7/framework/controlplane_helpers.go:115",
+          "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.12.7/test/framework/controlplane_helpers.go#L115",
+          "junit_file": "junit.e2e_suite.1.xml",
+          "ai_summary": {
+            "generated_at": "2026-06-04T02:47:14Z",
+            "summary": "AI analysis unavailable: agentic iter 1: post: Post \"http://localhost:8000/v1/chat/completions\": dial tcp [::1]:8000: connect: connection refused",
+            "is_transient": false
+          }
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000285266,
+          "junit_file": "junit.e2e_suite.1.xml"
+        }
+      ],
+      "tests_total": 57,
+      "tests_passed": 36,
+      "tests_failed": 1,
+      "tests_skipped": 20
+    },
+    {
+      "build_id": "2053142366180610048",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "started": "2026-05-09T15:57:48Z",
+      "finished": "2026-05-09T17:33:37Z",
+      "passed": true,
+      "result": "SUCCESS",
+      "duration_seconds": 5749,
+      "commit": "af619699078de84d59041bec78392b227a568d6b",
+      "repo_version": "af619699078de84d59041bec78392b227a568d6b",
+      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2053142366180610048/",
+      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2053142366180610048/build-log.txt",
+      "junit_urls": [
+        "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2053142366180610048/artifacts/junit.e2e_suite.1.xml"
+      ],
+      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2053142366180610048/",
+      "test_cases": [
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.570869012,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the quick-start spec Should create a workload cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the MachineDeployment rollout spec Should successfully upgrade Machines upon changes in relevant MachineDeployment fields",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the self-hosted spec Should pivot the bootstrap cluster to a self-hosted cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully remediate unhealthy worker machines with MachineHealthCheck Should replace unhealthy machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully exercise machine pools Should successfully create a cluster with machine pool machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully scale out and scale in a MachineDeployment Should successfully scale a MachineDeployment up and down upon changes to the MachineDeployment replica count",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the workload cluster upgrade spec [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a private cluster [OPTIONAL] Creates a public management cluster in a custom vnet",
+          "status": "passed",
+          "duration_seconds": 3191.949475093,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 1480.986786111,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.59985139,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for control plane tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster using ClusterClass [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster with the ASO API [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a dual-stack cluster [OPTIONAL] With dual-stack worker node",
+          "status": "passed",
+          "duration_seconds": 1635.73601935,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Conformance Tests conformance-tests",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000288779,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.600548402,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with spot vms [OPTIONAL] With spot vm machine deployments",
+          "status": "passed",
+          "duration_seconds": 870.070364756,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating RKE2 clusters using clusterclass [OPTIONAL] with 3 control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 1240.153751613,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000259978,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.603731075,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a ipv6 control-plane cluster [REQUIRED] With ipv6 worker node",
+          "status": "passed",
+          "duration_seconds": 1496.587922273,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayCluster and verifies it becomes ready",
+          "status": "passed",
+          "duration_seconds": 680.409681077,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000263128,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.603199878,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a Flatcar sysext cluster [OPTIONAL] With Flatcar control-plane and worker nodes",
+          "status": "passed",
+          "duration_seconds": 886.755163454,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters on public MEC [OPTIONAL] with 1 control plane nodes and 1 worker node",
+          "status": "skipped",
+          "duration_seconds": 1.1577443299999999,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate using default template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1409.483332903,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000268809,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.59373779,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a GPU-enabled cluster [OPTIONAL] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 2.263300347,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters using clusterclass [OPTIONAL] with a single control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 1003.813252582,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate and fully spec-ed out APIServer ILB template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1336.800367374,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000271079,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.598140684,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation when Creating a highly available cluster with Azure CNI v1 [REQUIRED] can create 3 control-plane nodes and 2 Linux worker nodes [Azure CNI v1]",
+          "status": "passed",
+          "duration_seconds": 1508.097126447,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayJob and verifies it completes successfully",
+          "status": "passed",
+          "duration_seconds": 850.07306881,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000236658,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.588201929,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a VMSS cluster [REQUIRED] with a single control plane node and an AzureMachinePool with 2 Linux nodes",
+          "status": "passed",
+          "duration_seconds": 1390.463088717,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Testing autoscaling from zero with Cluster Autoscaler [REQUIRED] Scales MachineDeployment from 0 to 1+ when workload is scheduled",
+          "status": "passed",
+          "duration_seconds": 975.806367716,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000253678,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.598502395,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly available cluster [REQUIRED] With 3 control-plane nodes and 2 Linux and 2 Windows worker nodes",
+          "status": "passed",
+          "duration_seconds": 2384.280333002,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000288429,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 99.593111339,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with VMSS flex machinepools [OPTIONAL] with 1 control plane node and 1 machinepool",
+          "status": "passed",
+          "duration_seconds": 1385.327202537,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly-available cluster with Azure Linux 3 [OPTIONAL] with three controlplane node and two worker nodes",
+          "status": "passed",
+          "duration_seconds": 3287.535716896,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000305309,
+          "junit_file": "junit.e2e_suite.1.xml"
+        }
+      ],
+      "tests_total": 57,
+      "tests_passed": 37,
+      "tests_failed": 0,
+      "tests_skipped": 20
+    },
+    {
+      "build_id": "2052032785874423808",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23",
+      "started": "2026-05-06T14:28:43Z",
+      "finished": "2026-05-06T15:55:20Z",
+      "passed": true,
+      "result": "SUCCESS",
+      "duration_seconds": 5197,
+      "commit": "af619699078de84d59041bec78392b227a568d6b",
+      "repo_version": "af619699078de84d59041bec78392b227a568d6b",
+      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2052032785874423808/",
+      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2052032785874423808/build-log.txt",
+      "junit_urls": [
+        "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2052032785874423808/artifacts/junit.e2e_suite.1.xml"
+      ],
+      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23/2052032785874423808/",
+      "test_cases": [
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 101.368942356,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the quick-start spec Should create a workload cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the MachineDeployment rollout spec Should successfully upgrade Machines upon changes in relevant MachineDeployment fields",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the self-hosted spec Should pivot the bootstrap cluster to a self-hosted cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully remediate unhealthy worker machines with MachineHealthCheck Should replace unhealthy machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully exercise machine pools Should successfully create a cluster with machine pool machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully scale out and scale in a MachineDeployment Should successfully scale a MachineDeployment up and down upon changes to the MachineDeployment replica count",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the workload cluster upgrade spec [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a private cluster [OPTIONAL] Creates a public management cluster in a custom vnet",
+          "status": "passed",
+          "duration_seconds": 3038.788216157,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 1203.690311138,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 101.346902547,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with spot vms [OPTIONAL] With spot vm machine deployments",
+          "status": "passed",
+          "duration_seconds": 896.915495602,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating RKE2 clusters using clusterclass [OPTIONAL] with 3 control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 1174.554598685,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Conformance Tests conformance-tests",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000330483,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 101.411756182,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a ipv6 control-plane cluster [REQUIRED] With ipv6 worker node",
+          "status": "passed",
+          "duration_seconds": 1430.598266046,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayCluster and verifies it becomes ready",
+          "status": "passed",
+          "duration_seconds": 752.76741178,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000289403,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 101.415732561,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a Flatcar sysext cluster [OPTIONAL] With Flatcar control-plane and worker nodes",
+          "status": "passed",
+          "duration_seconds": 1013.502155139,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate and fully spec-ed out APIServer ILB template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 1312.927317721,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000397614,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 101.355765254,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation when Creating a highly available cluster with Azure CNI v1 [REQUIRED] can create 3 control-plane nodes and 2 Linux worker nodes [Azure CNI v1]",
+          "status": "passed",
+          "duration_seconds": 1555.990805898,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster and deploying KubeRay [OPTIONAL] Creates a RayJob and verifies it completes successfully",
+          "status": "passed",
+          "duration_seconds": 835.516167309,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000376924,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 101.415849542,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly available cluster [REQUIRED] With 3 control-plane nodes and 2 Linux and 2 Windows worker nodes",
+          "status": "passed",
+          "duration_seconds": 2489.621263838,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000405894,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 101.366756216,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with VMSS flex machinepools [OPTIONAL] with 1 control plane node and 1 machinepool",
+          "status": "passed",
+          "duration_seconds": 1403.003238046,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Testing autoscaling from zero with Cluster Autoscaler [REQUIRED] Scales MachineDeployment from 0 to 1+ when workload is scheduled",
+          "status": "passed",
+          "duration_seconds": 1086.6238896,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000318473,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 101.363102093,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for control plane tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster using ClusterClass [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster with the ASO API [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a dual-stack cluster [OPTIONAL] With dual-stack worker node",
+          "status": "passed",
+          "duration_seconds": 2952.756043359,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000285043,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 101.425476472,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a GPU-enabled cluster [OPTIONAL] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 3.803024024,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters using clusterclass [OPTIONAL] with a single control plane node and one linux worker node",
+          "status": "passed",
+          "duration_seconds": 926.47074566,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters on public MEC [OPTIONAL] with 1 control plane nodes and 1 worker node",
+          "status": "skipped",
+          "duration_seconds": 1.119238468,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate using default template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "passed",
+          "duration_seconds": 3281.459383151,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000350604,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 101.419661338,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a VMSS cluster [REQUIRED] with a single control plane node and an AzureMachinePool with 2 Linux nodes",
+          "status": "passed",
+          "duration_seconds": 1321.900131057,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly-available cluster with Azure Linux 3 [OPTIONAL] with three controlplane node and two worker nodes",
+          "status": "passed",
+          "duration_seconds": 2920.46671252,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000269722,
+          "junit_file": "junit.e2e_suite.1.xml"
+        }
+      ],
+      "tests_total": 57,
+      "tests_passed": 37,
+      "tests_failed": 0,
+      "tests_skipped": 20
     }
   ]
 }

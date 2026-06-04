@@ -131,6 +131,9 @@
         "enabled": true,
         "max_retries": 2
       },
+      "skills": {
+        "enabled": true
+      },
       "tools": [
         "filesystem",
         "k8s"
