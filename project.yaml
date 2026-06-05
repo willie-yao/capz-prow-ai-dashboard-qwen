@@ -15,13 +15,11 @@ id: capz-qwen
 name: "Cluster API Provider Azure (Qwen demo)"
 short_name: "CAPZ-Qwen"
 
-# Where in kubernetes/test-infra to find the prow job YAMLs.
-source:
-  test_infra_paths:
-    - "config/jobs/kubernetes-sigs/cluster-api-provider-azure"
-  file_prefix: "cluster-api-provider-azure-"
-
-# Only jobs that advertise this testgrid dashboard are included.
+# Only jobs that advertise this testgrid dashboard are included. Job
+# discovery is automatic: the engine asks GitHub code search for every
+# YAML under kubernetes/test-infra/config/jobs/ that mentions this
+# dashboard, then keeps the jobs whose testgrid-dashboards annotation
+# contains it.
 testgrid:
   dashboard: "sig-cluster-lifecycle-cluster-api-provider-azure"
 
@@ -104,19 +102,18 @@ ai:
     # the L.3 A/B showed Qwen frequently hitting the iter cap before
     # accumulating enough bytes.
     max_iters: 20
-    # Per-call evidence budget: how many bytes of tool-call output the
-    # model sees across the agentic loop. Engine default is 300_000.
-    # Capped at 100_000 (2026-06-04) because the in-cluster Dynamo
-    # prefill workers have max_num_tokens=32768 — the previous attempt
-    # to push this to 600_000 produced prompts of 36-37K tokens and
-    # 100% prefill-router 500 errors ("Prefill router output missing
-    # disaggregated_params"). Even the 300K engine default produced
-    # intermittent overruns when evidence accumulation was heavy.
-    # 100K bytes ≈ 25K tokens of evidence, leaving ~7K headroom for
-    # the system prompt + skills + tool defs under the 32K deployment
-    # limit. Bump only if Dynamo prefill workers are reconfigured for
-    # a larger context window.
-    model_byte_budget: 100000
+    # Per-call evidence budget: bytes of tool-call output the model sees
+    # across the agentic loop. Engine default is 300_000. Capped here
+    # because the in-cluster Dynamo serves Qwen3-235B with
+    # max_position_embeddings=40960 and YaRN rope scaling disabled, so the
+    # whole prompt must stay under ~40960 tokens. At ~4 chars/token with
+    # ~12K tokens of fixed overhead (system prompt + skills + tool defs +
+    # reasoning), 110K bytes of evidence yields ~39K-token prompts, leaving
+    # ~1.8K headroom. The prefill workers' max_num_tokens was raised
+    # 32768 -> 65536 (2026-06-05) so it is no longer the binding limit; the
+    # 40960 model context is. Raising this further requires enabling YaRN
+    # rope scaling on the model.
+    model_byte_budget: 110000
     # Minimum tool calls before a tools-free final answer is accepted.
     # Bumped from 3 → 5 after the 2026-06-03 A/B: with floor=3 Qwen
     # parked at the floor on 50% of failures and produced 5x shorter
