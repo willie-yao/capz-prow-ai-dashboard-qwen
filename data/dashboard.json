@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-05T17:14:15.166827Z",
+  "generated_at": "2026-06-05T20:54:13.763568Z",
   "jobs": [
     {
       "name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main",
@@ -212,16 +212,18 @@
       "job_id": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main",
       "overall_status": "FLAKY",
       "last_run": {
-        "build_id": "2062614533599399936",
+        "build_id": "2062991270027988992",
         "passed": false,
-        "timestamp": "2026-06-04T19:18:02Z",
-        "duration_seconds": 3311,
-        "tests_total": 59,
-        "tests_passed": 21,
-        "tests_failed": 2,
-        "tests_skipped": 36
+        "timestamp": "2026-06-05T20:15:06Z",
+        "duration_seconds": 365
       },
       "recent_runs": [
+        {
+          "build_id": "2062991270027988992",
+          "passed": false,
+          "timestamp": "2026-06-05T20:15:06Z",
+          "duration_seconds": 365
+        },
         {
           "build_id": "2062614533599399936",
           "passed": false,
@@ -286,15 +288,9 @@
           "tests_total": 59,
           "tests_passed": 23,
           "tests_skipped": 36
-        },
-        {
-          "build_id": "2059984703250763776",
-          "passed": false,
-          "timestamp": "2026-05-28T13:08:06Z",
-          "duration_seconds": 539
         }
       ],
-      "pass_rate_7d": 0.5,
+      "pass_rate_7d": 0.42857142857142855,
       "pass_rate_30d": 0.5
     },
     {
@@ -313,13 +309,23 @@
       "last_run": {
         "build_id": "2062938673107701760",
         "passed": false,
-        "timestamp": "2026-06-05T16:46:52Z"
+        "timestamp": "2026-06-05T16:46:52Z",
+        "duration_seconds": 3857,
+        "tests_total": 59,
+        "tests_passed": 22,
+        "tests_failed": 1,
+        "tests_skipped": 36
       },
       "recent_runs": [
         {
           "build_id": "2062938673107701760",
           "passed": false,
-          "timestamp": "2026-06-05T16:46:52Z"
+          "timestamp": "2026-06-05T16:46:52Z",
+          "duration_seconds": 3857,
+          "tests_total": 59,
+          "tests_passed": 22,
+          "tests_failed": 1,
+          "tests_skipped": 36
         },
         {
           "build_id": "2062561685658406912",
@@ -501,17 +507,18 @@
       "job_type": "periodic",
       "repo": "",
       "job_id": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-main",
-      "overall_status": "PASSING",
+      "overall_status": "FLAKY",
       "last_run": {
-        "build_id": "2062190541235294208",
-        "passed": true,
-        "timestamp": "2026-06-03T15:12:08Z",
-        "duration_seconds": 10579,
-        "tests_total": 7636,
-        "tests_passed": 456,
-        "tests_skipped": 7180
+        "build_id": "2062959812546662400",
+        "passed": false,
+        "timestamp": "2026-06-05T18:08:55Z"
       },
       "recent_runs": [
+        {
+          "build_id": "2062959812546662400",
+          "passed": false,
+          "timestamp": "2026-06-05T18:08:55Z"
+        },
         {
           "build_id": "2062190541235294208",
           "passed": true,
@@ -572,19 +579,10 @@
           "tests_total": 7633,
           "tests_passed": 456,
           "tests_skipped": 7177
-        },
-        {
-          "build_id": "2056886322617913344",
-          "passed": true,
-          "timestamp": "2026-05-19T23:55:03Z",
-          "duration_seconds": 12974,
-          "tests_total": 7631,
-          "tests_passed": 456,
-          "tests_skipped": 7175
         }
       ],
-      "pass_rate_7d": 1,
-      "pass_rate_30d": 0.75
+      "pass_rate_7d": 0.75,
+      "pass_rate_30d": 0.625
     },
     {
       "name": "periodic-cluster-api-provider-azure-conformance-with-ci-artifacts-dra-main",
@@ -601,14 +599,22 @@
       "overall_status": "FLAKY",
       "last_run": {
         "build_id": "2062934646009630720",
-        "passed": false,
-        "timestamp": "2026-06-05T16:28:55Z"
+        "passed": true,
+        "timestamp": "2026-06-05T16:28:55Z",
+        "duration_seconds": 6100,
+        "tests_total": 7636,
+        "tests_passed": 109,
+        "tests_skipped": 7527
       },
       "recent_runs": [
         {
           "build_id": "2062934646009630720",
-          "passed": false,
-          "timestamp": "2026-06-05T16:28:55Z"
+          "passed": true,
+          "timestamp": "2026-06-05T16:28:55Z",
+          "duration_seconds": 6100,
+          "tests_total": 7636,
+          "tests_passed": 109,
+          "tests_skipped": 7527
         },
         {
           "build_id": "2062853108257525760",
@@ -676,8 +682,8 @@
           "tests_skipped": 7527
         }
       ],
-      "pass_rate_7d": 0.625,
-      "pass_rate_30d": 0.625
+      "pass_rate_7d": 0.75,
+      "pass_rate_30d": 0.75
     },
     {
       "name": "periodic-cluster-api-provider-azure-capi-e2e-main",

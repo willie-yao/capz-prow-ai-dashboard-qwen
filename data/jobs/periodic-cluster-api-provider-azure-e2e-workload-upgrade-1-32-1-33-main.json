@@ -2826,24 +2826,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/common.go#L265",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T17:16:17Z",
-            "summary": "CAPZ controller failed to create AzureMachine resource leading to empty logs and initialization timeout",
+            "generated_at": "2026-06-05T20:57:39Z",
+            "summary": "Control plane node failed to initialize due to missing AzureMachine YAML and missing image specification, preventing root cause determination.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T17:16:17Z",
-            "root_cause": "The KubeadmControlPlane timeout occurred because the control plane VM (k8s-upgrade-and-conformance-x70xyj-control-plane-925d7) never booted. All machine logs were empty (confirmed by 0-byte files in list_machine_logs), indicating the AzureMachine CRD was never created. Attempts to retrieve AzureMachine YAML and Azure activity logs failed with HTTP 404. This proves the CAPZ controller failed during infrastructure reconciliation before VM provisioning. The missing CAPZ controller logs prevent identifying whether the root cause was invalid template parameters, Azure API permissions, or image pull errors.",
+            "generated_at": "2026-06-05T20:57:39Z",
+            "root_cause": "The control plane node k8s-upgrade-and-conformance-gpzhwm-control-plane-knrtz failed to initialize because cloud-init did not complete (empty cloud-init-output.log and kubelet.log). The AzureMachine YAML required to confirm status conditions, failure messages, or image specification could not be found (HTTP 404). The controller manager log explicitly states 'No image specified for machine, using default Linux Image' (line 1767 in manager.log), but without AzureMachine status details, the exact VM provisioning failure remains undetermined. Azure activity logs only show successful boot diagnostics retrieval, no provisioning errors.",
             "severity": "Critical",
-            "suggested_fix": "No remediation possible from available evidence: artifacts show AzureMachine CRD was never created (missing YAML) and CAPZ controller logs are missing from artifacts. Would need CAPZ controller manager.log filtered for 'k8s-upgrade-and-conformance-x70xyj' to identify reconciliation error during AzureMachine creation.",
+            "suggested_fix": "No remediation possible from available evidence: AzureMachine YAML for the failing machine is missing (HTTP 404), and controller logs only indicate missing image specification without explicit VM provisioning errors. Would need AzureMachine status conditions and cloud-init logs to confirm root cause.",
             "relevant_files": [
-              "artifacts/clusters/k8s-upgrade-and-conformance-x70xyj/machines/k8s-upgrade-and-conformance-x70xyj-control-plane-925d7/cloud-init-output.log",
-              "artifacts/clusters/k8s-upgrade-and-conformance-x70xyj/machines/k8s-upgrade-and-conformance-x70xyj-control-plane-925d7/kubelet.log"
+              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-cb8c4f8fb-zm84g/manager.log",
+              "artifacts/clusters/k8s-upgrade-and-conformance-gpzhwm/azure-activity-logs/capz-e2e-m9ml71.log"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 8,
-            "model_bytes": 16208,
-            "gcs_bytes": 9421,
-            "elapsed_ms": 118064,
+            "tool_calls": 16,
+            "model_bytes": 85163,
+            "gcs_bytes": 767504,
+            "elapsed_ms": 201781,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },

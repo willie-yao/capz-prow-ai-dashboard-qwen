@@ -687,24 +687,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/helpers.go#L124",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T18:55:13Z",
-            "summary": "Test failed due to 'calico-kube-controllers' deployment not found in expected namespace, likely caused by test logic checking wrong namespace or transient addon installation failure.",
+            "generated_at": "2026-06-05T22:39:40Z",
+            "summary": "Calico deployment failed due to missing HelmChartProxy configuration, preventing proper installation in the workload cluster.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T18:55:13Z",
-            "root_cause": "Build logs show 'calico-kube-controllers' deployment was created in 'calico-system' namespace (line 1478: 'waiting for deployment calico-system/calico-kube-controllers'), but test failed with 'not found' (line 2248). However, attempts to verify HelmChartProxy configuration (no matches) and controller logs (404 error) failed to retrieve critical evidence. The most likely root cause is a namespace mismatch in test logic, but insufficient artifacts exist to confirm upstream issues.",
+            "generated_at": "2026-06-05T22:39:40Z",
+            "root_cause": "The HelmChartProxy for Calico was not found in the expected artifact paths (hcp-yaml group missing), and no Calico-specific errors were logged in the CAAPH controller (caaph-controller-log group). The test expects the 'calico-kube-controllers' deployment in the 'default' namespace, but Calico typically installs in 'calico-system' (as seen in build-log.txt line 1480). The absence of HelmChartProxy YAML files in the test configuration directory suggests the resource was never created or referenced in the test setup.",
             "severity": "High",
-            "suggested_fix": "Update test code in 'test/e2e/helpers.go' to explicitly specify 'calico-system' namespace when checking 'calico-kube-controllers' deployment. Verify HelmChartProxy for Calico in CAPZ templates specifies 'calico-system' namespace. Re-run test to confirm fix. If issue persists, check HelmChartProxy status conditions and caaph-controller-manager logs for template errors.",
+            "suggested_fix": "No remediation possible from available evidence: (1) HelmChartProxy YAML for Calico was not found in artifacts (searched artifacts/clusters/.*/HelmChartProxy/ and test/e2e/data/addons/), (2) CAAPH controller logs showed no Calico-specific errors, (3) Missing evidence includes the actual HelmChartProxy resource definition and workload cluster addon logs. The test must be modified to either create the HelmChartProxy resource or reference an existing one in the correct namespace.",
             "relevant_files": [
               "test/e2e/helpers.go",
-              "templates/clusterclass/base/capi-templates.yaml"
+              "test/e2e/data/addons/"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 11,
-            "model_bytes": 72984,
-            "gcs_bytes": 562272,
-            "elapsed_ms": 163705,
+            "tool_calls": 13,
+            "model_bytes": 108498,
+            "gcs_bytes": 24799952,
+            "elapsed_ms": 236307,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -718,26 +718,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/helpers.go#L124",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T22:08:13Z",
-            "summary": "The test failed because the Calico CNI deployment 'calico-kube-controllers' was not found, indicating the HelmChartProxy failed to install the CNI manifest. Evidence points to a missing 'cni=calico' label on the cluster, preventing HelmChartProxy reconciliation.",
+            "generated_at": "2026-06-05T22:42:26Z",
+            "summary": "Cluster Autoscaler test failed due to missing Calico CNI installation caused by absent 'cni=calico' label on the cluster",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T22:08:13Z",
-            "root_cause": "The deployment 'calico-kube-controllers' was not found (404) in the workload cluster. Build logs show the deployment was available at 04:00:14.392 but later timed out. The root cause is a missing 'cni=calico' label on the cluster, causing the HelmChartProxy controller to skip CNI installation. This is confirmed by the absence of HelmChartProxy-related logs in the capz-controller-manager logs.",
-            "severity": "High",
-            "suggested_fix": "Add the 'cni=calico' label to the Cluster resource to trigger HelmChartProxy reconciliation. This label is required for CNI installation via CAAPH. If the issue persists, verify the Helm chart version in CAAPH matches the Kubernetes version.",
+            "generated_at": "2026-06-05T22:42:26Z",
+            "root_cause": "The deployment 'calico-kube-controllers' was not found because the cluster lacked the required 'cni=calico' label, preventing CAAPH from installing the Calico Helm chart. This is confirmed by: \n1. The 404 error in the test output \n2. The caaph controller log showing no clusters matched the 'cni=calico' selector during HelmChartProxy reconciliation (line 68: \"Selected clusters\" controller=\"helmchartproxy\" clusters={}) \n3. Failed attempts to find HelmChartProxy YAML artifacts for the cluster (find_artifacts returned no matches) \n4. Missing Calico-related logs in the workload cluster (no calico-system namespace artifacts found). The root cause lies in the test's cluster creation logic failing to apply the necessary label.",
+            "severity": "Critical",
+            "suggested_fix": "Modify 'test/e2e/helpers.go' to include 'cni: calico' label in the cluster object's metadata when creating test clusters. Verify by checking the cluster object's labels in the test code and confirming the Calico deployment appears after applying the fix. The controller log evidence at line 68 confirms the label requirement was unmet, and the absence of HelmChartProxy artifacts confirms the installation flow never triggered.",
             "relevant_files": [
-              "config/capz/overlays/cni/calico/kustomization.yaml",
-              "test/e2e/helpers.go"
+              "test/e2e/helpers.go",
+              "config/capz/manager_image_patch.yaml"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 9,
-            "model_bytes": 55398,
-            "gcs_bytes": 2567215,
-            "elapsed_ms": 124208,
-            "critique_passed": true,
-            "critique_version": 2
+            "tool_calls": 12,
+            "model_bytes": 51088,
+            "gcs_bytes": 22219135,
+            "elapsed_ms": 166070,
+            "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
         {
@@ -768,23 +767,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/helpers.go#L124",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T18:58:57Z",
-            "summary": "Calico CNI deployment failed due to HelmChartProxy namespace misconfiguration, leading to deployment in unexpected namespace.",
+            "generated_at": "2026-06-05T22:44:21Z",
+            "summary": "Calico CNI deployment failed due to Helm chart application failure in CAAPH",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T18:58:57Z",
-            "root_cause": "The test failure stems from the Calico CNI deployment being created in the 'calico-system' namespace while the test expected it in the default namespace. The HelmChartProxy resource for Calico in CAPZ templates incorrectly specified the namespace as 'calico-system' instead of the test's target namespace. This mismatch caused the test to time out while waiting for the deployment. Evidence from build-log.txt shows the deployment was successfully created in 'calico-system' (line 1480), but the test's error message indicates it was looking in the default namespace. The cluster artifacts confirm the deployment exists in calico-system: artifacts/clusters/capz-e2e-fjqax2-apiserver-ilb/calico-system/ contains calico-kube-controllers-7bb948fd9b-vzzqh logs.",
-            "severity": "High",
-            "suggested_fix": "Update the namespace field in the HelmChartProxy manifest for Calico from 'calico-system' to 'default' in sigs.k8s.io/cluster-api-provider-azure/templates/addons/calico.yaml. Re-run the test to confirm the deployment is now found in the expected namespace.",
+            "generated_at": "2026-06-05T22:44:21Z",
+            "root_cause": "The test timed out waiting for 'calico-kube-controllers' deployment because the Helm chart for Calico was never applied by CAAPH. Evidence from build-log.txt shows: 1) 'STEP: Ensuring Calico CNI is installed via CAAPH' completed successfully but 2) subsequent 'waiting for deployment calico-system/calico-kube-controllers' failed with 'not found' error. This indicates CAAPH (Cluster API Addon Provider Helm) failed to apply the Helm chart despite reporting success, likely due to a race condition or missing validation in the Helm release reconciliation process.",
+            "severity": "Critical",
+            "suggested_fix": "Add explicit Helm release validation in CAAPH controller after chart application. Modify the 'WaitForHelmReleaseToStabilize' function in sigs.k8s.io/cluster-api-addon-provider-helm/pkg/controllers/helmchartproxy/reconciler.go to verify deployment resources exist after Helm release completion. Add debug logging to capture Helm output when deployment creation fails.",
             "relevant_files": [
-              "templates/addons/calico.yaml"
+              "sigs.k8s.io/cluster-api-addon-provider-helm/pkg/controllers/helmchartproxy/reconciler.go",
+              "test/e2e/helpers.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 7,
-            "model_bytes": 72248,
+            "tool_calls": 11,
+            "model_bytes": 78515,
             "gcs_bytes": 562272,
-            "elapsed_ms": 115250,
+            "elapsed_ms": 115064,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -822,24 +822,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/helpers.go#L124",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T19:01:48Z",
-            "summary": "Calico CNI failed to install due to missing cloud-node-manager credentials causing node readiness failure",
+            "generated_at": "2026-06-05T22:46:47Z",
+            "summary": "Calico deployment failed because HelmChartProxy couldn't find clusters with 'cni=calico' label",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T19:01:48Z",
-            "root_cause": "The cloud-node-manager pod failed to start due to missing Azure credentials, preventing providerID from being set on nodes. This blocked the Machine controller from marking nodes as Running, causing the HelmChartProxy installer to never apply the Calico CNI manifest. Evidence:\n1. In build-log.txt: \"ERROR Failed to create Azure Cloud Provider client: failed to get Azure credential: no credentials provided\" (cloud-node-manager pod)\n2. AzureMachine status shows nodes were provisioned but never reported ready (artifacts/clusters/capz-e2e-f7m9bu-spot/AzureMachine/*.yaml)\n3. CNI plugin errors: \"Network plugin returns error: cni plugin not initialized\" (kubelet logs)\n4. Missing Calico logs: \"cat: /var/log/calico/cni/cni.log: No such file or directory\" (build-log.txt)",
-            "severity": "Critical",
-            "suggested_fix": "Update AzureMachineTemplate to include proper cloud provider credentials in the cloud-init user-data template. Add the following to the cloud-init user-data:\n\nwrite_files:\n  - path: /etc/kubernetes/azure.json\n    content: |\n      {\n        \"cloud\": \"AzurePublicCloud\",\n        \"tenantId\": \"$(tenant_id)\",\n        \"subscriptionId\": \"$(subscription_id)\",\n        \"aadClientId\": \"$(client_id)\",\n        \"aadClientSecret\": \"$(client_secret)\"\n      }\n\nThen validate by checking cloud-node-manager pod logs after redeploying.",
+            "generated_at": "2026-06-05T22:46:47Z",
+            "root_cause": "The HelmChartProxy for Calico requires clusters to have label 'cni=calico' (seen in controller log line: \"selector={\\\"matchLabels\\\":{\\\"cni\\\":\\\"calico\\\"}}\"). The test cluster lacks this label, preventing Calico installation. This is confirmed by the empty calico-system namespace and the HelmChartProxy controller's log showing no matching clusters.",
+            "severity": "High",
+            "suggested_fix": "Add 'cni: calico' label to the Cluster object in test/e2e/helpers.go where the cluster is created. This label is required for the HelmChartProxy controller to install the Calico CNI chart. Verify the fix by checking the calico-system namespace after deployment.",
             "relevant_files": [
-              "api/v1beta1/azuremachine_types.go",
-              "cmd/manager/main.go"
+              "test/e2e/helpers.go",
+              "config/samples/cluster-with-spot-vms.yaml"
             ],
             "mode": "agentic-universal",
             "tool_calls": 10,
-            "model_bytes": 77566,
-            "gcs_bytes": 562272,
-            "elapsed_ms": 171427,
+            "model_bytes": 105333,
+            "gcs_bytes": 594784,
+            "elapsed_ms": 145833,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1176,23 +1176,20 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/helpers.go#L113",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T19:03:04Z",
-            "summary": "Calico deployment failed due to DNS resolution issues with the API server hostname",
+            "generated_at": "2026-06-05T22:48:42Z",
+            "summary": "Test failed due to Azure resource group quota being exceeded, causing cluster creation to fail and Calico deployment to time out",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T19:03:04Z",
-            "root_cause": "The test timed out waiting for the calico-kube-controllers deployment to become ready. The root cause was DNS resolution failures for the API server hostname (capz-e2e-p53ngf-public-custom-vnet-920620e.francecentral.cloudapp.azure.com), as evidenced by repeated \"no such host\" errors in build-log.txt (lines 5584-5589). This DNS failure prevented Calico from communicating with the API server. The API server's ILB configuration likely failed to provision correctly, as the test uses an API Server ILB feature gate. The error pattern matches transient infrastructure issues (DNS resolution failures) rather than a code bug. Cross-referencing with the CAPZ architecture, the control plane initialization depends on API server reachability, which failed due to DNS issues.",
+            "generated_at": "2026-06-05T22:48:42Z",
+            "root_cause": "The test failed because Azure resource group creation failed with a quota exceeded error (artifact: artifacts/clusters/capz-e2e-p53ngf-public-custom-vnet/azure-activity-logs/capz-e2e-p53ngf-public-custom-vnet.log). The Azure activity log shows multiple entries with \"ResourceGroupQuotaExceeded\" errors: \"Creating the resource group 'capz-e2e-p53ngf-public-custom-vnet' would exceed the quota of '980'. The current resource group count is '980', please delete some groups before creating a new one.\" The AzureMachine YAML for this cluster was not found in the artifacts, which would have shown the exact failure message in status.failureMessage. The quota issue prevented proper cluster creation, leading to DNS resolution failures for the API server hostname (capz-e2e-p53ngf-public-custom-vnet-920620e.francecentral.cloudapp.azure.com) and subsequent Calico deployment timeout.",
             "severity": "High",
-            "suggested_fix": "No remediation needed as this is a transient infrastructure issue. If the problem persists, verify the API Server ILB configuration in the cluster template and ensure DNS records are properly provisioned in Azure. For immediate action, retry the test to see if DNS resolves correctly in subsequent runs.",
-            "relevant_files": [
-              "sigs.k8s.io/cluster-api-provider-azure/test/e2e/azure_test.go"
-            ],
+            "suggested_fix": "No code changes needed as this is a transient infrastructure issue. To resolve, delete unused resource groups in the Azure subscription to free up quota. For immediate action, retry the test to see if the quota issue resolves in subsequent runs.",
             "mode": "agentic-universal",
-            "tool_calls": 4,
-            "model_bytes": 70806,
-            "gcs_bytes": 587472,
-            "elapsed_ms": 75905,
+            "tool_calls": 9,
+            "model_bytes": 103513,
+            "gcs_bytes": 615944,
+            "elapsed_ms": 115597,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1242,9 +1239,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.12.8/test/framework/controlplane_helpers.go#L115",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-04T02:47:13Z",
-            "summary": "AI analysis unavailable: agentic iter 1: post: Post \"http://localhost:8000/v1/chat/completions\": dial tcp [::1]:8000: connect: connection refused",
+            "generated_at": "2026-06-05T22:50:30Z",
+            "summary": "Test timed out waiting for 3 control-plane machines due to missing AzureClusterIdentity",
             "is_transient": false
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-05T22:50:30Z",
+            "root_cause": "The CAPZ controller failed to provision control-plane machines because the required AzureClusterIdentity resource was missing. Controller logs show repeated errors: \"failed to retrieve AzureClusterIdentity external object \\\"capz-e2e-eus4np\\\"/\\\"cluster-identity-ci\\\": AzureClusterIdentity.infrastructure.cluster.x-k8s.io \\\"cluster-identity-ci\\\" not found\" (manager.log line 230). This identity is required for Azure VM provisioning. The error occurred across multiple clusters (capz-e2e-eus4np, capz-e2e-fzswd4), indicating a systemic configuration issue in the test setup. The AzureClusterIdentity resource was never created in the namespace, preventing CAPZ from authenticating to Azure APIs.",
+            "severity": "Critical",
+            "suggested_fix": "Add AzureClusterIdentity manifest to test setup in config/capz/manager_image_patch.yaml. Apply this fix:\n\napiVersion: infrastructure.cluster.x-k8s.io/v1beta1\nkind: AzureClusterIdentity\nmetadata:\n  name: cluster-identity-ci\nspec:\n  type: AzureManagedIdentity\n  resourceGroupName: ci-cluster-identity-rg\n  subscriptionID: \"${AZURE_SUBSCRIPTION_ID}\"\n\nRe-run tests after applying this configuration. The identity must exist in Azure with proper permissions for VM creation.",
+            "relevant_files": [
+              "test/framework/controlplane_helpers.go",
+              "config/capz/manager_image_patch.yaml",
+              "api/v1beta1/azureclusteridentity_types.go"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 8,
+            "model_bytes": 50295,
+            "gcs_bytes": 2027714,
+            "elapsed_ms": 107476,
+            "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
         {
@@ -2346,20 +2360,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.12.8/test/framework/controlplane_helpers.go#L115",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T19:06:20Z",
-            "summary": "Test timed out waiting for 3 control plane machines to exist. Root cause is Azure VM provisioning failure, but exact cause cannot be determined from available evidence.",
-            "is_transient": false
+            "generated_at": "2026-06-05T22:52:41Z",
+            "summary": "Control plane VM creation failed due to Azure SKU availability issue",
+            "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T19:06:20Z",
-            "root_cause": "The test failed because only 1 control plane machine was created instead of 3. Azure activity logs (artifacts/clusters/capz-e2e-huvfdm-azl3/azure-activity-logs/capz-e2e-huvfdm-azl3.log) show successful VM operations but no explicit image-related errors. The build-log.txt contains no AzureMachine error messages about invalid image references. AzureMachine resources show 'NoReasonReported' for Ready condition but no specific failure details. The cloud-init-output.log for the existing control plane machine is empty, indicating cloud-init never executed. The root cause appears to be VM provisioning failure, but the exact reason (image configuration, quota, network) cannot be determined from available logs.",
-            "severity": "Critical",
-            "suggested_fix": "No remediation possible from available evidence: artifacts show AzureMachine resources with 'NoReasonReported' but no explicit failure messages, cloud-init-output.log is empty, and azure-activity-logs only show successful operations. Would need to see either: (1) explicit image validation error in AzureMachine status, (2) cloud-init failure logs, or (3) Azure API error in activity logs.",
+            "generated_at": "2026-06-05T22:52:41Z",
+            "root_cause": "The test timed out waiting for 3 control plane machines because two AzureMachine resources failed to provision. The build-log.txt shows a 'SkuNotAvailable' error from Azure API for the requested VM size in 'centralus' region. However, the AzureMachine YAML status.failureMessage (required for exact error details) is missing from artifacts. Azure activity logs only show successful disk creation events without VM provisioning errors.",
+            "severity": "High",
+            "suggested_fix": "No remediation possible from available evidence: (1) Established fact: SkuNotAvailable error in build-log.txt for centralus region; (2) Artifacts consulted: build-log.txt, azure-activity-logs/capz-e2e-gv9kdj-ha.log; (3) Missing evidence: AzureMachine YAML status.failureMessage which would confirm the exact VM size/region constraint. Without this, cannot distinguish between permanent SKU deprecation vs transient quota exhaustion.",
+            "relevant_files": [
+              "cluster-api-provider-azure/controlplane/azuremachine.go",
+              "cluster-api-provider-azure/templates/cluster-template.yaml"
+            ],
             "mode": "agentic-universal",
-            "tool_calls": 8,
-            "model_bytes": 55669,
-            "gcs_bytes": 528975,
-            "elapsed_ms": 104080,
+            "tool_calls": 10,
+            "model_bytes": 53316,
+            "gcs_bytes": 519552,
+            "elapsed_ms": 131472,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -3118,9 +3136,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.12.7/test/framework/controlplane_helpers.go#L115",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-04T02:47:14Z",
-            "summary": "AI analysis unavailable: agentic iter 1: post: Post \"http://localhost:8000/v1/chat/completions\": dial tcp [::1]:8000: connect: connection refused",
+            "generated_at": "2026-06-05T22:54:32Z",
+            "summary": "Test timed out waiting for 3 control plane machines in dual-stack cluster creation. Only 1 control plane machine was created due to template misconfiguration.",
             "is_transient": false
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-05T22:54:32Z",
+            "root_cause": "The cluster template used for the dual-stack flavor incorrectly configured the control plane machine count to 1 instead of 3. This is evidenced by the log line: \"INFO: Creating the workload cluster with name \\\"capz-e2e-5174ci-dual-stack\\\" using the \\\"dual-stack\\\" template (Kubernetes v1.33.11, 1 control-plane machines, 1 worker machines)\" from build-log.txt. The test expects 3 control plane machines for HA, but the template only provisions 1.",
+            "severity": "High",
+            "suggested_fix": "Update the dual-stack cluster template to specify 3 control plane machines. Modify the template file (likely in test/e2e/config/azure-dual-stack.yaml) to set control-plane-machine-count=3. Verify by checking the template configuration in the CAPZ repository.",
+            "relevant_files": [
+              "test/e2e/config/azure-dual-stack.yaml"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 6,
+            "model_bytes": 28605,
+            "gcs_bytes": 526303,
+            "elapsed_ms": 57256,
+            "critique_passed": true,
+            "critique_version": 4,
+            "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
         {

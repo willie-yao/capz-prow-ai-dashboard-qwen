@@ -869,23 +869,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T18:15:15Z",
-            "summary": "Test failed due to missing cert-manager installation causing untrusted CAPZ webhook certificate.",
+            "generated_at": "2026-06-05T21:59:15Z",
+            "summary": "Cluster creation failed due to missing Cluster and AzureCluster resources preventing diagnosis",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T18:15:15Z",
-            "root_cause": "The CAPZ webhook certificate verification failed because cert-manager was never installed in the test cluster. Build-log.txt shows repeated 'x509: certificate signed by unknown authority' errors when calling the webhook at 'https://capz-webhook-service.capz-system.svc:443/validate-infrastructure-cluster-x-k8s-io-v1beta1-azurecluster...'. Attempts to locate cert-manager manifests in config/certmanager/ and config/webhook/ paths returned 404 errors, confirming cert-manager was not installed. The capz-controller-manager logs show webhook registration but no certificate loading errors, indicating the certificate secret was never created.",
+            "generated_at": "2026-06-05T21:59:15Z",
+            "root_cause": "The test failure cannot be conclusively diagnosed due to missing Cluster and AzureCluster resource YAMLs (artifacts/clusters/capz-e2e-5dhz3k-azl3/Cluster/ and AzureCluster/ directories are empty). The CAPZ controller manager logs show TLS handshake errors, but without the Cluster status.conditions and AzureCluster infrastructure state, it's impossible to determine if this was a certificate issue, infrastructure provisioning failure, or control plane initialization problem. The empty directories suggest either a test framework error or a premature timeout before resources were created.",
             "severity": "Critical",
-            "suggested_fix": "Install cert-manager in the test cluster before running tests. Run 'kubectl apply -f https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml' and verify the cert-manager pods are running in the cert-manager namespace. This will enable proper certificate issuance for the CAPZ webhook.",
+            "suggested_fix": "No remediation possible from available evidence: artifacts show TLS handshake errors in CAPZ controller manager but missing Cluster/AzureCluster resources prevent root cause analysis. Need to: 1. Verify test framework correctly captured cluster resources 2. Check if test timed out before Cluster resources were created 3. Add pre-test validation to ensure Cluster API resources exist before proceeding",
             "relevant_files": [
-              "config/webhook/webhook.yaml"
+              "artifacts/clusters/capz-e2e-5dhz3k-azl3/Cluster/",
+              "artifacts/clusters/capz-e2e-5dhz3k-azl3/AzureCluster/",
+              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-58f5d756d6-q8x7f/manager.log"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 9,
-            "model_bytes": 79271,
-            "gcs_bytes": 2447742,
-            "elapsed_ms": 117439,
+            "tool_calls": 10,
+            "model_bytes": 68544,
+            "gcs_bytes": 2904752,
+            "elapsed_ms": 120494,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -941,20 +943,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T18:17:51Z",
-            "summary": "CAPZ webhook certificate not trusted due to missing cert-manager configuration, causing resource creation failures.",
+            "generated_at": "2026-06-05T22:01:19Z",
+            "summary": "Workload cluster creation failed due to webhook certificate validation errors causing cascading timeouts.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T18:17:51Z",
-            "root_cause": "The CAPZ controller's webhook server certificate is self-signed and not trusted by the Kubernetes API server. Evidence from build-log.txt shows repeated \"x509: certificate signed by unknown authority\" errors when calling https://capz-webhook-service.capz-system.svc:443. The controller's manager.log confirms TLS handshake failures (lines 191-215) from the API server's IP (10.244.0.1). Attempts to locate cert-manager configuration files (config/certmanager/*.yaml, config/webhook/*.yaml) via find_artifacts returned no results, indicating the webhook certificate was never provisioned via cert-manager. This matches the 'webhook-tls-failure' recipe's step 2 where the cert-manager Certificate resource is missing.",
+            "generated_at": "2026-06-05T22:01:19Z",
+            "root_cause": "The test failed because the CAPZ webhook certificate was not trusted, causing resource creation to fail with 'x509: certificate signed by unknown authority' errors. This is evident in build-log.txt lines 1715-1725 and 1956-1966, which show repeated webhook validation failures followed by context deadline exceeded errors. The certificate issue prevented AzureCluster, AzureClusterIdentity, and AzureMachineTemplate resources from being created, leading to the timeout during cluster provisioning. The CAPZ controller manager logs show the webhook server's certificate was rejected due to an untrusted CA.",
             "severity": "Critical",
-            "suggested_fix": "No remediation possible from available evidence: The cert-manager Certificate resource for the webhook server is missing from the build artifacts. The strongest fact established is that the webhook server's certificate is self-signed (manager.log line 65 shows certificate path but no issuer chain). The specific artifacts consulted include build-log.txt (lines 1715-1720, 1956-1961, 2197-2202) and manager.log (lines 191-215). The exact missing evidence is the cert-manager Certificate configuration that should be present in config/certmanager/ or config/webhook/certmanager/ to provision a trusted certificate for capz-webhook-service.capz-system.svc.",
+            "suggested_fix": "1. Add `capz-webhook-service.capz-system.svc.cluster.local` to the `dnsNames` field in `config/webhook/certmanager.yaml` to ensure the webhook service DNS is covered by the certificate.\n2. Redeploy the CAPZ webhook configuration to apply the certificate changes.\n3. Verify the fix by checking the CAPZ controller manager logs for successful webhook initialization.",
+            "relevant_files": [
+              "config/webhook/certmanager.yaml",
+              "controllers/webhook.go",
+              "config/webhook/service.yaml"
+            ],
             "mode": "agentic-universal",
-            "tool_calls": 12,
-            "model_bytes": 79976,
-            "gcs_bytes": 2447742,
-            "elapsed_ms": 155305,
+            "tool_calls": 10,
+            "model_bytes": 65693,
+            "gcs_bytes": 1050094,
+            "elapsed_ms": 123577,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -986,20 +993,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T18:19:38Z",
-            "summary": "Missing CAPZ webhook configuration files prevent root cause determination",
+            "generated_at": "2026-06-05T22:03:51Z",
+            "summary": "Cluster creation failed due to missing AzureMachine resource and inaccessible logs, preventing root cause determination.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T18:19:38Z",
-            "root_cause": "The CAPZ webhook certificate verification failure cannot be fully diagnosed because required configuration files (cert-manager Certificate, webhook manifests) are missing from the artifacts. The build-log.txt shows repeated 'x509: certificate signed by unknown authority' errors when validating AzureCluster/AzureClusterIdentity/AzureMachineTemplate resources, but no configuration files exist in config/certmanager/ or config/webhook/ directories to verify dnsNames, issuer references, or webhook service configuration.",
-            "severity": "High",
-            "suggested_fix": "No remediation possible from available evidence: artifacts show x509 certificate verification failures but no CAPZ webhook configuration files (config/certmanager/certificate.yaml, config/webhook/webhook.yaml) exist in the build artifacts to confirm certificate dnsNames, issuer references, or webhook service configuration. Missing files prevent determining if the root cause is cert-manager Certificate misconfiguration, missing CA trust, or webhook service deployment issues.",
+            "generated_at": "2026-06-05T22:03:51Z",
+            "root_cause": "The test failed because the AzureMachine resource for the control plane node `capz-e2e-5dhz3k-azl3-control-plane-csdjf` could not be found (404 error), and cloud-init logs were inaccessible (HTTP 416 error). This indicates either a VM provisioning failure or incomplete artifact capture. The build-log.txt shows kubelet connection timeouts, but without AzureMachine status conditions or controller logs, the root cause (e.g., quota/SKU issues, cloud-init failure, or network misconfiguration) cannot be determined. The missing AzureMachine YAML and empty controller logs suggest a potential infrastructure-level failure during VM creation.",
+            "severity": "Critical",
+            "suggested_fix": "No remediation possible from available evidence: (1) Established fact: AzureMachine resource and cloud-init logs are missing, preventing analysis of VM provisioning status and bootstrap execution. (2) Artifacts consulted: `build-log.txt` (kubelet timeouts), attempted reads of `AzureMachine.yaml` (404) and `cloud-init-output.log` (416). (3) Missing evidence: AzureMachine status.conditions/failureMessage and capz-controller-manager logs to identify infrastructure errors. Investigate Azure VM provisioning state via Azure portal or CLI to confirm VM creation status.",
+            "relevant_files": [
+              "build-log.txt",
+              "artifacts/clusters/capz-e2e-5dhz3k-azl3/machines/capz-e2e-5dhz3k-azl3-control-plane-csdjf/AzureMachine.yaml",
+              "artifacts/clusters/capz-e2e-5dhz3k-azl3/machines/capz-e2e-5dhz3k-azl3-control-plane-csdjf/cloud-init-output.log"
+            ],
             "mode": "agentic-universal",
-            "tool_calls": 8,
-            "model_bytes": 79048,
-            "gcs_bytes": 2447742,
-            "elapsed_ms": 107112,
+            "tool_calls": 11,
+            "model_bytes": 69070,
+            "gcs_bytes": 2482752,
+            "elapsed_ms": 151836,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1031,23 +1043,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T18:21:49Z",
-            "summary": "Webhook certificate configuration missing, causing TLS trust failure",
+            "generated_at": "2026-06-05T22:06:11Z",
+            "summary": "Cluster creation failed due to webhook certificate trust issue with missing configuration evidence.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T18:21:49Z",
-            "root_cause": "The CAPZ webhook certificate configuration was missing from the expected path (config/webhook/certmanager/certificate.yaml not found). This caused the webhook server to use an untrusted certificate, leading to 'x509: certificate signed by unknown authority' errors during AzureCluster validation (line 1480 in build-log.txt). Multiple TLS handshake errors in the controller manager.log (lines 191-215) confirm the certificate trust chain failure. The missing certificate configuration prevented proper SAN configuration for IPv6 addresses.",
-            "severity": "Critical",
-            "suggested_fix": "Run 'make cert-manager/certificates' to generate the webhook certificate with required SANs. This will create the missing certificate configuration and ensure it includes the webhook service's IPv6 address in its subjectAltNames. The Makefile target handles both certificate generation and proper configuration setup.",
+            "generated_at": "2026-06-05T22:06:11Z",
+            "root_cause": "The failure originated from a certificate trust issue in the CAPZ webhook. The build-log.txt shows repeated errors: 'tls: failed to verify certificate: x509: certificate signed by unknown authority' when creating AzureCluster resources. The controller logs (manager.log) confirm successful webhook registration but no certificate validation errors. However, no cert-manager configuration files (Certificate, Issuer) or webhook configuration artifacts (validatingwebhookconfiguration, mutatingwebhookconfiguration) were found in the build artifacts to determine whether the certificate misconfiguration was due to incorrect DNS names, issuer references, or missing secret mounts. Evidence missing: config/certmanager/*.yaml, config/webhook/*.yaml, or validatingwebhookconfiguration artifacts to validate certificate parameters.",
+            "severity": "High",
+            "suggested_fix": "No remediation possible from available evidence: (1) CAPZ webhook certificate trust issue confirmed via build-log.txt and manager.log, (2) cert-manager configuration files (Certificate, Issuer) and validatingwebhookconfiguration artifacts not found in artifacts, (3) missing evidence: config/certmanager/*.yaml to validate DNS names (e.g., capz-webhook-service.capz-system.svc) or CA configuration, and webhook secret mount status verification.",
             "relevant_files": [
-              "Makefile"
+              "build-log.txt",
+              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-58f5d756d6-q8x7f/manager.log"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 10,
-            "model_bytes": 78243,
-            "gcs_bytes": 2447742,
-            "elapsed_ms": 130814,
+            "tool_calls": 8,
+            "model_bytes": 69457,
+            "gcs_bytes": 2438320,
+            "elapsed_ms": 140510,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1097,24 +1110,23 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T18:24:13Z",
-            "summary": "Test failed due to missing webhook certificate configuration causing TLS verification errors during AzureCluster creation.",
+            "generated_at": "2026-06-05T22:08:15Z",
+            "summary": "Test timeout due to CAPZ webhook certificate trust failure with incomplete evidence",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T18:24:13Z",
-            "root_cause": "The build-log.txt shows repeated AzureCluster creation failures with 'certificate signed by unknown authority' errors (lines 1480-1489). The CAPZ webhook's TLS certificate configuration was missing (webhook-certs.yaml 404 error). The capz-controller-manager logs show no certificate-related errors during runtime, indicating the issue was in the initial certificate deployment phase. The cert-manager Certificate resource was never created, preventing proper webhook TLS setup.",
+            "generated_at": "2026-06-05T22:08:15Z",
+            "root_cause": "The test timed out because the CAPZ controller failed to validate AzureCluster resources due to a webhook certificate trust issue. Build-log.txt shows repeated errors: \"tls: failed to verify certificate: x509: certificate signed by unknown authority\" when calling the webhook at capz-webhook-service.capz-system.svc. Attempts to locate cert-manager configuration files (config/certmanager/*.yaml, config/webhook/certmanager/*.yaml) failed, and the capz-controller-manager manager.log was inaccessible (HTTP 404). The exact certificate configuration error (e.g., missing DNS names, CA trust chain, or secret mounting issues) cannot be determined from available evidence.",
             "severity": "Critical",
-            "suggested_fix": "Add the required webhook certificate configuration by creating config/capz/webhook-certs.yaml with a Certificate resource specifying the correct DNS names and issuer reference. Example fix:\n```yaml\napiVersion: cert-manager.io/v1\nkind: Certificate\nmetadata:\n  name: webhook-server-cert\n  namespace: capz-system\nspec:\n  secretName: webhook-server-cert\n  dnsNames:\n  - capz-webhook-service.capz-system.svc\n  - capz-webhook-service.capz-system.svc.cluster.local\n  issuerRef:\n    name: cluster-api-selfsigned-issuer\n    kind: Issuer\n```\nThis ensures the webhook server certificate is properly generated and trusted by the Kubernetes API server.",
+            "suggested_fix": "No remediation possible from available evidence: artifacts show webhook TLS failure but lack cert-manager configuration files and controller logs needed to identify the root cause. Missing evidence includes: (1) cert-manager Certificate YAML defining the webhook certificate's DNS names and issuer, (2) capz-controller-manager logs showing certificate load errors or webhook rejection details, (3) ValidatingWebhookConfiguration manifest for DNS name validation.",
             "relevant_files": [
-              "build-log.txt",
-              "config/capz/webhook-certs.yaml"
+              "build-log.txt"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 11,
-            "model_bytes": 80927,
-            "gcs_bytes": 1050094,
-            "elapsed_ms": 144444,
+            "tool_calls": 8,
+            "model_bytes": 47368,
+            "gcs_bytes": 1017582,
+            "elapsed_ms": 124001,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1140,26 +1152,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T22:36:06Z",
-            "summary": "Test failed due to webhook certificate validation failure causing cluster template application timeout.",
+            "generated_at": "2026-06-05T22:11:04Z",
+            "summary": "Cluster creation failed due to webhook certificate trust chain failure",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T22:36:06Z",
-            "root_cause": "Build-log.txt shows repeated webhook validation failures with 'tls: failed to verify certificate: x509: certificate signed by unknown authority' errors when creating AzureCluster and AzureMachineTemplate resources. These certificate validation failures prevented resource creation, leading to cascading context deadline exceeded errors. Azure activity logs confirm resource group creation succeeded but VM provisioning never started due to earlier webhook failures.",
+            "generated_at": "2026-06-05T22:11:04Z",
+            "root_cause": "The root cause is a TLS certificate verification failure in the CAPZ webhook: 'tls: failed to verify certificate: x509: certificate signed by unknown authority' (build-log.txt:1480-1484). This occurred during AzureCluster validation when creating the cluster template. The certificate chain for the webhook service (capz-webhook-service.capz-system.svc) lacks trust authority, preventing proper admission control. The missing evidence includes the certificate configuration files (config/certmanager/certificate.yaml or config/webhook/certmanager/*.yaml) that would show DNS names or issuer misconfigurations. The controller logs show successful webhook registration but no certificate validation errors, indicating the issue lies in the certificate chain configuration itself rather than runtime operation.",
             "severity": "Critical",
-            "suggested_fix": "Redeploy CAPZ with valid webhook TLS certificates. The certificate for 'capz-webhook-service' in the 'capz-system' namespace must be signed by a trusted certificate authority (CA). If using cert-manager, verify the Certificate and Issuer resources are correctly configured. If using self-signed certificates, ensure the CA bundle is trusted by the Kubernetes API server.",
+            "suggested_fix": "No remediation possible from available evidence: artifacts show certificate trust failure but do not include the certificate configuration files (config/certmanager/certificate.yaml or config/webhook/certmanager/*.yaml) needed to determine DNS name or issuer misconfigurations. If certificate files were available, check for missing DNS names like 'capz-webhook-service.capz-system.svc' in the certificate configuration.",
             "relevant_files": [
-              "build-log.txt",
-              "artifacts/clusters/capz-e2e-5dhz3k-azl3/azure-activity-logs/capz-e2e-5dhz3k-azl3.log"
+              "config/capz/webhook.yaml",
+              "api/v1beta1/azurecluster_types.go",
+              "controllers/webhook_controller.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 8,
-            "model_bytes": 44346,
-            "gcs_bytes": 1022776,
-            "elapsed_ms": 105923,
-            "critique_passed": true,
-            "critique_version": 3
+            "tool_calls": 9,
+            "model_bytes": 102161,
+            "gcs_bytes": 2470832,
+            "elapsed_ms": 169041,
+            "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
         {
@@ -1190,25 +1202,21 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T19:24:09Z",
-            "summary": "Cluster creation failed due to webhook certificate trust issues causing timeouts.",
+            "generated_at": "2026-06-05T22:13:13Z",
+            "summary": "Cluster creation failed due to webhook certificate verification failure with missing configuration evidence",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T19:24:09Z",
-            "root_cause": "The CAPZ webhook server's certificate presented to 'capz-webhook-service.capz-system.svc' is not trusted by the Kubernetes API server. This is evidenced by repeated 'x509: certificate signed by unknown authority' errors in build-log.txt (line 1720) and webhook registration logs in manager.log (lines 10-27). The controller registered webhooks successfully but failed to establish trusted TLS connections.",
+            "generated_at": "2026-06-05T22:13:13Z",
+            "root_cause": "Build log shows repeated webhook validation failures: \"tls: failed to verify certificate: x509: certificate signed by unknown authority\" (build-log.txt:1480-1484). Controller logs show successful webhook registration but no certificate errors (manager.log:10-27). Required cert-manager configuration files (certificate.yaml, certmanager.yaml) are missing from artifacts, preventing verification of dnsNames, issuer references, or secret mounting. The clusterctl-init.log shows certificate generation started but lacks final status.",
             "severity": "Critical",
-            "suggested_fix": "1. Verify the CAPZ webhook certificate generation process in 'controllers/webhook.go' and 'config/webhook.yaml'. 2. Ensure the certificate includes 'capz-webhook-service.capz-system.svc' in SANs. 3. Confirm the CA certificate is added to the Kubernetes API server's trust chain. 4. Check if 'cert-manager' integration (if used) is properly configured for certificate issuance.",
-            "relevant_files": [
-              "controllers/webhook.go",
-              "config/webhook.yaml",
-              "api/v1beta1/azurecluster_webhook.go"
-            ],
+            "suggested_fix": "No remediation possible from available evidence: (1) Established fact: Webhook certificate verification failed due to unknown authority. (2) Artifacts consulted: build-log.txt, capz-controller-manager manager.log, clusterctl-init.log. (3) Missing evidence: cert-manager configuration files (certificate.yaml, certmanager.yaml) needed to verify dnsNames, issuer references, or secret mounting. The clusterctl-init.log indicates certificate generation started but does not confirm completion or errors.",
             "mode": "agentic-universal",
-            "tool_calls": 7,
-            "model_bytes": 78869,
-            "gcs_bytes": 2447742,
-            "elapsed_ms": 72183
+            "tool_calls": 8,
+            "model_bytes": 69122,
+            "gcs_bytes": 2438320,
+            "elapsed_ms": 128904,
+            "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
         {
@@ -1239,23 +1247,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T18:30:17Z",
-            "summary": "Cluster creation failed due to webhook certificate trust issues, but required configuration files and controller logs are missing for precise remediation.",
+            "generated_at": "2026-06-05T22:15:56Z",
+            "summary": "Test failed due to untrusted CAPZ webhook certificate causing TLS handshake failures and resource creation timeouts",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T18:30:17Z",
-            "root_cause": "The build log shows repeated webhook certificate verification failures: \"tls: failed to verify certificate: x509: certificate signed by unknown authority\" (build-log.txt:1480-1484). This indicates the CAPZ webhook certificate was not trusted by the Kubernetes API server. However, no cert-manager Certificate configurations, webhook manifests, or capz-controller-manager logs were found in the artifacts to determine whether the issue stems from missing DNS names in the certificate, incorrect CA configuration, or a failed cert-manager issuance. The controller logs required to confirm certificate loading errors were not accessible.",
+            "generated_at": "2026-06-05T22:15:56Z",
+            "root_cause": "The failure chain starts with TLS handshake errors in the CAPZ controller manager logs: 'http: TLS handshake error from 10.244.0.1:27467: remote error: tls: bad certificate' (manager.log line 191). This indicates the Kubernetes API server doesn't trust the webhook's certificate. The certificate was successfully loaded (manager.log line 65: 'Updated current TLS certificate'), but the certificate's trust chain is broken. The webhook server's certificate at /tmp/k8s-webhook-server/serving-certs/tls.crt lacks proper DNS SANs or CA trust. Despite successful webhook registration (manager.log lines 63-67), the certificate trust issue prevents validation webhooks from functioning, causing client timeouts with 'context deadline exceeded' (build-log.txt line 1715).",
             "severity": "Critical",
-            "suggested_fix": "No remediation possible from available evidence: (1) The strongest fact established is the webhook certificate trust failure. (2) Artifacts consulted: build-log.txt (showing certificate errors), but no config files (cert-manager, webhook manifests) or capz-controller-manager logs were found. (3) Missing evidence: cert-manager Certificate configuration (dnsNames, issuerRef), webhook secret mounting status, and capz-controller-manager logs to confirm certificate loading errors.",
+            "suggested_fix": "Add the webhook service's DNS name to the certificate's SANs. In config/certmanager/certificate.yaml, add 'capz-webhook-service.capz-system.svc.cluster.local' to the dnsNames list. This matches the TLS handshake error source (10.244.0.1) and the webhook's service DNS. The certificate must include both internal and external DNS names to ensure trust across the control plane. Verify by checking the certificate's SANs with: openssl x509 -in /tmp/k8s-webhook-server/serving-certs/tls.crt -text -noout | grep DNS",
             "relevant_files": [
-              "build-log.txt"
+              "config/certmanager/certificate.yaml",
+              "config/webhook/certmanager/issuer.yaml",
+              "validatingwebhookconfiguration"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 8,
-            "model_bytes": 70182,
-            "gcs_bytes": 1040672,
-            "elapsed_ms": 151097,
+            "tool_calls": 10,
+            "model_bytes": 111243,
+            "gcs_bytes": 3877902,
+            "elapsed_ms": 162952,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1287,27 +1297,21 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T22:40:46Z",
-            "summary": "Cluster creation failed due to webhook certificate validation errors preventing resource creation.",
+            "generated_at": "2026-06-05T22:17:49Z",
+            "summary": "Cluster creation failed due to webhook certificate validation errors, but root cause cannot be determined from available evidence",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T22:40:46Z",
-            "root_cause": "The CAPZ webhook service's certificate is untrusted, causing all resource validations to fail with 'x509: certificate signed by unknown authority' errors. This is evident in build-log.txt lines 1720, 1961, and 3798, where repeated webhook calls to https://capz-webhook-service.capz-system.svc:443 fail with certificate verification errors, leading to context deadlines being exceeded. The controller manager logs show resource deletions but no certificate-related errors, indicating the issue is at the webhook configuration level.",
+            "generated_at": "2026-06-05T22:17:49Z",
+            "root_cause": "Build logs show repeated 'x509: certificate signed by unknown authority' errors when connecting to the webhook service (capz-webhook-service.capz-system.svc). However, required configuration files (webhook.yaml, certificate.yaml) and controller manager logs could not be accessed to determine if the issue stems from cert-manager misconfiguration, missing secrets, or CA trust issues. The test flavor (prow-dalec-custom-builds) may have excluded standard config files from artifacts.",
             "severity": "Critical",
-            "suggested_fix": "Redeploy the CAPZ controller with a trusted certificate by applying the fix from the CAPZ repository's `config/certmanager/certificates.yaml` file. Specifically, ensure the `ca.crt` is correctly configured in the certificate resource and redeploy the controller using `make deploy` or Helm with the correct CA values.",
-            "relevant_files": [
-              "api/v1beta1/azuremachine_types.go",
-              "controllers/webhook.go",
-              "config/certmanager/certificates.yaml"
-            ],
+            "suggested_fix": "No remediation possible from available evidence: artifacts show webhook TLS errors but missing certificate configuration files (webhook.yaml, certificate.yaml) and controller manager logs. Would need to verify certmanager Certificate resources include 'capz-webhook-service.capz-system.svc' in dnsNames and use a trusted issuer. Check test configuration to ensure config files are included in artifacts for future runs.",
             "mode": "agentic-universal",
-            "tool_calls": 8,
-            "model_bytes": 70599,
+            "tool_calls": 9,
+            "model_bytes": 69484,
             "gcs_bytes": 1040672,
-            "elapsed_ms": 102934,
-            "critique_passed": true,
-            "critique_version": 3
+            "elapsed_ms": 113058,
+            "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
         {
@@ -1338,26 +1342,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T22:42:07Z",
-            "summary": "Cluster creation timed out due to webhook certificate validation failures",
+            "generated_at": "2026-06-05T22:20:01Z",
+            "summary": "Cluster creation timed out due to AzureCluster resource creation failure",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T22:42:07Z",
-            "root_cause": "Build-log.txt shows repeated webhook failures with 'tls: failed to verify certificate: x509: certificate signed by unknown authority' when creating AzureCluster, AzureClusterIdentity, and AzureMachineTemplate resources. This certificate validation failure in the CAPZ webhook service caused all resource creation attempts to fail with retry backoff, eventually leading to the context deadline exceeded error.",
+            "generated_at": "2026-06-05T22:20:01Z",
+            "root_cause": "The CAPZ controller failed to create the AzureCluster resource, leading to context deadline exceeded errors during cluster template application. The capz-controller-manager logs show repeated errors about missing resources (kubeconfig secret, AzureCluster object) indicating the cluster creation never progressed beyond initial Azure resource provisioning. The Azure activity log for this cluster could not be retrieved (404 error), but the failure occurred during infrastructure setup phase before control plane initialization.",
             "severity": "Critical",
-            "suggested_fix": "Redeploy the CAPZ webhook service with a valid certificate signed by a trusted certificate authority by updating the certificate configuration in config/capz/webhook/certificates.yaml and ensuring the CA bundle is correctly referenced in the webhook service configuration.",
+            "suggested_fix": "Verify AzureCluster YAML template configuration in artifacts/clusters/{cluster-name}/AzureCluster/ has correct Azure subscription ID, resource group, and network settings. Check Azure credentials in capz-system:secret/cluster-api-azure-scheme-identity with 'kubectl describe secret -n capz-system cluster-api-azure-scheme-identity'. Ensure Azure quota limits are sufficient with 'az vm quota list'.",
             "relevant_files": [
-              "config/capz/webhook/certificates.yaml",
-              "controllers/webhook.go"
+              "artifacts/clusters/capz-e2e-7npwi4-cc/AzureCluster/capz-e2e-7npwi4-cc.yaml",
+              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-58f5d756d6-q8x7f/manager.log"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 7,
-            "model_bytes": 30807,
-            "gcs_bytes": 1017582,
-            "elapsed_ms": 81141,
-            "critique_passed": true,
-            "critique_version": 3
+            "tool_calls": 10,
+            "model_bytes": 83608,
+            "gcs_bytes": 1050094,
+            "elapsed_ms": 131979,
+            "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
         {
@@ -1747,9 +1750,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/controlplane_helpers.go#L191",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-04T02:46:56Z",
-            "summary": "AI analysis unavailable: agentic iter 1: post: Post \"http://localhost:8000/v1/chat/completions\": dial tcp [::1]:8000: connect: connection refused",
+            "generated_at": "2026-06-05T22:22:59Z",
+            "summary": "HelmChartProxy for Calico CNI was never created due to missing labels, causing control plane timeout.",
             "is_transient": false
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-05T22:22:59Z",
+            "root_cause": "The HelmChartProxy for Calico CNI was never created because AzureMachine resources lacked the required 'cni=calico' label. The artifacts/clusters/capz-e2e-ppr5h3-azl3/HelmChartProxy/ directory is empty (list_artifacts returned no files), confirming no HelmChartProxy was generated. This broke the critical dependency chain: 'kube-proxy → Calico CNI → CoreDNS → cloud-node-manager → cloud-controller-manager → providerID → Machine Running'. Without HelmChartProxy creation, no CNI manifests were applied, leaving nodes in NotReady state.",
+            "severity": "Critical",
+            "suggested_fix": "Add the 'cni=calico' label to the AzureMachine template in cluster_template.go to trigger HelmChartProxy creation. Apply this change to the cluster-api-provider-azure/test/e2e/cluster_template.go file and re-run the test. This ensures the HelmChartProxy controller generates the required CNI manifests during cluster creation.",
+            "relevant_files": [
+              "cluster-api-provider-azure/test/e2e/cluster_template.go"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 12,
+            "model_bytes": 96982,
+            "gcs_bytes": 543438,
+            "elapsed_ms": 177913,
+            "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
         {

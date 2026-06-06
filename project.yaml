@@ -103,17 +103,19 @@ ai:
     # accumulating enough bytes.
     max_iters: 20
     # Per-call evidence budget: bytes of tool-call output the model sees
-    # across the agentic loop. Engine default is 300_000. Capped here
+    # across the agentic loop. Engine default is 300_000. Kept moderate
     # because the in-cluster Dynamo serves Qwen3-235B with
     # max_position_embeddings=40960 and YaRN rope scaling disabled, so the
-    # whole prompt must stay under ~40960 tokens. At ~4 chars/token with
-    # ~12K tokens of fixed overhead (system prompt + skills + tool defs +
-    # reasoning), 110K bytes of evidence yields ~39K-token prompts, leaving
-    # ~1.8K headroom. The prefill workers' max_num_tokens was raised
-    # 32768 -> 65536 (2026-06-05) so it is no longer the binding limit; the
-    # 40960 model context is. Raising this further requires enabling YaRN
-    # rope scaling on the model.
+    # whole prompt must stay under 40960 tokens.
     model_byte_budget: 110000
+    # Total request-size cap (bytes). The agentic loop compacts the oldest
+    # tool-result bodies to a stub before a request would exceed this, so a
+    # long, critique-heavy investigation never overflows the 40960-token
+    # window mid-loop (which previously 500'd and left ~32% of failures with
+    # no analysis). 90K bytes stays under the limit even for dense logs
+    # (~2.5 bytes/token ≈ 36K tokens); 105K briefly overran on the densest
+    # cases. Remove this once YaRN raises the model context window.
+    context_byte_budget: 90000
     # Minimum tool calls before a tools-free final answer is accepted.
     # Bumped from 3 → 5 after the 2026-06-03 A/B: with floor=3 Qwen
     # parked at the floor on 50% of failures and produced 5x shorter

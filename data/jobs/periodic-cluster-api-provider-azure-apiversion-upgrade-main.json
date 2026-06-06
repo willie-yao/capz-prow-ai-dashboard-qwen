@@ -1037,23 +1037,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/client.go#L190",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T18:03:13Z",
-            "summary": "The azureserviceoperator-controller-manager deployment failed to become ready within the timeout period, causing the API server request to time out.",
+            "generated_at": "2026-06-05T21:51:52Z",
+            "summary": "The test failed because the 'azureserviceoperator-controller-manager' deployment in the 'capz-system' namespace did not become ready within 5 minutes during the clusterctl upgrade, leading to a timeout when accessing the API server.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T18:03:13Z",
-            "root_cause": "The deployment 'azureserviceoperator-controller-manager' did not become ready within 5 minutes, leading to a context deadline exceeded error when attempting to access the API server. The controller manager logs show successful startup but no further progress, indicating a potential readiness probe failure or initialization issue.",
-            "severity": "Critical",
-            "suggested_fix": "Check the readiness probe configuration for the azureserviceoperator-controller-manager deployment. Ensure the controller manager is correctly updating its status and that there are no dependency issues preventing it from becoming ready. Review the deployment's replicas and pod status to confirm it is running as expected.",
+            "generated_at": "2026-06-05T21:51:52Z",
+            "root_cause": "The deployment 'azureserviceoperator-controller-manager' in the 'capz-system' namespace failed to reach a ready state. The build-log.txt shows repeated attempts to check the deployment's status, but it never became ready. The API server at 'https://clusterctl-upgrade-management-30t0ki-d9ff9690.canadacentral.cloudapp.azure.com:6443' was unreachable. No manager.log file or deployment/pod YAML artifacts were found in the expected artifact paths, indicating either a failure to create the deployment or missing artifact capture. The root cause could not be determined due to missing logs and manifests.",
+            "severity": "High",
+            "suggested_fix": "No remediation possible from available evidence: artifacts show the deployment was never created (manager.log 404, no YAML files in manifests/deployments directories). Would need to verify deployment creation, image availability, and network policies blocking API server access.",
             "relevant_files": [
-              "artifacts/clusters/bootstrap/logs/capz-system/azureserviceoperator-controller-manager/azureserviceoperator-controller-manager-7998998bf5-lj7n5/manager.log"
+              "build-log.txt"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 5,
-            "model_bytes": 67648,
-            "gcs_bytes": 65024,
-            "elapsed_ms": 53326
+            "tool_calls": 9,
+            "model_bytes": 100000,
+            "gcs_bytes": 654752,
+            "elapsed_ms": 119708,
+            "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
         {
@@ -1120,26 +1121,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/client.go#L190",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-03T19:16:07Z",
-            "summary": "The deployment 'azureserviceoperator-controller-manager' failed to become ready due to the Kubernetes API server being unreachable, likely caused by the control plane node's kube-apiserver container not starting.",
-            "is_transient": false
+            "generated_at": "2026-06-05T21:54:55Z",
+            "summary": "Management Cluster API Server Endpoint Unreachable Due to DNS Resolution Failure",
+            "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-03T19:16:07Z",
-            "root_cause": "The deployment 'azureserviceoperator-controller-manager' in namespace 'capz-system' did not reach a ready state. The manager.log shows successful webhook registration and startup, but the deployment check timed out. The root cause is likely the control plane node's kube-apiserver container failing to start, as indicated by the empty kube-apiserver.log and potential errors in the control plane node's kubelet.log. This would prevent any communication with the API server, causing the deployment check to time out.",
-            "severity": "Critical",
-            "suggested_fix": "1. Check the kubelet.log of the control plane node (clusterctl-upgrade-management-0eevz0-control-plane-rswtf) for errors starting the kube-apiserver container. 2. Verify the kube-apiserver manifest and configuration. 3. Ensure the API server certificate is valid and not expired. 4. Check for resource constraints (CPU/Memory) that might prevent the API server from starting.",
+            "generated_at": "2026-06-05T21:54:55Z",
+            "root_cause": "The deployment 'azureserviceoperator-controller-manager' failed readiness checks because the management cluster's API server endpoint (https://clusterctl-upgrade-management-0eevz0-b763168e.canadacentral.cloudapp.azure.com:6443) was unreachable. Build-log.txt shows repeated 'dial tcp: lookup ... no such host' errors (lines 2583-2591) indicating DNS resolution failure. The azure-activity-logs/clusterctl-upgrade-management-0eevz0.log could not be fully read due to truncation, so no conclusive evidence about load balancer degradation timing was found in the available logs.",
+            "severity": "High",
+            "suggested_fix": "No remediation possible from available evidence: (1) Established fact: DNS resolution failed for the management cluster's API server endpoint. (2) Artifacts consulted: build-log.txt (lines 2583-2591). (3) Missing evidence: The azure-activity-logs/clusterctl-upgrade-management-0eevz0.log was truncated during reading, so the exact cause of the DNS resolution failure (e.g., Azure DNS configuration delays, management cluster provisioning issues) remains undetermined.",
             "relevant_files": [
-              "sigs.k8s.io/cluster-api-provider-azure/controllers/azureoperator_controller.go",
-              "sigs.k8s.io/cluster-api-provider-azure/config/capz/manager_image_patch.yaml",
-              "sigs.k8s.io/cluster-api-provider-azure/config/capz/manager_pull_policy.yaml",
-              "artifacts/clusters/clusterctl-upgrade-management-0eevz0/machines/clusterctl-upgrade-management-0eevz0-control-plane-rswtf/kubelet.log"
+              "build-log.txt"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 9,
-            "model_bytes": 59399,
-            "gcs_bytes": 353053,
-            "elapsed_ms": 110257
+            "tool_calls": 11,
+            "model_bytes": 67101,
+            "gcs_bytes": 672365,
+            "elapsed_ms": 182747,
+            "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
         {
@@ -2995,9 +2994,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/client.go#L190",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-04T02:46:50Z",
-            "summary": "AI analysis unavailable: agentic iter 1: post: Post \"http://localhost:8000/v1/chat/completions\": dial tcp [::1]:8000: connect: connection refused",
+            "generated_at": "2026-06-05T21:57:15Z",
+            "summary": "Test failure due to premature management cluster deletion during cleanup causing deployment readiness check timeout",
             "is_transient": false
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-05T21:57:15Z",
+            "root_cause": "The test's cleanup process deleted the management cluster before completing deployment readiness checks. Build logs show repeated DNS errors (\"no such host\") for the management cluster's API server endpoint (clusterctl-upgrade-management-m7v3cr-a79fc73a.switzerlandnorth.cloudapp.azure.com) during deployment status verification. Required artifacts for the 'cluster-cleanup-stuck' recipe (stuck resource YAML and capz-controller-manager logs) were unavailable due to cluster deletion, preventing confirmation of Azure resource finalizer blocks.",
+            "severity": "High",
+            "suggested_fix": "Modify test logic to ensure deployment readiness checks complete before initiating management cluster deletion. Add explicit waits or reorder cleanup steps in test/e2e/e2e_suite_test.go to prevent premature cluster deletion. For example, add a wait condition after deployment verification before triggering cluster deletion.",
+            "relevant_files": [
+              "test/e2e/e2e_suite_test.go",
+              "test/e2e/clusterctl_upgrade_test.go"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 11,
+            "model_bytes": 71174,
+            "gcs_bytes": 622592,
+            "elapsed_ms": 139672,
+            "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
         {

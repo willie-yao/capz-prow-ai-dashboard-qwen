@@ -74,6 +74,7 @@
       "enabled": true,
       "max_iters": 20,
       "model_byte_budget": 110000,
+      "context_byte_budget": 105000,
       "min_tool_calls": 5,
       "min_gcs_bytes": 500000,
       "critique": {

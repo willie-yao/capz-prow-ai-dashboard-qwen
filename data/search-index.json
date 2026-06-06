@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-05T17:14:15Z",
+  "generated_at": "2026-06-05T20:54:13Z",
   "entries": [
     {
       "kind": "job",
@@ -29041,7 +29041,7 @@
       "branch": "main",
       "category": "conformance",
       "status": "passed",
-      "fail_rate": 0.2857142857142857
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -29340,7 +29340,7 @@
       "branch": "main",
       "category": "conformance",
       "status": "passed",
-      "fail_rate": 0.2857142857142857
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -30354,7 +30354,7 @@
       "branch": "main",
       "category": "conformance",
       "status": "passed",
-      "fail_rate": 0.14285714285714285
+      "fail_rate": 0.16666666666666666
     },
     {
       "kind": "test",
@@ -37244,7 +37244,7 @@
       "branch": "main",
       "category": "upgrade",
       "status": "passed",
-      "fail_rate": 0.14285714285714285
+      "fail_rate": 0.125
     },
     {
       "kind": "test",
@@ -37256,8 +37256,8 @@
       "tab_name": "capi-periodic-upgrade-main-1-35-1-36",
       "branch": "main",
       "category": "upgrade",
-      "status": "passed",
-      "fail_rate": 0
+      "status": "failed",
+      "fail_rate": 0.125
     },
     {
       "kind": "test",

@@ -1055,24 +1055,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/cluster_helpers.go#L153",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T20:16:49Z",
-            "summary": "Cluster creation timed out due to Azure resource group quota exhaustion",
+            "generated_at": "2026-06-05T23:54:40Z",
+            "summary": "Test timed out waiting for AKS cluster to provision due to Azure resource group quota exhaustion preventing cluster creation",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T20:16:49Z",
-            "root_cause": "The test failed because Azure resource group quota was exceeded. Multiple entries in build-log.txt (lines 1489, 1720, 1848) show: \"Creating the resource group 'capz-e2e-d0d7hv-cc' would exceed the quota of '980'. The current resource group count is '980', please delete some groups before creating a new one.\" Controller logs from azureserviceoperator-controller-manager (line 1997) confirm: \"Encountered error impacting Ready condition: Reason: ResourceGroupQuotaExceeded, Severity: Warning, Cause: Creating the resource group 'capz-e2e-wllaqu-asoapi' would exceed the quota of '980'.\" This quota limit prevented cluster provisioning, causing the timeout. The root cause is temporary resource exhaustion in the test environment, not a bug in the code.",
+            "generated_at": "2026-06-05T23:54:40Z",
+            "root_cause": "The build log shows Azure resource group creation failed with quota exceeded error: 'Creating the resource group MC_capz-e2e-8nbqxp-pool_capz-e2e-8nbqxp-pool_switzerlandnorth would exceed the quota of 980' (line 1488). This prevented cluster creation from starting. The missing kubeconfig secret seen in the controller logs was a downstream symptom - the cluster was never created due to quota limits. The empty artifacts/clusters/capz-e2e-8nbqxp-pool directory confirms no cluster resources were generated.",
             "severity": "High",
-            "suggested_fix": "No remediation possible from available evidence: (1) Quota exhaustion confirmed in build-log.txt and controller manager logs; (2) Missing AzureMachine YAMLs and azure-activity-logs artifacts that would show resource-specific quota constraints; (3) Required evidence for SKU/region remediation not present in artifacts",
+            "suggested_fix": "1. Delete unused resource groups from previous test runs using Azure CLI: 'az group delete --name MC_capz-e2e-*'\n2. Add pre-test cleanup step to remove stale resource groups\n3. Request Azure subscription quota increase for resource groups\n4. Add quota validation check before starting test execution",
             "relevant_files": [
-              "build-log.txt",
-              "artifacts/clusters/bootstrap/logs/capz-system/azureserviceoperator-controller-manager/azureserviceoperator-controller-manager-7998998bf5-ccbmh/manager.log"
+              "build-log.txt"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 10,
-            "model_bytes": 96480,
-            "gcs_bytes": 581152,
-            "elapsed_ms": 117739,
+            "tool_calls": 11,
+            "model_bytes": 78730,
+            "gcs_bytes": 352973,
+            "elapsed_ms": 150061,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1155,24 +1156,27 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/cluster_helpers.go#L153",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T20:20:40Z",
-            "summary": "Cluster creation timed out due to Azure resource group quota exhaustion",
-            "is_transient": true
+            "generated_at": "2026-06-05T23:56:33Z",
+            "summary": "Test timed out due to missing VirtualNetwork resource during AKS cluster creation",
+            "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T20:20:40Z",
-            "root_cause": "The test failed because Azure resource group quota was exceeded. The build-log.txt shows: \"Creating the resource group 'capz-e2e-d0d7hv-cc' would exceed the quota of '980'. The current resource group count is '980', please delete some groups before creating a new one.\" This is confirmed in the Azure Service Operator controller logs (manager.log line 1997) which show: \"Encountered error impacting Ready condition\" with error code \"ResourceGroupQuotaExceeded\". No AzureMachine YAML or Azure activity logs were found because the cluster creation failed at the resource group creation stage before infrastructure resources were provisioned.",
-            "severity": "High",
-            "suggested_fix": "Delete unused resource groups from previous test runs. Use Azure CLI to list and remove obsolete groups:\n1. List test resource groups: `az group list --query \"[?contains(name,'capz-e2e')].name\"`\n2. Delete obsolete groups: `az group delete -n \u003cgroup-name\u003e`\nIf quota is consistently exhausted, request a quota increase from Azure support.",
+            "generated_at": "2026-06-05T23:56:33Z",
+            "root_cause": "The test failed to provision an AKS cluster because the Azure VirtualNetwork resource was not found. Controller logs in artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-854c6fbdb8-s6ns4/manager.log show repeated errors: \"Unable to determine if ManagedControlPlaneScope VNET is managed by capz, assuming unmanaged\" with \"VirtualNetwork.network.azure.com \\\"capz-e2e-25pyvi-aks\\\" not found\" (lines 417-422). The AzureCluster template in artifacts/clusters/bootstrap/resources/ could not be inspected due to model byte budget exhaustion, leaving the root cause of the missing VNET undetermined. The quota error in build-log.txt was a secondary symptom.",
+            "severity": "Critical",
+            "suggested_fix": "No remediation possible from available evidence: artifacts show VirtualNetwork not found but cannot confirm if AzureCluster template was missing VNET configuration (artifacts/clusters/bootstrap/resources/ could not be accessed). Would need to inspect AzureCluster CRD and validate VNET creation logic in test configuration.",
             "relevant_files": [
-              "build-log.txt",
-              "artifacts/clusters/bootstrap/logs/capz-system/azureserviceoperator-controller-manager/azureserviceoperator-controller-manager-7998998bf5-ccbmh/manager.log"
+              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-854c6fbdb8-s6ns4/manager.log",
+              "build-log.txt"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 8,
-            "model_bytes": 68149,
-            "gcs_bytes": 411392,
-            "elapsed_ms": 105635,
+            "tool_calls": 10,
+            "model_bytes": 110571,
+            "gcs_bytes": 352973,
+            "elapsed_ms": 112730,
+            "budget_exhausted": true,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1204,23 +1208,23 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/cluster_helpers.go#L153",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T20:21:49Z",
+            "generated_at": "2026-06-05T23:58:52Z",
             "summary": "Cluster creation failed due to Azure resource group quota exhaustion",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T20:21:49Z",
-            "root_cause": "The test failed because Azure resource group creation hit a quota limit. The error message in build-log.txt shows: \"Creating the resource group 'capz-e2e-d0d7hv-cc' would exceed the quota of '980'. The current resource group count is '980', please delete some groups before creating a new one.\" This quota exhaustion prevented the AzureManagedControlPlane from provisioning, causing the cluster creation timeout. The root cause is a transient infrastructure quota issue rather than a code defect.",
+            "generated_at": "2026-06-05T23:58:52Z",
+            "root_cause": "The test timed out waiting for cluster provisioning because Azure resource group creation failed due to quota limits. The build log shows: \"Creating the resource group 'capz-e2e-d0d7hv-cc' would exceed the quota of '980'. The current resource group count is '980', please delete some groups before creating a new one\" (from AzureManagedControlPlane status). This quota limit prevented infrastructure creation, blocking all subsequent cluster components. Controller logs show downstream failures like \"Secret 'capz-e2e-d0d7hv-cc-kubeconfig' not found\" as direct consequences of the initial quota failure. Multiple clusters in the same test run (capz-e2e-8nbqxp-pool, capz-e2e-25pyvi-aks) show identical quota-related errors, confirming this is a systemic resource exhaustion issue.",
             "severity": "High",
-            "suggested_fix": "No code fix required. This is a transient infrastructure quota issue. To resolve, either increase the Azure resource group quota limit or delete unused resource groups in the subscription before retrying the test.",
+            "suggested_fix": "No code fix required. This is a transient infrastructure issue caused by Azure subscription limits. Operators should either request a quota increase for resource groups or clean up stale resource groups in the test environment. Verify by checking Azure portal for existing resource groups under the subscription and delete obsolete ones. The error message explicitly states \"please delete some groups before creating a new one\".",
             "relevant_files": [
-              "build-log.txt"
+              "controllers/azuremanagedcontrolplane/azuremanagedcontrolplane_controller.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 6,
-            "model_bytes": 34135,
-            "gcs_bytes": 32512,
-            "elapsed_ms": 69486,
+            "tool_calls": 9,
+            "model_bytes": 77301,
+            "gcs_bytes": 513232,
+            "elapsed_ms": 138830,
             "critique_passed": true,
             "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"

@@ -2635,23 +2635,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/helpers.go#L124",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T18:06:07Z",
-            "summary": "The test failed because the CAAPH controller did not process the ClusterResourceSet for Calico, preventing CNI installation.",
+            "generated_at": "2026-06-05T21:49:53Z",
+            "summary": "Test failed to find Calico deployment due to incorrect cluster context",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T18:06:07Z",
-            "root_cause": "The CAAPH controller manager pod started successfully but never processed the ClusterResourceSet for Calico. The build-log.txt shows the test attempted to apply the Calico manifest from `/home/prow/go/src/sigs.k8s.io/cluster-api-provider-azure/templates/addons/calico.yaml`, but no ClusterResourceSet was created. The CAAPH controller logs show leadership acquisition and cache population but no reconciliation events for the Calico Helm chart. This indicates the ClusterResourceSet was either not created or not recognized by the controller.",
-            "severity": "Critical",
-            "suggested_fix": "Update the Calico Helm chart repository and version in `templates/addons/calico.yaml` to use a valid chart. The current manifest likely references an invalid Helm chart version (e.g., v3.27.0). Replace the repository URL with `https://docs.tigera.io/calico/charts` and ensure the version exists. Example fix:\n```yaml\nspec:\n  chart:\n    repository: https://docs.tigera.io/calico/charts\n    name: calico\n    version: v3.27.0\n```\nVerify by re-running the test to ensure the ClusterResourceSet is created and reconciled.",
+            "generated_at": "2026-06-05T21:49:53Z",
+            "root_cause": "The test timed out waiting for 'calico-kube-controllers' because it used the management cluster's client instead of the workload cluster's client. Build-log.txt lines 1475-1478 confirm the deployment was successfully created in the workload cluster's 'calico-system' namespace. The management cluster's artifacts (artifacts/clusters/bootstrap) lack the calico-system namespace, while the workload cluster's artifacts (artifacts/clusters/machine-pool-8pttsn/calico-system) show the deployment exists.",
+            "severity": "High",
+            "suggested_fix": "Modify test/e2e/helpers.go:124 to use the workload cluster's client when checking deployments. Replace the management cluster client with the workload cluster client variable (e.g., change 'ctx.Environment().ManagementCluster' to 'ctx.Environment().WorkloadCluster').",
             "relevant_files": [
-              "templates/addons/calico.yaml"
+              "test/e2e/helpers.go"
             ],
             "mode": "agentic-universal",
             "tool_calls": 7,
-            "model_bytes": 77354,
-            "gcs_bytes": 10457821,
-            "elapsed_ms": 120314,
+            "model_bytes": 68664,
+            "gcs_bytes": 270512,
+            "elapsed_ms": 110567,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },

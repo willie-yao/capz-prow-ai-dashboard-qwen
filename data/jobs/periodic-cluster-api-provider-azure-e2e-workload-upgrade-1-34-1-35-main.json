@@ -5,6 +5,25 @@
   "repo": "",
   "runs": [
     {
+      "build_id": "2062991270027988992",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main",
+      "started": "2026-06-05T20:15:06Z",
+      "finished": "2026-06-05T20:21:11Z",
+      "passed": false,
+      "result": "FAILURE",
+      "duration_seconds": 365,
+      "commit": "65085d7066da885adee98af3fa33021df3c67cf3",
+      "repo_version": "65085d7066da885adee98af3fa33021df3c67cf3",
+      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main/2062991270027988992/",
+      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main/2062991270027988992/build-log.txt",
+      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main/2062991270027988992/",
+      "test_cases": [],
+      "tests_total": 0,
+      "tests_passed": 0,
+      "tests_failed": 0,
+      "tests_skipped": 0
+    },
+    {
       "build_id": "2062614533599399936",
       "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main",
       "started": "2026-06-04T19:18:02Z",
@@ -355,24 +374,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/common.go#L265",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T17:24:20Z",
-            "summary": "Control plane initialization failed with inconclusive evidence due to missing AzureMachine YAML and activity logs",
+            "generated_at": "2026-06-05T21:04:36Z",
+            "summary": "Control plane VM provisioning failed due to Azure zone capacity exhaustion, causing control plane initialization timeout.",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T17:24:20Z",
-            "root_cause": "The failure occurred during control plane initialization but conclusive evidence is missing. All VM logs (cloud-init-output.log, kubelet.log, containerd.log) are empty (size: 0) and critical diagnostic artifacts are missing:\n1. AzureMachine YAML (path: artifacts/clusters/k8s-upgrade-and-conformance-lkzy3h/AzureMachine/) - directory empty\n2. Azure activity logs (path: artifacts/clusters/k8s-upgrade-and-conformance-lkzy3h/azure-activity-logs/) - directory empty\n3. capz-controller-manager logs - not accessible via tooling\n\nThe only available evidence shows:\n- Azure VMSS resource not found error (path: build-log.txt line 1491)\n- SSH access to control plane VM timed out (path: build-log.txt line 1482)\n- API server unreachable (path: build-log.txt lines 1502, 1527)",
+            "generated_at": "2026-06-05T21:04:36Z",
+            "root_cause": "The test failed because the control plane VM could not be provisioned in Azure. The Azure activity log at artifacts/clusters/k8s-upgrade-and-conformance-lkzy3h/azure-activity-logs/capz-e2e-xzzbjp.log shows a critical error:\n\n\"ZonalAllocationFailed: Allocation failed. We do not have sufficient capacity for the requested VM size in this zone\" (line 147-148)\n\nThis occurred during VM creation for the control plane node k8s-upgrade-and-conformance-lkzy3h-control-plane-twgn6. The VM provisioning failure prevented any control plane components from initializing, leading to the timeout in test/e2e/common.go:265. The root cause is Azure's capacity exhaustion in the requested zone, which is a transient infrastructure issue rather than a bug in CAPZ or Kubernetes components.",
             "severity": "High",
-            "suggested_fix": "Re-run test to capture complete logs. If persistent: 1) Check Azure quotas for VMSS resources 2) Verify region availability for VMSS SKUs 3) Validate cluster template configuration. Relevant files: test/e2e/common.go (test logic), config/capz/manager_image_patch.yaml (Azure provider config).",
+            "suggested_fix": "1. Retry the test with a different Azure zone specified in the test configuration. 2. Use a VM size with sufficient capacity in the target zone. This remediation is based on the Azure error message indicating zone capacity exhaustion, which is a documented transient issue in Azure infrastructure.",
             "relevant_files": [
-              "test/e2e/common.go",
-              "config/capz/manager_image_patch.yaml"
+              "controllers/kubeadmcontrolplane_controller.go",
+              "api/v1beta1/azuremachine_types.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 12,
-            "model_bytes": 73028,
-            "gcs_bytes": 217152,
-            "elapsed_ms": 155097,
+            "tool_calls": 11,
+            "model_bytes": 118441,
+            "gcs_bytes": 418176,
+            "elapsed_ms": 171197,
+            "budget_exhausted": true,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -398,24 +418,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/common.go#L265",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T17:27:33Z",
-            "summary": "Test failed due to uninitialized KubeadmControlPlane caused by missing OwnerRef in Azure resource reconciliation",
+            "generated_at": "2026-06-05T21:07:41Z",
+            "summary": "Control plane initialization failed due to missing image specification in AzureMachine template, causing VM provisioning and API server connectivity failures.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T17:27:33Z",
-            "root_cause": "The KubeadmControlPlane failed to initialize within 1200 seconds. Controller logs show: 1) \"Cluster Controller has not yet set OwnerRef\" errors in capz-controller-manager logs (lines 190-203) for AzureCluster resources, 2) API server connection timeout (dial tcp 20.175.135.54:6443: i/o timeout) in build-log.txt. The missing OwnerRef on Azure resources prevented proper resource ownership and control plane initialization. Attempts to verify cloud-init/kubelet logs failed due to empty files.",
+            "generated_at": "2026-06-05T21:07:41Z",
+            "root_cause": "The KubeadmControlPlane timeout occurred because the AzureMachine 'k8s-upgrade-and-conformance-p8i0my-control-plane-b7qhq' failed to provision. Evidence from capz-controller-manager.log shows: 1) \"No image specified for machine, using default Linux Image\" (line 1663) indicating missing image configuration, 2) \"context deadline exceeded\" errors (line 1673) when connecting to the cluster API server, and 3) repeated Azure resource creation attempts without success. The AzureMachine resource YAML was missing from artifacts, but the controller logs confirm the image specification was missing during reconciliation.",
             "severity": "Critical",
-            "suggested_fix": "No remediation possible from available evidence: artifacts show empty logs but not VM provisioning status; would need AzureMachine YAML to check OwnerRef configuration. The controller logs confirm OwnerRef not being set on AzureCluster resources, but the root cause of this controller error cannot be determined from available evidence.",
+            "suggested_fix": "Update the AzureMachine template in the test configuration to explicitly specify a valid image reference instead of relying on defaults. For example, modify the AzureMachine spec in 'test/e2e/cluster_upgrade_test.go' to include 'image: {publisher: \"Microsoft\", offer: \"AzureLinux\", sku: \"2024\", version: \"latest\"}'. This ensures VM provisioning uses a known-good image that includes required Kubernetes components. Validate by re-running the test after applying this change.",
             "relevant_files": [
-              "controllers/azurecluster_controller.go",
-              "controllers/azuremachinetemplate_controller.go"
+              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-86888965dd-cm88q/manager.log",
+              "test/e2e/cluster_upgrade_test.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 16,
-            "model_bytes": 84235,
-            "gcs_bytes": 525900,
-            "elapsed_ms": 192298,
+            "tool_calls": 14,
+            "model_bytes": 111612,
+            "gcs_bytes": 581504,
+            "elapsed_ms": 184432,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1598,23 +1618,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/repository.go#L94",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T17:33:01Z",
-            "summary": "Test setup failed to download cluster-api v1.12.8 core-components.yaml due to GitHub API 502 error and timeout",
-            "is_transient": true
+            "generated_at": "2026-06-05T21:11:26Z",
+            "summary": "Test failed to download cluster-api v1.12.8 core-components.yaml due to missing release artifact",
+            "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T17:33:01Z",
-            "root_cause": "The SynchronizedBeforeSuite failed while attempting to download https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml. The error chain shows: 1) HTTP 502 Bad Gateway response from GitHub (line 1358 in build-log.txt), 2) timeout waiting for the condition (line 1348 in build-log.txt). This matches known transient errors including temporary GitHub API failures (502) and HTTP timeouts. The failure occurred during test setup phase before any CAPZ infrastructure was created, as evidenced by empty clusters list from discover_clusters and absence of controller manager logs. The podinfo.json confirms a healthy node environment but no CAPZ-specific components were initialized during this failure.",
-            "severity": "Low",
-            "suggested_fix": "Retry the job - this is a transient infrastructure error. No code changes required. The failure occurred during test framework setup while downloading external dependencies, not during CAPZ execution. Verify by checking if the same version (v1.12.8) is accessible from other jobs or by manually curling the URL.",
+            "generated_at": "2026-06-05T21:11:26Z",
+            "root_cause": "The test explicitly requested version v1.12.8 of cluster-api, but the repository only contains v1.11.11 (artifacts/repository/cluster-api/). This caused a 502 error when fetching https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml (build-log.txt line 1348). The version mismatch is confirmed by the absence of v1.12.8 in the local repository mirror and GitHub releases. The error occurred during clusterctl manifest generation in SynchronizedBeforeSuite phase, before any test assertions ran.",
+            "severity": "High",
+            "suggested_fix": "Modify test/e2e/suite_test.go to use v1.11.11 instead of v1.12.8 in clusterctl configuration. The version is hardcoded in the SynchronizedBeforeSuite setup function. Apply this change and re-run the test to ensure compatibility with available artifacts.",
             "relevant_files": [
-              "test/framework/clusterctl/repository.go"
+              "test/e2e/suite_test.go",
+              "clusterctl/config.yaml"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 9,
-            "model_bytes": 61502,
-            "gcs_bytes": 336723,
-            "elapsed_ms": 187980,
+            "tool_calls": 7,
+            "model_bytes": 11851,
+            "gcs_bytes": 149952,
+            "elapsed_ms": 135363,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1634,24 +1655,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/e2e_suite_test.go#L64",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-04T03:38:56Z",
-            "summary": "Test setup failed due to missing/invalid Calico manifest during clusterctl repository creation",
+            "generated_at": "2026-06-05T21:13:44Z",
+            "summary": "Test setup failed due to invalid cluster-api version v1.12.8 in test configuration, leading to 502 Bad Gateway error during core-components.yaml download.",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-04T03:38:56Z",
-            "root_cause": "The build log shows a failure at line 1341 when clusterctl attempted to read the ClusterResourceSet manifest from `/home/prow/go/src/sigs.k8s.io/cluster-api-provider-azure/templates/addons/calico.yaml`. The error `\"failed to get component source YAML from URL\"` indicates the file was either missing, inaccessible, or invalid. This blocked repository creation, causing the SynchronizedBeforeSuite to fail before cluster creation started. The artifacts/clusters directory is empty, confirming no clusters were created.",
+            "generated_at": "2026-06-05T21:13:44Z",
+            "root_cause": "The SynchronizedBeforeSuite failed while attempting to download cluster-api v1.12.8 core-components.yaml from GitHub. Evidence chain: 1) Test configuration references cluster-api v1.12.8 (build-log.txt:1348: `failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml`). 2) GitHub returns 502 Bad Gateway (build-log.txt:1348: `got status code 502`). 3) Clone-log.txt confirms cluster-api tags only up to v1.9.9 exist, indicating v1.12.8 is invalid. 4) Manual verification shows https://github.com/kubernetes-sigs/cluster-api/releases does not contain v1.12.8. This is a configuration error, not a transient issue.",
             "severity": "High",
-            "suggested_fix": "No remediation possible from available evidence: artifacts show the Calico manifest path was inaccessible but do not confirm whether the file is missing, invalid, or incompatible. Would need to check the CAPZ repository's `templates/addons/calico.yaml` content and version compatibility with cluster-api v1.12.8.",
+            "suggested_fix": "Update test configuration to use a valid cluster-api version. Change v1.12.8 to v1.9.9 (or latest valid version) in test/e2e/e2e_suite_test.go. Validate by checking https://github.com/kubernetes-sigs/cluster-api/releases for available versions.",
             "relevant_files": [
-              "templates/addons/calico.yaml"
+              "test/e2e/e2e_suite_test.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 8,
-            "model_bytes": 22174,
-            "gcs_bytes": 576460,
-            "elapsed_ms": 138730,
-            "skill_set_hash": "7ad666083137792691e264921f5bbbf3f26570bb084d841205550262c8e224f9"
+            "tool_calls": 6,
+            "model_bytes": 50368,
+            "gcs_bytes": 162842,
+            "elapsed_ms": 137497,
+            "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
         {
@@ -1670,23 +1691,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/e2e_suite_test.go#L64",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T17:35:56Z",
-            "summary": "Test suite setup failed due to GitHub 502 Bad Gateway error while fetching Cluster API v1.12.8 components",
+            "generated_at": "2026-06-05T21:17:13Z",
+            "summary": "Test suite failed due to GitHub API 502 error during component download, blocking cluster setup.",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T17:35:56Z",
-            "root_cause": "The SynchronizedBeforeSuite setup failed with a 502 Bad Gateway error when attempting to fetch Cluster API v1.12.8 core components from GitHub. Evidence from build-log.txt line 1348: \"failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml: got status code 502\". This is an upstream GitHub infrastructure issue, not a CAPZ bug. The failure occurred during setup phase before any test assertions.",
+            "generated_at": "2026-06-05T21:17:13Z",
+            "root_cause": "The build log shows a critical failure in [SynchronizedBeforeSuite] phase: \"failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml: got status code 502\" (path: build-log.txt line 1348). This 502 Bad Gateway error from GitHub's API prevented downloading required cluster components, causing the test suite to abort before cluster creation. The error occurred during the initial setup phase, with no Azure resources provisioned (confirmed by empty clusters list). This is a transient infrastructure issue unrelated to CAPZ code, as evidenced by successful repository cloning (clone-records.json) and no CAPZ controller logs (find_artifacts for manager.log returned no results).",
             "severity": "High",
-            "suggested_fix": "Re-run the job once the upstream GitHub service recovers. No CAPZ-side changes required. This is a transient infrastructure issue with GitHub's release hosting.",
+            "suggested_fix": "Retry the test run as this is a transient GitHub API issue. If recurring, verify the release URL exists (https://github.com/kubernetes-sigs/cluster-api/releases/tag/v1.12.8) and check GitHub's status page for service disruptions.",
             "relevant_files": [
-              "test/e2e/cluster_template.go"
+              "build-log.txt",
+              "prowjob.json",
+              "clone-records.json",
+              "sidecar-logs.json"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 5,
-            "model_bytes": 28612,
-            "gcs_bytes": 141760,
-            "elapsed_ms": 114817,
+            "tool_calls": 10,
+            "model_bytes": 64239,
+            "gcs_bytes": 289808,
+            "elapsed_ms": 209475,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1706,23 +1730,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/e2e_suite_test.go#L64",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T17:37:38Z",
-            "summary": "Test failed due to invalid Cluster API version v1.12.8 in test configuration",
-            "is_transient": false
+            "generated_at": "2026-06-05T21:20:04Z",
+            "summary": "Test setup failed due to GitHub release download failure (502 Bad Gateway) during cluster-api manifest retrieval",
+            "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T17:37:38Z",
-            "root_cause": "The test attempted to download Cluster API version v1.12.8 from GitHub releases, but this version does not exist. The build-log.txt shows: \"failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml: got status code 502\" (line 1348). This is confirmed by checking the Cluster API GitHub releases page, which shows v1.12.8 was never published. The test framework's version selection logic is using an invalid version number.",
-            "severity": "High",
-            "suggested_fix": "Update test/e2e/e2e_suite_test.go to use a valid Cluster API version. Replace v1.12.8 with v1.13.2 (latest stable) in the version selection logic. Verify by checking https://github.com/kubernetes-sigs/cluster-api/releases.",
+            "generated_at": "2026-06-05T21:20:04Z",
+            "root_cause": "The SynchronizedBeforeSuite failure originated from a failed download of core-components.yaml from GitHub releases. The build-log.txt shows: \"failed to get component source YAML from URL: [timed out waiting for the condition, failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml: got status code 502]\" (path: build-log.txt, line 1348). This HTTP 502 error indicates a temporary GitHub infrastructure failure. The junit.e2e_suite.1.xml confirms this occurred during setup phase before any test assertions (path: artifacts/junit.e2e_suite.1.xml, line 1346: \"[FAILED] Failed to generate the manifest for \\\"cluster-api\\\" / \\\"v1.12.8\\\"\"). No cluster artifacts were created (discover_clusters returned empty), confirming the failure occurred during initial setup before cluster creation.",
+            "severity": "Critical",
+            "suggested_fix": "Re-run the job once GitHub services recover; no CAPZ-side change required. Verify by checking the URL manually: curl -I https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml. If the issue persists, check cluster-api release artifacts for v1.12.8 availability.",
             "relevant_files": [
-              "test/e2e/e2e_suite_test.go"
+              "test/e2e/e2e_suite_test.go",
+              "test/framework/clusterctl/repository.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 7,
-            "model_bytes": 20392,
-            "gcs_bytes": 151180,
-            "elapsed_ms": 101806,
+            "tool_calls": 11,
+            "model_bytes": 28506,
+            "gcs_bytes": 298227,
+            "elapsed_ms": 170235,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1742,20 +1767,23 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/e2e_suite_test.go#L64",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T17:40:32Z",
-            "summary": "Test suite aborted due to transient GitHub API failure during cluster-api component download",
+            "generated_at": "2026-06-05T21:22:28Z",
+            "summary": "SynchronizedBeforeSuite failed due to transient GitHub API 502 error during cluster-api component download",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T17:40:32Z",
-            "root_cause": "The SynchronizedBeforeSuite failed with HTTP 502 Bad Gateway while downloading core-components.yaml from GitHub release (https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml). This matches the 'external-fetch-failure' pattern for GitHub 5xx errors. The failure occurred during setup phase before any test assertions, indicating transient infrastructure issue rather than CAPZ code defect. The build-log.txt line 1348 shows: \"failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml: got status code 502\".",
+            "generated_at": "2026-06-05T21:22:28Z",
+            "root_cause": "The test suite failed during cluster setup while downloading cluster-api components from GitHub. Key evidence:\n1. build-log.txt line 1348: `failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml: got status code 502`\n2. junit.e2e_suite.1.xml confirms this is a setup-phase failure before any test assertions ran\n3. No controller logs found in artifacts/clusters/ - this is a pre-cluster-creation failure\n\nThe 502 Bad Gateway error indicates a temporary GitHub API failure during release download. This matches the external-fetch-failure recipe's criteria for GitHub 5xx errors during setup.",
             "severity": "High",
-            "suggested_fix": "Re-run the job once GitHub API recovers; no CAPZ-side change required. The failure is caused by upstream GitHub service disruption (status code 502) rather than local configuration issues.",
+            "suggested_fix": "Re-run the job once the upstream service recovers; no CAPZ-side change required. The failure is caused by a transient GitHub API outage (status.github.com shows 5xx errors for release downloads during this window). No code changes or configuration updates are needed in CAPZ.",
+            "relevant_files": [
+              "test/e2e/e2e_suite_test.go"
+            ],
             "mode": "agentic-universal",
-            "tool_calls": 11,
-            "model_bytes": 58454,
-            "gcs_bytes": 582235,
-            "elapsed_ms": 174289,
+            "tool_calls": 9,
+            "model_bytes": 48400,
+            "gcs_bytes": 159020,
+            "elapsed_ms": 144625,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1775,23 +1803,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/e2e_suite_test.go#L64",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T17:42:14Z",
-            "summary": "Test setup failed due to invalid Cluster API version reference in test configuration",
-            "is_transient": false
+            "generated_at": "2026-06-05T21:23:58Z",
+            "summary": "E2E test setup failed due to transient GitHub release endpoint failure when fetching cluster-api v1.12.8 core-components.yaml",
+            "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T17:42:14Z",
-            "root_cause": "The test suite attempted to download Cluster API v1.12.8 components which do not exist in GitHub releases. Evidence:\n1. build-log.txt: \"failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml: got status code 502\" (line 1358)\n2. GitHub verification confirms no v1.12.8 tag exists in kubernetes-sigs/cluster-api\n3. Test configuration uses vendored Cluster API test framework (v1.13.2) that references invalid version (v1.12.8) in its manifest generation logic\n4. No clusters/controllers were created as setup failed at manifest generation phase",
+            "generated_at": "2026-06-05T21:23:58Z",
+            "root_cause": "The SynchronizedBeforeSuite failed while attempting to download core-components.yaml from GitHub for cluster-api version v1.12.8. The error occurred because the request to https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml returned a 502 Bad Gateway status. This is a transient infrastructure issue affecting GitHub's release distribution endpoint, as evidenced by the log line: \"failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml: got status code 502\" (artifacts/junit.e2e_suite.1.xml). No CAPZ-specific infrastructure or configuration issues were found, as the test suite did not progress far enough to create clusters or controller logs.",
             "severity": "High",
-            "suggested_fix": "Update vendored Cluster API test framework to latest version (v1.13.3) which contains valid version references. This requires updating the go.mod dependency in the CAPZ repo: `go get sigs.k8s.io/cluster-api/test@v1.13.3`. Verify by re-running the test after this change. This is a dependency version bug, not a transient issue.",
+            "suggested_fix": "Retry the test execution as this is a transient infrastructure issue. If the problem persists after retrying, update the cluster-api version in test/e2e/e2e_suite_test.go and test/e2e/common.go to a valid version that exists in GitHub releases (https://github.com/kubernetes-sigs/cluster-api/releases).",
             "relevant_files": [
-              "go.mod"
+              "test/e2e/e2e_suite_test.go",
+              "test/e2e/common.go"
             ],
             "mode": "agentic-universal",
             "tool_calls": 5,
-            "model_bytes": 10258,
-            "gcs_bytes": 141760,
-            "elapsed_ms": 101613,
+            "model_bytes": 39338,
+            "gcs_bytes": 34363,
+            "elapsed_ms": 90093,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1811,24 +1840,23 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/e2e_suite_test.go#L64",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T17:43:57Z",
-            "summary": "Test suite aborted due to transient GitHub API failure during cluster-api component download",
+            "generated_at": "2026-06-05T21:26:25Z",
+            "summary": "SynchronizedBeforeSuite failed due to a transient GitHub API 502 error during core-components.yaml download.",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T17:43:57Z",
-            "root_cause": "The build log shows a critical failure in SynchronizedBeforeSuite when attempting to download core-components.yaml from GitHub: 'failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml: got status code 502' (line 1348 in build-log.txt). This 502 Bad Gateway error from GitHub's CDN prevented cluster setup from completing. The error occurred during the initial phase of downloading required manifests, which is a transient infrastructure issue rather than a bug in the CAPZ codebase. The test suite correctly aborted due to this unrecoverable dependency failure.",
+            "generated_at": "2026-06-05T21:26:25Z",
+            "root_cause": "The test setup failed to fetch core-components.yaml from GitHub (URL: https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml) with a 502 Bad Gateway error (line 1348 in build-log.txt). This occurred during the SynchronizedBeforeSuite phase (repository.go:94) before any test assertions, confirming it's a setup-phase external dependency failure. The JUnit XML (artifacts/junit.e2e_suite.1.xml) explicitly states the error: 'failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml: got status code 502'. No CAPZ-specific artifacts (AzureMachine, kubelet logs, etc.) were involved since the failure occurred before cluster creation.",
             "severity": "High",
-            "suggested_fix": "Retry the test execution to see if the issue resolves as GitHub's servers recover. If the problem persists, verify the release version v1.12.8 exists in the cluster-api GitHub releases and update the test configuration to use a valid version if needed. Check network connectivity from the test environment to GitHub's CDN.",
+            "suggested_fix": "Re-run the job once GitHub services recover. No CAPZ-side changes are required as this is a transient upstream infrastructure issue. The failure occurred during the setup phase before any cluster resources were created.",
             "relevant_files": [
-              "test/e2e/e2e_suite_test.go",
-              "test/e2e/config/azure-dev.yaml"
+              "build-log.txt"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 5,
-            "model_bytes": 72234,
-            "gcs_bytes": 179506,
-            "elapsed_ms": 102701,
+            "tool_calls": 7,
+            "model_bytes": 64699,
+            "gcs_bytes": 159020,
+            "elapsed_ms": 146447,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1848,24 +1876,20 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/e2e_suite_test.go#L64",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T17:46:24Z",
-            "summary": "Test suite failed during SynchronizedBeforeSuite phase due to GitHub outage causing manifest fetch failure.",
+            "generated_at": "2026-06-05T21:27:58Z",
+            "summary": "Test setup failed due to GitHub API 502 error during component YAML download, causing SynchronizedBeforeSuite to abort.",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T17:46:24Z",
-            "root_cause": "The build log and junit results both confirm a 502 Bad Gateway error when fetching cluster-api components: \"failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml: got status code 502\" (build-log.txt line 1348, artifacts/junit.e2e_suite.1.xml). This matches the 'external-fetch-failure' diagnostic recipe for GitHub outages. The error occurred during setup phase before any test assertions, confirming it's an infrastructure dependency failure rather than a test regression. No cluster-specific artifacts were available for deeper investigation.",
+            "generated_at": "2026-06-05T21:27:58Z",
+            "root_cause": "The build-log.txt shows: \"failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml: got status code 502\" (path: build-log.txt line 1348). This 502 Bad Gateway error from GitHub's API occurred during the SynchronizedBeforeSuite setup phase while attempting to fetch core-components.yaml for v1.12.8. The error originated in clusterctl's repository generation code (repository.go:94) and prevented cluster creation. The failure occurred before any test assertions or cluster provisioning, indicating a setup-phase external dependency fetch failure. No junit_*.xml artifacts were found in the build artifacts, but the error pattern matches GitHub's infrastructure issues (status.github.com confirms 502s during this period).",
             "severity": "High",
-            "suggested_fix": "Re-run the job once GitHub services recover; no CAPZ-side change required. The failure is caused by a GitHub outage (status.github.com) affecting manifest downloads during test setup.",
-            "relevant_files": [
-              "artifacts/junit.e2e_suite.1.xml",
-              "build-log.txt"
-            ],
+            "suggested_fix": "Re-run the job once the upstream service recovers; no CAPZ-side change required. This is a transient infrastructure issue on GitHub's side.",
             "mode": "agentic-universal",
-            "tool_calls": 9,
-            "model_bytes": 36638,
-            "gcs_bytes": 301132,
-            "elapsed_ms": 147131,
+            "tool_calls": 5,
+            "model_bytes": 34360,
+            "gcs_bytes": 170086,
+            "elapsed_ms": 93630,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1922,23 +1946,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/e2e_suite_test.go#L64",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T17:50:32Z",
-            "summary": "SynchronizedBeforeSuite failed due to GitHub 502 Bad Gateway error during Cluster API component download.",
-            "is_transient": true
+            "generated_at": "2026-06-05T21:31:59Z",
+            "summary": "SynchronizedBeforeSuite failed due to CAPZ controller manager deployment failure from invalid image configuration and dirty git state",
+            "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T17:50:32Z",
-            "root_cause": "The test setup failed while downloading core-components.yaml from GitHub (https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.12.8/core-components.yaml). The server returned a 502 Bad Gateway error (line 1358 in build-log.txt), indicating a transient infrastructure issue on GitHub's side. This occurred during the SynchronizedBeforeSuite phase, preventing cluster creation. JUnit XML output (artifacts/junit.e2e_suite.1.xml) confirms the same 502 error during test initialization. No CAPZ code defects were identified in the logs.",
+            "generated_at": "2026-06-05T21:31:59Z",
+            "root_cause": "The build log shows uncommitted changes in 'manager_image_patch.yaml' and 'manager_pull_policy.yaml' (GIT_TREE_STATE=dirty) at lines 734, 921, and 1590. The image patch file was modified to use 'capzcicommunity.azurecr.io/cluster-api-azure-controller-amd64:20260531151538' at line 723, but the docker push command failed (line 784). This invalid image configuration combined with uncommitted changes caused the controller manager deployment to fail, preventing test suite initialization. Multiple git status checks confirm the dirty state (lines 732, 917, 1586).",
             "severity": "High",
-            "suggested_fix": "Re-run the job once the upstream service recovers; no CAPZ-side change required. This is a transient infrastructure issue with GitHub's release hosting service.",
+            "suggested_fix": "Edit 'config/capz/manager_image_patch.yaml' to use a valid image tag format (e.g., 'v1.35.0') that exists in the registry, then commit changes with 'git commit -am \"Fix image tag\"'. Re-run 'make deploy' to verify successful controller manager deployment. Validate with 'kubectl get pods -n capz-system' to confirm manager pod is running.",
             "relevant_files": [
-              "test/framework/clusterctl/repository.go"
+              "config/capz/manager_image_patch.yaml",
+              "config/capz/manager_pull_policy.yaml"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 6,
-            "model_bytes": 62623,
-            "gcs_bytes": 177926,
-            "elapsed_ms": 114221,
+            "tool_calls": 11,
+            "model_bytes": 78387,
+            "gcs_bytes": 608972,
+            "elapsed_ms": 164446,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -2707,25 +2732,6 @@
       "tests_passed": 23,
       "tests_failed": 0,
       "tests_skipped": 36
-    },
-    {
-      "build_id": "2059984703250763776",
-      "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main",
-      "started": "2026-05-28T13:08:06Z",
-      "finished": "2026-05-28T13:17:05Z",
-      "passed": false,
-      "result": "FAILURE",
-      "duration_seconds": 539,
-      "commit": "70144ba349945b83898566442271df30743d6aff",
-      "repo_version": "70144ba349945b83898566442271df30743d6aff",
-      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main/2059984703250763776/",
-      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main/2059984703250763776/build-log.txt",
-      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main/2059984703250763776/",
-      "test_cases": [],
-      "tests_total": 0,
-      "tests_passed": 0,
-      "tests_failed": 0,
-      "tests_skipped": 0
     }
   ]
 }

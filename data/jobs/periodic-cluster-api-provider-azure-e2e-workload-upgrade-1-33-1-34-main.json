@@ -1982,9 +1982,27 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/machinedeployment_helpers.go#L145",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-04T02:46:36Z",
-            "summary": "AI analysis unavailable: agentic iter 1: post: Post \"http://localhost:8000/v1/chat/completions\": dial tcp [::1]:8000: connect: connection refused",
-            "is_transient": false
+            "generated_at": "2026-06-05T21:01:45Z",
+            "summary": "Test timed out due to cloud-init failure fetching kubeadm config during node provisioning, caused by API server unavailability from control plane delay.",
+            "is_transient": true
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-05T21:01:45Z",
+            "root_cause": "The failure chain began with cloud-init failing to fetch kubeadm config: `error execution phase preflight: unable to fetch the kubeadm-config ConfigMap: Get \"https://k8s-upgrade-and-conformance-bxwyjs-fbd414f6.uksouth.cloudapp.azure.com:6443/api/v1/namespaces/kube-system/configmaps/kubeadm-config?timeout=10s\": context deadline exceeded` (cloud-init-output.log: line 147). This caused the kubelet config file `/var/lib/kubelet/config.yaml` to be missing (kubelet.log: line 142), preventing node registration. The API server was unreachable during cloud-init setup, likely due to transient control plane initialization delays. CAPZ controller logs showed no critical errors, confirming this was a transient infrastructure issue during cluster bootstrapping.",
+            "severity": "High",
+            "suggested_fix": "Retry the test as this is a transient infrastructure issue. If the problem persists, verify control plane readiness timing and network connectivity to the API server during node provisioning by checking Azure network security groups and CAPZ's cloud-init templates for kubeadm config retrieval.",
+            "relevant_files": [
+              "artifacts/clusters/k8s-upgrade-and-conformance-bxwyjs/machines/k8s-upgrade-and-conformance-bxwyjs-md-0-vd6qt-p9lj2/cloud-init-output.log",
+              "artifacts/clusters/k8s-upgrade-and-conformance-bxwyjs/machines/k8s-upgrade-and-conformance-bxwyjs-md-0-vd6qt-p9lj2/kubelet.log",
+              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-bc56c6f44-v5fkr/manager.log"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 16,
+            "model_bytes": 116117,
+            "gcs_bytes": 478793,
+            "elapsed_ms": 246330,
+            "budget_exhausted": true,
+            "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
         {

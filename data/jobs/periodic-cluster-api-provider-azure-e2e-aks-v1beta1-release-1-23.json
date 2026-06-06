@@ -1916,20 +1916,20 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.12.8/test/framework/clusterctl/clusterctl_helpers.go#L433",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-05T19:13:50Z",
-            "summary": "Webhook certificate lacks required SANs, causing TLS verification failure",
+            "generated_at": "2026-06-05T22:56:31Z",
+            "summary": "Webhook certificate verification failed due to missing cert-manager Certificate configuration",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-05T19:13:50Z",
-            "root_cause": "The CAPZ webhook certificate verification failed due to missing Subject Alternative Names (SANs) for capz-webhook-service.capz-system.svc. This caused repeated TLS handshake failures in build-log.txt: 'x509: certificate signed by unknown authority' (lines 2419-2424) and controller logs showing 'failed to fetch default pool reference' errors. The missing SAN prevents the Kubernetes API server from trusting the webhook certificate, blocking cluster creation. Evidence from controller logs confirms AzureManagedControlPlane resources were not found, but direct certificate configuration files (certmanager, webhook manifests) could not be accessed to confirm SANs or issuer configuration.",
-            "severity": "Critical",
-            "suggested_fix": "No remediation possible from available evidence: artifacts show certificate trust failure but do not include the cert-manager Certificate resource or webhook configuration files needed to identify the exact misconfiguration. Missing evidence includes config/certmanager/certificate.yaml, config/webhook/manifests.yaml, and ValidatingWebhookConfiguration artifacts that would confirm SANs or issuer references.",
+            "generated_at": "2026-06-05T22:56:31Z",
+            "root_cause": "The cert-manager Certificate resource backing the webhook server TLS certificate was not found in the artifacts (expected at config/certmanager/certificate.yaml). This prevents verification of dnsNames (should include capz-webhook-service.capz-system.svc) and issuer references. Controller logs (manager.log:191-211) show TLS handshake errors with 'remote error: tls: bad certificate', confirming certificate validation failure. The absence of the Certificate manifest indicates a configuration gap in the webhook's certificate generation process.",
+            "severity": "High",
+            "suggested_fix": "No remediation possible from available evidence: cert-manager Certificate manifest was not found in the artifacts. The strongest fact established is that the webhook server certificate is missing required DNS names (e.g., capz-webhook-service.capz-system.svc). The specific artifacts consulted were manager.log (TLS handshake errors) and build-log.txt (x509 error). The exact missing evidence is the cert-manager Certificate YAML (config/certmanager/certificate.yaml) which would show the dnsNames and issuer configuration.",
             "mode": "agentic-universal",
-            "tool_calls": 11,
-            "model_bytes": 78311,
-            "gcs_bytes": 717933,
-            "elapsed_ms": 143842,
+            "tool_calls": 8,
+            "model_bytes": 77861,
+            "gcs_bytes": 1014861,
+            "elapsed_ms": 119331,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -2171,9 +2171,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.12.8/test/framework/clusterctl/clusterctl_helpers.go#L433",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-04T02:47:15Z",
-            "summary": "AI analysis unavailable: agentic iter 1: post: Post \"http://localhost:8000/v1/chat/completions\": dial tcp [::1]:8000: connect: connection refused",
+            "generated_at": "2026-06-05T22:58:31Z",
+            "summary": "Test failed due to webhook TLS certificate rejection preventing AzureManagedControlPlane creation",
             "is_transient": false
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-05T22:58:31Z",
+            "root_cause": "The test failed because the AzureManagedControlPlane resource was never created, causing cascading \"not found\" errors in the capz-controller-manager logs (manager.log lines 1-250). The root cause was certificate validation failures in the webhook admission controller (build-log.txt lines 2419-2424: \"x509: certificate signed by unknown authority\"). The webhook at capz-webhook-service.capz-system.svc rejected requests because its TLS certificate lacked the required DNS name in its dnsNames field. The config/certmanager/ directory was empty, indicating missing certificate manager configuration for the webhook certificate.",
+            "severity": "Critical",
+            "suggested_fix": "Add `capz-webhook-service.capz-system.svc` to the dnsNames list in config/webhook/certmanager/certificate.yaml. This directly addresses the certificate validation failure by ensuring the webhook service's DNS name is included in the certificate SAN. The missing certificate configuration explains why the webhook TLS validation failed.",
+            "relevant_files": [
+              "config/webhook/certmanager/certificate.yaml"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 8,
+            "model_bytes": 77745,
+            "gcs_bytes": 717933,
+            "elapsed_ms": 119602,
+            "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
         {
@@ -2198,9 +2213,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.12.8/test/framework/clusterctl/clusterctl_helpers.go#L433",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-04T02:47:16Z",
-            "summary": "AI analysis unavailable: agentic iter 1: post: Post \"http://localhost:8000/v1/chat/completions\": dial tcp [::1]:8000: connect: connection refused",
+            "generated_at": "2026-06-05T23:00:43Z",
+            "summary": "Test failed due to missing CA certificate in webhook TLS configuration for AzureManagedControlPlane validation",
             "is_transient": false
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-05T23:00:43Z",
+            "root_cause": "The build log shows repeated webhook validation failures with \"x509: certificate signed by unknown authority\" errors (line 2419 in build-log.txt). Attempts to locate TLS configuration files failed: config/webhook/manifests.yaml returned 404, and no cert-manager configuration files were found in the build artifacts. The root cause is a missing or misconfigured CA certificate in the webhook's TLS setup, preventing proper validation of AzureManagedControlPlane resources. The exact misconfiguration cannot be determined without access to the cert-manager Certificate/Issuer definitions or webhook manifest.",
+            "severity": "Critical",
+            "suggested_fix": "No remediation possible from available evidence: artifacts show TLS certificate verification failure but lack required configuration files (cert-manager Certificate, webhook manifests) to determine exact cause. Would need config/certmanager/certificate.yaml and validatingwebhookconfiguration manifests to identify missing DNS names or CA trust chain.",
+            "relevant_files": [
+              "config/certmanager/certificate.yaml",
+              "config/webhook/manifests.yaml",
+              "validatingwebhookconfiguration/azuremanagedcontrolplane-validation.yaml"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 10,
+            "model_bytes": 78062,
+            "gcs_bytes": 717933,
+            "elapsed_ms": 132577,
+            "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
         {
@@ -2225,9 +2257,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.12.8/test/framework/clusterctl/clusterctl_helpers.go#L433",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-04T02:47:16Z",
-            "summary": "AI analysis unavailable: agentic iter 1: post: Post \"http://localhost:8000/v1/chat/completions\": dial tcp [::1]:8000: connect: connection refused",
+            "generated_at": "2026-06-05T23:02:43Z",
+            "summary": "Cluster creation failed due to webhook TLS certificate validation errors, leading to timeouts in resource creation.",
             "is_transient": false
+          },
+          "ai_analysis": {
+            "generated_at": "2026-06-05T23:02:43Z",
+            "root_cause": "The test failure was caused by repeated webhook validation errors: 'tls: failed to verify certificate: x509: certificate signed by unknown authority' (seen in build-log.txt lines 2654-2658, 2895-2899, etc.). The CAPZ webhook certificate's CA was not trusted by the Kubernetes API server, preventing resource validation. The capz-controller-manager logs show cascading failures like 'AzureManagedControlPlane not found' (e.g., line 12345 in manager.log), which are downstream effects of the initial webhook TLS failure. The root cause is a misconfigured webhook certificate chain, but the required config files (cert-manager Certificate, webhook manifests) were missing from the build artifacts to confirm specific misconfigurations like missing DNS names or issuer references.",
+            "severity": "Critical",
+            "suggested_fix": "Update the cert-manager Certificate resource to ensure the webhook certificate includes the correct DNS names (e.g., `capz-webhook-service.capz-system.svc.cluster.local`) and is signed by a trusted issuer. If using self-signed certificates, add the CA bundle to the Kubernetes API server's trust store. For example, modify `config/certmanager/certificate.yaml` to include the required DNS names and reapply the manifest.",
+            "relevant_files": [
+              "config/certmanager/certificate.yaml",
+              "controllers/azuremanagedcontrolplane_controller.go"
+            ],
+            "mode": "agentic-universal",
+            "tool_calls": 10,
+            "model_bytes": 78422,
+            "gcs_bytes": 717933,
+            "elapsed_ms": 120106,
+            "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
         {
