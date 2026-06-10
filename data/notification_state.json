@@ -1,18 +1,3 @@
 {
-  "notified": {
-    "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24::[It] Workload cluster creation Creating a self-managed cluster and deploying KubeRay [KubeRay] Creates a RayCluster and verifies it becomes ready": {
-      "first_notified_at": "2026-06-04T02:47:42Z",
-      "consecutive_count": 9,
-      "error_hash": "63a894e8",
-      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24",
-      "test_name": "[It] Workload cluster creation Creating a self-managed cluster and deploying KubeRay [KubeRay] Creates a RayCluster and verifies it becomes ready"
-    },
-    "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24::[It] Workload cluster creation Creating a self-managed cluster and deploying KubeRay [KubeRay] Creates a RayJob and verifies it completes successfully": {
-      "first_notified_at": "2026-06-04T02:47:42Z",
-      "consecutive_count": 9,
-      "error_hash": "aba8e084",
-      "job_name": "periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24",
-      "test_name": "[It] Workload cluster creation Creating a self-managed cluster and deploying KubeRay [KubeRay] Creates a RayJob and verifies it completes successfully"
-    }
-  }
+  "notified": {}
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-05T20:54:13Z",
+  "generated_at": "2026-06-10T18:25:27Z",
   "entries": [
     {
       "kind": "job",
@@ -9,7 +9,7 @@
       "job_type": "periodic",
       "repo": "",
       "tab_name": "azure-master-scalability-100",
-      "branch": "release-1.21",
+      "branch": "release-1.24",
       "category": "scalability",
       "status": "azure-master-scalability-100",
       "fail_rate": 0
@@ -63,8 +63,8 @@
       "tab_name": "capz-periodic-apiversion-upgrade-main",
       "branch": "main",
       "category": "upgrade",
-      "status": "passed",
-      "fail_rate": 0.125
+      "status": "failed",
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -103,7 +103,7 @@
       "branch": "main",
       "category": "upgrade",
       "status": "passed",
-      "fail_rate": 0.25
+      "fail_rate": 0
     },
     {
       "kind": "job",
@@ -129,7 +129,7 @@
       "branch": "main",
       "category": "capi-e2e",
       "status": "passed",
-      "fail_rate": 0
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -155,7 +155,7 @@
       "branch": "main",
       "category": "capi-e2e",
       "status": "passed",
-      "fail_rate": 0
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -168,7 +168,7 @@
       "branch": "main",
       "category": "capi-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -181,7 +181,7 @@
       "branch": "main",
       "category": "capi-e2e",
       "status": "passed",
-      "fail_rate": 0
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -194,7 +194,7 @@
       "branch": "main",
       "category": "capi-e2e",
       "status": "passed",
-      "fail_rate": 0
+      "fail_rate": 0.25
     },
     {
       "kind": "job",
@@ -220,7 +220,7 @@
       "branch": "release-1.23",
       "category": "capi-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -233,7 +233,7 @@
       "branch": "release-1.23",
       "category": "capi-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -246,7 +246,7 @@
       "branch": "release-1.23",
       "category": "capi-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -259,7 +259,7 @@
       "branch": "release-1.23",
       "category": "capi-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -272,7 +272,7 @@
       "branch": "release-1.23",
       "category": "capi-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -285,7 +285,7 @@
       "branch": "release-1.23",
       "category": "capi-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "job",
@@ -402,7 +402,7 @@
       "branch": "main",
       "category": "conformance",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0.5
     },
     {
       "kind": "test",
@@ -17393,7 +17393,7 @@
       "branch": "release-1.23",
       "category": "conformance",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -23217,7 +23217,7 @@
       "branch": "release-1.24",
       "category": "conformance",
       "status": "passed",
-      "fail_rate": 0.2857142857142857
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -29041,7 +29041,7 @@
       "branch": "main",
       "category": "conformance",
       "status": "passed",
-      "fail_rate": 0.25
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -29340,7 +29340,7 @@
       "branch": "main",
       "category": "conformance",
       "status": "passed",
-      "fail_rate": 0.25
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -30354,7 +30354,7 @@
       "branch": "main",
       "category": "conformance",
       "status": "passed",
-      "fail_rate": 0.16666666666666666
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36190,8 +36190,8 @@
       "tab_name": "capz-periodic-e2e-aks-main",
       "branch": "main",
       "category": "aks-e2e",
-      "status": "passed",
-      "fail_rate": 0
+      "status": "failed",
+      "fail_rate": 0.3333333333333333
     },
     {
       "kind": "test",
@@ -36242,8 +36242,8 @@
       "tab_name": "capz-periodic-e2e-aks-v1beta1-release-1-23",
       "branch": "release-1.23",
       "category": "aks-e2e",
-      "status": "passed",
-      "fail_rate": 0.125
+      "status": "failed",
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -36255,8 +36255,8 @@
       "tab_name": "capz-periodic-e2e-aks-v1beta1-release-1-23",
       "branch": "release-1.23",
       "category": "aks-e2e",
-      "status": "passed",
-      "fail_rate": 0.125
+      "status": "failed",
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -36268,8 +36268,8 @@
       "tab_name": "capz-periodic-e2e-aks-v1beta1-release-1-23",
       "branch": "release-1.23",
       "category": "aks-e2e",
-      "status": "passed",
-      "fail_rate": 0.125
+      "status": "failed",
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -36282,7 +36282,7 @@
       "branch": "release-1.23",
       "category": "aks-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "job",
@@ -36308,7 +36308,7 @@
       "branch": "release-1.24",
       "category": "aks-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36320,8 +36320,8 @@
       "tab_name": "capz-periodic-e2e-aks-v1beta1-release-1-24",
       "branch": "release-1.24",
       "category": "aks-e2e",
-      "status": "passed",
-      "fail_rate": 0.125
+      "status": "failed",
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -36334,7 +36334,7 @@
       "branch": "release-1.24",
       "category": "aks-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36347,7 +36347,7 @@
       "branch": "release-1.24",
       "category": "aks-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "job",
@@ -36386,7 +36386,7 @@
       "branch": "main",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36399,7 +36399,7 @@
       "branch": "main",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36412,7 +36412,7 @@
       "branch": "main",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36425,7 +36425,7 @@
       "branch": "main",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36438,7 +36438,7 @@
       "branch": "main",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36451,7 +36451,7 @@
       "branch": "main",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36464,7 +36464,7 @@
       "branch": "main",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36477,7 +36477,7 @@
       "branch": "main",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36490,7 +36490,7 @@
       "branch": "main",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36529,7 +36529,7 @@
       "branch": "main",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36555,7 +36555,7 @@
       "branch": "main",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "job",
@@ -36581,7 +36581,7 @@
       "branch": "release-1.23",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36607,7 +36607,7 @@
       "branch": "release-1.23",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -36659,7 +36659,7 @@
       "branch": "release-1.23",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -36672,7 +36672,7 @@
       "branch": "release-1.23",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36737,7 +36737,7 @@
       "branch": "release-1.23",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -36763,7 +36763,7 @@
       "branch": "release-1.23",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -36776,7 +36776,7 @@
       "branch": "release-1.23",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -36789,7 +36789,7 @@
       "branch": "release-1.23",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "job",
@@ -36815,7 +36815,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.375
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36828,7 +36828,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.25
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36841,7 +36841,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36854,7 +36854,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36867,7 +36867,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36880,7 +36880,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36893,7 +36893,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36906,7 +36906,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -36919,7 +36919,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -36932,7 +36932,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.375
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -36997,7 +36997,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.14285714285714285
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -37010,7 +37010,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.42857142857142855
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -37023,7 +37023,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -37036,7 +37036,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -37049,7 +37049,7 @@
       "branch": "release-1.24",
       "category": "capz-e2e",
       "status": "passed",
-      "fail_rate": 0.25
+      "fail_rate": 0
     },
     {
       "kind": "job",
@@ -37075,7 +37075,7 @@
       "branch": "main",
       "category": "upgrade",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -37088,7 +37088,7 @@
       "branch": "main",
       "category": "upgrade",
       "status": "passed",
-      "fail_rate": 0.125
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -37102,6 +37102,19 @@
       "category": "upgrade",
       "status": "passed",
       "fail_rate": 0
+    },
+    {
+      "kind": "test",
+      "test_name": "[SynchronizedBeforeSuite]",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main",
+      "job_id": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main",
+      "job_type": "periodic",
+      "repo": "",
+      "tab_name": "capi-periodic-upgrade-main-1-32-1-33",
+      "branch": "main",
+      "category": "upgrade",
+      "status": "passed",
+      "fail_rate": 0.25
     },
     {
       "kind": "job",
@@ -37126,8 +37139,8 @@
       "tab_name": "capi-periodic-upgrade-main-1-33-1-34",
       "branch": "main",
       "category": "upgrade",
-      "status": "passed",
-      "fail_rate": 0
+      "status": "failed",
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -37139,8 +37152,8 @@
       "tab_name": "capi-periodic-upgrade-main-1-33-1-34",
       "branch": "main",
       "category": "upgrade",
-      "status": "passed",
-      "fail_rate": 0
+      "status": "failed",
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -37152,8 +37165,8 @@
       "tab_name": "capi-periodic-upgrade-main-1-33-1-34",
       "branch": "main",
       "category": "upgrade",
-      "status": "passed",
-      "fail_rate": 0.14285714285714285
+      "status": "failed",
+      "fail_rate": 0.25
     },
     {
       "kind": "job",
@@ -37178,8 +37191,8 @@
       "tab_name": "capi-periodic-upgrade-main-1-34-1-35",
       "branch": "main",
       "category": "upgrade",
-      "status": "failed",
-      "fail_rate": 0.16666666666666666
+      "status": "passed",
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -37191,8 +37204,8 @@
       "tab_name": "capi-periodic-upgrade-main-1-34-1-35",
       "branch": "main",
       "category": "upgrade",
-      "status": "failed",
-      "fail_rate": 0.3333333333333333
+      "status": "passed",
+      "fail_rate": 0
     },
     {
       "kind": "test",
@@ -37206,19 +37219,6 @@
       "category": "upgrade",
       "status": "passed",
       "fail_rate": 0
-    },
-    {
-      "kind": "test",
-      "test_name": "[SynchronizedBeforeSuite]",
-      "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main",
-      "job_id": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-34-1-35-main",
-      "job_type": "periodic",
-      "repo": "",
-      "tab_name": "capi-periodic-upgrade-main-1-34-1-35",
-      "branch": "main",
-      "category": "upgrade",
-      "status": "passed",
-      "fail_rate": 0.14285714285714285
     },
     {
       "kind": "job",
@@ -37243,8 +37243,8 @@
       "tab_name": "capi-periodic-upgrade-main-1-35-1-36",
       "branch": "main",
       "category": "upgrade",
-      "status": "passed",
-      "fail_rate": 0.125
+      "status": "failed",
+      "fail_rate": 0.25
     },
     {
       "kind": "test",
@@ -37257,7 +37257,7 @@
       "branch": "main",
       "category": "upgrade",
       "status": "failed",
-      "fail_rate": 0.125
+      "fail_rate": 0.25
     },
     {
       "kind": "test",

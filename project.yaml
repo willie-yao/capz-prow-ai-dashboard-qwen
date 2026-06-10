@@ -2,9 +2,9 @@
 #
 # Mirrors willie-yao/capz-prow-ai-dashboard exactly EXCEPT for the AI
 # endpoint and runtime: this dashboard's analyses are produced by an
-# in-cluster Qwen3-235B-FP8 model served via NVIDIA Dynamo (trtllm
-# backend) on the demo AKS cluster, reached over cluster-internal DNS
-# from a self-hosted GitHub Actions runner. Same prow jobs, same
+# in-cluster Qwen3-Coder-480B-A35B-FP8 model served via NVIDIA Dynamo
+# (trtllm backend) on the demo AKS cluster, reached over cluster-internal
+# DNS from a self-hosted GitHub Actions runner. Same prow jobs, same
 # prompt — different model + endpoint. Lets the team
 # compare summary quality side-by-side at:
 #
@@ -80,8 +80,8 @@ branding:
 # .github/workflows/deploy.yml. For this demo, set:
 #
 #   gh variable set AI_ENDPOINT \
-#     -b "http://qwen3-235b-a22b-disagg-frontend.default.svc:8000/v1/chat/completions"
-#   gh variable set AI_MODEL -b "Qwen/Qwen3-235B-A22B-FP8"
+#     -b "http://qwen-coder-480b-r1-frontend.default.svc:8000/v1/chat/completions"
+#   gh variable set AI_MODEL -b "Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8"
 #
 # AI_ENDPOINT uses cluster-internal DNS because the GHA runner is the
 # in-cluster ARC runner labelled `arc-qwen-runner` (see deploy.yml).
@@ -96,69 +96,35 @@ ai:
   agentic:
     enabled: true
     always: false
-    # Allow more rounds than the engine default (15) so the model has
-    # room to satisfy both the calls and bytes floors below — a typical
-    # investigation needs ~5-8 calls and ~200-500 KB of evidence, and
-    # the L.3 A/B showed Qwen frequently hitting the iter cap before
-    # accumulating enough bytes.
+    # Qwen3-Coder-480B-A35B-FP8 on Dynamo (trtllm) has a 262144-token
+    # context window, so the tight budgets the 235B/40960 deployment
+    # needed no longer apply. Give the model room to read deep logs.
     max_iters: 20
-    # Per-call evidence budget: bytes of tool-call output the model sees
-    # across the agentic loop. Engine default is 300_000. Kept moderate
-    # because the in-cluster Dynamo serves Qwen3-235B with
-    # max_position_embeddings=40960 and YaRN rope scaling disabled, so the
-    # whole prompt must stay under 40960 tokens.
-    model_byte_budget: 110000
-    # Total request-size cap (bytes). The agentic loop compacts the oldest
-    # tool-result bodies to a stub before a request would exceed this, so a
-    # long, critique-heavy investigation never overflows the 40960-token
-    # window mid-loop (which previously 500'd and left ~32% of failures with
-    # no analysis). 90K bytes stays under the limit even for dense logs
-    # (~2.5 bytes/token ≈ 36K tokens); 105K briefly overran on the densest
-    # cases. Remove this once YaRN raises the model context window.
-    context_byte_budget: 90000
-    # Minimum tool calls before a tools-free final answer is accepted.
-    # Bumped from 3 → 5 after the 2026-06-03 A/B: with floor=3 Qwen
-    # parked at the floor on 50% of failures and produced 5x shorter
-    # root causes than Claude on the same builds. 5 forces the model
-    # to do meaningful investigation rather than terminating the
-    # moment the floor allows.
+    # Bytes of tool-call output the model accumulates across the loop.
+    # 500K bytes is ~140K tokens, leaving ~120K of the 256K window for
+    # the prompt, schema, artifact-tree seed, reasoning, and response.
+    model_byte_budget: 500000
+    # Compaction safety net: only stubs oldest tool results if a request
+    # would exceed this. 800K bytes (~230K tokens) sits just under the
+    # window so a long critique-heavy investigation never overflows,
+    # while normal runs never trigger it.
+    context_byte_budget: 800000
+    # Floors: keep the same investigation bar as the 235B config.
     min_tool_calls: 5
-    # Minimum cumulative GCS bytes fetched before a final answer is
-    # accepted. Calls alone are gameable: in the L.3 A/B Qwen
-    # satisfied min_tool_calls=3 with 6 list/tiny-read calls totaling
-    # 13 KB and fabricated "no specific error found" on a build where
-    # Claude found the actual webhook cert mismatch from 9 MB of
-    # logs. Bumped 200000 → 500000 alongside the L.4 Step 2.5
-    # critique strengthening: Step 2 measured Qwen at p50 758 KB on
-    # critique-passing analyses, so 500 KB pushes only the
-    # below-median cases up to enough evidence to ground a concrete
-    # claim, without forcing every analysis to chase the heavy-tail
-    # 5 MB Claude reads. See prow-ai-dashboard/docs/agentic.md for
-    # full semantics.
     min_gcs_bytes: 500000
-    # Deterministic regex critique gate (L.4 Step 2). After the agentic
-    # loop produces a tools-free final, the engine checks suggested_fix
-    # for punt-shaped diagnostic TODO lists (imperative diagnostic verbs
-    # at sentence start, "should/need" + diag-verb, "recommend" +
-    # diag-gerund). On match, feedback is appended and the model
-    # re-prompts up to max_retries times with a per-retry budget bump.
-    # Drafts that still punt after retries are published but NOT cached
-    # (anti-thrash, same pattern as the floors above). L.4 Step 1
-    # measured Qwen at 80% punt rate on fresh CAPZ analyses; this gate
-    # targets <50%. See prow-ai-dashboard/docs/agentic.md for semantics.
+    # Seed the build's full artifact path tree into the prompt so the
+    # model reads exact paths instead of guessing leaf filenames. Safe
+    # here because the 256K window easily holds the ~150-path list.
+    seed_artifact_tree: true
+    # On a critique retry, fetch the artifacts the draft cited but never
+    # read and inject their content into the feedback. Requires critique.
+    evidence_injection: true
+    # NOTE: single_tool_call is intentionally NOT set. Unlike the stock
+    # Llama 3.1 template, Qwen3-Coder emits parallel tool calls cleanly,
+    # so the client-side cap would only slow investigation down.
     critique:
       enabled: true
       max_retries: 2
-    # L.4 Step 3 skills/recipes registry. Loads skills/*.yaml at fetcher
-    # startup (10 seed CAPZ recipes as of 2026-06-03). Critique gate
-    # consults the loaded set: when any recipe's triggers match the
-    # draft, the agent must have read evidence matching each of the
-    # recipe's `required_evidence` groups, else critique fails and the
-    # model re-prompts with the recipe procedure quoted under a
-    # "consumer guidance, not engine instruction" disclaimer.
-    # Cache entries are stamped with skill_set_hash; editing any
-    # recipe invalidates affected entries on next run. See
-    # prow-ai-dashboard/docs/skills.md for the schema and authoring guide.
     skills:
       enabled: true
     tools:
