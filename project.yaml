@@ -106,7 +106,13 @@ ai:
     # Qwen3-Coder-480B-A35B-FP8 on Dynamo (trtllm) has a 262144-token
     # context window, so the tight budgets the 235B/40960 deployment
     # needed no longer apply. Give the model room to read deep logs.
-    max_iters: 20
+    #
+    # Bumped 20 -> 30: the 2026-06-11 builds=4 run showed ~70% of analyses
+    # hit the 20-iteration cap while using only ~25% of the context window,
+    # i.e. they were iteration-bound, not context-bound. 30 lets the
+    # heavy-tail investigations keep drilling; peak context still stays well
+    # under the window. Applies to future/uncached analyses.
+    max_iters: 30
     # Bytes of tool-call output the model accumulates across the loop.
     # 500K bytes is ~140K tokens, leaving ~120K of the 256K window for
     # the prompt, schema, artifact-tree seed, reasoning, and response.
