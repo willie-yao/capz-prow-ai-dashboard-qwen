@@ -37,6 +37,7 @@ Per-build artifacts under `artifacts/clusters/{cluster-name}/`:
 - `machines/{vm}/cloud-init-output.log`, `boot.log`, `kubelet.log`, `containerd.log`, `journal.log`
 - `Machine/`, `AzureMachine/`, `MachinePool/`, `AzureMachinePool/` (resource YAML dumps)
 - `azure-activity-logs/{cluster-name}.log` (Azure ARM activity log excerpt)
+- `logs/{namespace}/{deployment}/{pod}/manager.log` (controller-manager logs, e.g. `capz-system/capz-controller-manager/...`, `capi-system/capi-controller-manager/...`) - the management cluster's controllers live under the `bootstrap` cluster. To drill a failing resource named X, grep the owning controller's manager.log for "X".
 
 ## Common Failure Patterns
 
@@ -46,7 +47,7 @@ Per-build artifacts under `artifacts/clusters/{cluster-name}/`:
 
 ### Control Plane
 - CP never initializes (0/N ready): check first CP machine's cloud-init and kubeadm init logs.
-- CP partially initialized (1/3 or 2/3): kubeadm join failures, cert distribution, API server unreachable from joining nodes.
+- CP partially initialized (1/3 or 2/3): inspect the joining machine's cloud-init-output.log / boot.log FIRST. A concrete bootstrap cause there (preKubeadmCommands failure, package/download error, cert-distribution bug, version skew) is a real failure - report it. An etcd-join or API-unreachable timeout on the joining node with NO specific cause in those logs is usually a transient infra flake (see Transient Errors).
 - Timeout waiting for control plane machines: check if VMs are provisioned but kubelet never registered.
 
 ### Worker Nodes
@@ -88,6 +89,8 @@ Per-build artifacts under `artifacts/clusters/{cluster-name}/`:
 - "node not found" in kubelet logs (before registration).
 - etcd "no leader" / "waiting for leader" during initial formation.
 - cloud-init url_helper.py retry warnings (metadata service).
+- x509 "certificate signed by unknown authority" / "tls: bad certificate" when calling CAPZ (or other CAPI provider) webhooks during cluster or management-cluster bringup. This is a KNOWN webhook-cert-propagation flake (the cert-manager CA bundle has not finished injecting when early reconcile calls fire); it is not severe and the test should just be retried. Set is_transient=true. (Only treat it as a real bug if the webhook calls fail for the ENTIRE run with no successful call and you confirm a concrete CA-bundle misconfiguration.)
+- kubeadm "etcd-join" / "error creating local etcd static pod manifest file: context deadline exceeded" on a joining control-plane node: set is_transient=true ONLY when the joining machine's cloud-init-output.log / boot.log show no specific bootstrap failure. If those logs reveal a concrete cause (preKubeadmCommands error, download/package failure, config or cert error), classify it as a real failure and report that cause.
 
 ## CAPZ-specific Triage Order
 1. build-log.txt — first fatal error or timeout.
