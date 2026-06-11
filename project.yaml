@@ -102,27 +102,18 @@ ai:
 
   agentic:
     enabled: true
-    always: false
-    # Qwen3-Coder-480B-A35B-FP8 on Dynamo (trtllm) has a 262144-token
-    # context window, so the tight budgets the 235B/40960 deployment
-    # needed no longer apply. Give the model room to read deep logs.
-    #
-    # Bumped 20 -> 30: the 2026-06-11 builds=4 run showed ~70% of analyses
-    # hit the 20-iteration cap while using only ~25% of the context window,
-    # i.e. they were iteration-bound, not context-bound. 30 lets the
+    # max_iters bumped 20 -> 30: the 2026-06-11 builds=4 run showed ~70% of
+    # analyses hit the 20-iteration cap while using only ~25% of the context
+    # window, i.e. they were iteration-bound, not context-bound. 30 lets the
     # heavy-tail investigations keep drilling; peak context still stays well
     # under the window. Applies to future/uncached analyses.
     max_iters: 30
-    # Bytes of tool-call output the model accumulates across the loop.
-    # 500K bytes is ~140K tokens, leaving ~120K of the 256K window for
-    # the prompt, schema, artifact-tree seed, reasoning, and response.
-    model_byte_budget: 500000
-    # Compaction safety net: only stubs oldest tool results if a request
-    # would exceed this. 800K bytes (~230K tokens) sits just under the
-    # window so a long critique-heavy investigation never overflows,
-    # while normal runs never trigger it.
-    context_byte_budget: 800000
-    # Floors: keep the same investigation bar as the 235B config.
+    # NOTE: model_byte_budget and context_byte_budget are intentionally unset.
+    # The engine auto-sizes them from the endpoint's reported context window
+    # (Qwen3-Coder-480B = 262144 tokens -> ~524 KB / ~786 KB), so they no
+    # longer need hand-tuning per deployment. See prow-ai-dashboard
+    # docs/agentic.md ("Automatic budget sizing").
+    # Floors: keep a meaningful investigation bar.
     min_tool_calls: 5
     min_gcs_bytes: 500000
     # Seed the build's full artifact path tree into the prompt so the
