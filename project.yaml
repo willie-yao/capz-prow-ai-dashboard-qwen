@@ -88,10 +88,8 @@ branding:
 # The Dynamo frontend doesn't require an API key, but the engine
 # expects AI_TOKEN to be non-empty — any string works.
 ai:
-  # Phase L universal agentic path. Same as the prod CAPZ dashboard so
-  # the only intentional variable between the two deployments is the
-  # endpoint + model.
-  use_universal_path: true
+  # Phase L agentic analysis. Same as the prod CAPZ dashboard so the only
+  # intentional variable between the two deployments is the endpoint + model.
 
   # Analyze several failures in parallel. The in-cluster Qwen3-Coder-480B
   # Dynamo endpoint is dedicated to this dashboard and batches concurrent
@@ -100,37 +98,32 @@ ai:
   # limited provider. See prow-ai-dashboard/docs/agentic.md (ai.concurrency).
   concurrency: 4
 
-  agentic:
+  # max_iters bumped 20 -> 30: the 2026-06-11 builds=4 run showed ~70% of
+  # analyses hit the 20-iteration cap while using only ~25% of the context
+  # window, i.e. they were iteration-bound, not context-bound. 30 lets the
+  # heavy-tail investigations keep drilling; peak context still stays well
+  # under the window. Applies to future/uncached analyses.
+  max_iters: 30
+  # NOTE: the model/context byte budgets are intentionally unset. The engine
+  # auto-sizes them from the endpoint's reported context window
+  # (Qwen3-Coder-480B = 262144 tokens -> ~524 KB / ~786 KB), so they no
+  # longer need hand-tuning per deployment. See prow-ai-dashboard
+  # docs/agentic.md ("Automatic budget sizing").
+  # Floors: keep a meaningful investigation bar.
+  min_tool_calls: 5
+  min_gcs_bytes: 500000
+  # On a critique retry, fetch the artifacts the draft cited but never
+  # read and inject their content into the feedback. Requires critique.
+  evidence_injection: true
+  # NOTE: single_tool_call is intentionally NOT set. Unlike the stock
+  # Llama 3.1 template, Qwen3-Coder emits parallel tool calls cleanly,
+  # so the client-side cap would only slow investigation down.
+  critique:
     enabled: true
-    # max_iters bumped 20 -> 30: the 2026-06-11 builds=4 run showed ~70% of
-    # analyses hit the 20-iteration cap while using only ~25% of the context
-    # window, i.e. they were iteration-bound, not context-bound. 30 lets the
-    # heavy-tail investigations keep drilling; peak context still stays well
-    # under the window. Applies to future/uncached analyses.
-    max_iters: 30
-    # NOTE: model_byte_budget and context_byte_budget are intentionally unset.
-    # The engine auto-sizes them from the endpoint's reported context window
-    # (Qwen3-Coder-480B = 262144 tokens -> ~524 KB / ~786 KB), so they no
-    # longer need hand-tuning per deployment. See prow-ai-dashboard
-    # docs/agentic.md ("Automatic budget sizing").
-    # Floors: keep a meaningful investigation bar.
-    min_tool_calls: 5
-    min_gcs_bytes: 500000
-    # NOTE: artifact-tree seeding is always on in the engine now (the build's
-    # exact artifact paths are prepended to the prompt so the model doesn't
-    # guess leaf filenames), so there's no longer a seed_artifact_tree knob.
-    # On a critique retry, fetch the artifacts the draft cited but never
-    # read and inject their content into the feedback. Requires critique.
-    evidence_injection: true
-    # NOTE: single_tool_call is intentionally NOT set. Unlike the stock
-    # Llama 3.1 template, Qwen3-Coder emits parallel tool calls cleanly,
-    # so the client-side cap would only slow investigation down.
-    critique:
-      enabled: true
-      max_retries: 2
-    # NOTE: skills no longer have an enable flag. The 10 recipes under
-    # skills/*.yaml are consulted automatically because critique is on
-    # (recipe presence alone would also auto-enable critique).
-    tools:
-      - filesystem
-      - k8s
+    max_retries: 2
+  # NOTE: skills have no enable flag. The 10 recipes under skills/*.yaml are
+  # consulted automatically because critique is on (recipe presence alone
+  # would also auto-enable critique). Artifact-tree seeding is always on.
+  tools:
+    - filesystem
+    - k8s
