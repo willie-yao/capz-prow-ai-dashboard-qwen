@@ -116,10 +116,9 @@ ai:
     # Floors: keep a meaningful investigation bar.
     min_tool_calls: 5
     min_gcs_bytes: 500000
-    # Seed the build's full artifact path tree into the prompt so the
-    # model reads exact paths instead of guessing leaf filenames. Safe
-    # here because the 256K window easily holds the ~150-path list.
-    seed_artifact_tree: true
+    # NOTE: artifact-tree seeding is always on in the engine now (the build's
+    # exact artifact paths are prepended to the prompt so the model doesn't
+    # guess leaf filenames), so there's no longer a seed_artifact_tree knob.
     # On a critique retry, fetch the artifacts the draft cited but never
     # read and inject their content into the feedback. Requires critique.
     evidence_injection: true
