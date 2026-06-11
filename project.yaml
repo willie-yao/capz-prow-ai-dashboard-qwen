@@ -128,8 +128,9 @@ ai:
     critique:
       enabled: true
       max_retries: 2
-    skills:
-      enabled: true
+    # NOTE: skills no longer have an enable flag. The 10 recipes under
+    # skills/*.yaml are consulted automatically because critique is on
+    # (recipe presence alone would also auto-enable critique).
     tools:
       - filesystem
       - k8s
