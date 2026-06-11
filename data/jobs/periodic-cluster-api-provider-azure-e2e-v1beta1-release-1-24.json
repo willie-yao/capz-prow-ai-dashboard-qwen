@@ -750,24 +750,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/controlplane_helpers.go#L115",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T19:14:59Z",
-            "summary": "Control plane provisioning failed due to etcd join timeout when adding second control plane node",
+            "generated_at": "2026-06-11T20:52:07Z",
+            "summary": "Control plane machines failed to initialize due to Calico CNI not running properly on the first control plane node",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T19:14:59Z",
-            "root_cause": "The test failure occurred because only one control plane machine was successfully provisioned out of the required three. From the boot.log of the control plane machine capz-e2e-sw2xju-azl3-control-plane-ckl6q, we can see that kubeadm failed during the etcd-join phase with the error 'error execution phase etcd-join: error creating local etcd static pod manifest file: context deadline exceeded'. This indicates that the second control plane node was unable to join the etcd cluster within the timeout period. The logs show that the first control plane node (capz-e2e-sw2xju-azl3-control-plane-gtpbd) was already running and the second node (capz-e2e-sw2xju-azl3-control-plane-ckl6q) was attempting to join, but failed at the etcd join step. This prevented the formation of a complete 3-node control plane, causing the test to timeout waiting for all control plane machines to exist.",
+            "generated_at": "2026-06-11T20:52:07Z",
+            "root_cause": "The test failure occurred because only one control plane machine was successfully created instead of the required three. Investigation of the available control plane machine (capz-e2e-sw2xju-azl3-control-plane-gtpbd) revealed that the kubelet was unable to start pods due to Calico CNI not being properly initialized. The kubelet logs show repeated errors 'stat /var/lib/calico/nodename: no such file or directory: check that the calico/node container is running and has mounted /var/lib/calico/' indicating that the Calico CNI plugin failed to set up networking for pods. This prevented critical components like CoreDNS and other system pods from starting, which in turn prevented the control plane from becoming fully functional and allowing additional control plane machines to join. The CAPZ controller logs show that the Azure VMs were successfully provisioned, but the VM extension for bootstrapping failed with a 'VMExtensionProvisioningError', which aligns with the node not being able to complete its initialization process due to the CNI failure. The CAPI controller logs show that it was waiting for the control plane to become stable before proceeding with worker node creation, but this never happened due to the CNI issue. Further investigation of containerd logs shows 'cni config load failed: no network config found in /etc/cni/net.d: cni plugin not initialized: failed to load cni config' which confirms the CNI configuration was not properly set up.",
             "severity": "High",
-            "suggested_fix": "Investigate etcd cluster formation issues in Azure Linux 3 environments. Check if there are network connectivity issues between control plane nodes, firewall rules blocking etcd ports (2379, 2380), or if the etcd join timeout needs to be increased for Azure Linux 3. Consider adding more detailed logging around the etcd join process to better diagnose timeout causes. The fix should involve either resolving the underlying network/connectivity issue or increasing the etcd join timeout value in the kubeadm configuration.",
+            "suggested_fix": "Ensure that the Calico CNI manifests are correctly applied and that the necessary CNI configuration files are present in /etc/cni/net.d/ on Azure Linux 3 nodes. Check the Calico installation process in the cluster templates to ensure it's compatible with Azure Linux 3. Specifically, verify that the calico-node daemonset is correctly mounting /var/lib/calico and that the CNI configuration files are properly generated. Also verify that the CNI binaries are correctly installed in /opt/cni/bin/.",
             "relevant_files": [
-              "artifacts/clusters/capz-e2e-sw2xju-azl3/machines/capz-e2e-sw2xju-azl3-control-plane-ckl6q/boot.log",
-              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-7fc7c9d6bb-4ddj5/manager.log"
+              "artifacts/clusters/capz-e2e-sw2xju-azl3/machines/capz-e2e-sw2xju-azl3-control-plane-gtpbd/kubelet.log",
+              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-7fc7c9d6bb-4ddj5/manager.log",
+              "artifacts/clusters/capz-e2e-00tkkk-cc/machines/capz-e2e-00tkkk-cc-md-0-kcb5c-mspcd-77572/containerd.log"
             ],
             "mode": "agentic-universal",
             "tool_calls": 20,
-            "model_bytes": 168489,
-            "gcs_bytes": 6317115,
-            "elapsed_ms": 114248,
+            "model_bytes": 191509,
+            "gcs_bytes": 12543319,
+            "elapsed_ms": 165362,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1277,25 +1278,30 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/client.go#L89",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T19:16:55Z",
-            "summary": "AzureServiceOperator controller manager deployment failed to become ready due to API server connectivity issues in the custom VNET cluster",
-            "is_transient": false
+            "generated_at": "2026-06-11T20:52:48Z",
+            "summary": "AzureServiceOperator controller manager deployment failed to become ready due to API server connectivity issues during cluster initialization",
+            "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T19:16:55Z",
-            "root_cause": "The test failure occurred because the AzureServiceOperator controller manager deployment did not become ready within the expected timeout. From the kubelet logs on the control plane node, we can see repeated 'context deadline exceeded' errors when trying to communicate with the API server at https://10.0.0.4:6443. These errors manifest in multiple ways: failed lease updates, event reporting failures, and readiness probe failures for core components like coredns. The kubelet logs show 'Failed to update lease' errors with 'context deadline exceeded' when trying to PUT to the coordination API, and 'Server rejected event' errors with the same timeout. This indicates the kubelet is unable to establish reliable communication with the API server, which cascades to prevent the AzureServiceOperator controller manager from becoming ready. The cloud-init logs show successful kubeadm initialization and no critical errors during bootstrap, indicating the issue occurs after the control plane is initially established. The build-log.txt confirms this with the exact error message: 'deployment \"azureserviceoperator-controller-manager\" is not ready after 5m0s: Get \"https://capz-e2e-qvogg3-public-custom-vnet-3ccb1a16.switzerlandnorth.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": context deadline exceeded'.",
-            "severity": "High",
-            "suggested_fix": "Investigate network connectivity issues in the custom VNET configuration that are causing API server communication timeouts. Specifically, verify that the control plane endpoint (10.0.0.4:6443) is properly accessible from worker nodes and that there are no network policies, firewall rules, or routing issues in the custom VNET setup that could be causing the timeouts. Check Azure Load Balancer configurations if one is used for the control plane endpoint. As a concrete verification step, run a connectivity test from a worker node to the API server endpoint using curl or wget to confirm basic network reachability.",
+            "generated_at": "2026-06-11T20:52:48Z",
+            "root_cause": "The failure occurred because the AzureServiceOperator controller manager deployment could not become ready within the timeout period. This was due to the API server not being reachable (context deadline exceeded) when the deployment was being checked. From the kubelet logs on the control plane node, we can see repeated \"context deadline exceeded\" errors when trying to communicate with the API server at https://10.0.0.4:6443. The cloud-init logs show that during the kubeadm initialization process, there were multiple \"connection refused\" errors when trying to connect to the API server on port 6443. These connection issues indicate that the API server was not yet ready to serve requests, which is a common transient condition during cluster startup. The errors in the kubelet logs such as \"Failed to update lease\" and \"Server rejected event\" with \"context deadline exceeded\" further support that the API server was not responding in a timely manner. This is a known transient issue during cluster initialization where components are still coming up and establishing connectivity. The containerd logs show normal container operations, and the Calico controller logs indicate successful initialization, suggesting the runtime and CNI were not the root cause. The CAPI controller logs show issues with a different cluster (capz-e2e-zhno1o-azl3) which is unrelated to the failing cluster (capz-e2e-qvogg3-public-custom-vnet).",
+            "severity": "Medium",
+            "suggested_fix": "No remediation possible from available evidence: The failure appears to be a transient issue during cluster initialization where the API server was not yet ready to serve requests. The evidence points to a timing issue rather than a configuration or code defect. To confirm this is a transient issue, the test should be retried. If the issue persists, further investigation into the control plane initialization timing or network configuration may be needed.",
             "relevant_files": [
+              "artifacts/clusters/bootstrap/logs/capz-system/azureserviceoperator-controller-manager/azureserviceoperator-controller-manager-7998998bf5-bw9t9/manager.log",
               "artifacts/clusters/capz-e2e-qvogg3-public-custom-vnet/machines/capz-e2e-qvogg3-public-custom-vnet-control-plane-v4m5v/kubelet.log",
-              "build-log.txt",
-              "artifacts/clusters/bootstrap/logs/capz-system/azureserviceoperator-controller-manager/azureserviceoperator-controller-manager-7998998bf5-bw9t9/manager.log"
+              "artifacts/clusters/capz-e2e-qvogg3-public-custom-vnet/machines/capz-e2e-qvogg3-public-custom-vnet-control-plane-v4m5v/cloud-init-output.log",
+              "artifacts/clusters/capz-e2e-39rky2-spot/machines/capz-e2e-39rky2-spot-control-plane-xgd4d/containerd.log",
+              "artifacts/clusters/capz-e2e-39rky2-spot/calico-system/calico-kube-controllers-5dcc468c7d-8nqrk/calico-kube-controllers.log",
+              "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-7fcc6ff995-w2pdx/manager.log"
             ],
             "mode": "agentic-universal",
             "tool_calls": 20,
-            "model_bytes": 138703,
-            "gcs_bytes": 5815635,
-            "elapsed_ms": 116040,
+            "model_bytes": 210370,
+            "gcs_bytes": 6370238,
+            "elapsed_ms": 183719,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },

@@ -696,25 +696,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/common.go#L265",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T18:48:11Z",
-            "summary": "Self-hosted cluster control plane failed to initialize due to Azure VM allocation failure",
+            "generated_at": "2026-06-11T20:41:36Z",
+            "summary": "KubeadmControlPlane initialization failed due to Azure VM allocation failure",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T18:48:11Z",
-            "root_cause": "The KubeadmControlPlane for the self-hosted cluster failed to initialize because the underlying Azure VM for the control plane machine could not be provisioned. From the CAPZ controller logs, we can see repeated 'ZonalAllocationFailed' errors when trying to create the VM 'self-hosted-1db3jr-control-plane-ccvrb' in the CanadaCentral region. The Azure API response indicates 'Allocation failed. We do not have sufficient capacity for the requested VM size in this zone'. This caused the AzureMachine to never become ready, which in turn prevented the KubeadmControlPlane from initializing as it was waiting for the infrastructure to be ready. The CAPI controller logs also show it was waiting for the AzureMachine to be ready and reported 'connection to the workload cluster is down' because the control plane VM never came up.",
+            "generated_at": "2026-06-11T20:41:36Z",
+            "root_cause": "The KubeadmControlPlane object self-hosted/self-hosted-1db3jr-control-plane failed to initialize because its corresponding Azure VM (self-hosted-1db3jr-control-plane-ccvrb) could not be provisioned. The CAPZ controller log at artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-576f4948dd-g7q8z/manager.log shows repeated 'ZonalAllocationFailed' errors for this VM (lines 3420-3421, 3519-3520). The Azure error message states: 'Allocation failed. We do not have sufficient capacity for the requested VM size in this zone.' This is a transient infrastructure issue where Azure cannot allocate the requested VM size in the specified zone. The CAPI controller manager log at artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-7fcc6ff995-8s7jq/manager.log confirms the KubeadmControlPlane remained uninitialized, with messages indicating it was 'provisioning' and 'not yet initialized' (e.g., line 265).",
             "severity": "Medium",
-            "suggested_fix": "No remediation possible from available evidence: The failure is due to temporary Azure capacity constraints in the CanadaCentral region. The specific evidence includes the 'ZonalAllocationFailed' errors in artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-576f4948dd-g7q8z/manager.log and the corresponding Azure API error responses. The required evidence to confirm a fix would be successful VM provisioning after a retry or in a different region/zone.",
+            "suggested_fix": "Retry the test. This is a transient Azure infrastructure capacity issue that should resolve on its own or with a different zone/VM size selection in subsequent runs.",
             "relevant_files": [
               "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-576f4948dd-g7q8z/manager.log",
-              "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-7fcc6ff995-8s7jq/manager.log",
-              "artifacts/clusters/bootstrap/logs/capi-kubeadm-control-plane-system/capi-kubeadm-control-plane-controller-manager/capi-kubeadm-control-plane-controller-manager-6d9db64c49-46d5p/manager.log"
+              "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-7fcc6ff995-8s7jq/manager.log"
             ],
             "mode": "agentic-universal",
             "tool_calls": 20,
-            "model_bytes": 189920,
-            "gcs_bytes": 3603264,
-            "elapsed_ms": 104186,
+            "model_bytes": 88857,
+            "gcs_bytes": 2472733,
+            "elapsed_ms": 139719,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -740,25 +741,27 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/common.go#L265",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T18:50:37Z",
-            "summary": "KubeadmControlPlane failed to initialize due to connection issues with the workload cluster",
-            "is_transient": false
+            "generated_at": "2026-06-11T20:41:44Z",
+            "summary": "Control plane VM failed to provision due to Azure capacity constraints",
+            "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T18:50:37Z",
-            "root_cause": "The KubeadmControlPlane object md-remediation-rs9no3/md-remediation-opqhn1-control-plane was not initialized within the timeout period. From the logs, we can see that the CAPI controller manager repeatedly reported 'connection to the workload cluster is down' when trying to reconcile this KubeadmControlPlane (artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-7fcc6ff995-8s7jq/manager.log line 264: \"Scale up on hold because KubeadmControlPlane md-remediation-rs9no3/md-remediation-opqhn1-control-plane is provisioning\"). The CAPI KubeadmControlPlane controller also reported the same connection issue (artifacts/clusters/bootstrap/logs/capi-kubeadm-control-plane-system/capi-kubeadm-control-plane-controller-manager/capi-kubeadm-control-plane-controller-manager-6d9db64c49-46d5p/manager.log line 117: \"failed to update KubeadmControlPlane status: failed to create remote cluster client: md-remediation-rs9no3/md-remediation-opqhn1: error getting REST config: connection to the workload cluster is down\"). This indicates that the control plane VM was either not provisioned successfully, not running the API server, or there was a network connectivity issue preventing access to the API server. Attempts to retrieve logs from the control plane machine failed, suggesting the machine itself may not have been provisioned or is not accessible (build-log.txt line 2033: \"Failed to get logs for Machine md-remediation-opqhn1-control-plane-vdw5r, Cluster md-remediation-rs9no3/md-remediation-opqhn1: dialing public load balancer at md-remediation-opqhn1-a33a1875.canadacentral.cloudapp.azure.com: dial tcp 130.107.15.182:22: i/o timeout\").",
-            "severity": "High",
-            "suggested_fix": "No remediation possible from available evidence: The investigation was limited by the unavailability of logs from the control plane machine (md-remediation-opqhn1-control-plane-vdw5r). The specific root cause could not be determined due to missing machine-level logs (cloud-init, kubelet, journal) which were all 0 bytes or inaccessible. To proceed with a fix, we would need to access these logs to determine if the VM was provisioned, if the bootstrap process started, and if the Kubernetes components were running. The evidence we have points to a connection issue to the workload cluster, but we cannot determine if this is due to VM provisioning failure, bootstrap failure, or network configuration issues.",
+            "generated_at": "2026-06-11T20:41:44Z",
+            "root_cause": "The KubeadmControlPlane object md-remediation-rs9no3/md-remediation-opqhn1-control-plane failed to initialize because its underlying Azure VM (md-remediation-opqhn1-control-plane-vdw5r) could not be provisioned. The CAPZ controller manager log shows repeated 'ZonalAllocationFailed' errors when trying to create the VM, indicating Azure does not have sufficient capacity for the requested VM size (Standard_B2s) in the specified zone (CanadaCentral/zone 1). The Azure activity log confirms this with a 'ResourceOperationFailure' containing the 'ZonalAllocationFailed' error message. This is a transient infrastructure issue, not a bug in the test or code.",
+            "severity": "Medium",
+            "suggested_fix": "No remediation possible from available evidence: The failure is due to temporary Azure capacity constraints in the CanadaCentral region. A retry of the test with a different region or VM size would be the appropriate action, but this cannot be determined from the logs alone.",
             "relevant_files": [
-              "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-7fcc6ff995-8s7jq/manager.log",
-              "artifacts/clusters/bootstrap/logs/capi-kubeadm-control-plane-system/capi-kubeadm-control-plane-controller-manager/capi-kubeadm-control-plane-controller-manager-6d9db64c49-46d5p/manager.log",
-              "build-log.txt"
+              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-576f4948dd-g7q8z/manager.log",
+              "artifacts/clusters/md-remediation-opqhn1/azure-activity-logs/capz-e2e-fkmqm0.log",
+              "artifacts/clusters/bootstrap/resources/md-remediation-rs9no3/AzureMachine/md-remediation-opqhn1-control-plane-vdw5r.yaml"
             ],
             "mode": "agentic-universal",
             "tool_calls": 20,
-            "model_bytes": 214771,
-            "gcs_bytes": 1867485,
-            "elapsed_ms": 145217,
+            "model_bytes": 154385,
+            "gcs_bytes": 2359918,
+            "elapsed_ms": 147879,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -784,24 +787,27 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/common.go#L265",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T18:52:35Z",
-            "summary": "Control plane VM failed to provision due to Azure capacity constraints",
+            "generated_at": "2026-06-11T20:41:27Z",
+            "summary": "Control plane failed to initialize due to Azure VM allocation failure in a specific zone",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T18:52:35Z",
-            "root_cause": "The KubeadmControlPlane failed to initialize because the underlying Azure VM for the control plane machine md-scale-pn9aoz-control-plane-t6bnm could not be provisioned. From the CAPZ controller logs, we can see repeated errors with 'ZonalAllocationFailed' when trying to create the VM resource. For example, in artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-576f4948dd-g7q8z/manager.log, line 4887 shows: 'failed to reconcile AzureMachine: failed to reconcile AzureMachine service virtualmachine: failed to create or update resource capz-e2e-f22sq9/md-scale-pn9aoz-control-plane-t6bnm (service: virtualmachine): GET https://management.azure.com/subscriptions/46678f10-4bbb-447e-98e8-d2829589f2d8/providers/Microsoft.Compute/locations/CanadaCentral/operations/94be7965-c005-4823-87e1-4b7ac2c776af [...] ERROR CODE: ZonalAllocationFailed'. This error indicates that Azure does not have sufficient capacity for the requested VM size (Standard_B2s) in the specified zone (CanadaCentral). The bootstrap cluster events also confirm this with multiple occurrences of 'ZonalAllocationFailed' errors for this VM. Because the control plane VM could not be provisioned, the KubeadmControlPlane object never became ready, causing the test to timeout waiting for its initialization.",
+            "generated_at": "2026-06-11T20:41:27Z",
+            "root_cause": "The KubeadmControlPlane for cluster md-scale-pn9aoz failed to initialize because its control plane machine (md-scale-pn9aoz-control-plane-t6bnm) could not be provisioned in Azure. The Azure activity logs and CAPZ controller logs show repeated 'ZonalAllocationFailed' errors for this VM. For example, the CAPZ controller log at artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-576f4948dd-g7q8z/manager.log line 4887 shows: 'ERROR CODE: ZonalAllocationFailed' with the message 'Allocation failed. We do not have sufficient capacity for the requested VM size in this zone'. This is an infrastructure-level capacity issue, not a bug in the code. The CAPI controller logs also show it was waiting for the control plane to become ready, with messages like 'Scale up on hold because KubeadmControlPlane md-scale-iv0eu9/md-scale-pn9aoz-control-plane is provisioning' in artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-7fcc6ff995-8s7jq/manager.log. The test timed out because the control plane never became available due to this provisioning failure.",
             "severity": "Medium",
-            "suggested_fix": "No remediation possible from available evidence: The failure is due to temporary Azure capacity constraints in the CanadaCentral region for Standard_B2s VMs. The specific evidence includes repeated 'ZonalAllocationFailed' errors in both the CAPZ controller logs and bootstrap cluster events. A potential operational fix would be to retry the test or configure the test template to use a different Azure region or VM size with available capacity, but this requires access to the test configuration and Azure resource availability information which is outside the scope of the provided artifacts.",
+            "suggested_fix": "No remediation possible from available evidence: This is an Azure infrastructure capacity issue that cannot be fixed by changes to the test or CAPZ code. The specific VM size in the selected zone (CanadaCentral zone 1) is unavailable. A potential operational fix would be to retry the test or configure the template to use a different zone or VM size, but this is not a code remediation.",
             "relevant_files": [
               "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-576f4948dd-g7q8z/manager.log",
-              "artifacts/clusters/bootstrap/resources/md-scale-iv0eu9/events.log"
+              "artifacts/clusters/md-scale-pn9aoz/azure-activity-logs/capz-e2e-f22sq9.log",
+              "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-7fcc6ff995-8s7jq/manager.log"
             ],
             "mode": "agentic-universal",
             "tool_calls": 20,
-            "model_bytes": 197928,
-            "gcs_bytes": 2042191,
-            "elapsed_ms": 118039,
+            "model_bytes": 154104,
+            "gcs_bytes": 3353853,
+            "elapsed_ms": 130703,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -827,24 +833,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/common.go#L265",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T18:54:12Z",
-            "summary": "KubeadmControlPlane failed to initialize due to Azure VM allocation failure in a specific zone",
+            "generated_at": "2026-06-11T20:43:34Z",
+            "summary": "KubeadmControlPlane failed to initialize due to Azure VM allocation failure",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T18:54:12Z",
-            "root_cause": "The KubeadmControlPlane object md-rollout-ylcxvm-control-plane failed to initialize because its corresponding AzureMachine md-rollout-ylcxvm-control-plane-6m5lb failed to provision. The CAPZ controller log at artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-576f4948dd-g7q8z/manager.log shows repeated 'ZonalAllocationFailed' errors when trying to create the VM, indicating Azure could not allocate the requested VM size (Standard_B2s) in the specified zone (CanadaCentral). The AzureMachine resource shows status.vmState: Failed and the final error message in the controller log states 'Allocation failed. We do not have sufficient capacity for the requested VM size in this zone'. This prevented kubeadm from ever starting on the control plane node, causing the KubeadmControlPlane to remain uninitialized.",
+            "generated_at": "2026-06-11T20:43:34Z",
+            "root_cause": "The KubeadmControlPlane object md-rollout-v4d210/md-rollout-ylcxvm-control-plane failed to initialize because its underlying Azure VM (md-rollout-ylcxvm-control-plane-6m5lb) could not be provisioned. The CAPZ controller log shows repeated 'ZonalAllocationFailed' errors from Azure when trying to create the VM, indicating insufficient capacity for the requested VM size in the specified zone (CanadaCentral). The error message from Azure states: 'Allocation failed. We do not have sufficient capacity for the requested VM size in this zone.' This is a transient infrastructure issue, not a bug in the code under test.",
             "severity": "Medium",
-            "suggested_fix": "No remediation possible from available evidence: The failure is due to temporary Azure infrastructure capacity constraints (ZonalAllocationFailed). The exact evidence includes CAPZ controller logs showing the allocation failure and the AzureMachine resource showing vmState: Failed. The missing evidence needed for a code-level fix would be confirmation that this is a persistent issue with the chosen VM SKU/zone combination rather than a transient capacity problem. As a transient infrastructure issue, no code change is required - the test should be retried or configured to use a different VM SKU or zone with available capacity.",
+            "suggested_fix": "No remediation possible from available evidence: The failure is due to temporary Azure capacity constraints in the CanadaCentral zone. A retry of the test with a different zone or VM size, or waiting for capacity to become available, would be the appropriate action.",
             "relevant_files": [
-              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-576f4948dd-g7q8z/manager.log",
-              "artifacts/clusters/bootstrap/resources/md-rollout-v4d210/AzureMachine/md-rollout-ylcxvm-control-plane-6m5lb.yaml"
+              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-576f4948dd-g7q8z/manager.log"
             ],
             "mode": "agentic-universal",
             "tool_calls": 20,
-            "model_bytes": 149275,
-            "gcs_bytes": 2051141,
-            "elapsed_ms": 97000,
+            "model_bytes": 198665,
+            "gcs_bytes": 2198173,
+            "elapsed_ms": 127046,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },

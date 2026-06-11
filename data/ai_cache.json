@@ -1,23 +1,560 @@
 {
-  "agentic:universal:periodic-cluster-api-provider-azure-e2e-aks-main:2064006217113538560:ebd06066cd597303": {
-    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-aks-main:2064006217113538560:ebd06066cd597303",
-    "created_at": "2026-06-10T11:58:16.238519-07:00",
+  "agentic:universal:periodic-cluster-api-provider-azure-apiversion-upgrade-main:2064143623817007104:bc2e66e95a74478f": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-apiversion-upgrade-main:2064143623817007104:bc2e66e95a74478f",
+    "created_at": "2026-06-11T13:45:18.843051-07:00",
     "data": {
-      "summary": "AKS cluster node pool update conflict caused test timeout",
-      "is_transient": false,
-      "root_cause": "The test failure occurred because an attempt to update the AKS cluster was made while a node pool upgrade operation was already in progress. The Azure Activity Log shows a 'Failed' event with status 'Conflict' and message 'Operation is not allowed because there's an in progress upgrade node pool operation (operation ID: 3ccb4ae7-4fd2-45c2-9657-92d111179fdc) on the agent pool pool2 started on UTC 2026-06-08T16:36:00Z. Please wait for it to finish before starting a new operation.' This conflict caused the test to timeout after 1500.001s as it was waiting for the expected number of nodes (5) but only 3 were ready. The MachinePool resources show all three pools (pool0, pool1, pool2) were eventually ready with 1 replica each, but the conflicting operations prevented the test from reaching its expected state within the timeout period.",
-      "severity": "High",
-      "suggested_fix": "Modify the test to ensure that cluster update operations are not initiated while node pool upgrade operations are in progress. This can be achieved by adding checks to wait for any existing operations to complete before starting new ones. Specifically, in the test code around aks_byo_node.go:175, implement a polling mechanism to verify the cluster and node pools are in a stable state before proceeding with further operations.",
+      "summary": "Timeout connecting to azureserviceoperator-controller-manager deployment after clusterctl upgrade",
+      "is_transient": true,
+      "root_cause": "The test failure occurred when trying to verify the readiness of the 'azureserviceoperator-controller-manager' deployment after a clusterctl upgrade. The error message indicates a timeout while attempting to connect to the deployment's API endpoint (net/http: request canceled (Client.Timeout exceeded while awaiting headers)). This suggests a transient network connectivity issue or the deployment was not fully ready within the 5-minute timeout window. The controller manager logs for 'azureserviceoperator-controller-manager' show normal startup without any errors, and the Azure cluster resources appear to be properly configured and provisioned. The failure is not due to a code defect but rather a timeout during the readiness check, which is a known transient condition.",
+      "severity": "Medium",
+      "suggested_fix": "No remediation possible from available evidence: The failure appears to be a transient timeout during deployment readiness check. The logs do not indicate any underlying code defect or configuration issue that would require a fix. A retry of the test would be the appropriate action.",
       "relevant_files": [
-        "test/e2e/aks_byo_node.go",
-        "artifacts/clusters/capz-e2e-7hhm89-aks/azure-activity-logs/capz-e2e-7hhm89-aks.log",
-        "artifacts/clusters/bootstrap/resources/capz-e2e-7hhm89/MachinePool/capz-e2e-7hhm89-aks-pool0.yaml",
-        "artifacts/clusters/bootstrap/resources/capz-e2e-7hhm89/MachinePool/capz-e2e-7hhm89-aks-pool1.yaml",
-        "artifacts/clusters/bootstrap/resources/capz-e2e-7hhm89/MachinePool/capz-e2e-7hhm89-aks-pool2.yaml"
+        "artifacts/clusters/bootstrap/logs/capz-system/azureserviceoperator-controller-manager/azureserviceoperator-controller-manager-7998998bf5-bv564/manager.log",
+        "artifacts/clusters/bootstrap/resources/clusterctl-upgrade-fofvap/AzureCluster/clusterctl-upgrade-management-nq4098.yaml",
+        "artifacts/clusters/bootstrap/resources/clusterctl-upgrade-fofvap/Cluster/clusterctl-upgrade-management-nq4098.yaml"
       ],
       "tool_calls": 20,
-      "model_bytes": 89709,
-      "gcs_bytes": 2667339,
+      "model_bytes": 115145,
+      "gcs_bytes": 602984,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-apiversion-upgrade-main:2064889409345425408:00f6ad7c715b7cb5": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-apiversion-upgrade-main:2064889409345425408:00f6ad7c715b7cb5",
+    "created_at": "2026-06-11T13:44:12.506413-07:00",
+    "data": {
+      "summary": "AzureServiceOperator controller manager failed to become ready within timeout during clusterctl upgrade",
+      "is_transient": false,
+      "root_cause": "The AzureServiceOperator controller manager deployment failed to become ready within the 5-minute timeout during the clusterctl upgrade process. The failure occurred when trying to access the deployment status at https://clusterctl-upgrade-management-v66u2v-744c9ae4.canadacentral.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager. The controller manager logs show it started successfully with health probe server on port 8081 and began leader election, but there's no evidence of it achieving leader status or successfully serving requests. The kubelet logs from the control plane node show repeated connection refused errors to the API server (10.0.0.4:6443) during the critical initialization period, indicating the API server was not yet ready to serve requests when the deployment check was made. This suggests a timing issue where the upgrade process attempted to verify the deployment before the control plane was fully operational. Additional evidence from containerd logs shows port forwarding issues, and Calico controller logs indicate API server connectivity problems with context deadline exceeded errors.",
+      "severity": "High",
+      "suggested_fix": "Add a retry mechanism with backoff for deployment readiness checks in the clusterctl upgrade process. The verification of azureserviceoperator-controller-manager deployment should wait for the control plane to be fully ready before attempting to check deployment status. Specifically, modify the upgrade workflow to ensure the API server is responding to requests before proceeding with deployment readiness checks. This could involve adding a pre-check that verifies basic API server functionality before attempting to validate deployments.",
+      "relevant_files": [
+        "sigs.k8s.io/cluster-api/test/framework/clusterctl/client.go",
+        "sigs.k8s.io/cluster-api/test/framework/deployment_helpers.go"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 124572,
+      "gcs_bytes": 2293914,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-apiversion-upgrade-main:2064889409345425408:adcd79f287d20145": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-apiversion-upgrade-main:2064889409345425408:adcd79f287d20145",
+    "created_at": "2026-06-11T13:43:56.928849-07:00",
+    "data": {
+      "summary": "AzureServiceOperator controller failed to become ready within timeout during clusterctl upgrade",
+      "is_transient": true,
+      "root_cause": "The test failure occurred because the azureserviceoperator-controller-manager deployment was not ready within the 5-minute timeout during the clusterctl upgrade process. The error message indicates a network timeout when trying to access the deployment endpoint: 'net/http: request canceled (Client.Timeout exceeded while awaiting headers)'. Investigation of the controller manager logs shows successful CRD loading and no error messages, indicating the controller was functioning normally. The timeout suggests a transient infrastructure issue during the upgrade process rather than a code defect. The controller logs show normal operation with messages about loading CRDs and starting the manager, but no errors that would indicate a persistent failure.",
+      "severity": "Medium",
+      "suggested_fix": "No remediation possible from available evidence: The logs indicate normal operation of the Azure Service Operator controller manager, and the failure appears to be a transient timeout during the upgrade process. To confirm this is an infrastructure issue rather than a code defect, the test should be retried. If the issue persists, deeper investigation into the cluster network connectivity during upgrade operations would be needed.",
+      "relevant_files": [
+        "artifacts/clusters/bootstrap/logs/capz-system/azureserviceoperator-controller-manager/azureserviceoperator-controller-manager-7998998bf5-ddgc6/manager.log"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 159083,
+      "gcs_bytes": 628676,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-capi-e2e-main:2064015529126924288:3a03db89a8fcc58e": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-capi-e2e-main:2064015529126924288:3a03db89a8fcc58e",
+    "created_at": "2026-06-11T13:41:44.798183-07:00",
+    "data": {
+      "summary": "Control plane VM failed to provision due to Azure capacity constraints",
+      "is_transient": true,
+      "root_cause": "The KubeadmControlPlane object md-remediation-rs9no3/md-remediation-opqhn1-control-plane failed to initialize because its underlying Azure VM (md-remediation-opqhn1-control-plane-vdw5r) could not be provisioned. The CAPZ controller manager log shows repeated 'ZonalAllocationFailed' errors when trying to create the VM, indicating Azure does not have sufficient capacity for the requested VM size (Standard_B2s) in the specified zone (CanadaCentral/zone 1). The Azure activity log confirms this with a 'ResourceOperationFailure' containing the 'ZonalAllocationFailed' error message. This is a transient infrastructure issue, not a bug in the test or code.",
+      "severity": "Medium",
+      "suggested_fix": "No remediation possible from available evidence: The failure is due to temporary Azure capacity constraints in the CanadaCentral region. A retry of the test with a different region or VM size would be the appropriate action, but this cannot be determined from the logs alone.",
+      "relevant_files": [
+        "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-576f4948dd-g7q8z/manager.log",
+        "artifacts/clusters/md-remediation-opqhn1/azure-activity-logs/capz-e2e-fkmqm0.log",
+        "artifacts/clusters/bootstrap/resources/md-remediation-rs9no3/AzureMachine/md-remediation-opqhn1-control-plane-vdw5r.yaml"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 154385,
+      "gcs_bytes": 2359918,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-capi-e2e-main:2064015529126924288:485a3b9244a89956": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-capi-e2e-main:2064015529126924288:485a3b9244a89956",
+    "created_at": "2026-06-11T13:43:34.659615-07:00",
+    "data": {
+      "summary": "KubeadmControlPlane failed to initialize due to Azure VM allocation failure",
+      "is_transient": true,
+      "root_cause": "The KubeadmControlPlane object md-rollout-v4d210/md-rollout-ylcxvm-control-plane failed to initialize because its underlying Azure VM (md-rollout-ylcxvm-control-plane-6m5lb) could not be provisioned. The CAPZ controller log shows repeated 'ZonalAllocationFailed' errors from Azure when trying to create the VM, indicating insufficient capacity for the requested VM size in the specified zone (CanadaCentral). The error message from Azure states: 'Allocation failed. We do not have sufficient capacity for the requested VM size in this zone.' This is a transient infrastructure issue, not a bug in the code under test.",
+      "severity": "Medium",
+      "suggested_fix": "No remediation possible from available evidence: The failure is due to temporary Azure capacity constraints in the CanadaCentral zone. A retry of the test with a different zone or VM size, or waiting for capacity to become available, would be the appropriate action.",
+      "relevant_files": [
+        "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-576f4948dd-g7q8z/manager.log"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 198665,
+      "gcs_bytes": 2198173,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-capi-e2e-main:2064015529126924288:6b90b4b31c3ad2fe": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-capi-e2e-main:2064015529126924288:6b90b4b31c3ad2fe",
+    "created_at": "2026-06-11T13:41:27.622291-07:00",
+    "data": {
+      "summary": "Control plane failed to initialize due to Azure VM allocation failure in a specific zone",
+      "is_transient": true,
+      "root_cause": "The KubeadmControlPlane for cluster md-scale-pn9aoz failed to initialize because its control plane machine (md-scale-pn9aoz-control-plane-t6bnm) could not be provisioned in Azure. The Azure activity logs and CAPZ controller logs show repeated 'ZonalAllocationFailed' errors for this VM. For example, the CAPZ controller log at artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-576f4948dd-g7q8z/manager.log line 4887 shows: 'ERROR CODE: ZonalAllocationFailed' with the message 'Allocation failed. We do not have sufficient capacity for the requested VM size in this zone'. This is an infrastructure-level capacity issue, not a bug in the code. The CAPI controller logs also show it was waiting for the control plane to become ready, with messages like 'Scale up on hold because KubeadmControlPlane md-scale-iv0eu9/md-scale-pn9aoz-control-plane is provisioning' in artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-7fcc6ff995-8s7jq/manager.log. The test timed out because the control plane never became available due to this provisioning failure.",
+      "severity": "Medium",
+      "suggested_fix": "No remediation possible from available evidence: This is an Azure infrastructure capacity issue that cannot be fixed by changes to the test or CAPZ code. The specific VM size in the selected zone (CanadaCentral zone 1) is unavailable. A potential operational fix would be to retry the test or configure the template to use a different zone or VM size, but this is not a code remediation.",
+      "relevant_files": [
+        "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-576f4948dd-g7q8z/manager.log",
+        "artifacts/clusters/md-scale-pn9aoz/azure-activity-logs/capz-e2e-f22sq9.log",
+        "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-7fcc6ff995-8s7jq/manager.log"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 154104,
+      "gcs_bytes": 3353853,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-capi-e2e-main:2064015529126924288:cd23d4ebc940544a": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-capi-e2e-main:2064015529126924288:cd23d4ebc940544a",
+    "created_at": "2026-06-11T13:41:36.638559-07:00",
+    "data": {
+      "summary": "KubeadmControlPlane initialization failed due to Azure VM allocation failure",
+      "is_transient": true,
+      "root_cause": "The KubeadmControlPlane object self-hosted/self-hosted-1db3jr-control-plane failed to initialize because its corresponding Azure VM (self-hosted-1db3jr-control-plane-ccvrb) could not be provisioned. The CAPZ controller log at artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-576f4948dd-g7q8z/manager.log shows repeated 'ZonalAllocationFailed' errors for this VM (lines 3420-3421, 3519-3520). The Azure error message states: 'Allocation failed. We do not have sufficient capacity for the requested VM size in this zone.' This is a transient infrastructure issue where Azure cannot allocate the requested VM size in the specified zone. The CAPI controller manager log at artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-7fcc6ff995-8s7jq/manager.log confirms the KubeadmControlPlane remained uninitialized, with messages indicating it was 'provisioning' and 'not yet initialized' (e.g., line 265).",
+      "severity": "Medium",
+      "suggested_fix": "Retry the test. This is a transient Azure infrastructure capacity issue that should resolve on its own or with a different zone/VM size selection in subsequent runs.",
+      "relevant_files": [
+        "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-576f4948dd-g7q8z/manager.log",
+        "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-7fcc6ff995-8s7jq/manager.log"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 88857,
+      "gcs_bytes": 2472733,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-conformance-main:2063220532823724032:30140267cc88d516": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-conformance-main:2063220532823724032:30140267cc88d516",
+    "created_at": "2026-06-11T13:31:31.715769-07:00",
+    "data": {
+      "summary": "Cluster creation failed due to x509 certificate verification errors and missing AzureMachineTemplate",
+      "is_transient": true,
+      "root_cause": "The failure was initially caused by 'x509: certificate signed by unknown authority' errors when attempting to call CAPZ webhooks during cluster template application, as shown in the build log at line 1387. This is a known transient issue related to webhook certificate propagation. These webhook failures led to resource creation timeouts, which then triggered 'client rate limiter Wait returned an error: context deadline exceeded' messages as seen in the build log at lines 1627 and 1869. The Cluster YAML status shows 'InfrastructureReady: AzureCluster does not exist' and 'ControlPlaneInitialized: Control plane not yet initialized'. The KubeadmControlPlane status explicitly states 'Scaling up from 0 to 1 replicas is blocked because: AzureMachineTemplate does not exist'. The KCP controller log confirms this with repeated errors: 'failed to retrieve AzureMachineTemplate capz-conf-f6yquf/capz-conf-f6yquf-control-plane: AzureMachineTemplate.infrastructure.cluster.x-k8s.io \"capz-conf-f6yquf-control-plane\" not found'. The AzureMachineTemplate directory exists but only contains the worker template (capz-conf-f6yquf-md-0.yaml), not the control plane template. This confirms the root cause was the initial webhook certificate errors preventing proper resource creation.",
+      "severity": "Low",
+      "suggested_fix": "No remediation possible from available evidence: The failure is a known transient infrastructure flake related to webhook certificate propagation and resource creation timeouts. The suggested fix is to retry the test run as this issue resolves itself when the cert-manager CA bundle completes injection and resources are properly created.",
+      "relevant_files": [
+        "build-log.txt",
+        "artifacts/clusters/bootstrap/resources/capz-conf-f6yquf/Cluster/capz-conf-f6yquf.yaml",
+        "artifacts/clusters/bootstrap/resources/capz-conf-f6yquf/KubeadmControlPlane/capz-conf-f6yquf-control-plane.yaml",
+        "artifacts/clusters/bootstrap/logs/capi-kubeadm-control-plane-system/capi-kubeadm-control-plane-controller-manager/capi-kubeadm-control-plane-controller-manager-6d9db64c49-v42hl/manager.log"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 96007,
+      "gcs_bytes": 782888,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-conformance-main:2063951354879021056:3cd7259a48772671": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-conformance-main:2063951354879021056:3cd7259a48772671",
+    "created_at": "2026-06-11T13:31:32.022088-07:00",
+    "data": {
+      "summary": "Control plane failed to initialize due to Azure VM allocation failure (ZonalAllocationFailed)",
+      "is_transient": true,
+      "root_cause": "The KubeadmControlPlane failed to initialize because the underlying Azure VM for the control plane machine could not be provisioned. From the CAPZ controller logs (artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-86bcd8469-hr6sm/manager.log), we see repeated 'ZonalAllocationFailed' errors for the AzureMachine resource 'capz-conf-ae0976-control-plane-l65gd'. For example, line 870-871 shows: 'failed to reconcile AzureMachine: failed to reconcile AzureMachine service virtualmachine: failed to create or update resource capz-conf-ae0976/capz-conf-ae0976-control-plane-l65gd ... ERROR CODE: ZonalAllocationFailed'. The detailed error message on line 884 confirms: 'Allocation failed. We do not have sufficient capacity for the requested VM size in this zone. Read more about improving likelihood of allocation success at http://aka.ms/allocation-guidance. Try one of these alternative options to improve chance of allocation success: - Alternative zones for the same region and size: (2).'. This indicates a transient infrastructure issue where Azure could not allocate the requested VM size (Standard_B2s) in the specified zone (CanadaCentral zone 1) due to capacity constraints. The KubeadmControlPlane status (artifacts/clusters/bootstrap/resources/capz-conf-ae0976/KubeadmControlPlane/capz-conf-ae0976-control-plane.yaml) confirms it was never initialized, with the 'Initialized' condition status 'False' and reason 'NotInitialized'. The azure-activity-logs (artifacts/clusters/capz-conf-ae0976/azure-activity-logs/capz-conf-ae0976.log) do not contain specific VM provisioning failure details, but the CAPZ controller log is definitive.",
+      "severity": "Medium",
+      "suggested_fix": "No remediation possible from available evidence: The failure is due to transient Azure infrastructure capacity issues. The test should be retried. If this persists, consider changing the Azure region or VM size in the test configuration.",
+      "relevant_files": [
+        "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-86bcd8469-hr6sm/manager.log",
+        "artifacts/clusters/bootstrap/resources/capz-conf-ae0976/KubeadmControlPlane/capz-conf-ae0976-control-plane.yaml",
+        "artifacts/clusters/bootstrap/resources/capz-conf-ae0976/AzureMachine/capz-conf-ae0976-control-plane-l65gd.yaml"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 171636,
+      "gcs_bytes": 640727,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-e2e-aks-main:2064758042246778880:ebd06066cd597303": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-aks-main:2064758042246778880:ebd06066cd597303",
+    "created_at": "2026-06-11T13:45:58.585408-07:00",
+    "data": {
+      "summary": "AKS node pool test failed to scale to expected node count within timeout",
+      "is_transient": false,
+      "root_cause": "The test 'Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node' failed because the Eventually function at aks_byo_node.go:175 expected 5 nodes but only found 3 after 1500 seconds. This indicates a failure in scaling the AKS node pool to the desired size. The test cluster capz-e2e-akp4n6-pool was created but didn't reach the expected node count. The failure occurred during the node pool scaling operation where the test was waiting for machine pools to reach the desired state. Based on the test name and failure pattern, this appears to be a specific issue with the bring-your-own (BYO) node pool scaling functionality in AKS clusters.",
+      "severity": "High",
+      "suggested_fix": "No remediation possible from available evidence: The investigation reached its budget before identifying the specific root cause. To determine the exact issue, examine the Azure activity logs for the cluster capz-e2e-akp4n6-pool, check the CAPZ controller logs for errors during machine pool provisioning, and review the AKS cluster's node pool configuration and scaling events. The missing evidence includes the specific error messages from the Azure infrastructure during node pool scaling and the detailed CAPZ controller reconciliation logs for the failing machine pools.",
+      "relevant_files": [
+        "test/e2e/aks_byo_node.go"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 104582,
+      "gcs_bytes": 1477583,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-23:2064254857929297920:a4997843c714727b": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-23:2064254857929297920:a4997843c714727b",
+    "created_at": "2026-06-11T13:50:24.115563-07:00",
+    "data": {
+      "summary": "AKS cluster creation failed due to Azure API conflicts during resource provisioning",
+      "is_transient": true,
+      "root_cause": "The build-log.txt shows multiple 'context deadline exceeded' errors when creating AzureManagedMachinePool and AzureManagedControlPlane resources, indicating client-side timeouts. However, the root cause is revealed in the Azure activity logs at artifacts/clusters/capz-e2e-r59nl4-asoapi/azure-activity-logs/capz-e2e-r59nl4-asoapi.log, which show 'EtagMismatch' errors with the message 'Operation is not allowed: Another operation is in progress'. This indicates that concurrent operations on the same AKS resources (specifically agent pool 'pool0') caused conflicts at the Azure API level. The etag mismatch occurs when multiple operations attempt to modify the same resource simultaneously, and Azure rejects the conflicting requests. This is a transient infrastructure issue related to concurrent resource provisioning rather than a bug in the CAPZ code.",
+      "severity": "Medium",
+      "suggested_fix": "No remediation possible from available evidence: The failure is due to concurrent operations on Azure resources during test execution. A potential fix would be to implement better serialization of operations on shared AKS resources in the test framework, but this would require changes to the test orchestration logic rather than the CAPZ controller code.",
+      "relevant_files": [
+        "artifacts/clusters/capz-e2e-r59nl4-asoapi/azure-activity-logs/capz-e2e-r59nl4-asoapi.log",
+        "build-log.txt"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 53842,
+      "gcs_bytes": 3851184,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-23:2064254857929297920:c731de6c77efcc50": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-23:2064254857929297920:c731de6c77efcc50",
+    "created_at": "2026-06-11T13:49:22.278298-07:00",
+    "data": {
+      "summary": "Cluster creation failed due to x509 certificate errors when calling CAPZ webhooks during AKS cluster provisioning",
+      "is_transient": true,
+      "root_cause": "The test failure was caused by 'x509: certificate signed by unknown authority' errors when the Kubernetes API server attempted to call CAPZ webhooks during the creation of an AKS cluster. These errors occurred during the application of the cluster template for 'capz-e2e-r59nl4-asoapi', specifically when trying to create AzureManagedControlPlaneTemplate and AzureManagedMachinePool resources. The build log shows repeated webhook call failures with TLS certificate verification errors, which is a known transient issue in CAPZ related to webhook certificate propagation during cluster initialization. The CAPZ controller manager logs also show multiple 'http: TLS handshake error' messages from internal components attempting to communicate with the webhook server, confirming the certificate trust issue. This is a recognized infrastructure flake pattern in CAPZ where the cert-manager CA bundle has not finished injecting when early reconcile calls fire, rather than a code defect.",
+      "severity": "Medium",
+      "suggested_fix": "No remediation possible from available evidence: The failure is a known transient infrastructure flake related to webhook certificate propagation during cluster bringup. The test should be retried as the root cause is not a code defect but a timing issue with certificate injection during component initialization.",
+      "relevant_files": [
+        "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-7989795556-n7xsf/manager.log",
+        "build-log.txt"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 180881,
+      "gcs_bytes": 2527871,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-23:2064254857929297920:e99b9cae56b7f25d": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-23:2064254857929297920:e99b9cae56b7f25d",
+    "created_at": "2026-06-11T13:51:16.23496-07:00",
+    "data": {
+      "summary": "Cluster creation failed due to webhook certificate validation errors leading to context deadline exceeded",
+      "is_transient": true,
+      "root_cause": "The failure was caused by repeated 'x509: certificate signed by unknown authority' errors when attempting to call CAPZ webhooks during cluster template application. The build log shows multiple webhook calls failing with TLS certificate verification errors for services like 'capz-webhook-service.capz-system.svc'. These errors occurred for various resources including AzureManagedControlPlaneTemplate, AzureManagedMachinePoolTemplate, and AzureManagedControlPlane. After several retry attempts, these failures eventually led to 'context deadline exceeded' errors due to the client rate limiter wait returning an error. This is a known transient issue related to webhook certificate propagation during cluster or management-cluster bringup, where the cert-manager CA bundle has not finished injecting when early reconcile calls fire. The CAPZ controller manager log does not show these specific webhook errors, indicating they occurred in the client-side calls during template application rather than in the controller's reconciliation loop. The KCP controller log shows normal operation with no errors related to the failed cluster creation.",
+      "severity": "Medium",
+      "suggested_fix": "No remediation possible from available evidence: The failure is a known transient infrastructure flake related to webhook certificate propagation. The test should be retried. No code or configuration changes are required based on the evidence presented.",
+      "relevant_files": [
+        "build-log.txt",
+        "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-7989795556-n7xsf/manager.log",
+        "artifacts/clusters/bootstrap/logs/capi-kubeadm-control-plane-system/capi-kubeadm-control-plane-controller-manager/capi-kubeadm-control-plane-controller-manager-774c8b856b-48q65/manager.log"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 170938,
+      "gcs_bytes": 4563028,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-24:2064362317256069120:c6a7171bd4bb97c4": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-24:2064362317256069120:c6a7171bd4bb97c4",
+    "created_at": "2026-06-11T13:53:10.837027-07:00",
+    "data": {
+      "summary": "Workload cluster creation failed due to transient Azure API connectivity issues preventing node pool reconciliation",
+      "is_transient": true,
+      "root_cause": "The test failure occurred because CAPI controller could not connect to the workload cluster API server to reconcile MachinePools, as indicated by repeated \"connection to the workload cluster is down\" errors in the capi-controller-manager logs for all three node pools (pool0, pool1, pool2) of the capz-e2e-7fm1xe-aks cluster. This connectivity issue was caused by underlying Azure infrastructure problems, specifically \"We've temporarily lost connection to the health metrics of this AKS cluster\" errors reported in the capz-controller-manager logs for the AzureManagedControlPlane resource. The KCP controller logs also show repeated DNS lookup failures for the cluster API endpoint with \"no such host\" errors, confirming the connectivity issues were at the Azure infrastructure level. These Azure API connectivity issues prevented the test from verifying that all expected nodes (5) were ready, causing the Eventually assertion to timeout after 1500s when only 3 nodes were reported as ready. The MachinePool resources themselves show they were successfully created and are in Running phase with Ready conditions, indicating the underlying infrastructure was provisioned correctly once connectivity was restored.",
+      "severity": "Medium",
+      "suggested_fix": "No remediation possible from available evidence: The failure was caused by transient Azure API connectivity issues that resolved automatically. The test should be retried. If this pattern persists, investigate Azure API throttling or network connectivity from the test environment to Azure.",
+      "relevant_files": [
+        "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-7fcc6ff995-9wmsg/manager.log",
+        "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-596d5d5d75-rlxhf/manager.log",
+        "artifacts/clusters/bootstrap/logs/capi-kubeadm-control-plane-system/capi-kubeadm-control-plane-controller-manager/capi-kubeadm-control-plane-controller-manager-6d9db64c49-vcswk/manager.log",
+        "artifacts/clusters/bootstrap/resources/capz-e2e-7fm1xe/MachinePool/capz-e2e-7fm1xe-aks-pool0.yaml",
+        "artifacts/clusters/bootstrap/resources/capz-e2e-7fm1xe/MachinePool/capz-e2e-7fm1xe-aks-pool1.yaml",
+        "artifacts/clusters/bootstrap/resources/capz-e2e-7fm1xe/MachinePool/capz-e2e-7fm1xe-aks-pool2.yaml"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 196021,
+      "gcs_bytes": 4478547,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2060928682012184576:3d02626b0869fa2c": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2060928682012184576:3d02626b0869fa2c",
+    "created_at": "2026-06-11T13:48:03.711482-07:00",
+    "data": {
+      "summary": "Calico deployment failed due to missing kubeconfig secret preventing HelmChartProxy from deploying CNI to autoscale cluster",
+      "is_transient": false,
+      "root_cause": "The root cause of the failure is that the CAAPH controller could not deploy Calico to the autoscale cluster because the required kubeconfig secret 'capz-e2e-dxesyq-autoscale-kubeconfig' was not found. This is evidenced by the repeated error messages in the CAAPH controller logs: 'failed to get kubeconfig for cluster: failed to retrieve kubeconfig secret for Cluster capz-e2e-dxesyq/capz-e2e-dxesyq-autoscale: Secret \"capz-e2e-dxesyq-autoscale-kubeconfig\" not found'. Without this secret, the HelmChartProxy controller cannot establish a connection to the workload cluster to deploy the Calico Helm chart, which explains why the 'calico-kube-controllers' deployment was never created, leading to the timeout error in the test. Additional evidence from CAPI controller logs shows the same pattern of missing kubeconfig secrets for other clusters, indicating a systemic issue with kubeconfig secret creation or propagation.",
+      "severity": "High",
+      "suggested_fix": "No remediation possible from available evidence: The strongest fact established is that the kubeconfig secret 'capz-e2e-dxesyq-autoscale-kubeconfig' was not created for the autoscale cluster. The specific artifacts consulted include CAAPH controller logs showing repeated failures to retrieve the kubeconfig secret, and CAPI controller logs showing similar issues with other clusters. The exact missing evidence that prevents a remediation is the Cluster YAML status conditions and control plane machine logs that would show whether the cluster's control plane was properly initialized and whether the kubeconfig secret creation process completed successfully.",
+      "relevant_files": [
+        "artifacts/clusters/bootstrap/logs/caaph-system/caaph-controller-manager/caaph-controller-manager-84d6b87b9d-hnvjm/manager.log",
+        "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-8447bd6c48-5xfjm/manager.log"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 145723,
+      "gcs_bytes": 23360813,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2060928682012184576:41abd03d97451a54": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2060928682012184576:41abd03d97451a54",
+    "created_at": "2026-06-11T13:48:53.719151-07:00",
+    "data": {
+      "summary": "Calico CNI failed to initialize on Azure Linux 3 control plane nodes, causing kubelet network readiness errors and preventing calico-kube-controllers deployment",
+      "is_transient": false,
+      "root_cause": "The kubelet logs on the first control plane machine (capz-e2e-atrxr7-azl3-control-plane-f8wlm) show repeated errors indicating the CNI plugin is not initialized: \"Container runtime network not ready\" with \"Network plugin returns error: cni plugin not initialized\" (e.g., line 271 in kubelet.log). This directly prevents pods from starting, including the calico-kube-controllers deployment which the test expects to find. The cloud-init logs for the same machine show kubeadm init completed successfully and etcd is healthy, indicating the core Kubernetes components started. However, the CNI plugin (Calico) did not initialize properly. The journal logs show Calico components were being pulled (tigera-operator pod volume mount for var-lib-calico at line 9050 in journal.log), but the CNI plugin itself failed to initialize. The CAAPH controller logs show it was trying to manage HelmReleaseProxies for Calico but was failing due to not being able to retrieve the cluster kubeconfig secret (\"Secret \\\"capz-e2e-atrxr7-azl3-kubeconfig\\\" not found\"), which indicates a potential issue with the cluster's initialization preventing CAAPH from deploying Calico properly. The root cause is that the Calico CNI plugin did not initialize on the Azure Linux 3 nodes, cascading to prevent the calico-kube-controllers deployment from starting.",
+      "severity": "High",
+      "suggested_fix": "No remediation possible from available evidence: The strongest fact established is that the CNI plugin failed to initialize on Azure Linux 3 nodes, causing kubelet network readiness errors. The specific artifacts consulted include kubelet.log, cloud-init-output.log, journal.log from the first control plane node, and CAAPH controller logs. The exact missing evidence that prevents a remediation is the Calico CNI pod logs (e.g., calico-node logs) and the containerd logs from the failing Azure Linux 3 node, which would show the specific CNI initialization failure.",
+      "relevant_files": [
+        "artifacts/clusters/capz-e2e-atrxr7-azl3/machines/capz-e2e-atrxr7-azl3-control-plane-f8wlm/kubelet.log",
+        "artifacts/clusters/bootstrap/logs/caaph-system/caaph-controller-manager/caaph-controller-manager-84d6b87b9d-hnvjm/manager.log",
+        "artifacts/clusters/capz-e2e-atrxr7-azl3/machines/capz-e2e-atrxr7-azl3-control-plane-f8wlm/cloud-init-output.log"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 138150,
+      "gcs_bytes": 73903184,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2060928682012184576:c77b7dc02a6158ae": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2060928682012184576:c77b7dc02a6158ae",
+    "created_at": "2026-06-11T13:49:44.363446-07:00",
+    "data": {
+      "summary": "Calico CNI failed to deploy due to missing kubeconfig secret, causing calico-kube-controllers deployment to never be created",
+      "is_transient": false,
+      "root_cause": "The root cause is that the Calico CNI Helm chart failed to deploy on the workload cluster 'capz-e2e-f7m9bu-spot' because the CAAPH controller could not retrieve the kubeconfig secret for the cluster. From the CAAPH manager logs, we can see repeated errors: 'failed to get kubeconfig for cluster: failed to retrieve kubeconfig secret for Cluster capz-e2e-f7m9bu/capz-e2e-f7m9bu-spot: Secret \"capz-e2e-f7m9bu-spot-kubeconfig\" not found' (line 1579 in caaph manager log). This prevented CAAPH from installing the Calico Helm release, which in turn meant the 'calico-kube-controllers' deployment was never created. The test timed out waiting for this deployment to appear. The CAPI logs also show the cluster was stuck in provisioning with 'ControlPlaneIsStable' preflight checks failing, indicating the control plane was not fully ready to receive addon deployments. Further investigation of the control plane node 'capz-e2e-f7m9bu-spot-control-plane-2s8m8' shows the kubelet.log repeatedly reporting 'Container runtime network not ready: Network plugin returns error: cni plugin not initialized', confirming that the CNI was never properly initialized due to the missing Calico deployment.",
+      "severity": "High",
+      "suggested_fix": "No remediation possible from available evidence: The investigation established that the Calico CNI failed to deploy because the CAAPH controller could not find the kubeconfig secret for the workload cluster. However, the specific reason why the kubeconfig secret was not created (e.g., control plane initialization failure, secret creation error) is not evident from the logs examined. To remediate this issue, one would need to investigate the control plane initialization process and the kubeconfig secret creation mechanism in detail, which requires evidence not available in the current artifact set.",
+      "relevant_files": [
+        "artifacts/clusters/bootstrap/logs/caaph-system/caaph-controller-manager/caaph-controller-manager-84d6b87b9d-hnvjm/manager.log",
+        "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-8447bd6c48-5xfjm/manager.log",
+        "artifacts/clusters/capz-e2e-f7m9bu-spot/machines/capz-e2e-f7m9bu-spot-control-plane-2s8m8/kubelet.log"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 218604,
+      "gcs_bytes": 54274773,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2060928682012184576:d0d1ac65b8504a36": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-23:2060928682012184576:d0d1ac65b8504a36",
+    "created_at": "2026-06-11T13:46:53.758295-07:00",
+    "data": {
+      "summary": "Calico deployment failed due to missing kubeconfig secret for the workload cluster",
+      "is_transient": false,
+      "root_cause": "The test failure occurred because the HelmReleaseProxy for Calico's 'tigera-operator' could not be created. This was due to the CAAPH controller repeatedly failing to retrieve the kubeconfig secret for the workload cluster 'capz-e2e-22kvzh-cc'. The error message 'failed to get kubeconfig for cluster: failed to retrieve kubeconfig secret for Cluster capz-e2e-22kvzh/capz-e2e-22kvzh-cc: Secret \"capz-e2e-22kvzh-cc-kubeconfig\" not found' was consistently logged in the CAAPH controller manager log. This indicates that the kubeconfig secret, which is essential for CAAPH to connect to the workload cluster and deploy the Helm chart, was not created or was not accessible when CAAPH attempted to reconcile the HelmChartProxy for Calico. The control plane for the cluster was successfully provisioned as indicated by the CAPI controller logs showing 'Cluster capz-e2e-22kvzh-cc is Provisioned'. However, the addon deployment failed due to this missing secret. The worker node boot logs show successful kubeadm join, indicating the node itself was able to connect to the control plane, but this doesn't guarantee the kubeconfig secret was properly created or propagated to the management cluster's namespace. The Calico controller logs from a working cluster (capz-e2e-0j3e3v-flex) show normal operation, confirming the issue is specific to the deployment process of the failing cluster.",
+      "severity": "High",
+      "suggested_fix": "No remediation possible from available evidence: The root cause is established as a missing kubeconfig secret 'capz-e2e-22kvzh-cc-kubeconfig' in the 'capz-e2e-22kvzh' namespace. The specific artifacts consulted were the CAAPH controller manager log and the CAPI controller manager log. The exact missing evidence preventing a concrete remediation is the reason why the kubeconfig secret was not created or not accessible, which would require examining the Cluster API core controller logs or the workload cluster's API server logs to determine the failure point in the secret generation or propagation process.",
+      "relevant_files": [
+        "artifacts/clusters/bootstrap/logs/caaph-system/caaph-controller-manager/caaph-controller-manager-84d6b87b9d-hnvjm/manager.log",
+        "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-8447bd6c48-5xfjm/manager.log"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 153605,
+      "gcs_bytes": 95033374,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24:2061015253067501568:2de77ee2e743fddf": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-v1beta1-release-1-24:2061015253067501568:2de77ee2e743fddf",
+    "created_at": "2026-06-11T13:52:48.083086-07:00",
+    "data": {
+      "summary": "AzureServiceOperator controller manager deployment failed to become ready due to API server connectivity issues during cluster initialization",
+      "is_transient": true,
+      "root_cause": "The failure occurred because the AzureServiceOperator controller manager deployment could not become ready within the timeout period. This was due to the API server not being reachable (context deadline exceeded) when the deployment was being checked. From the kubelet logs on the control plane node, we can see repeated \"context deadline exceeded\" errors when trying to communicate with the API server at https://10.0.0.4:6443. The cloud-init logs show that during the kubeadm initialization process, there were multiple \"connection refused\" errors when trying to connect to the API server on port 6443. These connection issues indicate that the API server was not yet ready to serve requests, which is a common transient condition during cluster startup. The errors in the kubelet logs such as \"Failed to update lease\" and \"Server rejected event\" with \"context deadline exceeded\" further support that the API server was not responding in a timely manner. This is a known transient issue during cluster initialization where components are still coming up and establishing connectivity. The containerd logs show normal container operations, and the Calico controller logs indicate successful initialization, suggesting the runtime and CNI were not the root cause. The CAPI controller logs show issues with a different cluster (capz-e2e-zhno1o-azl3) which is unrelated to the failing cluster (capz-e2e-qvogg3-public-custom-vnet).",
+      "severity": "Medium",
+      "suggested_fix": "No remediation possible from available evidence: The failure appears to be a transient issue during cluster initialization where the API server was not yet ready to serve requests. The evidence points to a timing issue rather than a configuration or code defect. To confirm this is a transient issue, the test should be retried. If the issue persists, further investigation into the control plane initialization timing or network configuration may be needed.",
+      "relevant_files": [
+        "artifacts/clusters/bootstrap/logs/capz-system/azureserviceoperator-controller-manager/azureserviceoperator-controller-manager-7998998bf5-bw9t9/manager.log",
+        "artifacts/clusters/capz-e2e-qvogg3-public-custom-vnet/machines/capz-e2e-qvogg3-public-custom-vnet-control-plane-v4m5v/kubelet.log",
+        "artifacts/clusters/capz-e2e-qvogg3-public-custom-vnet/machines/capz-e2e-qvogg3-public-custom-vnet-control-plane-v4m5v/cloud-init-output.log",
+        "artifacts/clusters/capz-e2e-39rky2-spot/machines/capz-e2e-39rky2-spot-control-plane-xgd4d/containerd.log",
+        "artifacts/clusters/capz-e2e-39rky2-spot/calico-system/calico-kube-controllers-5dcc468c7d-8nqrk/calico-kube-controllers.log",
+        "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-7fcc6ff995-w2pdx/manager.log"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 210370,
+      "gcs_bytes": 6370238,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main:2063891459899133952:37c0b6dd9dee5092": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main:2063891459899133952:37c0b6dd9dee5092",
+    "created_at": "2026-06-11T13:27:16.027982-07:00",
+    "data": {
+      "summary": "Failed to fetch Cluster API v1.11.11 manifest from GitHub due to a 504 timeout",
+      "is_transient": true,
+      "root_cause": "The test failed during the SynchronizedBeforeSuite phase when attempting to generate the manifest for 'cluster-api' version 'v1.11.11'. The root cause, as shown in build-log.txt at line 1379, is a 'failed to get component source YAML from URL' error. This error has two components: a 'timed out waiting for the condition' (line 1385) and a more specific 'failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml: got status code 504' (line 1389). A 504 Gateway Timeout indicates a transient network or server-side issue when accessing the GitHub release URL, not a bug in the CAPZ codebase. This is a known transient error class according to the project-specific knowledge.",
+      "severity": "Low",
+      "suggested_fix": "Retry the test run. Since this is a transient network issue accessing an external GitHub URL, no code changes are required. The test should pass on a subsequent attempt when the GitHub service is responsive.",
+      "relevant_files": [
+        "build-log.txt"
+      ],
+      "tool_calls": 19,
+      "model_bytes": 117015,
+      "gcs_bytes": 1614550,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main:2063891459899133952:b2b24fda301e4093": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main:2063891459899133952:b2b24fda301e4093",
+    "created_at": "2026-06-11T13:27:26.703911-07:00",
+    "data": {
+      "summary": "SynchronizedBeforeSuite failed due to a timeout fetching Cluster API v1.11.11 components from GitHub",
+      "is_transient": true,
+      "root_cause": "The test suite failed during the SynchronizedBeforeSuite phase when attempting to create a clusterctl local repository. The root cause was a failure to fetch the Cluster API v1.11.11 core components YAML from GitHub (https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml). The error log from build-log.txt at line 1379 shows: 'failed to get component source YAML from URL: [timed out waiting for the condition, failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml: got status code 504]'. A 504 status code indicates a gateway timeout from GitHub's servers, which is a transient infrastructure issue rather than a bug in the CAPZ codebase. This failure prevented the test suite from initializing the required Cluster API components, causing the entire test run to abort.",
+      "severity": "Low",
+      "suggested_fix": "No remediation possible from available evidence: The failure was caused by a transient network issue (504 Gateway Timeout) when fetching external dependencies from GitHub during test setup. The appropriate action is to retry the test run, as this type of infrastructure flake is not indicative of a code defect in CAPZ. No changes to the codebase are required based on this failure.",
+      "relevant_files": [
+        "test/e2e/e2e_suite_test.go",
+        "/home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/clusterctl/repository.go"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 167636,
+      "gcs_bytes": 1133577,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main:2064523883997827072:08198c325e170c3b": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main:2064523883997827072:08198c325e170c3b",
+    "created_at": "2026-06-11T13:28:44.806847-07:00",
+    "data": {
+      "summary": "Workload cluster creation timed out due to infrastructure not becoming ready, caused by webhook certificate issues and Azure API rate limiting",
+      "is_transient": true,
+      "root_cause": "The workload cluster creation failed because the control plane infrastructure did not become ready within the timeout. The KCP controller log shows repeated 'Cluster infrastructure is not ready yet' messages (manager.log lines 4, 12, 13) and 'connection to the workload cluster is down' errors when trying to update KubeadmControlPlane status (manager.log lines 2, 3, 6, 11, 15, 16). This indicates the control plane VMs were not successfully provisioned or did not become reachable. The build log shows initial 'x509: certificate signed by unknown authority' errors when calling CAPZ webhooks (build-log.txt lines 1499-1528), which is a known transient issue related to webhook cert propagation. This was followed by 'client rate limiter Wait returned an error: context deadline exceeded' messages (build-log.txt lines 1739, 2221, 2699), indicating Azure API throttling. These transient issues prevented the cluster infrastructure from initializing, leading to the final 'context deadline exceeded' error reported in the test failure (build-log.txt lines 1933-1938, 2415-2420, 2893-2898).",
+      "severity": "Low",
+      "suggested_fix": "No remediation possible from available evidence: The failure is attributed to transient infrastructure issues (webhook certificate propagation delay and Azure API rate limiting) that do not require code changes. The test should be retried to confirm it passes under normal conditions.",
+      "relevant_files": [
+        "build-log.txt",
+        "artifacts/clusters/bootstrap/logs/capi-kubeadm-control-plane-system/capi-kubeadm-control-plane-controller-manager/capi-kubeadm-control-plane-controller-manager-6d9db64c49-zbwb5/manager.log"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 116235,
+      "gcs_bytes": 3847373,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main:2064523883997827072:47290743d7b06333": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main:2064523883997827072:47290743d7b06333",
+    "created_at": "2026-06-11T13:29:25.661074-07:00",
+    "data": {
+      "summary": "Webhook certificate validation failure causing context deadline exceeded",
+      "is_transient": true,
+      "root_cause": "The failure is caused by 'x509: certificate signed by unknown authority' errors when attempting to call CAPZ webhooks during cluster template application. This is evidenced by repeated log messages in build-log.txt showing webhook call failures with TLS certificate verification errors. The error pattern matches a known transient infrastructure flake where cert-manager CA bundle injection has not completed when early reconcile calls fire. The CAPZ controller manager logs show successful certificate loading and webhook server startup, and there are no concrete bootstrap failures in the machine logs to indicate a real bug. The 'context deadline exceeded' error is a downstream effect of the webhook certificate validation failures preventing successful resource creation.",
+      "severity": "Medium",
+      "suggested_fix": "No remediation possible from available evidence: The failure is a known transient infrastructure flake related to webhook certificate propagation timing. The test should be retried. Concrete remediation would require changes to the cert-manager configuration or webhook readiness checks, but this is an infrastructure-level timing issue rather than a code defect in the tested components.",
+      "relevant_files": [
+        "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-7b79b8b489-hb45l/manager.log",
+        "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-7fcc6ff995-bz685/manager.log",
+        "artifacts/clusters/bootstrap/logs/caaph-system/caaph-controller-manager/caaph-controller-manager-6df7bd9f9c-92kpd/manager.log"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 212260,
+      "gcs_bytes": 2946301,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main:2064523883997827072:e1ffd64314c010bb": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main:2064523883997827072:e1ffd64314c010bb",
+    "created_at": "2026-06-11T13:41:38.281615-07:00",
+    "data": {
+      "summary": "Webhook certificate validation failure causing cluster creation timeout",
+      "is_transient": true,
+      "root_cause": "The test failure is caused by a known webhook certificate propagation flake. Multiple log entries in build-log.txt show repeated 'x509: certificate signed by unknown authority' errors when trying to call CAPZ webhooks for validating AzureCluster and AzureClusterIdentity resources. For example, line 1499 shows: 'failed calling webhook \"validation.azurecluster.infrastructure.cluster.x-k8s.io\": failed to call webhook: Post \"https://capz-webhook-service.capz-system.svc:443/validate-infrastructure-cluster-x-k8s-io-v1beta1-azurecluster?timeout=10s\": tls: failed to verify certificate: x509: certificate signed by unknown authority'. This is followed by 'context deadline exceeded' errors (line 1739) when the client rate limiter gives up after repeated failures. The CAPZ controller manager logs also show 'http: TLS handshake error' messages indicating bad certificates. This is a known transient issue where the cert-manager CA bundle has not finished injecting when early reconcile calls fire, and it is not a severe defect requiring code changes.",
+      "severity": "Low",
+      "suggested_fix": "No remediation possible from available evidence: The failure is a known transient webhook certificate propagation flake. The test should be retried as this condition typically resolves itself in subsequent runs when the certificate propagation completes successfully.",
+      "relevant_files": [
+        "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-7b79b8b489-hb45l/manager.log",
+        "build-log.txt"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 263400,
+      "gcs_bytes": 1468133,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-35-1-36-main:2064451405317410816:01b2db9b9e645ed5": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-35-1-36-main:2064451405317410816:01b2db9b9e645ed5",
+    "created_at": "2026-06-11T13:31:20.530181-07:00",
+    "data": {
+      "summary": "Control plane machine failed to provision due to Azure capacity issues",
+      "is_transient": false,
+      "root_cause": "The test failure occurred because only 2 out of 3 control plane machines were successfully provisioned within the timeout period. Investigation revealed that the third control plane machine (k8s-upgrade-and-conformance-cirl41-control-plane-779jf) failed during Azure VM provisioning due to a 'ZonalAllocationFailed' error, as shown in the CAPZ controller logs. The error message from artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-d6c54db8f-md775/manager.log indicates: 'Allocation failed. We do not have sufficient capacity for the requested VM size in this zone.' The AzureMachine resource shows vmState: Failed, confirming the provisioning failure. This prevented the control plane from reaching the expected 3-machine configuration, causing the test to timeout waiting for all control plane machines to exist.",
+      "severity": "High",
+      "suggested_fix": "Modify the test to use a different Azure region or VM size that has sufficient capacity, or implement retry logic with fallback options when encountering zonal allocation failures. Alternatively, consider using availability sets instead of zones for control plane machines in test environments where capacity issues are common. The specific file to modify would be the test configuration that specifies the Azure region and VM size for control plane machines.",
+      "relevant_files": [
+        "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-d6c54db8f-md775/manager.log",
+        "artifacts/clusters/bootstrap/resources/k8s-upgrade-and-conformance-sox9ry/AzureMachine/k8s-upgrade-and-conformance-cirl41-control-plane-779jf.yaml"
+      ],
+      "tool_calls": 20,
+      "model_bytes": 161634,
+      "gcs_bytes": 1130184,
+      "critique_passed": true,
+      "critique_version": 4,
+      "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
+    }
+  },
+  "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-35-1-36-main:2064451405317410816:5435eca8b2687558": {
+    "key": "agentic:universal:periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-35-1-36-main:2064451405317410816:5435eca8b2687558",
+    "created_at": "2026-06-11T13:30:44.159745-07:00",
+    "data": {
+      "summary": "KubeadmControlPlane failed to initialize due to Azure VM allocation failure in a specific zone",
+      "is_transient": false,
+      "root_cause": "The KubeadmControlPlane object k8s-upgrade-and-conformance-6uaq0k-control-plane failed to initialize because its first control plane machine (k8s-upgrade-and-conformance-6uaq0k-control-plane-q5z6q) could not be provisioned. The AzureMachine YAML at artifacts/clusters/bootstrap/resources/k8s-upgrade-and-conformance-3niv1k/AzureMachine/k8s-upgrade-and-conformance-6uaq0k-control-plane-q5z6q.yaml shows the VM was configured with vmSize: Standard_B2s and was placed in zone 3 (visible in the activity log's disk resource tags). The azure-activity-logs at artifacts/clusters/k8s-upgrade-and-conformance-6uaq0k/azure-activity-logs/capz-e2e-lfxd84.log contains a 'ZonalAllocationFailed' error (line 296) with the message: 'Allocation failed. We do not have sufficient capacity for the requested VM size in this zone.' This infrastructure provisioning failure prevented the machine from becoming ready, which in turn prevented the KubeadmControlPlane from initializing. The CAPZ controller logs also show repeated 'ZonalAllocationFailed' errors when trying to create the Azure VM.",
+      "severity": "High",
+      "suggested_fix": "Modify the cluster template to either use a different VM size that has capacity in zone 3 of the CanadaCentral region, or specify a different availability zone for the control plane machines. Alternatively, implement a retry mechanism in the provisioning logic to attempt allocation in different zones when ZonalAllocationFailed errors occur. The specific error is in artifacts/clusters/k8s-upgrade-and-conformance-6uaq0k/azure-activity-logs/capz-e2e-lfxd84.log at line 296 where it shows 'Allocation failed. We do not have sufficient capacity for the requested VM size in this zone.'",
+      "relevant_files": [
+        "artifacts/clusters/bootstrap/resources/k8s-upgrade-and-conformance-3niv1k/AzureMachine/k8s-upgrade-and-conformance-6uaq0k-control-plane-q5z6q.yaml",
+        "artifacts/clusters/k8s-upgrade-and-conformance-6uaq0k/azure-activity-logs/capz-e2e-lfxd84.log",
+        "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-d6c54db8f-md775/manager.log"
+      ],
+      "tool_calls": 26,
+      "model_bytes": 199458,
+      "gcs_bytes": 2707425,
       "critique_passed": true,
       "critique_version": 4,
       "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"

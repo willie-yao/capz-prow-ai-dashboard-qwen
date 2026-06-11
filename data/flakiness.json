@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T18:25:27Z",
+  "generated_at": "2026-06-11T20:39:14Z",
   "most_flaky": [
     {
       "test_name": "[It] Conformance Tests conformance-tests",
@@ -58,489 +58,65 @@
           "passed": true
         }
       ]
+    },
+    {
+      "test_name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-aks-main",
+      "job_id": "periodic-cluster-api-provider-azure-e2e-aks-main",
+      "total_runs": 4,
+      "failures": 2,
+      "passes": 2,
+      "flip_rate": 0.3333333333333333,
+      "fail_rate": 0.5,
+      "consecutive_failures": 2,
+      "classification": "flaky",
+      "last_failure": {
+        "build_id": "2064758042246778880",
+        "timestamp": "2026-06-10T17:14:18Z",
+        "failure_message": "Timed out after 1500.001s.\nThe function passed to Eventually failed at /home/prow/go/src/sigs.k8s.io/cluster-api-provider-azure/test/e2e/aks_byo_node.go:175 with:\nExpected\n    \u003cint32\u003e: 3\nto equal\n    \u003cint32\u003e: 5",
+        "error_hash": "de0f1930"
+      },
+      "first_failed_at": "2026-06-08T15:26:58Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Timed out after \u003cnum\u003e001s. The function passed to Eventually failed at /home/prow/go/src/sigs.k8s.io/cluster-api-provider-azure/test/e2e/aks_byo_node.go:\u003cnum\u003e with: Expected \u003cint32\u003e: \u003cnum\u003e to equal \u003cint32\u003e: \u003cnum\u003e",
+          "error_hash": "de0f1930",
+          "count": 2,
+          "example_message": "Timed out after 1500.001s.\nThe function passed to Eventually failed at /home/prow/go/src/sigs.k8s.io/cluster-api-provider-azure/test/e2e/aks_byo_node.go:175 with:\nExpected\n    \u003cint32\u003e: 3\nto equal\n    \u003cint32\u003e: 5"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2064758042246778880",
+          "timestamp": "2026-06-10T17:14:18Z",
+          "duration": 6056.91459951,
+          "passed": false
+        },
+        {
+          "build_id": "2064006217113538560",
+          "timestamp": "2026-06-08T15:26:58Z",
+          "duration": 5306.700919513,
+          "passed": false
+        },
+        {
+          "build_id": "2063255261748924416",
+          "timestamp": "2026-06-06T13:42:47Z",
+          "duration": 4040.620375664,
+          "passed": true
+        },
+        {
+          "build_id": "2062503858453614592",
+          "timestamp": "2026-06-04T11:56:59Z",
+          "duration": 5342.826215837,
+          "passed": true
+        }
+      ]
     }
   ],
   "persistent_failures": null,
   "recently_broken": [
     {
-      "test_name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
-      "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main",
-      "job_id": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main",
-      "total_runs": 4,
-      "failures": 1,
-      "passes": 3,
-      "flip_rate": 0.3333333333333333,
-      "fail_rate": 0.25,
-      "consecutive_failures": 1,
-      "classification": "one-off",
-      "last_failure": {
-        "build_id": "2064523883997827072",
-        "timestamp": "2026-06-10T01:45:10Z",
-        "failure_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:1, cap:1\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]",
-        "error_hash": "f6404c80"
-      },
-      "first_failed_at": "2026-06-10T01:45:10Z",
-      "error_patterns": [
-        {
-          "normalized_message": "Failed to apply the cluster template Expected success, but got an error: \u003cerrors.aggregate | len:\u003cnum\u003e, cap:\u003cnum\u003e\u003e: context deadline exceeded [ \u003ccontext.deadlineExceededError\u003e{}, ]",
-          "error_hash": "f6404c80",
-          "count": 1,
-          "example_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:1, cap:1\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]"
-        }
-      ],
-      "duration_history": [
-        {
-          "build_id": "2064523883997827072",
-          "timestamp": "2026-06-10T01:45:10Z",
-          "duration": 286.516379357,
-          "passed": false
-        },
-        {
-          "build_id": "2064146643564892160",
-          "timestamp": "2026-06-09T00:46:05Z",
-          "duration": 2401.416140841,
-          "passed": true
-        },
-        {
-          "build_id": "2063770158811320320",
-          "timestamp": "2026-06-07T23:50:07Z",
-          "duration": 2016.247731368,
-          "passed": true
-        },
-        {
-          "build_id": "2063393674980495360",
-          "timestamp": "2026-06-06T22:54:05Z",
-          "duration": 2085.626525748,
-          "passed": true
-        }
-      ]
-    },
-    {
-      "test_name": "[It] Running the Cluster API E2E tests Running the workload cluster upgrade spec [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
-      "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main",
-      "job_id": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main",
-      "total_runs": 4,
-      "failures": 1,
-      "passes": 3,
-      "flip_rate": 0.3333333333333333,
-      "fail_rate": 0.25,
-      "consecutive_failures": 1,
-      "classification": "one-off",
-      "last_failure": {
-        "build_id": "2064523883997827072",
-        "timestamp": "2026-06-10T01:45:10Z",
-        "failure_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:1, cap:1\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]",
-        "error_hash": "f6404c80"
-      },
-      "first_failed_at": "2026-06-10T01:45:10Z",
-      "error_patterns": [
-        {
-          "normalized_message": "Failed to apply the cluster template Expected success, but got an error: \u003cerrors.aggregate | len:\u003cnum\u003e, cap:\u003cnum\u003e\u003e: context deadline exceeded [ \u003ccontext.deadlineExceededError\u003e{}, ]",
-          "error_hash": "f6404c80",
-          "count": 1,
-          "example_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:1, cap:1\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]"
-        }
-      ],
-      "duration_history": [
-        {
-          "build_id": "2064523883997827072",
-          "timestamp": "2026-06-10T01:45:10Z",
-          "duration": 286.521333582,
-          "passed": false
-        },
-        {
-          "build_id": "2064146643564892160",
-          "timestamp": "2026-06-09T00:46:05Z",
-          "duration": 2444.00450494,
-          "passed": true
-        },
-        {
-          "build_id": "2063770158811320320",
-          "timestamp": "2026-06-07T23:50:07Z",
-          "duration": 2104.83024237,
-          "passed": true
-        },
-        {
-          "build_id": "2063393674980495360",
-          "timestamp": "2026-06-06T22:54:05Z",
-          "duration": 2127.210461611,
-          "passed": true
-        }
-      ]
-    },
-    {
-      "test_name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
-      "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main",
-      "job_id": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main",
-      "total_runs": 4,
-      "failures": 1,
-      "passes": 3,
-      "flip_rate": 0.3333333333333333,
-      "fail_rate": 0.25,
-      "consecutive_failures": 1,
-      "classification": "one-off",
-      "last_failure": {
-        "build_id": "2064523883997827072",
-        "timestamp": "2026-06-10T01:45:10Z",
-        "failure_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:1, cap:1\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]",
-        "error_hash": "f6404c80"
-      },
-      "first_failed_at": "2026-06-10T01:45:10Z",
-      "error_patterns": [
-        {
-          "normalized_message": "Failed to apply the cluster template Expected success, but got an error: \u003cerrors.aggregate | len:\u003cnum\u003e, cap:\u003cnum\u003e\u003e: context deadline exceeded [ \u003ccontext.deadlineExceededError\u003e{}, ]",
-          "error_hash": "f6404c80",
-          "count": 1,
-          "example_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:1, cap:1\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]"
-        }
-      ],
-      "duration_history": [
-        {
-          "build_id": "2064523883997827072",
-          "timestamp": "2026-06-10T01:45:10Z",
-          "duration": 286.469714084,
-          "passed": false
-        },
-        {
-          "build_id": "2064146643564892160",
-          "timestamp": "2026-06-09T00:46:05Z",
-          "duration": 2184.981175516,
-          "passed": true
-        },
-        {
-          "build_id": "2063770158811320320",
-          "timestamp": "2026-06-07T23:50:07Z",
-          "duration": 2133.451858819,
-          "passed": true
-        },
-        {
-          "build_id": "2063393674980495360",
-          "timestamp": "2026-06-06T22:54:05Z",
-          "duration": 2090.033853612,
-          "passed": true
-        }
-      ]
-    },
-    {
-      "test_name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
-      "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-35-1-36-main",
-      "job_id": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-35-1-36-main",
-      "total_runs": 4,
-      "failures": 1,
-      "passes": 3,
-      "flip_rate": 0.3333333333333333,
-      "fail_rate": 0.25,
-      "consecutive_failures": 1,
-      "classification": "one-off",
-      "last_failure": {
-        "build_id": "2064451405317410816",
-        "timestamp": "2026-06-09T20:57:14Z",
-        "failure_message": "Timed out after 1200.001s.\nKubeadmControlPlane object k8s-upgrade-and-conformance-3niv1k/k8s-upgrade-and-conformance-6uaq0k-control-plane was not initialized in time\nThe function passed to Eventually failed at /home/prow/go/src/sigs.k8s.io/cluster-api-provider-azure/test/e2e/common.go:265 with:\nKubeadmControlPlane is not yet initialized\nExpected\n    \u003cbool\u003e: false\nto be true",
-        "error_hash": "d2c821e5"
-      },
-      "first_failed_at": "2026-06-09T20:57:14Z",
-      "error_patterns": [
-        {
-          "normalized_message": "Timed out after \u003cnum\u003e001s. KubeadmControlPlane object k8s-upgrade-and-conformance-3niv1k/k8s-upgrade-and-conformance-6uaq0k-control-plane was not initialized in time The function passed to Eventually failed at /home/prow/go/src/sigs.k8s.io/cluster-api-provider-azure/test/e2e/common.go:\u003cnum\u003e with: KubeadmControlPlane is not yet initialized Expected \u003cbool\u003e: false to be true",
-          "error_hash": "d2c821e5",
-          "count": 1,
-          "example_message": "Timed out after 1200.001s.\nKubeadmControlPlane object k8s-upgrade-and-conformance-3niv1k/k8s-upgrade-and-conformance-6uaq0k-control-plane was not initialized in time\nThe function passed to Eventually failed at /home/prow/go/src/sigs.k8s.io/cluster-api-provider-azure/test/e2e/common.go:265 with:\nKubeadmControlPlane is not yet initialized\nExpected\n    \u003cbool\u003e: false\nto be true"
-        }
-      ],
-      "duration_history": [
-        {
-          "build_id": "2064451405317410816",
-          "timestamp": "2026-06-09T20:57:14Z",
-          "duration": 2017.087782658,
-          "passed": false
-        },
-        {
-          "build_id": "2064072907536994304",
-          "timestamp": "2026-06-08T19:53:06Z",
-          "duration": 2114.681512232,
-          "passed": true
-        },
-        {
-          "build_id": "2063695667347329024",
-          "timestamp": "2026-06-07T18:54:04Z",
-          "duration": 2332.810027112,
-          "passed": true
-        },
-        {
-          "build_id": "2063317925229498368",
-          "timestamp": "2026-06-06T17:53:14Z",
-          "duration": 2058.78456062,
-          "passed": true
-        }
-      ]
-    },
-    {
-      "test_name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
-      "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-35-1-36-main",
-      "job_id": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-35-1-36-main",
-      "total_runs": 4,
-      "failures": 1,
-      "passes": 3,
-      "flip_rate": 0.3333333333333333,
-      "fail_rate": 0.25,
-      "consecutive_failures": 1,
-      "classification": "one-off",
-      "last_failure": {
-        "build_id": "2064451405317410816",
-        "timestamp": "2026-06-09T20:57:14Z",
-        "failure_message": "Timed out after 1200.000s.\nTimed out waiting for 3 control plane machines to exist\nExpected\n    \u003cint\u003e: 2\nto equal\n    \u003cint\u003e: 3",
-        "error_hash": "2006f275"
-      },
-      "first_failed_at": "2026-06-09T20:57:14Z",
-      "error_patterns": [
-        {
-          "normalized_message": "Timed out after \u003cnum\u003e000s. Timed out waiting for \u003cnum\u003e control plane machines to exist Expected \u003cint\u003e: \u003cnum\u003e to equal \u003cint\u003e: \u003cnum\u003e",
-          "error_hash": "2006f275",
-          "count": 1,
-          "example_message": "Timed out after 1200.000s.\nTimed out waiting for 3 control plane machines to exist\nExpected\n    \u003cint\u003e: 2\nto equal\n    \u003cint\u003e: 3"
-        }
-      ],
-      "duration_history": [
-        {
-          "build_id": "2064451405317410816",
-          "timestamp": "2026-06-09T20:57:14Z",
-          "duration": 2113.591746371,
-          "passed": false
-        },
-        {
-          "build_id": "2064072907536994304",
-          "timestamp": "2026-06-08T19:53:06Z",
-          "duration": 2246.109530728,
-          "passed": true
-        },
-        {
-          "build_id": "2063695667347329024",
-          "timestamp": "2026-06-07T18:54:04Z",
-          "duration": 2149.027759124,
-          "passed": true
-        },
-        {
-          "build_id": "2063317925229498368",
-          "timestamp": "2026-06-06T17:53:14Z",
-          "duration": 2379.89342851,
-          "passed": true
-        }
-      ]
-    },
-    {
-      "test_name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
-      "job_name": "periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-24",
-      "job_id": "periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-24",
-      "total_runs": 4,
-      "failures": 1,
-      "passes": 3,
-      "flip_rate": 0.3333333333333333,
-      "fail_rate": 0.25,
-      "consecutive_failures": 1,
-      "classification": "one-off",
-      "last_failure": {
-        "build_id": "2064362317256069120",
-        "timestamp": "2026-06-09T15:01:51Z",
-        "failure_message": "Timed out after 1500.000s.\nThe function passed to Eventually failed at /home/prow/go/src/sigs.k8s.io/cluster-api-provider-azure/test/e2e/aks_byo_node.go:175 with:\nExpected\n    \u003cint32\u003e: 3\nto equal\n    \u003cint32\u003e: 5",
-        "error_hash": "f3387787"
-      },
-      "first_failed_at": "2026-06-09T15:01:51Z",
-      "error_patterns": [
-        {
-          "normalized_message": "Timed out after \u003cnum\u003e000s. The function passed to Eventually failed at /home/prow/go/src/sigs.k8s.io/cluster-api-provider-azure/test/e2e/aks_byo_node.go:\u003cnum\u003e with: Expected \u003cint32\u003e: \u003cnum\u003e to equal \u003cint32\u003e: \u003cnum\u003e",
-          "error_hash": "f3387787",
-          "count": 1,
-          "example_message": "Timed out after 1500.000s.\nThe function passed to Eventually failed at /home/prow/go/src/sigs.k8s.io/cluster-api-provider-azure/test/e2e/aks_byo_node.go:175 with:\nExpected\n    \u003cint32\u003e: 3\nto equal\n    \u003cint32\u003e: 5"
-        }
-      ],
-      "duration_history": [
-        {
-          "build_id": "2064362317256069120",
-          "timestamp": "2026-06-09T15:01:51Z",
-          "duration": 5925.892896273,
-          "passed": false
-        },
-        {
-          "build_id": "2063248718622101504",
-          "timestamp": "2026-06-06T13:16:48Z",
-          "duration": 4479.530317039,
-          "passed": true
-        },
-        {
-          "build_id": "2062134924005085184",
-          "timestamp": "2026-06-03T11:30:59Z",
-          "duration": 5358.693236917,
-          "passed": true
-        },
-        {
-          "build_id": "2061021796307570688",
-          "timestamp": "2026-05-31T09:47:48Z",
-          "duration": 3956.709163853,
-          "passed": true
-        }
-      ]
-    },
-    {
-      "test_name": "[It] Workload cluster creation Creating an AKS cluster for control plane tests [Managed Kubernetes] with a single control plane node and 1 node",
-      "job_name": "periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-23",
-      "job_id": "periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-23",
-      "total_runs": 4,
-      "failures": 1,
-      "passes": 3,
-      "flip_rate": 0.3333333333333333,
-      "fail_rate": 0.25,
-      "consecutive_failures": 1,
-      "classification": "one-off",
-      "last_failure": {
-        "build_id": "2064254857929297920",
-        "timestamp": "2026-06-09T07:54:50Z",
-        "failure_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]",
-        "error_hash": "1474f285"
-      },
-      "first_failed_at": "2026-06-09T07:54:50Z",
-      "error_patterns": [
-        {
-          "normalized_message": "Failed to apply the cluster template Expected success, but got an error: \u003cerrors.aggregate | len:\u003cnum\u003e, cap:\u003cnum\u003e\u003e: context deadline exceeded [ \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, ]",
-          "error_hash": "1474f285",
-          "count": 1,
-          "example_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]"
-        }
-      ],
-      "duration_history": [
-        {
-          "build_id": "2064254857929297920",
-          "timestamp": "2026-06-09T07:54:50Z",
-          "duration": 411.716266467,
-          "passed": false
-        },
-        {
-          "build_id": "2063142517993377792",
-          "timestamp": "2026-06-06T06:14:50Z",
-          "duration": 4077.368327201,
-          "passed": true
-        },
-        {
-          "build_id": "2062028975441448960",
-          "timestamp": "2026-06-03T04:30:07Z",
-          "duration": 4791.999013173,
-          "passed": true
-        },
-        {
-          "build_id": "2060914588886503424",
-          "timestamp": "2026-05-31T02:41:47Z",
-          "duration": 5588.348765565,
-          "passed": true
-        }
-      ]
-    },
-    {
-      "test_name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
-      "job_name": "periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-23",
-      "job_id": "periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-23",
-      "total_runs": 4,
-      "failures": 1,
-      "passes": 3,
-      "flip_rate": 0.3333333333333333,
-      "fail_rate": 0.25,
-      "consecutive_failures": 1,
-      "classification": "one-off",
-      "last_failure": {
-        "build_id": "2064254857929297920",
-        "timestamp": "2026-06-09T07:54:50Z",
-        "failure_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]",
-        "error_hash": "1474f285"
-      },
-      "first_failed_at": "2026-06-09T07:54:50Z",
-      "error_patterns": [
-        {
-          "normalized_message": "Failed to apply the cluster template Expected success, but got an error: \u003cerrors.aggregate | len:\u003cnum\u003e, cap:\u003cnum\u003e\u003e: context deadline exceeded [ \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, ]",
-          "error_hash": "1474f285",
-          "count": 1,
-          "example_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]"
-        }
-      ],
-      "duration_history": [
-        {
-          "build_id": "2064254857929297920",
-          "timestamp": "2026-06-09T07:54:50Z",
-          "duration": 411.611454551,
-          "passed": false
-        },
-        {
-          "build_id": "2063142517993377792",
-          "timestamp": "2026-06-06T06:14:50Z",
-          "duration": 5000.028361688,
-          "passed": true
-        },
-        {
-          "build_id": "2062028975441448960",
-          "timestamp": "2026-06-03T04:30:07Z",
-          "duration": 5003.172155078,
-          "passed": true
-        },
-        {
-          "build_id": "2060914588886503424",
-          "timestamp": "2026-05-31T02:41:47Z",
-          "duration": 4032.52780619,
-          "passed": true
-        }
-      ]
-    },
-    {
-      "test_name": "[It] Workload cluster creation Creating an AKS cluster using ClusterClass [Managed Kubernetes] with a single control plane node and 1 node",
-      "job_name": "periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-23",
-      "job_id": "periodic-cluster-api-provider-azure-e2e-aks-v1beta1-release-1-23",
-      "total_runs": 4,
-      "failures": 1,
-      "passes": 3,
-      "flip_rate": 0.3333333333333333,
-      "fail_rate": 0.25,
-      "consecutive_failures": 1,
-      "classification": "one-off",
-      "last_failure": {
-        "build_id": "2064254857929297920",
-        "timestamp": "2026-06-09T07:54:50Z",
-        "failure_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]",
-        "error_hash": "1474f285"
-      },
-      "first_failed_at": "2026-06-09T07:54:50Z",
-      "error_patterns": [
-        {
-          "normalized_message": "Failed to apply the cluster template Expected success, but got an error: \u003cerrors.aggregate | len:\u003cnum\u003e, cap:\u003cnum\u003e\u003e: context deadline exceeded [ \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, \u003ccontext.deadlineExceededError\u003e{}, ]",
-          "error_hash": "1474f285",
-          "count": 1,
-          "example_message": "Failed to apply the cluster template\nExpected success, but got an error:\n    \u003cerrors.aggregate | len:3, cap:4\u003e: \n    context deadline exceeded\n    [\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n        \u003ccontext.deadlineExceededError\u003e{},\n    ]"
-        }
-      ],
-      "duration_history": [
-        {
-          "build_id": "2064254857929297920",
-          "timestamp": "2026-06-09T07:54:50Z",
-          "duration": 367.124614091,
-          "passed": false
-        },
-        {
-          "build_id": "2063142517993377792",
-          "timestamp": "2026-06-06T06:14:50Z",
-          "duration": 2164.480044411,
-          "passed": true
-        },
-        {
-          "build_id": "2062028975441448960",
-          "timestamp": "2026-06-03T04:30:07Z",
-          "duration": 1929.831017945,
-          "passed": true
-        },
-        {
-          "build_id": "2060914588886503424",
-          "timestamp": "2026-05-31T02:41:47Z",
-          "duration": 2100.570539497,
-          "passed": true
-        }
-      ]
-    },
-    {
-      "test_name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+      "test_name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
       "job_name": "periodic-cluster-api-provider-azure-apiversion-upgrade-main",
       "job_id": "periodic-cluster-api-provider-azure-apiversion-upgrade-main",
       "total_runs": 4,
@@ -551,43 +127,149 @@
       "consecutive_failures": 1,
       "classification": "one-off",
       "last_failure": {
-        "build_id": "2064143623817007104",
-        "timestamp": "2026-06-09T00:32:50Z",
-        "failure_message": "failed to run clusterctl upgrade\nUnexpected error:\n    \u003c*errors.withStack | 0xc0074bcba0\u003e: \n    deployment \"azureserviceoperator-controller-manager\" is not ready after 5m0s: Get \"https://clusterctl-upgrade-management-nq4098-cc835856.switzerlandnorth.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)\n    {\n        error: \u003c*errors.withMessage | 0xc0068d1be0\u003e{\n            cause: \u003c*url.Error | 0xc006977890\u003e{\n                Op: \"Get\",\n                URL: \"https://clusterctl-upgrade-management-nq4098-cc835856.switzerlandnorth.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\",\n                Err: \u003c*http.timeoutError | 0xc002816c20\u003e{\n                    err: \"net/http: request canceled (Client.Timeout exceeded while awaiting headers)\",\n                },\n            },\n            msg: \"deployment \\\"azureserviceoperator-controller-manager\\\" is not ready after 5m0s\",\n        },\n        stack: [0x4318d68, 0x4318a87, 0x433fe32, 0x433c9a5, 0x436394d, 0x45156c8, 0x4519e28, 0x54c303a, 0x3fd81b3, 0x3fee9d3, 0x2108521],\n    }\noccurred",
-        "error_hash": "4f9b119a"
+        "build_id": "2064889409345425408",
+        "timestamp": "2026-06-11T01:56:19Z",
+        "failure_message": "failed to run clusterctl upgrade\nUnexpected error:\n    \u003c*errors.withStack | 0xc0066d4db0\u003e: \n    deployment \"azureserviceoperator-controller-manager\" is not ready after 5m0s: Get \"https://clusterctl-upgrade-management-v66u2v-744c9ae4.canadacentral.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)\n    {\n        error: \u003c*errors.withMessage | 0xc005715220\u003e{\n            cause: \u003c*url.Error | 0xc001d9b590\u003e{\n                Op: \"Get\",\n                URL: \"https://clusterctl-upgrade-management-v66u2v-744c9ae4.canadacentral.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\",\n                Err: \u003c*http.timeoutError | 0xc003754f10\u003e{\n                    err: \"net/http: request canceled (Client.Timeout exceeded while awaiting headers)\",\n                },\n            },\n            msg: \"deployment \\\"azureserviceoperator-controller-manager\\\" is not ready after 5m0s\",\n        },\n        stack: [0x4318d68, 0x4318a87, 0x433fe32, 0x433c9a5, 0x436394d, 0x45156c8, 0x4519e28, 0x54c311a, 0x3fd81b3, 0x3fee9d3, 0x2108521],\n    }\noccurred",
+        "error_hash": "4407adcf"
       },
-      "first_failed_at": "2026-06-09T00:32:50Z",
+      "first_failed_at": "2026-06-11T01:56:19Z",
       "error_patterns": [
         {
-          "normalized_message": "failed to run clusterctl upgrade Unexpected error: \u003c*errors.withStack | 0xc0074bcba0\u003e: deployment \"azureserviceoperator-controller-manager\" is not ready after 5m0s: Get \"https://clusterctl-upgrade-management-nq4098-cc835856.switzerlandnorth.cloudapp.azure.com:\u003cnum\u003e/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": net/http: request canceled (Client.Timeout exceeded while awaiting headers) { error: \u003c*errors.withMessage | 0xc0068d1be0\u003e{ cause: \u003c*url.Error | 0xc006977890\u003e{ Op: \"Get\", URL: \"https://clusterctl-upgrade-management-nq4098-cc835856.switzerlandnorth.cloudapp.azure.com:\u003cnum\u003e/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\", Err: \u003c*http.timeoutError | 0xc002816c20\u003e{ err: \"net/http: request canceled (Client.Timeout exceeded while awaiting headers)\", }, }, msg: \"deployment \\\"azureserviceoperator-controller-manager\\\" is not ready after 5m0s\", }, stack: [0x4318d68, 0x4318a87, 0x433fe32, 0x433c9a5, 0x436394d, 0x45156c8, 0x4519e28, 0x54c303a, 0x3fd81b3, 0x3fee9d3, 0x2108521], } occurred",
-          "error_hash": "4f9b119a",
+          "normalized_message": "failed to run clusterctl upgrade Unexpected error: \u003c*errors.withStack | 0xc0066d4db0\u003e: deployment \"azureserviceoperator-controller-manager\" is not ready after 5m0s: Get \"https://clusterctl-upgrade-management-v66u2v-744c9ae4.canadacentral.cloudapp.azure.com:\u003cnum\u003e/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": net/http: request canceled (Client.Timeout exceeded while awaiting headers) { error: \u003c*errors.withMessage | 0xc005715220\u003e{ cause: \u003c*url.Error | 0xc001d9b590\u003e{ Op: \"Get\", URL: \"https://clusterctl-upgrade-management-v66u2v-744c9ae4.canadacentral.cloudapp.azure.com:\u003cnum\u003e/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\", Err: \u003c*http.timeoutError | 0xc003754f10\u003e{ err: \"net/http: request canceled (Client.Timeout exceeded while awaiting headers)\", }, }, msg: \"deployment \\\"azureserviceoperator-controller-manager\\\" is not ready after 5m0s\", }, stack: [0x4318d68, 0x4318a87, 0x433fe32, 0x433c9a5, 0x436394d, 0x45156c8, 0x4519e28, 0x54c311a, 0x3fd81b3, 0x3fee9d3, 0x2108521], } occurred",
+          "error_hash": "4407adcf",
           "count": 1,
-          "example_message": "failed to run clusterctl upgrade\nUnexpected error:\n    \u003c*errors.withStack | 0xc0074bcba0\u003e: \n    deployment \"azureserviceoperator-controller-manager\" is not ready after 5m0s: Get \"https://clusterctl-upgrade-management-nq4098-cc835856.switzerlandnorth.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)\n    {\n        error: \u003c*errors.withMessage | 0xc0068d1be0\u003e{\n            cause: \u003c*url.Error | 0xc006977890\u003e{\n                Op: \"Get\",\n                URL: \"https://clusterctl-upgrade-management-nq4098-cc835856.switzerlandnorth.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\",\n                Err: \u003c*http.timeoutError | 0xc002816c20\u003e{\n                    err: \"net/http: request canceled (Client.Timeout exceeded while awaiting headers)\",\n                },\n            },\n            msg: \"deployment \\\"azureserviceoperator-controller-manager\\\" is not ready after 5m0s\",\n        },\n        stack: [0x4318d68, 0x4318a87, 0x433fe32, 0x433c9a5, 0x436394d, 0x45156c8, 0x4519e28, 0x54c303a, 0x3fd81b3, 0x3fee9d3, 0x2108521],\n    }\noccurred"
+          "example_message": "failed to run clusterctl upgrade\nUnexpected error:\n    \u003c*errors.withStack | 0xc0066d4db0\u003e: \n    deployment \"azureserviceoperator-controller-manager\" is not ready after 5m0s: Get \"https://clusterctl-upgrade-management-v66u2v-744c9ae4.canadacentral.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)\n    {\n        error: \u003c*errors.withMessage | 0xc005715220\u003e{\n            cause: \u003c*url.Error | 0xc001d9b590\u003e{\n                Op: \"Get\",\n                URL: \"https://clusterctl-upgrade-management-v66u2v-744c9ae4.canadacentral.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\",\n                Err: \u003c*http.timeoutError | 0xc003754f10\u003e{\n                    err: \"net/http: request canceled (Client.Timeout exceeded while awaiting headers)\",\n                },\n            },\n            msg: \"deployment \\\"azureserviceoperator-controller-manager\\\" is not ready after 5m0s\",\n        },\n        stack: [0x4318d68, 0x4318a87, 0x433fe32, 0x433c9a5, 0x436394d, 0x45156c8, 0x4519e28, 0x54c311a, 0x3fd81b3, 0x3fee9d3, 0x2108521],\n    }\noccurred"
         }
       ],
       "duration_history": [
         {
+          "build_id": "2064889409345425408",
+          "timestamp": "2026-06-11T01:56:19Z",
+          "duration": 2115.153488618,
+          "passed": false
+        },
+        {
           "build_id": "2064143623817007104",
           "timestamp": "2026-06-09T00:32:50Z",
-          "duration": 2291.97650401,
-          "passed": false
+          "duration": 4042.420403792,
+          "passed": true
         },
         {
           "build_id": "2063393423301283840",
           "timestamp": "2026-06-06T22:51:49Z",
-          "duration": 4560.539908415,
+          "duration": 4903.148645568,
           "passed": true
         },
         {
           "build_id": "2062647501357322240",
           "timestamp": "2026-06-04T21:27:46Z",
-          "duration": 4026.002379528,
+          "duration": 4025.863862735,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+      "job_name": "periodic-cluster-api-provider-azure-apiversion-upgrade-main",
+      "job_id": "periodic-cluster-api-provider-azure-apiversion-upgrade-main",
+      "total_runs": 4,
+      "failures": 1,
+      "passes": 3,
+      "flip_rate": 0.3333333333333333,
+      "fail_rate": 0.25,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2064889409345425408",
+        "timestamp": "2026-06-11T01:56:19Z",
+        "failure_message": "Failed after 100.573s.\nresourceVersions didn't stay stable\nThe function passed to Consistently failed at /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/resourceversion_helpers.go:75 with:\n\nDetected objects with changed resourceVersion\n\nObject with changed resourceVersion AzureMachine/clusterctl-upgrade/clusterctl-upgrade-workload-yxb9ol-control-plane-lzhpz:\n  strings.Join({\n  \t... // 2868 identical bytes\n  \t\"tate: {}\\n    manager: cluster-api-provider-azure-manager\\n    ope\",\n  \t\"ration: Update\\n    subresource: status\\n    time: \\\"2026-06-11T02:\",\n- \t\"28:27\",\n+ \t\"42:02\",\n  \t\"Z\\\"\\n  name: clusterctl-upgrade-workload-yxb9ol-control-plane-lzhp\",\n  \t\"z\\n  namespace: clusterctl-upgrade\\n  ownerReferences:\\n  - apiVers\",\n  \t... // 101 identical bytes\n  \t\" name: clusterctl-upgrade-workload-yxb9ol-control-plane-lzhpz\\n  \",\n  \t\"  uid: 02ab9f77-9261-4f34-952b-d543bf715ead\\n  resourceVersion: \\\"\",\n- \t\"5350\",\n+ \t\"11051\",\n  \t\"\\\"\\n  uid: d301f345-551f-4aa7-b39c-7381ffa8152b\\nspec:\\n  dataDisks:\",\n  \t\"\\n  - cachingType: ReadWrite\\n    diskSizeGB: 256\\n    lun: 0\\n    n\",\n  \t... // 1936 identical bytes\n  \t\"kInterfacesReady\\n  - lastTransitionTime: \\\"2026-06-11T02:27:13Z\\\"\\n\",\n  \t\"    status: \\\"True\\\"\\n    type: VMRunning\\n  ready: true\\n  vmState: \",\n- \t\"Succeeded\",\n+ \t\"Updating\",\n  \t\"\\n\",\n  }, \"\")\n\n\nExpected object to be comparable, diff:   map[string]string{\n  \t\"AzureCluster/clusterctl-upgrade/clusterctl-upgrade-workload-yxb9ol\":                     \"6925\",\n  \t\"AzureClusterIdentity/clusterctl-upgrade/cluster-identity-ci\":                            \"3160\",\n- \t\"AzureMachine/clusterctl-upgrade/clusterctl-upgrade-workload-yxb9ol-control-plane-lzhpz\": \"5350\",\n+ \t\"AzureMachine/clusterctl-upgrade/clusterctl-upgrade-workload-yxb9ol-control-plane-lzhpz\": \"11051\",\n  \t\"AzureMachine/clusterctl-upgrade/clusterctl-upgrade-workload-yxb9ol-md-0-jvhsh-qchpm\":    \"9233\",\n  \t\"AzureMachinePool/clusterctl-upgrade/clusterctl-upgrade-workload-yxb9ol-mp-0\":            \"6485\",\n  \t... // 45 identical entries\n  }\n",
+        "error_hash": "d64358af"
+      },
+      "first_failed_at": "2026-06-11T01:56:19Z",
+      "error_patterns": [
+        {
+          "normalized_message": "Failed after \u003cnum\u003e573s. resourceVersions didn't stay stable The function passed to Consistently failed at /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.\u003cnum\u003e/framework/resourceversion_helpers.go:\u003cnum\u003e with: Detected objects with changed resourceVersion Object with changed resourceVersion AzureMachine/clusterctl-upgrade/clusterctl-upgrade-workload-yxb9ol-control-plane-lzhpz: strings.Join({ ... // \u003cnum\u003e identical bytes \"tate: {}\\n manager: cluster-api-provider-azure-manager\\n ope\", \"ration: Update\\n subresource: status\\n time: \\\"\u003cnum\u003e-\u003cnum\u003e-11T02:\", - \"\u003cnum\u003e:\u003cnum\u003e\", + \"\u003cnum\u003e:\u003cnum\u003e\", \"Z\\\"\\n name: clusterctl-upgrade-workload-yxb9ol-control-plane-lzhp\", \"z\\n namespace: clusterctl-upgrade\\n ownerReferences:\\n - apiVers\", ... // \u003cnum\u003e identical bytes \" name: clusterctl-upgrade-workload-yxb9ol-control-plane-lzhpz\\n \", \" uid: 02ab9f77-\u003cnum\u003e-4f34-952b-d543bf715ead\\n resourceVersion: \\\"\", - \"\u003cnum\u003e\", + \"\u003cnum\u003e\", \"\\\"\\n uid: d301f345-551f-4aa7-b39c-7381ffa8152b\\nspec:\\n dataDisks:\", \"\\n - cachingType: ReadWrite\\n diskSizeGB: \u003cnum\u003e\\n lun: \u003cnum\u003e\\n n\", ... // \u003cnum\u003e identical bytes \"kInterfacesReady\\n - lastTransitionTime: \\\"\u003ctimestamp\u003e \" status: \\\"True\\\"\\n type: VMRunning\\n ready: true\\n vmState: \", - \"Succeeded\", + \"Updating\", \"\\n\", }, \"\") Expected object to be comparable, diff: map[string]string{ \"AzureCluster/clusterctl-upgrade/clusterctl-upgrade-workload-yxb9ol\": \"\u003cnum\u003e\", \"AzureClusterIdentity/clusterctl-upgrade/cluster-identity-ci\": \"\u003cnum\u003e\", - \"AzureMachine/clusterctl-upgrade/clusterctl-upgrade-workload-yxb9ol-control-plane-lzhpz\": \"\u003cnum\u003e\", + \"AzureMachine/clusterctl-upgrade/clusterctl-upgrade-workload-yxb9ol-control-plane-lzhpz\": \"\u003cnum\u003e\", \"AzureMachine/clusterctl-upgrade/clusterctl-upgrade-workload-yxb9ol-md-\u003cnum\u003e-jvhsh-qchpm\": \"\u003cnum\u003e\", \"AzureMachinePool/clusterctl-upgrade/clusterctl-upgrade-workload-yxb9ol-mp-\u003cnum\u003e\": \"\u003cnum\u003e\", ... // \u003cnum\u003e identical entries }",
+          "error_hash": "d64358af",
+          "count": 1,
+          "example_message": "Failed after 100.573s.\nresourceVersions didn't stay stable\nThe function passed to Consistently failed at /home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/resourceversion_helpers.go:75 with:\n\nDetected objects with changed resourceVersion\n\nObject with changed resourceVersion AzureMachine/clusterctl-upgrade/clusterctl-upgrade-workload-yxb9ol-control-plane-lzhpz:\n  strings.Join({\n  \t... // 2868 identical bytes\n  \t\"tate: {}\\n    manager: cluster-api-provider-azure-manager\\n    ope\",\n  \t\"ration: Update\\n    subresource: status\\n    time: \\\"2026-06-11T02:\",\n- \t\"28:27\",\n+ \t\"42:02\",\n  \t\"Z\\\"\\n  name: clusterctl-upgrade-workload-yxb9ol-control-plane-lzhp\",\n  \t\"z\\n  namespace: clusterctl-upgrade\\n  ownerReferences:\\n  - apiVers\",\n  \t... // 101 identical bytes\n  \t\" name: clusterctl-upgrade-workload-yxb9ol-control-plane-lzhpz\\n  \",\n  \t\"  uid: 02ab9f77-9261-4f34-952b-d543bf715ead\\n  resourceVersion: \\\"\",\n- \t\"5350\",\n+ \t\"11051\",\n  \t\"\\\"\\n  uid: d301f345-551f-4aa7-b39c-7381ffa8152b\\nspec:\\n  dataDisks:\",\n  \t\"\\n  - cachingType: ReadWrite\\n    diskSizeGB: 256\\n    lun: 0\\n    n\",\n  \t... // 1936 identical bytes\n  \t\"kInterfacesReady\\n  - lastTransitionTime: \\\"2026-06-11T02:27:13Z\\\"\\n\",\n  \t\"    status: \\\"True\\\"\\n    type: VMRunning\\n  ready: true\\n  vmState: \",\n- \t\"Succeeded\",\n+ \t\"Updating\",\n  \t\"\\n\",\n  }, \"\")\n\n\nExpected object to be comparable, diff:   map[string]string{\n  \t\"AzureCluster/clusterctl-upgrade/clusterctl-upgrade-workload-yxb9ol\":                     \"6925\",\n  \t\"AzureClusterIdentity/clusterctl-upgrade/cluster-identity-ci\":                            \"3160\",\n- \t\"AzureMachine/clusterctl-upgrade/clusterctl-upgrade-workload-yxb9ol-control-plane-lzhpz\": \"5350\",\n+ \t\"AzureMachine/clusterctl-upgrade/clusterctl-upgrade-workload-yxb9ol-control-plane-lzhpz\": \"11051\",\n  \t\"AzureMachine/clusterctl-upgrade/clusterctl-upgrade-workload-yxb9ol-md-0-jvhsh-qchpm\":    \"9233\",\n  \t\"AzureMachinePool/clusterctl-upgrade/clusterctl-upgrade-workload-yxb9ol-mp-0\":            \"6485\",\n  \t... // 45 identical entries\n  }\n"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2064889409345425408",
+          "timestamp": "2026-06-11T01:56:19Z",
+          "duration": 3165.408017221,
+          "passed": false
+        },
+        {
+          "build_id": "2064143623817007104",
+          "timestamp": "2026-06-09T00:32:50Z",
+          "duration": 3265.492305098,
           "passed": true
         },
         {
-          "build_id": "2061896601550458880",
-          "timestamp": "2026-06-02T19:43:59Z",
-          "duration": 4685.164033922,
+          "build_id": "2063393423301283840",
+          "timestamp": "2026-06-06T22:51:49Z",
+          "duration": 3361.572084697,
+          "passed": true
+        },
+        {
+          "build_id": "2062647501357322240",
+          "timestamp": "2026-06-04T21:27:46Z",
+          "duration": 3483.434803589,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "test_name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+      "job_name": "periodic-cluster-api-provider-azure-apiversion-upgrade-main",
+      "job_id": "periodic-cluster-api-provider-azure-apiversion-upgrade-main",
+      "total_runs": 4,
+      "failures": 1,
+      "passes": 3,
+      "flip_rate": 0.3333333333333333,
+      "fail_rate": 0.25,
+      "consecutive_failures": 1,
+      "classification": "one-off",
+      "last_failure": {
+        "build_id": "2064889409345425408",
+        "timestamp": "2026-06-11T01:56:19Z",
+        "failure_message": "failed to run clusterctl upgrade\nUnexpected error:\n    \u003c*errors.withStack | 0xc002dd4f78\u003e: \n    deployment \"azureserviceoperator-controller-manager\" is not ready after 5m0s: Get \"https://clusterctl-upgrade-management-s8i04h-ffeba172.canadacentral.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)\n    {\n        error: \u003c*errors.withMessage | 0xc004e605e0\u003e{\n            cause: \u003c*url.Error | 0xc004e558f0\u003e{\n                Op: \"Get\",\n                URL: \"https://clusterctl-upgrade-management-s8i04h-ffeba172.canadacentral.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\",\n                Err: \u003c*http.timeoutError | 0xc0001439b0\u003e{\n                    err: \"net/http: request canceled (Client.Timeout exceeded while awaiting headers)\",\n                },\n            },\n            msg: \"deployment \\\"azureserviceoperator-controller-manager\\\" is not ready after 5m0s\",\n        },\n        stack: [0x4318d68, 0x4318a87, 0x433fe32, 0x433c9a5, 0x436394d, 0x45156c8, 0x4519e28, 0x54c311a, 0x3fd81b3, 0x3fee9d3, 0x2108521],\n    }\noccurred",
+        "error_hash": "da0e0d23"
+      },
+      "first_failed_at": "2026-06-11T01:56:19Z",
+      "error_patterns": [
+        {
+          "normalized_message": "failed to run clusterctl upgrade Unexpected error: \u003c*errors.withStack | 0xc002dd4f78\u003e: deployment \"azureserviceoperator-controller-manager\" is not ready after 5m0s: Get \"https://clusterctl-upgrade-management-s8i04h-ffeba172.canadacentral.cloudapp.azure.com:\u003cnum\u003e/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": net/http: request canceled (Client.Timeout exceeded while awaiting headers) { error: \u003c*errors.withMessage | 0xc004e605e0\u003e{ cause: \u003c*url.Error | 0xc004e558f0\u003e{ Op: \"Get\", URL: \"https://clusterctl-upgrade-management-s8i04h-ffeba172.canadacentral.cloudapp.azure.com:\u003cnum\u003e/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\", Err: \u003c*http.timeoutError | 0xc0001439b0\u003e{ err: \"net/http: request canceled (Client.Timeout exceeded while awaiting headers)\", }, }, msg: \"deployment \\\"azureserviceoperator-controller-manager\\\" is not ready after 5m0s\", }, stack: [0x4318d68, 0x4318a87, 0x433fe32, 0x433c9a5, 0x436394d, 0x45156c8, 0x4519e28, 0x54c311a, 0x3fd81b3, 0x3fee9d3, 0x2108521], } occurred",
+          "error_hash": "da0e0d23",
+          "count": 1,
+          "example_message": "failed to run clusterctl upgrade\nUnexpected error:\n    \u003c*errors.withStack | 0xc002dd4f78\u003e: \n    deployment \"azureserviceoperator-controller-manager\" is not ready after 5m0s: Get \"https://clusterctl-upgrade-management-s8i04h-ffeba172.canadacentral.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)\n    {\n        error: \u003c*errors.withMessage | 0xc004e605e0\u003e{\n            cause: \u003c*url.Error | 0xc004e558f0\u003e{\n                Op: \"Get\",\n                URL: \"https://clusterctl-upgrade-management-s8i04h-ffeba172.canadacentral.cloudapp.azure.com:6443/apis/apps/v1/namespaces/capz-system/deployments/azureserviceoperator-controller-manager?timeout=30s\",\n                Err: \u003c*http.timeoutError | 0xc0001439b0\u003e{\n                    err: \"net/http: request canceled (Client.Timeout exceeded while awaiting headers)\",\n                },\n            },\n            msg: \"deployment \\\"azureserviceoperator-controller-manager\\\" is not ready after 5m0s\",\n        },\n        stack: [0x4318d68, 0x4318a87, 0x433fe32, 0x433c9a5, 0x436394d, 0x45156c8, 0x4519e28, 0x54c311a, 0x3fd81b3, 0x3fee9d3, 0x2108521],\n    }\noccurred"
+        }
+      ],
+      "duration_history": [
+        {
+          "build_id": "2064889409345425408",
+          "timestamp": "2026-06-11T01:56:19Z",
+          "duration": 3391.727045628,
+          "passed": false
+        },
+        {
+          "build_id": "2064143623817007104",
+          "timestamp": "2026-06-09T00:32:50Z",
+          "duration": 3369.045348739,
+          "passed": true
+        },
+        {
+          "build_id": "2063393423301283840",
+          "timestamp": "2026-06-06T22:51:49Z",
+          "duration": 3239.229331007,
+          "passed": true
+        },
+        {
+          "build_id": "2062647501357322240",
+          "timestamp": "2026-06-04T21:27:46Z",
+          "duration": 3298.090166218,
           "passed": true
         }
       ]

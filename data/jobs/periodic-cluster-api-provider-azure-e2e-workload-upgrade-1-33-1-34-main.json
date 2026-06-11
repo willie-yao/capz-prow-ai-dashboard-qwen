@@ -5,6 +5,383 @@
   "repo": "",
   "runs": [
     {
+      "build_id": "2064892429571461120",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main",
+      "started": "2026-06-11T02:09:33Z",
+      "finished": "2026-06-11T03:02:00Z",
+      "passed": true,
+      "result": "SUCCESS",
+      "duration_seconds": 3147,
+      "commit": "3b3f2205cc2951d992d6d26c5ffd9ef5fcf92dd2",
+      "repo_version": "3b3f2205cc2951d992d6d26c5ffd9ef5fcf92dd2",
+      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main/2064892429571461120/",
+      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main/2064892429571461120/build-log.txt",
+      "junit_urls": [
+        "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main/2064892429571461120/artifacts/junit.e2e_suite.1.xml"
+      ],
+      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main/2064892429571461120/",
+      "test_cases": [
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 131.768919971,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the quick-start spec Should create a workload cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the MachineDeployment rollout spec Should successfully upgrade Machines upon changes in relevant MachineDeployment fields",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the self-hosted spec Should pivot the bootstrap cluster to a self-hosted cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully remediate unhealthy worker machines with MachineHealthCheck Should replace unhealthy machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully exercise machine pools Should successfully create a cluster with machine pool machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully scale out and scale in a MachineDeployment Should successfully scale a MachineDeployment up and down upon changes to the MachineDeployment replica count",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the workload cluster upgrade spec [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "passed",
+          "duration_seconds": 2162.68740656,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000857254,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 131.768235269,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly available cluster [REQUIRED] With 3 control-plane nodes and 2 Linux and 2 Windows worker nodes",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a VMSS cluster [REQUIRED] with a single control plane node and an AzureMachinePool with 2 Linux nodes",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster with the ASO API [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly-available cluster with Azure Linux 3 [OPTIONAL] with three controlplane node and two worker nodes",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000474978,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 131.767179651,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000281985,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 131.76358226,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a private cluster [OPTIONAL] Creates a public management cluster in a custom vnet",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with VMSS flex machinepools [OPTIONAL] with 1 control plane node and 1 machinepool",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters using clusterclass [OPTIONAL] with a single control plane node and one linux worker node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Testing autoscaling from zero with Cluster Autoscaler [REQUIRED] Scales MachineDeployment from 0 to 1+ when workload is scheduled",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000525089,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 131.778107487,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a Flatcar sysext cluster [OPTIONAL] With Flatcar control-plane and worker nodes",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for control plane tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters on public MEC [OPTIONAL] with 1 control plane nodes and 1 worker node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed cluster and deploying KubeRay [KubeRay] Creates a RayCluster and verifies it becomes ready",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000481788,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 131.772610914,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Conformance Tests conformance-tests",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with spot vms [OPTIONAL] With spot vm machine deployments",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate using default template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster and deploying KubeRay [KubeRay] Creates a RayJob and verifies it completes successfully",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000349106,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 131.773427747,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation when Creating a highly available cluster with Azure CNI v1 [REQUIRED] can create 3 control-plane nodes and 2 Linux worker nodes [Azure CNI v1]",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a GPU-enabled cluster [OPTIONAL] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating RKE2 clusters using clusterclass [OPTIONAL] with 3 control plane node and one linux worker node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed cluster and deploying KubeRay [KubeRay] Creates a RayJob and verifies it completes successfully",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000320165,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 131.773323506,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a ipv6 control-plane cluster [REQUIRED] With ipv6 worker node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster using ClusterClass [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a dual-stack cluster [OPTIONAL] With dual-stack worker node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate and fully spec-ed out APIServer ILB template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster and deploying KubeRay [KubeRay] Creates a RayCluster and verifies it becomes ready",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000503939,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 131.780872164,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "passed",
+          "duration_seconds": 2013.693214492,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000291755,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 131.775623755,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "passed",
+          "duration_seconds": 2097.120234996,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000318976,
+          "junit_file": "junit.e2e_suite.1.xml"
+        }
+      ],
+      "tests_total": 59,
+      "tests_passed": 23,
+      "tests_failed": 0,
+      "tests_skipped": 36
+    },
+    {
       "build_id": "2064523883997827072",
       "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main",
       "started": "2026-06-10T01:45:10Z",
@@ -247,25 +624,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T18:37:48Z",
-            "summary": "Cluster creation failed due to webhook certificate validation errors preventing resource creation",
-            "is_transient": false
+            "generated_at": "2026-06-11T20:41:38Z",
+            "summary": "Webhook certificate validation failure causing cluster creation timeout",
+            "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T18:37:48Z",
-            "root_cause": "The root cause is that webhook certificate validation is failing, which prevents the creation of AzureCluster and related resources. The build log shows repeated 'tls: failed to verify certificate: x509: certificate signed by unknown authority' errors when attempting to call the CAPZ webhook service for validating AzureCluster resources (build-log.txt lines 1499-1505). These validation failures cause resource creation to fail and retry until hitting context deadline exceeded errors (lines 1739, 2221, 2699). The CAPI controller logs confirm it cannot find AzureCluster resources because they were never properly created due to the webhook validation failures ('Could not find AzureCluster, requeuing'). The ValidatingWebhookConfiguration in the components.yaml shows webhooks are configured for azurecluster validation but the certificate used by the webhook service is not trusted by the API server.",
-            "severity": "Critical",
-            "suggested_fix": "No remediation possible from available evidence: The investigation established that webhook certificate validation failures are preventing cluster creation, as shown in build-log.txt and controller logs. However, the specific certificate configuration files (webhook manifests, cert-manager Certificate/Issuer resources) required to identify the exact misconfiguration are not present in the available artifacts. To provide a concrete fix, the actual webhook configuration files and certificate details would need to be examined to determine if the certificate is improperly configured, not signed by a trusted CA, or not properly mounted in the webhook service.",
+            "generated_at": "2026-06-11T20:41:38Z",
+            "root_cause": "The test failure is caused by a known webhook certificate propagation flake. Multiple log entries in build-log.txt show repeated 'x509: certificate signed by unknown authority' errors when trying to call CAPZ webhooks for validating AzureCluster and AzureClusterIdentity resources. For example, line 1499 shows: 'failed calling webhook \"validation.azurecluster.infrastructure.cluster.x-k8s.io\": failed to call webhook: Post \"https://capz-webhook-service.capz-system.svc:443/validate-infrastructure-cluster-x-k8s-io-v1beta1-azurecluster?timeout=10s\": tls: failed to verify certificate: x509: certificate signed by unknown authority'. This is followed by 'context deadline exceeded' errors (line 1739) when the client rate limiter gives up after repeated failures. The CAPZ controller manager logs also show 'http: TLS handshake error' messages indicating bad certificates. This is a known transient issue where the cert-manager CA bundle has not finished injecting when early reconcile calls fire, and it is not a severe defect requiring code changes.",
+            "severity": "Low",
+            "suggested_fix": "No remediation possible from available evidence: The failure is a known transient webhook certificate propagation flake. The test should be retried as this condition typically resolves itself in subsequent runs when the certificate propagation completes successfully.",
             "relevant_files": [
-              "build-log.txt",
-              "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-7fcc6ff995-bz685/manager.log",
-              "artifacts/repository/infrastructure-azure/v1.25.99/components.yaml"
+              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-7b79b8b489-hb45l/manager.log",
+              "build-log.txt"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 28,
-            "model_bytes": 291662,
-            "gcs_bytes": 8630173,
-            "elapsed_ms": 176132,
+            "tool_calls": 20,
+            "model_bytes": 263400,
+            "gcs_bytes": 1468133,
+            "elapsed_ms": 141362,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -381,24 +759,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T18:39:19Z",
-            "summary": "Webhook certificate validation failure causing cluster creation timeout",
-            "is_transient": false
+            "generated_at": "2026-06-11T20:28:44Z",
+            "summary": "Workload cluster creation timed out due to infrastructure not becoming ready, caused by webhook certificate issues and Azure API rate limiting",
+            "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T18:39:19Z",
-            "root_cause": "The test failure is caused by a certificate validation error when calling CAPZ webhooks. The build log shows repeated errors 'tls: failed to verify certificate: x509: certificate signed by unknown authority' when attempting to create AzureCluster resources via webhooks. This is confirmed by the capz-controller-manager logs which show 'http: TLS handshake error from 10.244.0.1:4200: remote error: tls: bad certificate' messages. The webhook service certificate is not trusted by the cluster, preventing successful resource creation and causing the context deadline exceeded error. The certificate issue is the root cause as it prevents the webhook calls from succeeding, which in turn blocks cluster template application.",
-            "severity": "High",
-            "suggested_fix": "Check the certificate configuration for the capz-webhook-service in the capz-system namespace. Ensure the CA certificate used to sign the webhook service certificate is properly configured in the ValidatingWebhookConfiguration and MutatingWebhookConfiguration resources. Specifically, verify the 'caBundle' field in the webhook configurations matches the CA that signed the webhook service certificate. If using cert-manager, ensure the Certificate resource is properly configured and the secret containing the certificate is correctly mounted in the webhook service.",
+            "generated_at": "2026-06-11T20:28:44Z",
+            "root_cause": "The workload cluster creation failed because the control plane infrastructure did not become ready within the timeout. The KCP controller log shows repeated 'Cluster infrastructure is not ready yet' messages (manager.log lines 4, 12, 13) and 'connection to the workload cluster is down' errors when trying to update KubeadmControlPlane status (manager.log lines 2, 3, 6, 11, 15, 16). This indicates the control plane VMs were not successfully provisioned or did not become reachable. The build log shows initial 'x509: certificate signed by unknown authority' errors when calling CAPZ webhooks (build-log.txt lines 1499-1528), which is a known transient issue related to webhook cert propagation. This was followed by 'client rate limiter Wait returned an error: context deadline exceeded' messages (build-log.txt lines 1739, 2221, 2699), indicating Azure API throttling. These transient issues prevented the cluster infrastructure from initializing, leading to the final 'context deadline exceeded' error reported in the test failure (build-log.txt lines 1933-1938, 2415-2420, 2893-2898).",
+            "severity": "Low",
+            "suggested_fix": "No remediation possible from available evidence: The failure is attributed to transient infrastructure issues (webhook certificate propagation delay and Azure API rate limiting) that do not require code changes. The test should be retried to confirm it passes under normal conditions.",
             "relevant_files": [
-              "config/webhook/manifests.yaml",
-              "config/certmanager/certificate.yaml"
+              "build-log.txt",
+              "artifacts/clusters/bootstrap/logs/capi-kubeadm-control-plane-system/capi-kubeadm-control-plane-controller-manager/capi-kubeadm-control-plane-controller-manager-6d9db64c49-zbwb5/manager.log"
             ],
             "mode": "agentic-universal",
             "tool_calls": 20,
-            "model_bytes": 239935,
-            "gcs_bytes": 2489885,
-            "elapsed_ms": 90949,
+            "model_bytes": 116235,
+            "gcs_bytes": 3847373,
+            "elapsed_ms": 116051,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -424,15 +804,15 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/clusterctl_helpers.go#L397",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T18:40:26Z",
-            "summary": "Cluster template application failed due to webhook certificate validation errors causing context deadline exceeded",
-            "is_transient": false
+            "generated_at": "2026-06-11T20:29:25Z",
+            "summary": "Webhook certificate validation failure causing context deadline exceeded",
+            "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T18:40:26Z",
-            "root_cause": "The failure occurred during cluster template application when the CAPI controller attempted to validate AzureCluster resources via webhooks. The build log shows repeated errors 'tls: failed to verify certificate: x509: certificate signed by unknown authority' when calling the CAPZ webhook service at 'https://capz-webhook-service.capz-system.svc:443'. This indicates the webhook server's TLS certificate is not trusted by the calling client. The error pattern shows the CAPZ controller manager successfully registered its webhooks (as seen in its logs with 'Registering webhook' entries), but the certificate verification failed when other controllers attempted to call these webhooks. The repeated 'client rate limiter Wait returned an error: context deadline exceeded' messages are secondary symptoms of the underlying certificate validation failures preventing timely webhook calls. The ultimate 'Failed to apply the cluster template' error with 'context deadline exceeded' is the culmination of these failed webhook validations blocking resource creation.",
-            "severity": "Critical",
-            "suggested_fix": "Verify the TLS certificate configuration for the CAPZ webhook service. Ensure the certificate authority (CA) bundle used by the webhook client matches the CA that signed the webhook server's certificate. Check the 'webhook-cert-dir' and related flags in the CAPZ controller manager deployment, and confirm the certificate secret mounted to the webhook service contains a valid certificate chain. Specifically, inspect the 'capz-webhook-service' service and its associated certificate secret in the 'capz-system' namespace. A concrete remediation step would be to regenerate the webhook certificates using the correct CA and restart the CAPZ controller manager pods.",
+            "generated_at": "2026-06-11T20:29:25Z",
+            "root_cause": "The failure is caused by 'x509: certificate signed by unknown authority' errors when attempting to call CAPZ webhooks during cluster template application. This is evidenced by repeated log messages in build-log.txt showing webhook call failures with TLS certificate verification errors. The error pattern matches a known transient infrastructure flake where cert-manager CA bundle injection has not completed when early reconcile calls fire. The CAPZ controller manager logs show successful certificate loading and webhook server startup, and there are no concrete bootstrap failures in the machine logs to indicate a real bug. The 'context deadline exceeded' error is a downstream effect of the webhook certificate validation failures preventing successful resource creation.",
+            "severity": "Medium",
+            "suggested_fix": "No remediation possible from available evidence: The failure is a known transient infrastructure flake related to webhook certificate propagation timing. The test should be retried. Concrete remediation would require changes to the cert-manager configuration or webhook readiness checks, but this is an infrastructure-level timing issue rather than a code defect in the tested components.",
             "relevant_files": [
               "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-7b79b8b489-hb45l/manager.log",
               "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-7fcc6ff995-bz685/manager.log",
@@ -440,9 +820,11 @@
             ],
             "mode": "agentic-universal",
             "tool_calls": 20,
-            "model_bytes": 115004,
-            "gcs_bytes": 3795693,
-            "elapsed_ms": 67047,
+            "model_bytes": 212260,
+            "gcs_bytes": 2946301,
+            "elapsed_ms": 129632,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1204,383 +1586,6 @@
           "name": "[SynchronizedAfterSuite]",
           "status": "passed",
           "duration_seconds": 0.000265215,
-          "junit_file": "junit.e2e_suite.1.xml"
-        }
-      ],
-      "tests_total": 59,
-      "tests_passed": 23,
-      "tests_failed": 0,
-      "tests_skipped": 36
-    },
-    {
-      "build_id": "2063393674980495360",
-      "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main",
-      "started": "2026-06-06T22:54:05Z",
-      "finished": "2026-06-06T23:47:51Z",
-      "passed": true,
-      "result": "SUCCESS",
-      "duration_seconds": 3226,
-      "commit": "d48dcba49a554c4eb805e04670d2d1ed2ad4820b",
-      "repo_version": "d48dcba49a554c4eb805e04670d2d1ed2ad4820b",
-      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main/2063393674980495360/",
-      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main/2063393674980495360/build-log.txt",
-      "junit_urls": [
-        "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main/2063393674980495360/artifacts/junit.e2e_suite.1.xml"
-      ],
-      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-33-1-34-main/2063393674980495360/",
-      "test_cases": [
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 148.15308288,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Conformance Tests conformance-tests",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Running the quick-start spec Should create a workload cluster",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Running the MachineDeployment rollout spec Should successfully upgrade Machines upon changes in relevant MachineDeployment fields",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Running the self-hosted spec Should pivot the bootstrap cluster to a self-hosted cluster",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Should successfully remediate unhealthy worker machines with MachineHealthCheck Should replace unhealthy machines",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Should successfully scale out and scale in a MachineDeployment Should successfully scale a MachineDeployment up and down upon changes to the MachineDeployment replica count",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
-          "status": "passed",
-          "duration_seconds": 2085.626525748,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 41.630162104,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 148.248607442,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a private cluster [OPTIONAL] Creates a public management cluster in a custom vnet",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation when Creating a highly available cluster with Azure CNI v1 [REQUIRED] can create 3 control-plane nodes and 2 Linux worker nodes [Azure CNI v1]",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a VMSS cluster [REQUIRED] with a single control plane node and an AzureMachinePool with 2 Linux nodes",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a dual-stack cluster [OPTIONAL] With dual-stack worker node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a highly-available cluster with Azure Linux 3 [OPTIONAL] with three controlplane node and two worker nodes",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000308025,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 148.179348978,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a Flatcar sysext cluster [OPTIONAL] With Flatcar control-plane and worker nodes",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a GPU-enabled cluster [OPTIONAL] with a single control plane node and 1 node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating clusters using clusterclass [OPTIONAL] with a single control plane node and one linux worker node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate and fully spec-ed out APIServer ILB template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a self-managed cluster and deploying KubeRay [KubeRay] Creates a RayCluster and verifies it becomes ready",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000278054,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 148.202963803,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a cluster with VMSS flex machinepools [OPTIONAL] with 1 control plane node and 1 machinepool",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating an AKS cluster using ClusterClass [Managed Kubernetes] with a single control plane node and 1 node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating RKE2 clusters using clusterclass [OPTIONAL] with 3 control plane node and one linux worker node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Testing autoscaling from zero with Cluster Autoscaler [REQUIRED] Scales MachineDeployment from 0 to 1+ when workload is scheduled",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000863343,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 148.269280224,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a highly available cluster [REQUIRED] With 3 control-plane nodes and 2 Linux and 2 Windows worker nodes",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a ipv6 control-plane cluster [REQUIRED] With ipv6 worker node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating an AKS cluster for control plane tests [Managed Kubernetes] with a single control plane node and 1 node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate using default template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating an AKS cluster and deploying KubeRay [KubeRay] Creates a RayCluster and verifies it becomes ready",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.002435296,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 148.262306694,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.001248349,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 148.176737958,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating clusters on public MEC [OPTIONAL] with 1 control plane nodes and 1 worker node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating an AKS cluster and deploying KubeRay [KubeRay] Creates a RayJob and verifies it completes successfully",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.003562052,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 148.272824066,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a cluster with spot vms [OPTIONAL] With spot vm machine deployments",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating an AKS cluster with the ASO API [Managed Kubernetes] with a single control plane node and 1 node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a self-managed cluster and deploying KubeRay [KubeRay] Creates a RayJob and verifies it completes successfully",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.001946539,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 148.248110564,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
-          "status": "passed",
-          "duration_seconds": 2090.033853612,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000372766,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 148.219472738,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Should successfully exercise machine pools Should successfully create a cluster with machine pool machines",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Running the workload cluster upgrade spec [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
-          "status": "passed",
-          "duration_seconds": 2127.210461611,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000307825,
           "junit_file": "junit.e2e_suite.1.xml"
         }
       ],

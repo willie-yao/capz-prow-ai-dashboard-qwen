@@ -5,6 +5,383 @@
   "repo": "",
   "runs": [
     {
+      "build_id": "2065016497868115968",
+      "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main",
+      "started": "2026-06-11T10:22:35Z",
+      "finished": "2026-06-11T11:19:19Z",
+      "passed": true,
+      "result": "SUCCESS",
+      "duration_seconds": 3404,
+      "commit": "3b3f2205cc2951d992d6d26c5ffd9ef5fcf92dd2",
+      "repo_version": "3b3f2205cc2951d992d6d26c5ffd9ef5fcf92dd2",
+      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main/2065016497868115968/",
+      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main/2065016497868115968/build-log.txt",
+      "junit_urls": [
+        "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main/2065016497868115968/artifacts/junit.e2e_suite.1.xml"
+      ],
+      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main/2065016497868115968/",
+      "test_cases": [
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 139.480786304,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a private cluster [OPTIONAL] Creates a public management cluster in a custom vnet",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly available cluster [REQUIRED] With 3 control-plane nodes and 2 Linux and 2 Windows worker nodes",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation when Creating a highly available cluster with Azure CNI v1 [REQUIRED] can create 3 control-plane nodes and 2 Linux worker nodes [Azure CNI v1]",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a Flatcar sysext cluster [OPTIONAL] With Flatcar control-plane and worker nodes",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with spot vms [OPTIONAL] With spot vm machine deployments",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a ipv6 control-plane cluster [REQUIRED] With ipv6 worker node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a VMSS cluster [REQUIRED] with a single control plane node and an AzureMachinePool with 2 Linux nodes",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a GPU-enabled cluster [OPTIONAL] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a cluster with VMSS flex machinepools [OPTIONAL] with 1 control plane node and 1 machinepool",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for control plane tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster using ClusterClass [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster with the ASO API [Managed Kubernetes] with a single control plane node and 1 node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a dual-stack cluster [OPTIONAL] With dual-stack worker node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters using clusterclass [OPTIONAL] with a single control plane node and one linux worker node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating RKE2 clusters using clusterclass [OPTIONAL] with 3 control plane node and one linux worker node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating clusters on public MEC [OPTIONAL] with 1 control plane nodes and 1 worker node",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate using default template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate and fully spec-ed out APIServer ILB template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a highly-available cluster with Azure Linux 3 [OPTIONAL] with three controlplane node and two worker nodes",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Testing autoscaling from zero with Cluster Autoscaler [REQUIRED] Scales MachineDeployment from 0 to 1+ when workload is scheduled",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster and deploying KubeRay [KubeRay] Creates a RayCluster and verifies it becomes ready",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating an AKS cluster and deploying KubeRay [KubeRay] Creates a RayJob and verifies it completes successfully",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed cluster and deploying KubeRay [KubeRay] Creates a RayCluster and verifies it becomes ready",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Workload cluster creation Creating a self-managed cluster and deploying KubeRay [KubeRay] Creates a RayJob and verifies it completes successfully",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the quick-start spec Should create a workload cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the MachineDeployment rollout spec Should successfully upgrade Machines upon changes in relevant MachineDeployment fields",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the self-hosted spec Should pivot the bootstrap cluster to a self-hosted cluster",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully remediate unhealthy worker machines with MachineHealthCheck Should replace unhealthy machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully exercise machine pools Should successfully create a cluster with machine pool machines",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Should successfully scale out and scale in a MachineDeployment Should successfully scale a MachineDeployment up and down upon changes to the MachineDeployment replica count",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running the workload cluster upgrade spec [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "passed",
+          "duration_seconds": 2326.953698214,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000897911,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 139.493060791,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000465401,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 139.494406712,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000241226,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 139.499312549,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.001040155,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 139.504125794,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000234306,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 139.506167363,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Conformance Tests conformance-tests",
+          "status": "skipped",
+          "duration_seconds": 0,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.00082205,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 139.48254831,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000464341,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 139.507340734,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000267226,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 139.489614899,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "passed",
+          "duration_seconds": 2238.508661358,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000284557,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedBeforeSuite]",
+          "status": "passed",
+          "duration_seconds": 139.487912388,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
+          "status": "passed",
+          "duration_seconds": 2274.004826681,
+          "junit_file": "junit.e2e_suite.1.xml"
+        },
+        {
+          "name": "[SynchronizedAfterSuite]",
+          "status": "passed",
+          "duration_seconds": 0.000288517,
+          "junit_file": "junit.e2e_suite.1.xml"
+        }
+      ],
+      "tests_total": 59,
+      "tests_passed": 23,
+      "tests_failed": 0,
+      "tests_skipped": 36
+    },
+    {
       "build_id": "2064637748395905024",
       "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main",
       "started": "2026-06-10T09:17:35Z",
@@ -785,23 +1162,25 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.13.2/test/framework/clusterctl/repository.go#L94",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T18:26:23Z",
-            "summary": "Failed to fetch Cluster API v1.11.11 manifest due to GitHub API 504 timeout",
+            "generated_at": "2026-06-11T20:27:16Z",
+            "summary": "Failed to fetch Cluster API v1.11.11 manifest from GitHub due to a 504 timeout",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T18:26:23Z",
-            "root_cause": "The test suite failed during the SynchronizedBeforeSuite phase when attempting to fetch the Cluster API v1.11.11 core components YAML manifest from GitHub. The failure was caused by a 504 Gateway Timeout error when trying to access https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml. This is evidenced by the error message in artifacts/junit.e2e_suite.1.xml: 'failed to get component source YAML from URL: [timed out waiting for the condition, failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml: got status code 504]'. The build log at line 1379 confirms this with the same error. This is a transient infrastructure issue related to GitHub's API availability or network connectivity rather than a bug in the CAPZ codebase.",
+            "generated_at": "2026-06-11T20:27:16Z",
+            "root_cause": "The test failed during the SynchronizedBeforeSuite phase when attempting to generate the manifest for 'cluster-api' version 'v1.11.11'. The root cause, as shown in build-log.txt at line 1379, is a 'failed to get component source YAML from URL' error. This error has two components: a 'timed out waiting for the condition' (line 1385) and a more specific 'failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml: got status code 504' (line 1389). A 504 Gateway Timeout indicates a transient network or server-side issue when accessing the GitHub release URL, not a bug in the CAPZ codebase. This is a known transient error class according to the project-specific knowledge.",
             "severity": "Low",
-            "suggested_fix": "No remediation possible from available evidence: The failure is due to a transient network/GitHub API issue (504 timeout) when fetching a manifest. The available evidence (logs and test output) confirms this is an external infrastructure problem. No code changes are required. The test should be retried when the GitHub API is available.",
+            "suggested_fix": "Retry the test run. Since this is a transient network issue accessing an external GitHub URL, no code changes are required. The test should pass on a subsequent attempt when the GitHub service is responsive.",
             "relevant_files": [
-              "test/e2e/e2e_suite_test.go"
+              "build-log.txt"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 15,
-            "model_bytes": 65441,
-            "gcs_bytes": 773686,
-            "elapsed_ms": 53925,
+            "tool_calls": 19,
+            "model_bytes": 117015,
+            "gcs_bytes": 1614550,
+            "elapsed_ms": 86959,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -821,24 +1200,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/e2e_suite_test.go#L64",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T18:27:13Z",
-            "summary": "SynchronizedBeforeSuite failed due to a timeout fetching cluster-api v1.11.11 manifest from GitHub",
+            "generated_at": "2026-06-11T20:26:43Z",
+            "summary": "SynchronizedBeforeSuite failed due to a 504 Gateway Timeout when fetching CAPI release manifests from GitHub",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T18:27:13Z",
-            "root_cause": "The SynchronizedBeforeSuite failed during the first step of loading e2e test configuration and creating a clusterctl local repository. The failure occurred when trying to fetch the core-components.yaml manifest for cluster-api v1.11.11 from GitHub (https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml). The error was 'timed out waiting for the condition' with a 'got status code 504' response, as shown in build-log.txt at line 1379. This indicates a transient network or GitHub availability issue rather than a code defect in the CAPZ project itself. The 504 Gateway Timeout error and timeout condition clearly point to an infrastructure-level problem during the test setup phase. The junit.e2e_suite.1.xml file confirms this was a setup phase failure occurring in SynchronizedBeforeSuite before any test cases ran.",
+            "generated_at": "2026-06-11T20:26:43Z",
+            "root_cause": "The test suite failed during the SynchronizedBeforeSuite phase when attempting to create a local clusterctl repository. The root cause was a failure to fetch the Cluster API v1.11.11 core components YAML manifest from GitHub (https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml), which resulted in a 504 Gateway Timeout error. This is evidenced by the error message in the build log: 'failed to get component source YAML from URL: [timed out waiting for the condition, failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml: got status code 504]' (from build-log.txt line 1379). This type of HTTP 504 error from GitHub is a transient infrastructure issue, not a bug in the CAPZ codebase. The failure occurred during the setup phase before any CAPZ-specific logic was executed.",
             "severity": "Low",
-            "suggested_fix": "No remediation possible from available evidence: The failure is due to a transient network/GitHub availability issue during manifest download. The specific evidence is a 504 status code and timeout when fetching https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml. To resolve, simply retry the test run as this is an infrastructure flake.",
+            "suggested_fix": "No remediation possible from available evidence: The failure was caused by a transient network issue (504 Gateway Timeout) when accessing GitHub during test setup. The suggested fix is to retry the test run, as this is an infrastructure-level transient error.",
             "relevant_files": [
-              "build-log.txt",
-              "artifacts/junit.e2e_suite.1.xml"
+              "test/e2e/e2e_suite_test.go",
+              "test/e2e/common.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 13,
-            "model_bytes": 60432,
-            "gcs_bytes": 1460011,
-            "elapsed_ms": 50210,
+            "tool_calls": 12,
+            "model_bytes": 90342,
+            "gcs_bytes": 883051,
+            "elapsed_ms": 54833,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -858,24 +1239,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/e2e_suite_test.go#L64",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T18:28:04Z",
-            "summary": "SynchronizedBeforeSuite failed due to a timeout fetching cluster-api v1.11.11 manifest from GitHub",
+            "generated_at": "2026-06-11T20:27:26Z",
+            "summary": "SynchronizedBeforeSuite failed due to a timeout fetching Cluster API v1.11.11 components from GitHub",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T18:28:04Z",
-            "root_cause": "The SynchronizedBeforeSuite failed during the first step of loading e2e test configuration and creating a clusterctl local repository. The failure occurred when trying to fetch the core-components.yaml manifest for cluster-api v1.11.11 from GitHub (https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml). The error was 'timed out waiting for the condition' with a 'got status code 504' response, as shown in build-log.txt at line 1379. This indicates a transient network or GitHub availability issue rather than a code defect in the CAPZ project itself. The 504 Gateway Timeout error and timeout condition clearly point to an infrastructure-level problem during the test setup phase. The junit.e2e_suite.1.xml file confirms this was a setup phase failure occurring in SynchronizedBeforeSuite before any test cases ran.",
+            "generated_at": "2026-06-11T20:27:26Z",
+            "root_cause": "The test suite failed during the SynchronizedBeforeSuite phase when attempting to create a clusterctl local repository. The root cause was a failure to fetch the Cluster API v1.11.11 core components YAML from GitHub (https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml). The error log from build-log.txt at line 1379 shows: 'failed to get component source YAML from URL: [timed out waiting for the condition, failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml: got status code 504]'. A 504 status code indicates a gateway timeout from GitHub's servers, which is a transient infrastructure issue rather than a bug in the CAPZ codebase. This failure prevented the test suite from initializing the required Cluster API components, causing the entire test run to abort.",
             "severity": "Low",
-            "suggested_fix": "No remediation possible from available evidence: The failure is due to a transient network/GitHub availability issue during manifest download. The specific evidence is a 504 status code and timeout when fetching https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml. To resolve, simply retry the test run as this is an infrastructure flake.",
+            "suggested_fix": "No remediation possible from available evidence: The failure was caused by a transient network issue (504 Gateway Timeout) when fetching external dependencies from GitHub during test setup. The appropriate action is to retry the test run, as this type of infrastructure flake is not indicative of a code defect in CAPZ. No changes to the codebase are required based on this failure.",
             "relevant_files": [
-              "build-log.txt",
-              "artifacts/junit.e2e_suite.1.xml"
+              "test/e2e/e2e_suite_test.go",
+              "/home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/clusterctl/repository.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 13,
-            "model_bytes": 60432,
-            "gcs_bytes": 1460011,
-            "elapsed_ms": 50333,
+            "tool_calls": 20,
+            "model_bytes": 167636,
+            "gcs_bytes": 1133577,
+            "elapsed_ms": 97635,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -895,24 +1278,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/e2e_suite_test.go#L64",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T18:28:52Z",
-            "summary": "SynchronizedBeforeSuite failed due to a timeout fetching cluster-api v1.11.11 manifest from GitHub",
+            "generated_at": "2026-06-11T20:39:16Z",
+            "summary": "SynchronizedBeforeSuite failed due to a timeout fetching Cluster API v1.11.11 components from GitHub",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T18:28:52Z",
-            "root_cause": "The SynchronizedBeforeSuite failed on Ginkgo parallel process #1 because it timed out waiting for the condition while trying to fetch the cluster-api v1.11.11 core-components.yaml manifest from GitHub. The error message in build-log.txt at line 1379 shows 'failed to get component source YAML from URL: [timed out waiting for the condition, failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml: got status code 504]'. This indicates a transient network issue or GitHub API throttling rather than a code defect in the test itself. The 504 status code specifically points to a gateway timeout, which is typically a temporary infrastructure issue.",
+            "generated_at": "2026-06-11T20:39:16Z",
+            "root_cause": "The test suite failed during the SynchronizedBeforeSuite phase when attempting to create a clusterctl local repository. The root cause was a failure to fetch the Cluster API v1.11.11 core components YAML from GitHub (https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml). The error log from build-log.txt at line 1379 shows: 'failed to get component source YAML from URL: [timed out waiting for the condition, failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml: got status code 504]'. A 504 status code indicates a gateway timeout from GitHub's servers, which is a transient infrastructure issue rather than a bug in the CAPZ codebase. This failure prevented the test suite from initializing the required Cluster API components, causing the entire test run to abort.",
             "severity": "Low",
-            "suggested_fix": "No remediation possible from available evidence: The failure is due to a transient network/GitHub API issue (504 Gateway Timeout) when fetching external dependencies. The only actionable item is to retry the test run. The evidence clearly shows this is an infrastructure flake rather than a code bug.",
+            "suggested_fix": "No remediation possible from available evidence: The failure was caused by a transient network issue (504 Gateway Timeout) when fetching external dependencies from GitHub during test setup. The appropriate action is to retry the test run, as this type of infrastructure flake is not indicative of a code defect in CAPZ. No changes to the codebase are required based on this failure.",
             "relevant_files": [
-              "build-log.txt",
-              "artifacts/junit.e2e_suite.1.xml"
+              "test/e2e/e2e_suite_test.go",
+              "/home/prow/go/pkg/mod/sigs.k8s.io/cluster-api/test@v1.13.2/framework/clusterctl/repository.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 12,
-            "model_bytes": 62761,
-            "gcs_bytes": 1036779,
-            "elapsed_ms": 48440,
+            "tool_calls": 20,
+            "model_bytes": 167636,
+            "gcs_bytes": 1133577,
+            "cache_hit": true,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -932,23 +1317,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/e2e_suite_test.go#L64",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T18:29:56Z",
-            "summary": "SynchronizedBeforeSuite failed due to inability to fetch cluster-api v1.11.11 manifests from GitHub",
+            "generated_at": "2026-06-11T20:26:43Z",
+            "summary": "SynchronizedBeforeSuite failed due to a 504 Gateway Timeout when fetching CAPI release manifests from GitHub",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T18:29:56Z",
-            "root_cause": "The SynchronizedBeforeSuite failed during the setup phase when trying to create a local clusterctl repository. The failure occurred while attempting to fetch the core-components.yaml manifest for cluster-api v1.11.11 from GitHub (line 1379 in build-log.txt). The error message indicates 'timed out waiting for the condition' and 'got status code 504' when trying to access https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml. This is a transient infrastructure issue related to network connectivity or GitHub availability rather than a bug in the CAPZ codebase. The junit XML file confirms this is a SynchronizedBeforeSuite failure occurring at test/e2e/e2e_suite_test.go:64.",
+            "generated_at": "2026-06-11T20:26:43Z",
+            "root_cause": "The test suite failed during the SynchronizedBeforeSuite phase when attempting to create a local clusterctl repository. The root cause was a failure to fetch the Cluster API v1.11.11 core components YAML manifest from GitHub (https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml), which resulted in a 504 Gateway Timeout error. This is evidenced by the error message in the build log: 'failed to get component source YAML from URL: [timed out waiting for the condition, failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml: got status code 504]' (from build-log.txt line 1379). This type of HTTP 504 error from GitHub is a transient infrastructure issue, not a bug in the CAPZ codebase. The failure occurred during the setup phase before any CAPZ-specific logic was executed.",
             "severity": "Low",
-            "suggested_fix": "Re-run the job once the upstream service recovers; no CAPZ-side change required. The failure is due to a transient network/GitHub issue (504 status code when fetching external manifest).",
+            "suggested_fix": "No remediation possible from available evidence: The failure was caused by a transient network issue (504 Gateway Timeout) when accessing GitHub during test setup. The suggested fix is to retry the test run, as this is an infrastructure-level transient error.",
             "relevant_files": [
-              "test/e2e/e2e_suite_test.go"
+              "test/e2e/e2e_suite_test.go",
+              "test/e2e/common.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 20,
-            "model_bytes": 65904,
-            "gcs_bytes": 2469691,
-            "elapsed_ms": 63753,
+            "tool_calls": 12,
+            "model_bytes": 90342,
+            "gcs_bytes": 883051,
+            "cache_hit": true,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -968,24 +1356,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/e2e_suite_test.go#L64",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T18:30:55Z",
-            "summary": "SynchronizedBeforeSuite failed due to a 504 Gateway Timeout when fetching CAPI v1.11.11 manifests from GitHub during clusterctl repository initialization.",
+            "generated_at": "2026-06-11T20:26:43Z",
+            "summary": "SynchronizedBeforeSuite failed due to a 504 Gateway Timeout when fetching CAPI release manifests from GitHub",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T18:30:55Z",
-            "root_cause": "The test suite failed during the SynchronizedBeforeSuite phase when attempting to fetch Cluster API manifests for version v1.11.11 from GitHub. The error message 'failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml: got status code 504' from build-log.txt line 1389 and junit.e2e_suite.1.xml indicates a 504 Gateway Timeout from GitHub's servers. This is a transient infrastructure issue related to network connectivity or GitHub availability rather than a bug in the CAPZ codebase. The failure occurred before any cluster provisioning or CAPZ-specific logic could execute.",
+            "generated_at": "2026-06-11T20:26:43Z",
+            "root_cause": "The test suite failed during the SynchronizedBeforeSuite phase when attempting to create a local clusterctl repository. The root cause was a failure to fetch the Cluster API v1.11.11 core components YAML manifest from GitHub (https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml), which resulted in a 504 Gateway Timeout error. This is evidenced by the error message in the build log: 'failed to get component source YAML from URL: [timed out waiting for the condition, failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml: got status code 504]' (from build-log.txt line 1379). This type of HTTP 504 error from GitHub is a transient infrastructure issue, not a bug in the CAPZ codebase. The failure occurred during the setup phase before any CAPZ-specific logic was executed.",
             "severity": "Low",
-            "suggested_fix": "No remediation possible from available evidence: The failure is a transient network/GitHub issue that resolved on its own. The evidence shows a 504 Gateway Timeout from GitHub when fetching CAPI manifests, which is an external infrastructure problem. No code changes are required. To prevent this class of issue in future runs, consider mirroring critical external dependencies or implementing retry logic with exponential backoff for manifest downloads.",
+            "suggested_fix": "No remediation possible from available evidence: The failure was caused by a transient network issue (504 Gateway Timeout) when accessing GitHub during test setup. The suggested fix is to retry the test run, as this is an infrastructure-level transient error.",
             "relevant_files": [
               "test/e2e/e2e_suite_test.go",
               "test/e2e/common.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 19,
-            "model_bytes": 87414,
-            "gcs_bytes": 1043675,
-            "elapsed_ms": 59561,
+            "tool_calls": 12,
+            "model_bytes": 90342,
+            "gcs_bytes": 883051,
+            "cache_hit": true,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1005,23 +1395,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/e2e_suite_test.go#L64",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T18:31:59Z",
-            "summary": "SynchronizedBeforeSuite failed due to inability to fetch cluster-api v1.11.11 manifests from GitHub",
+            "generated_at": "2026-06-11T20:26:43Z",
+            "summary": "SynchronizedBeforeSuite failed due to a 504 Gateway Timeout when fetching CAPI release manifests from GitHub",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T18:31:59Z",
-            "root_cause": "The SynchronizedBeforeSuite failed during the setup phase when trying to create a local clusterctl repository. The failure occurred while attempting to fetch the core-components.yaml manifest for cluster-api v1.11.11 from GitHub (line 1379 in build-log.txt). The error message indicates 'timed out waiting for the condition' and 'got status code 504' when trying to access https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml. This is a transient infrastructure issue related to network connectivity or GitHub availability rather than a bug in the CAPZ codebase. The junit XML file confirms this is a SynchronizedBeforeSuite failure occurring at test/e2e/e2e_suite_test.go:64.",
+            "generated_at": "2026-06-11T20:26:43Z",
+            "root_cause": "The test suite failed during the SynchronizedBeforeSuite phase when attempting to create a local clusterctl repository. The root cause was a failure to fetch the Cluster API v1.11.11 core components YAML manifest from GitHub (https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml), which resulted in a 504 Gateway Timeout error. This is evidenced by the error message in the build log: 'failed to get component source YAML from URL: [timed out waiting for the condition, failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml: got status code 504]' (from build-log.txt line 1379). This type of HTTP 504 error from GitHub is a transient infrastructure issue, not a bug in the CAPZ codebase. The failure occurred during the setup phase before any CAPZ-specific logic was executed.",
             "severity": "Low",
-            "suggested_fix": "Re-run the job once the upstream service recovers; no CAPZ-side change required. The failure is due to a transient network/GitHub issue (504 status code when fetching external manifest).",
+            "suggested_fix": "No remediation possible from available evidence: The failure was caused by a transient network issue (504 Gateway Timeout) when accessing GitHub during test setup. The suggested fix is to retry the test run, as this is an infrastructure-level transient error.",
             "relevant_files": [
-              "test/e2e/e2e_suite_test.go"
+              "test/e2e/e2e_suite_test.go",
+              "test/e2e/common.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 20,
-            "model_bytes": 65904,
-            "gcs_bytes": 2469691,
-            "elapsed_ms": 63671,
+            "tool_calls": 12,
+            "model_bytes": 90342,
+            "gcs_bytes": 883051,
+            "cache_hit": true,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1041,23 +1434,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/e2e_suite_test.go#L64",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T18:33:03Z",
-            "summary": "SynchronizedBeforeSuite failed due to inability to fetch cluster-api v1.11.11 manifests from GitHub",
+            "generated_at": "2026-06-11T20:26:43Z",
+            "summary": "SynchronizedBeforeSuite failed due to a 504 Gateway Timeout when fetching CAPI release manifests from GitHub",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T18:33:03Z",
-            "root_cause": "The SynchronizedBeforeSuite failed during the setup phase when trying to create a local clusterctl repository. The failure occurred while attempting to fetch the core-components.yaml manifest for cluster-api v1.11.11 from GitHub (line 1379 in build-log.txt). The error message indicates 'timed out waiting for the condition' and 'got status code 504' when trying to access https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml. This is a transient infrastructure issue related to network connectivity or GitHub availability rather than a bug in the CAPZ codebase. The junit XML file confirms this is a SynchronizedBeforeSuite failure occurring at test/e2e/e2e_suite_test.go:64.",
+            "generated_at": "2026-06-11T20:26:43Z",
+            "root_cause": "The test suite failed during the SynchronizedBeforeSuite phase when attempting to create a local clusterctl repository. The root cause was a failure to fetch the Cluster API v1.11.11 core components YAML manifest from GitHub (https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml), which resulted in a 504 Gateway Timeout error. This is evidenced by the error message in the build log: 'failed to get component source YAML from URL: [timed out waiting for the condition, failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml: got status code 504]' (from build-log.txt line 1379). This type of HTTP 504 error from GitHub is a transient infrastructure issue, not a bug in the CAPZ codebase. The failure occurred during the setup phase before any CAPZ-specific logic was executed.",
             "severity": "Low",
-            "suggested_fix": "Re-run the job once the upstream service recovers; no CAPZ-side change required. The failure is due to a transient network/GitHub issue (504 status code when fetching external manifest).",
+            "suggested_fix": "No remediation possible from available evidence: The failure was caused by a transient network issue (504 Gateway Timeout) when accessing GitHub during test setup. The suggested fix is to retry the test run, as this is an infrastructure-level transient error.",
             "relevant_files": [
-              "test/e2e/e2e_suite_test.go"
+              "test/e2e/e2e_suite_test.go",
+              "test/e2e/common.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 20,
-            "model_bytes": 65904,
-            "gcs_bytes": 2469691,
-            "elapsed_ms": 63667,
+            "tool_calls": 12,
+            "model_bytes": 90342,
+            "gcs_bytes": 883051,
+            "cache_hit": true,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1077,24 +1473,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/e2e_suite_test.go#L64",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T18:34:02Z",
-            "summary": "SynchronizedBeforeSuite failed due to a 504 Gateway Timeout when fetching CAPI v1.11.11 core-components.yaml from GitHub during clusterctl repository initialization.",
+            "generated_at": "2026-06-11T20:26:43Z",
+            "summary": "SynchronizedBeforeSuite failed due to a 504 Gateway Timeout when fetching CAPI release manifests from GitHub",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T18:34:02Z",
-            "root_cause": "The test suite failed during the SynchronizedBeforeSuite phase when attempting to fetch the Cluster API v1.11.11 core-components.yaml manifest from GitHub. The error message from build-log.txt line 1379 and junit.e2e_suite.1.xml shows 'failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml: got status code 504'. This indicates a transient network issue or GitHub availability problem rather than a code defect in CAPZ. The failure occurred before any cluster was provisioned, as confirmed by the empty results from discover_clusters and discover_controllers. The error was preceded by a 'timed out waiting for the condition' message, suggesting the system waited for the URL to become available but eventually received the 504 error.",
+            "generated_at": "2026-06-11T20:26:43Z",
+            "root_cause": "The test suite failed during the SynchronizedBeforeSuite phase when attempting to create a local clusterctl repository. The root cause was a failure to fetch the Cluster API v1.11.11 core components YAML manifest from GitHub (https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml), which resulted in a 504 Gateway Timeout error. This is evidenced by the error message in the build log: 'failed to get component source YAML from URL: [timed out waiting for the condition, failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml: got status code 504]' (from build-log.txt line 1379). This type of HTTP 504 error from GitHub is a transient infrastructure issue, not a bug in the CAPZ codebase. The failure occurred during the setup phase before any CAPZ-specific logic was executed.",
             "severity": "Low",
-            "suggested_fix": "No remediation possible from available evidence: The failure was caused by an external network/GitHub availability issue during manifest fetching. The only concrete evidence is the 504 error from GitHub's servers when trying to download the CAPI v1.11.11 release manifest. A retry of the test job should resolve this transient infrastructure flake.",
+            "suggested_fix": "No remediation possible from available evidence: The failure was caused by a transient network issue (504 Gateway Timeout) when accessing GitHub during test setup. The suggested fix is to retry the test run, as this is an infrastructure-level transient error.",
             "relevant_files": [
               "test/e2e/e2e_suite_test.go",
-              "framework/clusterctl/repository.go"
+              "test/e2e/common.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 17,
-            "model_bytes": 52965,
-            "gcs_bytes": 891243,
-            "elapsed_ms": 58897,
+            "tool_calls": 12,
+            "model_bytes": 90342,
+            "gcs_bytes": 883051,
+            "cache_hit": true,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1114,23 +1512,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/e2e_suite_test.go#L64",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T18:34:51Z",
-            "summary": "SynchronizedBeforeSuite failed due to a 504 Gateway Timeout when fetching CAPI v1.11.11 core-components.yaml from GitHub during clusterctl repository initialization.",
+            "generated_at": "2026-06-11T20:26:43Z",
+            "summary": "SynchronizedBeforeSuite failed due to a 504 Gateway Timeout when fetching CAPI release manifests from GitHub",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T18:34:51Z",
-            "root_cause": "The test suite failed during the SynchronizedBeforeSuite phase when attempting to fetch the Cluster API v1.11.11 core-components.yaml manifest from GitHub. The error message from build-log.txt line 1379 and junit.e2e_suite.1.xml shows 'failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml: got status code 504'. This indicates a transient network issue or GitHub availability problem rather than a code defect in CAPZ. The failure occurred before any cluster was provisioned, as confirmed by the empty results from discover_clusters and discover_controllers.",
+            "generated_at": "2026-06-11T20:26:43Z",
+            "root_cause": "The test suite failed during the SynchronizedBeforeSuite phase when attempting to create a local clusterctl repository. The root cause was a failure to fetch the Cluster API v1.11.11 core components YAML manifest from GitHub (https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml), which resulted in a 504 Gateway Timeout error. This is evidenced by the error message in the build log: 'failed to get component source YAML from URL: [timed out waiting for the condition, failed to get https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.11.11/core-components.yaml: got status code 504]' (from build-log.txt line 1379). This type of HTTP 504 error from GitHub is a transient infrastructure issue, not a bug in the CAPZ codebase. The failure occurred during the setup phase before any CAPZ-specific logic was executed.",
             "severity": "Low",
-            "suggested_fix": "No remediation possible from available evidence: The failure was caused by an external network/GitHub availability issue during manifest fetching. The only concrete evidence is the 504 error from GitHub's servers when trying to download the CAPI v1.11.11 release manifest. A retry of the test job should resolve this transient infrastructure flake.",
+            "suggested_fix": "No remediation possible from available evidence: The failure was caused by a transient network issue (504 Gateway Timeout) when accessing GitHub during test setup. The suggested fix is to retry the test run, as this is an infrastructure-level transient error.",
             "relevant_files": [
-              "test/e2e/e2e_suite_test.go"
+              "test/e2e/e2e_suite_test.go",
+              "test/e2e/common.go"
             ],
             "mode": "agentic-universal",
-            "tool_calls": 14,
-            "model_bytes": 50054,
-            "gcs_bytes": 747003,
-            "elapsed_ms": 49795,
+            "tool_calls": 12,
+            "model_bytes": 90342,
+            "gcs_bytes": 883051,
+            "cache_hit": true,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1145,383 +1546,6 @@
       "tests_passed": 10,
       "tests_failed": 10,
       "tests_skipped": 0
-    },
-    {
-      "build_id": "2063514472009437184",
-      "job_name": "periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main",
-      "started": "2026-06-07T06:54:04Z",
-      "finished": "2026-06-07T07:49:56Z",
-      "passed": true,
-      "result": "SUCCESS",
-      "duration_seconds": 3352,
-      "commit": "d48dcba49a554c4eb805e04670d2d1ed2ad4820b",
-      "repo_version": "d48dcba49a554c4eb805e04670d2d1ed2ad4820b",
-      "prow_url": "https://prow.k8s.io/view/gs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main/2063514472009437184/",
-      "build_log_url": "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main/2063514472009437184/build-log.txt",
-      "junit_urls": [
-        "https://storage.googleapis.com/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main/2063514472009437184/artifacts/junit.e2e_suite.1.xml"
-      ],
-      "web_url": "https://gcsweb.k8s.io/gcs/kubernetes-ci-logs/logs/periodic-cluster-api-provider-azure-e2e-workload-upgrade-1-32-1-33-main/2063514472009437184/",
-      "test_cases": [
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 136.508138507,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Running the quick-start spec Should create a workload cluster",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Running the MachineDeployment rollout spec Should successfully upgrade Machines upon changes in relevant MachineDeployment fields",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Running the self-hosted spec Should pivot the bootstrap cluster to a self-hosted cluster",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Should successfully remediate unhealthy worker machines with MachineHealthCheck Should replace unhealthy machines",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Should successfully exercise machine pools Should successfully create a cluster with machine pool machines",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Should successfully scale out and scale in a MachineDeployment Should successfully scale a MachineDeployment up and down upon changes to the MachineDeployment replica count",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from an old version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests API Version Upgrade upgrade from the latest version of v1beta1 to current, and scale AKS workload clusters created in the old version Should create a management cluster and then upgrade all the providers",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Running the workload cluster upgrade spec [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
-          "status": "passed",
-          "duration_seconds": 2132.76881896,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 217.786326414,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 136.516830718,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation when Creating a highly available cluster with Azure CNI v1 [REQUIRED] can create 3 control-plane nodes and 2 Linux worker nodes [Azure CNI v1]",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a cluster with spot vms [OPTIONAL] With spot vm machine deployments",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a cluster with VMSS flex machinepools [OPTIONAL] with 1 control plane node and 1 machinepool",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating clusters on public MEC [OPTIONAL] with 1 control plane nodes and 1 worker node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.0005588,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 136.51985827,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a private cluster [OPTIONAL] Creates a public management cluster in a custom vnet",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating an AKS cluster for control plane tests [Managed Kubernetes] with a single control plane node and 1 node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating RKE2 clusters using clusterclass [OPTIONAL] with 3 control plane node and one linux worker node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a self-managed cluster and deploying KubeRay [KubeRay] Creates a RayJob and verifies it completes successfully",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000376267,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 136.445429665,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Conformance Tests conformance-tests",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating an AKS cluster using ClusterClass [Managed Kubernetes] with a single control plane node and 1 node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate using default template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000373746,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 136.516205227,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a VMSS cluster [REQUIRED] with a single control plane node and an AzureMachinePool with 2 Linux nodes",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating an AKS cluster with the ASO API [Managed Kubernetes] with a single control plane node and 1 node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a highly-available cluster with Azure Linux 3 [OPTIONAL] with three controlplane node and two worker nodes",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a self-managed cluster and deploying KubeRay [KubeRay] Creates a RayCluster and verifies it becomes ready",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000640621,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 136.515293061,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a highly available cluster [REQUIRED] With 3 control-plane nodes and 2 Linux and 2 Windows worker nodes",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a GPU-enabled cluster [OPTIONAL] with a single control plane node and 1 node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a dual-stack cluster [OPTIONAL] With dual-stack worker node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating an AKS cluster and deploying KubeRay [KubeRay] Creates a RayCluster and verifies it becomes ready",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000749093,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 136.526615755,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a Flatcar sysext cluster [OPTIONAL] With Flatcar control-plane and worker nodes",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a ipv6 control-plane cluster [REQUIRED] With ipv6 worker node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating clusters using clusterclass [OPTIONAL] with a single control plane node and one linux worker node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Testing autoscaling from zero with Cluster Autoscaler [REQUIRED] Scales MachineDeployment from 0 to 1+ when workload is scheduled",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000939856,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 136.519586355,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating an AKS cluster for node pool tests [Managed Kubernetes] with a single control plane node and 1 node",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating a self-managed VM based cluster using API Server ILB feature gate and fully spec-ed out APIServer ILB template [OPTIONAL][API-Server-ILB] with three controlplane node and three worker nodes",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Workload cluster creation Creating an AKS cluster and deploying KubeRay [KubeRay] Creates a RayJob and verifies it completes successfully",
-          "status": "skipped",
-          "duration_seconds": 0,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.00059679,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 136.51409705,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster using scale in rollout [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
-          "status": "passed",
-          "duration_seconds": 2210.905124682,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000278655,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedBeforeSuite]",
-          "status": "passed",
-          "duration_seconds": 136.442724938,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[It] Running the Cluster API E2E tests Running KCP upgrade in a HA cluster [K8s-Upgrade] Should create and upgrade a workload cluster and eventually run kubetest",
-          "status": "passed",
-          "duration_seconds": 2350.525497789,
-          "junit_file": "junit.e2e_suite.1.xml"
-        },
-        {
-          "name": "[SynchronizedAfterSuite]",
-          "status": "passed",
-          "duration_seconds": 0.000282324,
-          "junit_file": "junit.e2e_suite.1.xml"
-        }
-      ],
-      "tests_total": 59,
-      "tests_passed": 23,
-      "tests_failed": 0,
-      "tests_skipped": 36
     }
   ]
 }

@@ -67,25 +67,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.12.8/test/framework/clusterctl/clusterctl_helpers.go#L433",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T19:10:02Z",
-            "summary": "AKS cluster creation failed due to Azure API rate limiting and resource conflicts during provisioning",
+            "generated_at": "2026-06-11T20:49:22Z",
+            "summary": "Cluster creation failed due to x509 certificate errors when calling CAPZ webhooks during AKS cluster provisioning",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T19:10:02Z",
-            "root_cause": "The build-log.txt shows repeated 'context deadline exceeded' errors when creating AzureManaged resources (AzureManagedMachinePoolTemplate, AzureManagedControlPlane, AzureManagedMachinePool). These errors originated from 'client rate limiter Wait returned an error: context deadline exceeded' as seen in the build log grep results. This indicates the CAPZ controller was rate-limited by Azure APIs. Additionally, the azure-activity-logs show a specific 'EtagMismatch' error with message 'Another operation is in progress' for agent pool operations, indicating resource conflicts during provisioning. The CAPZ controller manager logs do not show internal errors but the CAPI controller logs indicate it couldn't connect to workload clusters, which is expected during provisioning failures. The root cause is Azure infrastructure throttling and resource contention rather than a code defect.",
-            "severity": "Low",
-            "suggested_fix": "No remediation possible from available evidence: The failure is due to transient Azure infrastructure issues (rate limiting and resource conflicts) rather than a code defect. The evidence establishes that Azure API throttling and resource contention occurred during provisioning. To prevent such issues in future runs, consider implementing exponential backoff retries for Azure API calls and ensuring exclusive resource operations in test environments.",
+            "generated_at": "2026-06-11T20:49:22Z",
+            "root_cause": "The test failure was caused by 'x509: certificate signed by unknown authority' errors when the Kubernetes API server attempted to call CAPZ webhooks during the creation of an AKS cluster. These errors occurred during the application of the cluster template for 'capz-e2e-r59nl4-asoapi', specifically when trying to create AzureManagedControlPlaneTemplate and AzureManagedMachinePool resources. The build log shows repeated webhook call failures with TLS certificate verification errors, which is a known transient issue in CAPZ related to webhook certificate propagation during cluster initialization. The CAPZ controller manager logs also show multiple 'http: TLS handshake error' messages from internal components attempting to communicate with the webhook server, confirming the certificate trust issue. This is a recognized infrastructure flake pattern in CAPZ where the cert-manager CA bundle has not finished injecting when early reconcile calls fire, rather than a code defect.",
+            "severity": "Medium",
+            "suggested_fix": "No remediation possible from available evidence: The failure is a known transient infrastructure flake related to webhook certificate propagation during cluster bringup. The test should be retried as the root cause is not a code defect but a timing issue with certificate injection during component initialization.",
             "relevant_files": [
               "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-7989795556-n7xsf/manager.log",
-              "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-8447bd6c48-fk7zg/manager.log",
-              "artifacts/clusters/capz-e2e-r59nl4-asoapi/azure-activity-logs/capz-e2e-r59nl4-asoapi.log"
+              "build-log.txt"
             ],
             "mode": "agentic-universal",
             "tool_calls": 20,
-            "model_bytes": 43037,
-            "gcs_bytes": 3730674,
-            "elapsed_ms": 61784,
+            "model_bytes": 180881,
+            "gcs_bytes": 2527871,
+            "elapsed_ms": 148520,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -327,24 +328,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.12.8/test/framework/clusterctl/clusterctl_helpers.go#L433",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T19:11:52Z",
-            "summary": "Cluster creation failed due to webhook TLS certificate validation errors",
-            "is_transient": false
+            "generated_at": "2026-06-11T20:50:24Z",
+            "summary": "AKS cluster creation failed due to Azure API conflicts during resource provisioning",
+            "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T19:11:52Z",
-            "root_cause": "The failure was caused by 'x509: certificate signed by unknown authority' errors when attempting to call CAPZ webhooks during cluster creation. These errors occurred for multiple resources including AzureManagedControlPlane, AzureManagedMachinePool, and AzureManagedMachinePoolTemplate. The build log shows repeated attempts to create these resources failing with internal errors related to webhook calls, followed by 'context deadline exceeded' errors. The CAPZ controller manager log confirms TLS handshake errors ('remote error: tls: bad certificate') when clients attempt to connect to its webhook server, indicating that the webhook certificates are not trusted by the API server making the calls. This is a certificate trust issue between the CAPZ webhook server and the Kubernetes API server, not a transient infrastructure problem.",
-            "severity": "Critical",
-            "suggested_fix": "Verify the CA certificate used to sign the CAPZ webhook server certificate is trusted by the Kubernetes API server. This typically involves ensuring the CA bundle in the MutatingWebhookConfiguration and ValidatingWebhookConfiguration resources for CAPZ is correctly configured and matches the certificate authority that signed the webhook server's TLS certificate. Check the cert-manager configuration if it's used for webhook certificate management, or verify the static certificates if they are manually configured.",
+            "generated_at": "2026-06-11T20:50:24Z",
+            "root_cause": "The build-log.txt shows multiple 'context deadline exceeded' errors when creating AzureManagedMachinePool and AzureManagedControlPlane resources, indicating client-side timeouts. However, the root cause is revealed in the Azure activity logs at artifacts/clusters/capz-e2e-r59nl4-asoapi/azure-activity-logs/capz-e2e-r59nl4-asoapi.log, which show 'EtagMismatch' errors with the message 'Operation is not allowed: Another operation is in progress'. This indicates that concurrent operations on the same AKS resources (specifically agent pool 'pool0') caused conflicts at the Azure API level. The etag mismatch occurs when multiple operations attempt to modify the same resource simultaneously, and Azure rejects the conflicting requests. This is a transient infrastructure issue related to concurrent resource provisioning rather than a bug in the CAPZ code.",
+            "severity": "Medium",
+            "suggested_fix": "No remediation possible from available evidence: The failure is due to concurrent operations on Azure resources during test execution. A potential fix would be to implement better serialization of operations on shared AKS resources in the test framework, but this would require changes to the test orchestration logic rather than the CAPZ controller code.",
             "relevant_files": [
-              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-7989795556-n7xsf/manager.log",
-              "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-8447bd6c48-fk7zg/manager.log"
+              "artifacts/clusters/capz-e2e-r59nl4-asoapi/azure-activity-logs/capz-e2e-r59nl4-asoapi.log",
+              "build-log.txt"
             ],
             "mode": "agentic-universal",
             "tool_calls": 20,
-            "model_bytes": 208972,
-            "gcs_bytes": 2238754,
-            "elapsed_ms": 109603,
+            "model_bytes": 53842,
+            "gcs_bytes": 3851184,
+            "elapsed_ms": 140404,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -394,24 +397,27 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.12.8/test/framework/clusterctl/clusterctl_helpers.go#L433",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T19:13:04Z",
-            "summary": "Test failure due to Azure API client-side rate limiting causing context deadline exceeded errors during cluster template application",
+            "generated_at": "2026-06-11T20:51:16Z",
+            "summary": "Cluster creation failed due to webhook certificate validation errors leading to context deadline exceeded",
             "is_transient": true
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T19:13:04Z",
-            "root_cause": "The build log shows repeated 'context deadline exceeded' errors specifically related to 'client rate limiter Wait returned an error' when creating AzureManagedControlPlane and AzureManagedMachinePool resources. These errors occurred during the cluster template application phase for multiple AKS clusters (capz-e2e-es9bz0-cc, capz-e2e-v4letn-pool, capz-e2e-s9gylt-aks). The Azure activity logs for the successful cluster (capz-e2e-r59nl4-asoapi) show normal administrative operations completing successfully, indicating the Azure backend was functioning correctly. The CAPZ controller logs do not show any rate limiting errors directly, suggesting the rate limiting is occurring at the client-side REST client used by the test framework rather than in the controllers themselves. This is a classic symptom of API throttling where the client exceeds Azure's request rate limits and the client-side rate limiter times out waiting for permission to send requests.",
-            "severity": "Low",
-            "suggested_fix": "No remediation possible from available evidence: The failure is due to transient Azure API rate limiting. The evidence consists of 'context deadline exceeded' errors in build-log.txt associated with client rate limiter waits, and successful Azure activity logs for other clusters showing the backend was operational. The specific request rates and limits involved are not available in the logs. To prevent this class of failure, the test framework's client-side rate limiter configuration would need to be adjusted to be more conservative, or the test execution would need to be serialized to reduce concurrent API calls.",
+            "generated_at": "2026-06-11T20:51:16Z",
+            "root_cause": "The failure was caused by repeated 'x509: certificate signed by unknown authority' errors when attempting to call CAPZ webhooks during cluster template application. The build log shows multiple webhook calls failing with TLS certificate verification errors for services like 'capz-webhook-service.capz-system.svc'. These errors occurred for various resources including AzureManagedControlPlaneTemplate, AzureManagedMachinePoolTemplate, and AzureManagedControlPlane. After several retry attempts, these failures eventually led to 'context deadline exceeded' errors due to the client rate limiter wait returning an error. This is a known transient issue related to webhook certificate propagation during cluster or management-cluster bringup, where the cert-manager CA bundle has not finished injecting when early reconcile calls fire. The CAPZ controller manager log does not show these specific webhook errors, indicating they occurred in the client-side calls during template application rather than in the controller's reconciliation loop. The KCP controller log shows normal operation with no errors related to the failed cluster creation.",
+            "severity": "Medium",
+            "suggested_fix": "No remediation possible from available evidence: The failure is a known transient infrastructure flake related to webhook certificate propagation. The test should be retried. No code or configuration changes are required based on the evidence presented.",
             "relevant_files": [
               "build-log.txt",
-              "artifacts/clusters/capz-e2e-r59nl4-asoapi/azure-activity-logs/capz-e2e-r59nl4-asoapi.log"
+              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-7989795556-n7xsf/manager.log",
+              "artifacts/clusters/bootstrap/logs/capi-kubeadm-control-plane-system/capi-kubeadm-control-plane-controller-manager/capi-kubeadm-control-plane-controller-manager-774c8b856b-48q65/manager.log"
             ],
             "mode": "agentic-universal",
             "tool_calls": 20,
-            "model_bytes": 30485,
-            "gcs_bytes": 2521106,
-            "elapsed_ms": 72396,
+            "model_bytes": 170938,
+            "gcs_bytes": 4563028,
+            "elapsed_ms": 142515,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },

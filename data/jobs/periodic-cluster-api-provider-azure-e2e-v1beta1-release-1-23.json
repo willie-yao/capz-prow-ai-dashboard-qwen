@@ -726,26 +726,24 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api/blob/v1.12.8/test/framework/controlplane_helpers.go#L115",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T19:00:22Z",
-            "summary": "Only one control plane machine was created instead of three for the API Server ILB cluster",
+            "generated_at": "2026-06-11T20:46:17Z",
+            "summary": "Only 2 out of 3 control plane machines were created for the API Server ILB cluster",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T19:00:22Z",
-            "root_cause": "The test failure occurred because only one control plane machine was successfully created and joined the cluster instead of the required three. From examining the cloud-init logs of the three control plane machines (capz-e2e-6smbry-apiserver-ilb-control-plane-rp5fv, capz-e2e-6smbry-apiserver-ilb-control-plane-wfhp6, capz-e2e-6smbry-apiserver-ilb-control-plane-xgshv), we can see that all three completed their kubeadm initialization/join processes successfully. The first machine (wfhp6) completed initialization at 07:20:44 and reported 'Your Kubernetes control-plane has initialized successfully!'. The other two machines (rp5fv and xgshv) also completed their join operations, with logs showing 'This node has joined the cluster and a new control plane instance was created' at 07:26:10 and 07:23:47 respectively. However, the CAPI controller manager log shows that the cluster was marked as ControlPlaneInitialized at 07:21:07.519, which suggests that only one machine was recognized as a control plane node at that time. The test timed out waiting for three control plane machines to exist. This indicates a potential issue in the CAPI control plane controller's machine discovery or reconciliation logic where it failed to recognize all three provisioned control plane machines as part of the cluster, even though all three completed their cloud-init bootstrapping successfully.",
+            "generated_at": "2026-06-11T20:46:17Z",
+            "root_cause": "The test failed because only 2 control plane machines were successfully created instead of the expected 3 for the capz-e2e-j79vpb-apiserver-ilb cluster. Based on the machine directories found, there are only 2 control plane machines (capz-e2e-j79vpb-apiserver-ilb-control-plane-7pt8l and capz-e2e-j79vpb-apiserver-ilb-control-plane-x5599) instead of the required 3. The CAPZ controller logs show the cluster is being deleted with messages indicating 'AzureCluster object capz-e2e-j79vpb/capz-e2e-j79vpb-apiserver-ilb not found' and 'Cluster has been deleted, disconnecting'. This indicates the test timed out waiting for the control plane machines and the cluster was subsequently deleted. The Azure Service Operator logs also show errors related to resource deletion with 'ReferenceNotFound' errors for the AzureCluster object.",
             "severity": "High",
-            "suggested_fix": "Investigate the CAPI KubeadmControlPlane controller's machine discovery logic to determine why it only recognized one control plane machine instead of all three that were successfully provisioned and bootstrapped. Add additional logging in the discovery process to track which machines are being considered and why others might be excluded. Review the conditions and status updates of the Machine objects in the cluster to ensure they are properly transitioning to 'Running' state after successful bootstrap. Consider adding a verification step that explicitly checks node registration in the target cluster rather than just relying on machine object states.",
+            "suggested_fix": "No remediation possible from available evidence: The strongest fact established is that only 2 control plane machines were created instead of 3, and the cluster was deleted before the test could complete. The specific artifacts consulted were the CAPZ controller manager logs and Azure Service Operator logs. The exact missing evidence that prevents a remediation is the AzureMachine YAML status conditions and failure messages for the missing third control plane machine, as well as the cloud-init/kubelet logs for the existing control plane machines to determine why provisioning failed or was delayed.",
             "relevant_files": [
-              "artifacts/clusters/bootstrap/logs/capi-kubeadm-control-plane-system/capi-kubeadm-control-plane-controller-manager/capi-kubeadm-control-plane-controller-manager-774c8b856b-4rvnm/manager.log",
-              "artifacts/clusters/bootstrap/resources/capz-e2e-6smbry-apiserver-ilb/Machine/capz-e2e-6smbry-apiserver-ilb-control-plane-rp5fv.yaml",
-              "artifacts/clusters/bootstrap/resources/capz-e2e-6smbry-apiserver-ilb/Machine/capz-e2e-6smbry-apiserver-ilb-control-plane-wfhp6.yaml",
-              "artifacts/clusters/bootstrap/resources/capz-e2e-6smbry-apiserver-ilb/Machine/capz-e2e-6smbry-apiserver-ilb-control-plane-xgshv.yaml"
+              "artifacts/clusters/bootstrap/logs/capz-system/capz-controller-manager/capz-controller-manager-59dbc9c844-chrg2/manager.log",
+              "artifacts/clusters/bootstrap/logs/capz-system/azureserviceoperator-controller-manager/azureserviceoperator-controller-manager-6456c6f58c-9jkn5/manager.log"
             ],
             "mode": "agentic-universal",
             "tool_calls": 20,
-            "model_bytes": 138382,
-            "gcs_bytes": 16721768,
-            "elapsed_ms": 126229,
+            "model_bytes": 53312,
+            "gcs_bytes": 42164,
+            "elapsed_ms": 125387,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1444,24 +1442,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/helpers.go#L124",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T19:02:34Z",
-            "summary": "Calico deployment failed because the cluster kubeconfig secret was not found, preventing Helm chart installation",
+            "generated_at": "2026-06-11T20:46:53Z",
+            "summary": "Calico deployment failed due to missing kubeconfig secret for the workload cluster",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T19:02:34Z",
-            "root_cause": "The test failure occurred because the 'calico-kube-controllers' deployment was not found after 900 seconds. Investigation revealed that the HelmReleaseProxy for Calico could not be installed because the kubeconfig secret for the cluster 'capz-e2e-22kvzh-cc' was missing. Multiple error messages in the CAAPH controller logs show 'failed to get kubeconfig for cluster: failed to retrieve kubeconfig secret for Cluster capz-e2e-22kvzh/capz-e2e-22kvzh-cc: Secret \"capz-e2e-22kvzh-cc-kubeconfig\" not found'. This prevented the Calico Helm chart from being deployed to the workload cluster. The cluster itself shows signs of CNI issues with nodes reporting 'container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized', which is consistent with Calico not being installed.",
+            "generated_at": "2026-06-11T20:46:53Z",
+            "root_cause": "The test failure occurred because the HelmReleaseProxy for Calico's 'tigera-operator' could not be created. This was due to the CAAPH controller repeatedly failing to retrieve the kubeconfig secret for the workload cluster 'capz-e2e-22kvzh-cc'. The error message 'failed to get kubeconfig for cluster: failed to retrieve kubeconfig secret for Cluster capz-e2e-22kvzh/capz-e2e-22kvzh-cc: Secret \"capz-e2e-22kvzh-cc-kubeconfig\" not found' was consistently logged in the CAAPH controller manager log. This indicates that the kubeconfig secret, which is essential for CAAPH to connect to the workload cluster and deploy the Helm chart, was not created or was not accessible when CAAPH attempted to reconcile the HelmChartProxy for Calico. The control plane for the cluster was successfully provisioned as indicated by the CAPI controller logs showing 'Cluster capz-e2e-22kvzh-cc is Provisioned'. However, the addon deployment failed due to this missing secret. The worker node boot logs show successful kubeadm join, indicating the node itself was able to connect to the control plane, but this doesn't guarantee the kubeconfig secret was properly created or propagated to the management cluster's namespace. The Calico controller logs from a working cluster (capz-e2e-0j3e3v-flex) show normal operation, confirming the issue is specific to the deployment process of the failing cluster.",
             "severity": "High",
-            "suggested_fix": "Ensure that the kubeconfig secret is properly generated and available before attempting to install Helm charts via HelmChartProxy. This can be done by adding a check in the e2e test framework to verify the existence of the kubeconfig secret before proceeding with addon installation. The specific file that needs modification is likely in the cluster-api-addon-provider-helm codebase, specifically in the helmreleaseproxy_controller.go file where the kubeconfig retrieval logic should include better error handling and possibly retry mechanisms for cases where the secret is temporarily unavailable. Additionally, verify that the Cluster's control plane is fully initialized and the kubeconfig secret is created before the CAAPH controller attempts to install addons.",
+            "suggested_fix": "No remediation possible from available evidence: The root cause is established as a missing kubeconfig secret 'capz-e2e-22kvzh-cc-kubeconfig' in the 'capz-e2e-22kvzh' namespace. The specific artifacts consulted were the CAAPH controller manager log and the CAPI controller manager log. The exact missing evidence preventing a concrete remediation is the reason why the kubeconfig secret was not created or not accessible, which would require examining the Cluster API core controller logs or the workload cluster's API server logs to determine the failure point in the secret generation or propagation process.",
             "relevant_files": [
-              "kubernetes-sigs/cluster-api-addon-provider-helm/controllers/helmreleaseproxy_controller.go",
-              "kubernetes-sigs/cluster-api-provider-azure/test/e2e/helpers.go"
+              "artifacts/clusters/bootstrap/logs/caaph-system/caaph-controller-manager/caaph-controller-manager-84d6b87b9d-hnvjm/manager.log",
+              "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-8447bd6c48-5xfjm/manager.log"
             ],
             "mode": "agentic-universal",
             "tool_calls": 20,
-            "model_bytes": 209191,
-            "gcs_bytes": 69503455,
-            "elapsed_ms": 131865,
+            "model_bytes": 153605,
+            "gcs_bytes": 95033374,
+            "elapsed_ms": 144898,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1475,24 +1475,26 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/helpers.go#L124",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T19:04:14Z",
-            "summary": "Calico deployment failed due to missing kubeconfig secret for the autoscale cluster",
+            "generated_at": "2026-06-11T20:48:03Z",
+            "summary": "Calico deployment failed due to missing kubeconfig secret preventing HelmChartProxy from deploying CNI to autoscale cluster",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T19:04:14Z",
-            "root_cause": "The CAAPH controller failed to deploy Calico because it could not retrieve the kubeconfig secret for the workload cluster capz-e2e-dxesyq-autoscale. Multiple log entries in caaph-controller-manager show errors like 'failed to get kubeconfig for cluster: failed to retrieve kubeconfig secret for Cluster capz-e2e-dxesyq/capz-e2e-dxesyq-autoscale: Secret \"capz-e2e-dxesyq-autoscale-kubeconfig\" not found' for both Calico and cloud-provider-azure HelmReleaseProxies. This indicates the cluster's kubeconfig secret was not created or was not accessible when CAAPH tried to install the CNI. The test timed out waiting for the calico-kube-controllers deployment to become available because the Helm chart was never successfully applied. The root cause is that the kubeconfig secret was missing, which prevented CAAPH from connecting to the workload cluster to install Calico.",
+            "generated_at": "2026-06-11T20:48:03Z",
+            "root_cause": "The root cause of the failure is that the CAAPH controller could not deploy Calico to the autoscale cluster because the required kubeconfig secret 'capz-e2e-dxesyq-autoscale-kubeconfig' was not found. This is evidenced by the repeated error messages in the CAAPH controller logs: 'failed to get kubeconfig for cluster: failed to retrieve kubeconfig secret for Cluster capz-e2e-dxesyq/capz-e2e-dxesyq-autoscale: Secret \"capz-e2e-dxesyq-autoscale-kubeconfig\" not found'. Without this secret, the HelmChartProxy controller cannot establish a connection to the workload cluster to deploy the Calico Helm chart, which explains why the 'calico-kube-controllers' deployment was never created, leading to the timeout error in the test. Additional evidence from CAPI controller logs shows the same pattern of missing kubeconfig secrets for other clusters, indicating a systemic issue with kubeconfig secret creation or propagation.",
             "severity": "High",
-            "suggested_fix": "Investigate why the kubeconfig secret 'capz-e2e-dxesyq-autoscale-kubeconfig' was not created or was not accessible to CAAPH. Check the CAPI controller logs to see if there were errors during cluster initialization that prevented the secret from being created. Also verify that the secret is properly labeled for CAAPH to discover it. Add verification in the test to ensure the kubeconfig secret exists and is properly configured before attempting to deploy addons.",
+            "suggested_fix": "No remediation possible from available evidence: The strongest fact established is that the kubeconfig secret 'capz-e2e-dxesyq-autoscale-kubeconfig' was not created for the autoscale cluster. The specific artifacts consulted include CAAPH controller logs showing repeated failures to retrieve the kubeconfig secret, and CAPI controller logs showing similar issues with other clusters. The exact missing evidence that prevents a remediation is the Cluster YAML status conditions and control plane machine logs that would show whether the cluster's control plane was properly initialized and whether the kubeconfig secret creation process completed successfully.",
             "relevant_files": [
               "artifacts/clusters/bootstrap/logs/caaph-system/caaph-controller-manager/caaph-controller-manager-84d6b87b9d-hnvjm/manager.log",
               "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-8447bd6c48-5xfjm/manager.log"
             ],
             "mode": "agentic-universal",
             "tool_calls": 20,
-            "model_bytes": 144791,
-            "gcs_bytes": 96583872,
-            "elapsed_ms": 100638,
+            "model_bytes": 145723,
+            "gcs_bytes": 23360813,
+            "elapsed_ms": 164867,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1524,24 +1526,27 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/helpers.go#L124",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T19:07:22Z",
-            "summary": "Calico deployment failed due to missing kubeconfig secret for Azure Linux 3 cluster",
+            "generated_at": "2026-06-11T20:48:53Z",
+            "summary": "Calico CNI failed to initialize on Azure Linux 3 control plane nodes, causing kubelet network readiness errors and preventing calico-kube-controllers deployment",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T19:07:22Z",
-            "root_cause": "The Calico Helm chart failed to deploy because the kubeconfig secret 'capz-e2e-atrxr7-azl3-kubeconfig' was not found. This prevented the HelmReleaseProxy from configuring Calico on the workload cluster. The kubelet on the control plane node failed to start properly due to an unset KUBELET_KUBEADM_ARGS environment variable, which caused the node to never register with the API server. This in turn prevented the kubeconfig secret from being created. The missing kubeconfig secret then caused the CAAPH controller to fail when trying to deploy Calico, as it could not connect to the workload cluster. The error message 'failed to retrieve kubeconfig secret for Cluster capz-e2e-atrxr7/capz-e2e-atrxr7-azl3: Secret \"capz-e2e-atrxr7-azl3-kubeconfig\" not found' was repeatedly logged in the CAAPH controller manager. The kubelet logs showed 'Referenced but unset environment variable evaluates to an empty string: KUBELET_KUBEADM_ARGS' which directly caused the kubelet to fail to load its configuration.",
-            "severity": "Critical",
-            "suggested_fix": "Ensure the KUBELET_KUBEADM_ARGS environment variable is properly set in the systemd unit file for kubelet on Azure Linux 3 nodes. This should be done in the cloud-init configuration or bootstrap script that prepares the node. The fix involves modifying the template or script that generates the kubelet service configuration to include the required environment variables. Verification can be done by checking that the kubelet service starts successfully and the node registers with the API server.",
+            "generated_at": "2026-06-11T20:48:53Z",
+            "root_cause": "The kubelet logs on the first control plane machine (capz-e2e-atrxr7-azl3-control-plane-f8wlm) show repeated errors indicating the CNI plugin is not initialized: \"Container runtime network not ready\" with \"Network plugin returns error: cni plugin not initialized\" (e.g., line 271 in kubelet.log). This directly prevents pods from starting, including the calico-kube-controllers deployment which the test expects to find. The cloud-init logs for the same machine show kubeadm init completed successfully and etcd is healthy, indicating the core Kubernetes components started. However, the CNI plugin (Calico) did not initialize properly. The journal logs show Calico components were being pulled (tigera-operator pod volume mount for var-lib-calico at line 9050 in journal.log), but the CNI plugin itself failed to initialize. The CAAPH controller logs show it was trying to manage HelmReleaseProxies for Calico but was failing due to not being able to retrieve the cluster kubeconfig secret (\"Secret \\\"capz-e2e-atrxr7-azl3-kubeconfig\\\" not found\"), which indicates a potential issue with the cluster's initialization preventing CAAPH from deploying Calico properly. The root cause is that the Calico CNI plugin did not initialize on the Azure Linux 3 nodes, cascading to prevent the calico-kube-controllers deployment from starting.",
+            "severity": "High",
+            "suggested_fix": "No remediation possible from available evidence: The strongest fact established is that the CNI plugin failed to initialize on Azure Linux 3 nodes, causing kubelet network readiness errors. The specific artifacts consulted include kubelet.log, cloud-init-output.log, journal.log from the first control plane node, and CAAPH controller logs. The exact missing evidence that prevents a remediation is the Calico CNI pod logs (e.g., calico-node logs) and the containerd logs from the failing Azure Linux 3 node, which would show the specific CNI initialization failure.",
             "relevant_files": [
               "artifacts/clusters/capz-e2e-atrxr7-azl3/machines/capz-e2e-atrxr7-azl3-control-plane-f8wlm/kubelet.log",
-              "artifacts/clusters/bootstrap/logs/caaph-system/caaph-controller-manager/caaph-controller-manager-84d6b87b9d-hnvjm/manager.log"
+              "artifacts/clusters/bootstrap/logs/caaph-system/caaph-controller-manager/caaph-controller-manager-84d6b87b9d-hnvjm/manager.log",
+              "artifacts/clusters/capz-e2e-atrxr7-azl3/machines/capz-e2e-atrxr7-azl3-control-plane-f8wlm/cloud-init-output.log"
             ],
             "mode": "agentic-universal",
             "tool_calls": 20,
-            "model_bytes": 318048,
-            "gcs_bytes": 79611896,
-            "elapsed_ms": 187325,
+            "model_bytes": 138150,
+            "gcs_bytes": 73903184,
+            "elapsed_ms": 175133,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },
@@ -1579,25 +1584,27 @@
           "failure_location_url": "https://github.com/kubernetes-sigs/cluster-api-provider-azure/blob/main/test/e2e/helpers.go#L124",
           "junit_file": "junit.e2e_suite.1.xml",
           "ai_summary": {
-            "generated_at": "2026-06-10T19:09:01Z",
-            "summary": "Calico CNI failed to deploy on spot VM cluster due to missing kubeconfig secret, causing cascading network plugin failure",
+            "generated_at": "2026-06-11T20:49:44Z",
+            "summary": "Calico CNI failed to deploy due to missing kubeconfig secret, causing calico-kube-controllers deployment to never be created",
             "is_transient": false
           },
           "ai_analysis": {
-            "generated_at": "2026-06-10T19:09:01Z",
-            "root_cause": "The test failure stems from Calico CNI not being deployed on the workload cluster, specifically the \"calico-kube-controllers\" deployment being missing. This is a cascading failure from the CNI not initializing. The root cause is that CAAPH (Cluster API Addon Provider Helm) failed to deploy the Calico Helm chart because it could not access the workload cluster's kubeconfig secret. Multiple log entries in the CAAPH controller log show \"failed to retrieve kubeconfig secret for Cluster capz-e2e-f7m9bu/capz-e2e-f7m9bu-spot: Secret \\\"capz-e2e-f7m9bu-spot-kubeconfig\\\" not found\" (from artifacts/clusters/bootstrap/logs/caaph-system/caaph-controller-manager/caaph-controller-manager-84d6b87b9d-hnvjm/manager.log). This same error appears in the CAPI controller logs, confirming the kubeconfig secret is missing. The cluster's status shows both control plane and worker nodes as not ready with the message \"container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized\" (from artifacts/clusters/bootstrap/resources/capz-e2e-f7m9bu/Cluster/capz-e2e-f7m9bu-spot.yaml). While the HelmChartProxy and HelmReleaseProxy for Calico show as deployed, this is misleading as the actual deployment to the workload cluster failed due to the missing kubeconfig. The AzureClusterIdentity exists and is correctly configured, ruling out credential issues.",
+            "generated_at": "2026-06-11T20:49:44Z",
+            "root_cause": "The root cause is that the Calico CNI Helm chart failed to deploy on the workload cluster 'capz-e2e-f7m9bu-spot' because the CAAPH controller could not retrieve the kubeconfig secret for the cluster. From the CAAPH manager logs, we can see repeated errors: 'failed to get kubeconfig for cluster: failed to retrieve kubeconfig secret for Cluster capz-e2e-f7m9bu/capz-e2e-f7m9bu-spot: Secret \"capz-e2e-f7m9bu-spot-kubeconfig\" not found' (line 1579 in caaph manager log). This prevented CAAPH from installing the Calico Helm release, which in turn meant the 'calico-kube-controllers' deployment was never created. The test timed out waiting for this deployment to appear. The CAPI logs also show the cluster was stuck in provisioning with 'ControlPlaneIsStable' preflight checks failing, indicating the control plane was not fully ready to receive addon deployments. Further investigation of the control plane node 'capz-e2e-f7m9bu-spot-control-plane-2s8m8' shows the kubelet.log repeatedly reporting 'Container runtime network not ready: Network plugin returns error: cni plugin not initialized', confirming that the CNI was never properly initialized due to the missing Calico deployment.",
             "severity": "High",
-            "suggested_fix": "Investigate why the kubeconfig secret \"capz-e2e-f7m9bu-spot-kubeconfig\" was not created or propagated to the capz-e2e-f7m9bu namespace. This could involve checking the Cluster API controller's logic for kubeconfig secret generation, ensuring the control plane is properly initialized before addon installation begins, and verifying there are no race conditions in the secret creation process. A specific code fix would require examining the CAPI controller's kubeconfig secret generation logic, but as a remediation step, ensure the cluster's control plane is fully ready and the kubeconfig secret exists in the expected namespace before attempting addon installation.",
+            "suggested_fix": "No remediation possible from available evidence: The investigation established that the Calico CNI failed to deploy because the CAAPH controller could not find the kubeconfig secret for the workload cluster. However, the specific reason why the kubeconfig secret was not created (e.g., control plane initialization failure, secret creation error) is not evident from the logs examined. To remediate this issue, one would need to investigate the control plane initialization process and the kubeconfig secret creation mechanism in detail, which requires evidence not available in the current artifact set.",
             "relevant_files": [
               "artifacts/clusters/bootstrap/logs/caaph-system/caaph-controller-manager/caaph-controller-manager-84d6b87b9d-hnvjm/manager.log",
-              "artifacts/clusters/bootstrap/resources/capz-e2e-f7m9bu/Cluster/capz-e2e-f7m9bu-spot.yaml",
-              "artifacts/clusters/bootstrap/resources/capz-e2e-f7m9bu/HelmChartProxy/calico.yaml"
+              "artifacts/clusters/bootstrap/logs/capi-system/capi-controller-manager/capi-controller-manager-8447bd6c48-5xfjm/manager.log",
+              "artifacts/clusters/capz-e2e-f7m9bu-spot/machines/capz-e2e-f7m9bu-spot-control-plane-2s8m8/kubelet.log"
             ],
             "mode": "agentic-universal",
             "tool_calls": 20,
-            "model_bytes": 122501,
-            "gcs_bytes": 72699817,
-            "elapsed_ms": 98860,
+            "model_bytes": 218604,
+            "gcs_bytes": 54274773,
+            "elapsed_ms": 206470,
+            "critique_passed": true,
+            "critique_version": 4,
             "skill_set_hash": "a7b87aaa5c703ac74d39853ec7bf08408c252ba1568b2d1699c4675c9c310625"
           }
         },

@@ -93,6 +93,13 @@ ai:
   # endpoint + model.
   use_universal_path: true
 
+  # Analyze several failures in parallel. The in-cluster Qwen3-Coder-480B
+  # Dynamo endpoint is dedicated to this dashboard and batches concurrent
+  # requests, so 4 cuts a cold-cache fetch's wall clock ~4x without
+  # saturating it. Safe here because the endpoint is not a shared/rate-
+  # limited provider. See prow-ai-dashboard/docs/agentic.md (ai.concurrency).
+  concurrency: 4
+
   agentic:
     enabled: true
     always: false
